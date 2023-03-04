@@ -25,11 +25,12 @@ public class Hero extends Creature {
         this.keyboardInputs = keyboardInputs;
         setValues();
         getSprites();
+        hitbox = new Rectangle(12,24,56,56);
     }
 
     public void setValues() {
-        worldX = gamePanel.spriteSize *10;
-        worldY = gamePanel.spriteSize *10;
+        worldX = gamePanel.spriteSize *2;
+        worldY = gamePanel.spriteSize *2;
         speed = 10;
         direction = "down";
     }
@@ -56,17 +57,31 @@ public class Hero extends Creature {
         if (keyboardInputs.up || keyboardInputs.down || keyboardInputs.left || keyboardInputs.right){ //checking for keyboard inputs so the sprite wont change when character is standing still
             if(keyboardInputs.up){
                 direction = "up";
-                worldY -= speed;
             } else if (keyboardInputs.down) {
                 direction = "down";
-                worldY += speed;
             } else if (keyboardInputs.left) {
                 direction = "left";
-                worldX -= speed;
             } else if (keyboardInputs.right) {
                 direction = "right";
-                worldX += speed;
             }
+            //collision check
+            collision = false;
+            gamePanel.collisionCheck.checkSprite(this);
+
+            //if !collision, hero will move
+            if(collision == false){
+                if(direction=="up"){
+                    worldY -= speed;
+                } else if (direction=="down") {
+                    worldY += speed;
+                } else if (direction=="left") {
+                    worldX -= speed;
+                } else if (direction=="right") {
+                    worldX += speed;
+                }
+            }
+
+
             spriteCounter++; // counter gets upped 60 times per second
             if(spriteCounter > 15){   //every 60/15 = 4 times a second
                 if(spriteNumber == 1){ // forcing sprite to change 4 times a second

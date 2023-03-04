@@ -4,15 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="implemented a method to read a text file and generate a map - close #3">
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/sand.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/maps/world01.txt" afterDir="false" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="implemented camera and openended map- close #4">
+      <change afterPath="$PROJECT_DIR$/src/main/CollisionCheck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTile.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTile.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Creature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/maps/world01.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/maps/world01.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -99,7 +99,9 @@
       <workItem from="1677883869835" duration="2676000" />
       <workItem from="1677915324324" duration="7731000" />
       <workItem from="1677923336499" duration="2720000" />
-      <workItem from="1677926114854" duration="8402000" />
+      <workItem from="1677926114854" duration="9182000" />
+      <workItem from="1677946300827" duration="248000" />
+      <workItem from="1677946640227" duration="6085000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -143,7 +145,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677928658879</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="implemented camera and openended map- close #4">
+      <created>1677935331832</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1677935331832</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -167,6 +176,7 @@
     <MESSAGE value="added background close #2" />
     <MESSAGE value="added background - close #2" />
     <MESSAGE value="implemented a method to read a text file and generate a map - close #3" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented a method to read a text file and generate a map - close #3" />
+    <MESSAGE value="implemented camera and openended map- close #4" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented camera and openended map- close #4" />
   </component>
 </project>

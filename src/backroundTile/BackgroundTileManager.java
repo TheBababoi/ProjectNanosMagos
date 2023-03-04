@@ -8,8 +8,8 @@ import java.io.*;
 
 public class BackgroundTileManager {
     GamePanel gamePanel;
-    BackgroundTile[] backgroundTile;
-    int mapLayout[][];
+    public BackgroundTile[] backgroundTile;
+    public int mapLayout[][];
 
     public BackgroundTileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -50,10 +50,13 @@ public class BackgroundTileManager {
             backgroundTile[0] = new BackgroundTile();
             backgroundTile[0].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass.png"));
             backgroundTile[1] = new BackgroundTile();
+            backgroundTile[1].collision = true;
             backgroundTile[1].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/water.png"));
             backgroundTile[2] = new BackgroundTile();
+            backgroundTile[2].collision = true;
             backgroundTile[2].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/brick.png"));
             backgroundTile[3] = new BackgroundTile();
+            backgroundTile[3].collision = true;
             backgroundTile[3].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/tree.png"));
             backgroundTile[5] = new BackgroundTile();
             backgroundTile[5].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/sand.png"));

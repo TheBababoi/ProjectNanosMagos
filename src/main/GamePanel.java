@@ -30,6 +30,7 @@ public class GamePanel extends JPanel implements Runnable {
     KeyboardInputs keyboardInputs = new KeyboardInputs();
     public Hero hero = new Hero(this,keyboardInputs);
     BackgroundTileManager backgroundTileManager = new BackgroundTileManager(this);
+    public CollisionCheck collisionCheck = new CollisionCheck(this);
 
     public GamePanel(){
 
