@@ -4,19 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="implemented movement">
-      <change afterPath="$PROJECT_DIR$/src/creature/Creature.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/hero/hero_down_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/hero/hero_down_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/hero/hero_left_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/hero/hero_left_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/hero/hero_right_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/hero/hero_right_2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/hero/hero_up_1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/hero/hero_up_2.png" afterDir="false" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added sprites and animations to hero close #1">
+      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTile.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/brick.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/water.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team11.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team11.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -63,6 +60,8 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bababoi\Desktop\Team11\src\sprites\backgroundTiles" />
+      <recent name="C:\Users\Bababoi\Desktop\Team11\src\sprites\backroundTiles" />
       <recent name="C:\Users\Bababoi\Desktop\Team11\src\sprites\hero" />
       <recent name="C:\Users\Bababoi\Desktop\Team11\src" />
     </key>
@@ -99,7 +98,7 @@
       <workItem from="1677877600443" duration="411000" />
       <workItem from="1677878041977" duration="5099000" />
       <workItem from="1677883869835" duration="2676000" />
-      <workItem from="1677915324324" duration="2208000" />
+      <workItem from="1677915324324" duration="7518000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -115,7 +114,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677873792044</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="added sprites and animations to hero close #1">
+      <created>1677917878969</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677917878970</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -135,6 +141,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Created Basic Game Panel&#10;Started the thread" />
     <MESSAGE value="implemented movement" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented movement" />
+    <MESSAGE value="added sprites and animations to hero close #1" />
+    <option name="LAST_COMMIT_MESSAGE" value="added sprites and animations to hero close #1" />
   </component>
 </project>

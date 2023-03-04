@@ -1,5 +1,6 @@
 package main;
 
+import backroundTile.BackgroundTileManager;
 import creature.Hero;
 
 import javax.swing.*;
@@ -11,8 +12,8 @@ public class GamePanel extends JPanel implements Runnable {
     final int scaling =5;
 
     final public int spriteSize = originalSpriteSize * scaling; //5*16=80px
-    final int maxScreenColumn = 24;
-    final int maxScreenRow = 13;
+    final public int maxScreenColumn = 24;
+    final public int maxScreenRow = 13;
     final int screenHeight = spriteSize*maxScreenRow; //13*80=1040px
     final int screenWidth = spriteSize* maxScreenColumn;
 
@@ -22,11 +23,7 @@ public class GamePanel extends JPanel implements Runnable {
     Thread thread;
     KeyboardInputs keyboardInputs = new KeyboardInputs();
     Hero hero = new Hero(this,keyboardInputs);
-
-    int heroX = 100;
-    int heroY = 100; //hero's coordinates
-    int heroSpeed = 10;
-
+    BackgroundTileManager backgroundTileManager = new BackgroundTileManager(this);
 
     public GamePanel(){
 
@@ -74,6 +71,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g; // changing the Graphics to Graphics2D
+        backgroundTileManager.draw(g2);
         hero.draw(g2);
     }
 

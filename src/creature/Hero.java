@@ -1,12 +1,7 @@
-
 package creature;
-
-
-
 
 import main.GamePanel;
 import main.KeyboardInputs;
-
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
