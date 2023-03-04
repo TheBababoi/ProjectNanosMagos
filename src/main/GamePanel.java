@@ -9,7 +9,7 @@ import java.awt.*;
 public class GamePanel extends JPanel implements Runnable {
 
     final int originalSpriteSize = 16;
-    final int scaling =5;
+    final int scaling = 5;
 
     final public int spriteSize = originalSpriteSize * scaling; //5*16=80px
     final public int maxScreenColumn = 24;

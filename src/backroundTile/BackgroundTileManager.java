@@ -4,17 +4,44 @@ import main.GamePanel;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
-import java.io.FileInputStream;
-import java.io.IOException;
+import java.io.*;
 
 public class BackgroundTileManager {
     GamePanel gamePanel;
     BackgroundTile[] backgroundTile;
+    int mapLayout[][];
 
     public BackgroundTileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         backgroundTile = new BackgroundTile[40];
+        mapLayout= new int[gamePanel.maxScreenColumn][gamePanel.maxScreenRow];
         getTileImage();
+        loadMapfromTextFile("src/sprites/maps/map1.txt");
+    }
+
+    public void loadMapfromTextFile(String filePath){
+        try {
+            InputStream inputStream = new FileInputStream(filePath);
+            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
+            int collumn = 0;
+            int row = 0;
+            while(collumn < gamePanel.maxScreenColumn && row < gamePanel.maxScreenRow){
+                String line = bufferedReader.readLine();
+                while(collumn < gamePanel.maxScreenColumn){
+                    String digit[] = line.split(" "); // fills the array with the digits that are getting split up by the spaces
+                    int digit2 = Integer.parseInt(digit[collumn]); // converting string to int
+                    mapLayout[collumn][row] = digit2;
+                    collumn++;
+                }
+                if(collumn==gamePanel.maxScreenColumn){
+                    collumn = 0;
+                    row++;
+                }
+            }
+            bufferedReader.close();
+        } catch(Exception e){
+
+        }
     }
 
     public void getTileImage() {
@@ -37,8 +64,9 @@ public class BackgroundTileManager {
         int row = 0;
         int x = 0;
         int y = 0;
-        while(collumn <= gamePanel.maxScreenColumn && row<= gamePanel.maxScreenRow) {
-            g2.drawImage(backgroundTile[0].image,x,y, gamePanel.spriteSize,gamePanel.spriteSize,null);
+        while(collumn < gamePanel.maxScreenColumn && row< gamePanel.maxScreenRow) {
+            int tileDigit = mapLayout[collumn][row];
+            g2.drawImage(backgroundTile[tileDigit].image,x,y, gamePanel.spriteSize,gamePanel.spriteSize,null);
             collumn++;
             x+= gamePanel.spriteSize;
                 if(collumn == gamePanel.maxScreenColumn){

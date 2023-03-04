@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added background - close #2" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added background - close #2">
+      <change afterPath="$PROJECT_DIR$/src/sprites/maps/map1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -49,6 +54,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bababoi\Desktop\Team11\src\sprites\maps" />
       <recent name="C:\Users\Bababoi\Desktop\Team11\src\sprites\backgroundTiles" />
       <recent name="C:\Users\Bababoi\Desktop\Team11\src\sprites\backroundTiles" />
       <recent name="C:\Users\Bababoi\Desktop\Team11\src\sprites\hero" />
@@ -88,6 +94,8 @@
       <workItem from="1677878041977" duration="5099000" />
       <workItem from="1677883869835" duration="2676000" />
       <workItem from="1677915324324" duration="7731000" />
+      <workItem from="1677923336499" duration="2720000" />
+      <workItem from="1677926114854" duration="1793000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -117,7 +125,14 @@
       <option name="project" value="LOCAL" />
       <updated>1677923194038</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="added background - close #2">
+      <created>1677923363699</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677923363700</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -139,6 +154,7 @@
     <MESSAGE value="implemented movement" />
     <MESSAGE value="added sprites and animations to hero close #1" />
     <MESSAGE value="added background close #2" />
-    <option name="LAST_COMMIT_MESSAGE" value="added background close #2" />
+    <MESSAGE value="added background - close #2" />
+    <option name="LAST_COMMIT_MESSAGE" value="added background - close #2" />
   </component>
 </project>
