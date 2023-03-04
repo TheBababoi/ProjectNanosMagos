@@ -1,5 +1,7 @@
 package main;
 
+import creature.Hero;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,7 +10,7 @@ public class GamePanel extends JPanel implements Runnable {
     final int originalSpriteSize = 16;
     final int scaling =5;
 
-    final int spriteSize = originalSpriteSize * scaling; //5*16=80px
+    final public int spriteSize = originalSpriteSize * scaling; //5*16=80px
     final int maxScreenColumn = 24;
     final int maxScreenRow = 13;
     final int screenHeight = spriteSize*maxScreenRow; //13*80=1040px
@@ -19,6 +21,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     Thread thread;
     KeyboardInputs keyboardInputs = new KeyboardInputs();
+    Hero hero = new Hero(this,keyboardInputs);
 
     int heroX = 100;
     int heroY = 100; //hero's coordinates
@@ -43,7 +46,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     @Override
     public void run() {
-        while (thread!= null){
+        while (thread!= null){ //implementing the game loop using the "sleep" method (stack overflow is your friend)
 
             double drawInterval = 1000000000/FPS; //dividing 1 second by 60 frames
             double nextDrawTime = System.nanoTime() + drawInterval; // drawing every 0.0166 secs
@@ -65,22 +68,13 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void refresh(){
-        if(keyboardInputs.up){
-            heroY -= heroSpeed;
-        } else if (keyboardInputs.down) {
-            heroY += heroSpeed;
-        } else if (keyboardInputs.left) {
-            heroX -= heroSpeed;
-        } else if (keyboardInputs.right) {
-            heroX += heroSpeed;
-        }
+        hero.refresh();
     }
 
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g; // changing the Graphics to Graphics2D
-        g2.setColor(Color.black);
-        g2.fillRect(heroX,heroY,spriteSize,spriteSize);
+        hero.draw(g2);
     }
 
 }
