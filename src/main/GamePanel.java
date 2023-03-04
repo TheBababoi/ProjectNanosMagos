@@ -14,15 +14,21 @@ public class GamePanel extends JPanel implements Runnable {
     final public int spriteSize = originalSpriteSize * scaling; //5*16=80px
     final public int maxScreenColumn = 24;
     final public int maxScreenRow = 13;
-    final int screenHeight = spriteSize*maxScreenRow; //13*80=1040px
-    final int screenWidth = spriteSize* maxScreenColumn;
+    final public int screenHeight = spriteSize*maxScreenRow; //13*80=1040px
+    final public int screenWidth = spriteSize* maxScreenColumn;
+
+    final public int maxWorldColumn = 50;
+    final public int maxWorldRow = 50;
+    final public int maxWorldWidth = maxWorldColumn*spriteSize;
+    final public int maxWorldHeight = maxWorldRow*spriteSize;
+
 
     int FPS = 60;
 
 
     Thread thread;
     KeyboardInputs keyboardInputs = new KeyboardInputs();
-    Hero hero = new Hero(this,keyboardInputs);
+    public Hero hero = new Hero(this,keyboardInputs);
     BackgroundTileManager backgroundTileManager = new BackgroundTileManager(this);
 
     public GamePanel(){

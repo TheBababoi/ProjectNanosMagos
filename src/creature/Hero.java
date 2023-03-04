@@ -13,10 +13,14 @@ import java.io.IOException;
 
 public class Hero extends Creature {
 
+    final public int screenX;
+    final public int screenY;
     GamePanel gamePanel;
     KeyboardInputs keyboardInputs;
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
+        screenX = gamePanel.screenWidth/2 - gamePanel.spriteSize/2; // centering the "camera" to the player model
+        screenY = gamePanel.screenHeight/2 - gamePanel.spriteSize/2;
         this.gamePanel = gamePanel;
         this.keyboardInputs = keyboardInputs;
         setValues();
@@ -24,8 +28,8 @@ public class Hero extends Creature {
     }
 
     public void setValues() {
-        x = 100;
-        y = 100;
+        worldX = gamePanel.spriteSize *10;
+        worldY = gamePanel.spriteSize *10;
         speed = 10;
         direction = "down";
     }
@@ -52,16 +56,16 @@ public class Hero extends Creature {
         if (keyboardInputs.up || keyboardInputs.down || keyboardInputs.left || keyboardInputs.right){ //checking for keyboard inputs so the sprite wont change when character is standing still
             if(keyboardInputs.up){
                 direction = "up";
-                y -= speed;
+                worldY -= speed;
             } else if (keyboardInputs.down) {
                 direction = "down";
-                y += speed;
+                worldY += speed;
             } else if (keyboardInputs.left) {
                 direction = "left";
-                x -= speed;
+                worldX -= speed;
             } else if (keyboardInputs.right) {
                 direction = "right";
-                x += speed;
+                worldX += speed;
             }
             spriteCounter++; // counter gets upped 60 times per second
             if(spriteCounter > 15){   //every 60/15 = 4 times a second
@@ -76,8 +80,7 @@ public class Hero extends Creature {
     }
 
     public void draw(Graphics2D g2) {
-        //g2.setColor(Color.black);
-       // g2.fillOval(x,y,gamePanel.spriteSize,gamePanel.spriteSize);
+
         BufferedImage sprite = null;
 
         if(direction=="up"){
@@ -110,6 +113,6 @@ public class Hero extends Creature {
                 sprite = right2;
             }
         }
-        g2.drawImage(sprite, x,y, gamePanel.spriteSize,gamePanel.spriteSize,null);
+        g2.drawImage(sprite, screenX,screenY, gamePanel.spriteSize,gamePanel.spriteSize,null);
     }
 }
