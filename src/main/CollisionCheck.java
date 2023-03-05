@@ -1,6 +1,7 @@
 package main;
 
 import creature.Creature;
+import creature.Hero;
 
 public class CollisionCheck {
     GamePanel gamePanel;
@@ -9,7 +10,7 @@ public class CollisionCheck {
         this.gamePanel = gamePanel;
     }
 
-    public void checkSprite(Creature creature){
+    public void checkBackgroundTile(Creature creature){
 
         //hitbox world coordinate calculations
         int creatureLeftX = creature.worldX +creature.hitbox.x;
@@ -59,5 +60,70 @@ public class CollisionCheck {
             }
         }
 
+    }
+
+    public  int checkObject(Creature creature, boolean hero){
+        int index=9;
+        for (int i = 0; i <gamePanel.superObject.length; i++) {
+            if(gamePanel.superObject[i] != null){
+                //calculating creature's hitbox position
+                creature.hitbox.x = creature.worldX + creature.hitbox.x;
+                creature.hitbox.y = creature.worldY + creature.hitbox.y;
+                //calculating object's hitbox position
+                gamePanel.superObject[i].hitbox.x = gamePanel.superObject[i].worldX;
+                gamePanel.superObject[i].hitbox.y = gamePanel.superObject[i].worldY;
+
+
+                if(creature.direction == "up"){
+                    creature.hitbox.y -= creature.speed;
+                    if(creature.hitbox.intersects(gamePanel.superObject[i].hitbox)){
+                        if(gamePanel.superObject[i].collision == true){
+                            creature.collision = true;
+                        }
+                        if( hero == true){
+                            index = i;
+                        }
+                    }
+                } else if (creature.direction=="down") {
+                    creature.hitbox.y += creature.speed;
+                    if(creature.hitbox.intersects(gamePanel.superObject[i].hitbox)){
+                        if(gamePanel.superObject[i].collision == true){
+                            creature.collision = true;
+                        }
+                        if( hero == true){
+                            index = i;
+                        }
+
+                    }
+                } else if (creature.direction=="left") {
+                    creature.hitbox.x -= creature.speed;
+                    if(creature.hitbox.intersects(gamePanel.superObject[i].hitbox)){
+                        if(gamePanel.superObject[i].collision == true){
+                            creature.collision = true;
+                        }
+                        if( hero == true){
+                            index = i;
+                        }
+
+                    }
+                } else if (creature.direction=="right") {
+                    creature.hitbox.x += creature.speed;
+                    if(creature.hitbox.intersects(gamePanel.superObject[i].hitbox)){
+                        if(gamePanel.superObject[i].collision == true){
+                            creature.collision = true;
+                        }
+                        if( hero == true){
+                            index = i;
+                        }
+                    }
+                }
+                //resetting to default
+                creature.hitbox.x = creature.hitboxX;
+                creature.hitbox.y = creature.hitboxY;
+                gamePanel.superObject[i].hitbox.x = gamePanel.superObject[i].hitboxX;
+                gamePanel.superObject[i].hitbox.x = gamePanel.superObject[i].hitboxX;
+            }
+        }
+        return index;
     }
 }

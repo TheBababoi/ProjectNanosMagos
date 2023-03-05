@@ -17,6 +17,7 @@ public class Hero extends Creature {
     final public int screenY;
     GamePanel gamePanel;
     KeyboardInputs keyboardInputs;
+    int hasKey = 0;
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
         screenX = gamePanel.screenWidth/2 - gamePanel.spriteSize/2; // centering the "camera" to the player model
@@ -26,6 +27,8 @@ public class Hero extends Creature {
         setValues();
         getSprites();
         hitbox = new Rectangle(12,24,56,56);
+        hitboxX = 12;
+        hitboxY = 24;
     }
 
     public void setValues() {
@@ -64,9 +67,13 @@ public class Hero extends Creature {
             } else if (keyboardInputs.right) {
                 direction = "right";
             }
-            //collision check
+            //background tile collision check
             collision = false;
-            gamePanel.collisionCheck.checkSprite(this);
+            gamePanel.collisionCheck.checkBackgroundTile(this);
+
+            //object collision check
+            int objectIndex = gamePanel.collisionCheck.checkObject(this, true);
+            pickUpObject(objectIndex);
 
             //if !collision, hero will move
             if(collision == false){
@@ -93,6 +100,38 @@ public class Hero extends Creature {
             }
         }
     }
+
+    public void  pickUpObject(int index) {
+        if (index !=666) { //if the hero does not touch any objects (any number above the object limit is fine
+            String objectName = gamePanel.superObject[index].name;
+
+                switch (objectName) {
+                    case "Tampouris":
+                        break;
+                    case "Key":
+                        hasKey++;
+                        System.out.println(hasKey);
+                        gamePanel.superObject[index] = null;
+                        break;
+                    case "Chest":
+                        if (hasKey > 0) {
+                            hasKey--;
+                            System.out.println(hasKey);
+                            gamePanel.superObject[index] = null;
+                        }
+                        break;
+                    case "Door":
+                        if (hasKey > 0) {
+                            hasKey--;
+                            System.out.println(hasKey);
+                            gamePanel.superObject[index] = null;
+                        }
+                        break;
+
+                }
+            }
+        }
+
 
     public void draw(Graphics2D g2) {
 

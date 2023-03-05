@@ -2,6 +2,7 @@ package main;
 
 import backroundTile.BackgroundTileManager;
 import creature.Hero;
+import object.SuperObject;
 
 import javax.swing.*;
 import java.awt.*;
@@ -30,7 +31,9 @@ public class GamePanel extends JPanel implements Runnable {
     KeyboardInputs keyboardInputs = new KeyboardInputs();
     public Hero hero = new Hero(this,keyboardInputs);
     BackgroundTileManager backgroundTileManager = new BackgroundTileManager(this);
+    public ObjectPlacer objectPlacer = new ObjectPlacer(this);
     public CollisionCheck collisionCheck = new CollisionCheck(this);
+    public SuperObject superObject[] = new SuperObject[10];
 
     public GamePanel(){
 
@@ -40,6 +43,10 @@ public class GamePanel extends JPanel implements Runnable {
         this.addKeyListener(keyboardInputs);
         this.setFocusable(true); //game panel will focus on receiving keyboard inputs
 
+    }
+
+    public void setupGame() {
+        objectPlacer.setObject();
     }
 
     public void beginThread(){
@@ -79,7 +86,13 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g; // changing the Graphics to Graphics2D
         backgroundTileManager.draw(g2);
+        for (int i = 0; i <superObject.length; i++) {
+            if(superObject[i]!=null){
+                superObject[i].draw(g2,this);
+            }
+        }
         hero.draw(g2);
+        
     }
 
 }
