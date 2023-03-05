@@ -109,12 +109,14 @@ public class Hero extends Creature {
                     case "Tampouris":
                         break;
                     case "Key":
+                        gamePanel.playSoundEffect(1);
                         hasKey++;
                         System.out.println(hasKey);
                         gamePanel.superObject[index] = null;
                         break;
                     case "Chest":
                         if (hasKey > 0) {
+                            gamePanel.playSoundEffect(2);
                             hasKey--;
                             System.out.println(hasKey);
                             gamePanel.superObject[index] = null;
@@ -122,6 +124,7 @@ public class Hero extends Creature {
                         break;
                     case "Door":
                         if (hasKey > 0) {
+                            gamePanel.playSoundEffect(3);
                             hasKey--;
                             System.out.println(hasKey);
                             gamePanel.superObject[index] = null;

@@ -57,7 +57,7 @@ public class BackgroundTileManager {
             backgroundTile[2].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/brick.png"));
             backgroundTile[3] = new BackgroundTile();
             backgroundTile[3].collision = true;
-            backgroundTile[3].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/tree.png"));
+            backgroundTile[3].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/brick.png"));
             backgroundTile[5] = new BackgroundTile();
             backgroundTile[5].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/sand.png"));
             backgroundTile[4] = new BackgroundTile();

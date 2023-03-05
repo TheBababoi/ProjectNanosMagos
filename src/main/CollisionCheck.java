@@ -63,7 +63,7 @@ public class CollisionCheck {
     }
 
     public  int checkObject(Creature creature, boolean hero){
-        int index=9;
+        int index=9; //source of the bug this is why there must always be an object #9
         for (int i = 0; i <gamePanel.superObject.length; i++) {
             if(gamePanel.superObject[i] != null){
                 //calculating creature's hitbox position

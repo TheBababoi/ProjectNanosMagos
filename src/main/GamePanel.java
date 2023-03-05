@@ -20,19 +20,19 @@ public class GamePanel extends JPanel implements Runnable {
 
     final public int maxWorldColumn = 50;
     final public int maxWorldRow = 50;
-    final public int maxWorldWidth = maxWorldColumn*spriteSize;
-    final public int maxWorldHeight = maxWorldRow*spriteSize;
 
-
+    //system
     int FPS = 60;
-
-
     Thread thread;
     KeyboardInputs keyboardInputs = new KeyboardInputs();
-    public Hero hero = new Hero(this,keyboardInputs);
+    Sound sound = new Sound();
     BackgroundTileManager backgroundTileManager = new BackgroundTileManager(this);
     public ObjectPlacer objectPlacer = new ObjectPlacer(this);
     public CollisionCheck collisionCheck = new CollisionCheck(this);
+
+
+    //hero and objects
+    public Hero hero = new Hero(this,keyboardInputs);
     public SuperObject superObject[] = new SuperObject[10];
 
     public GamePanel(){
@@ -47,6 +47,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     public void setupGame() {
         objectPlacer.setObject();
+        playMusic(0);
     }
 
     public void beginThread(){
@@ -55,26 +56,48 @@ public class GamePanel extends JPanel implements Runnable {
         thread.start();
     }
 
-    @Override
-    public void run() {
-        while (thread!= null){ //implementing the game loop using the "sleep" method (stack overflow is your friend)
+   // @Override
+   // public void run() {
+    //    while (thread!= null){ //implementing the game loop using the "sleep" method (stack overflow is your friend)
 
-            double drawInterval = 1000000000/FPS; //dividing 1 second by 60 frames
-            double nextDrawTime = System.nanoTime() + drawInterval; // drawing every 0.0166 secs
+    //        double drawInterval = 1000000000/FPS; //dividing 1 second by 60 frames
+       //     double nextDrawTime = System.nanoTime() + drawInterval; // drawing every 0.0166 secs
             //System.out.println("exe is running");
-            refresh();
-            repaint(); // refreshing and repainting the screen constantly
+       //     refresh();
+      //      repaint(); // refreshing and repainting the screen constantly
 
 
-            try {
-                double remainingTime = nextDrawTime - System.nanoTime(); //how much time remains after every drawing
-                remainingTime = remainingTime/1000000; //converting nanosecond to milli
-                Thread.sleep((long)remainingTime);
-                nextDrawTime += drawInterval; // setting next draw time
+       //     try {
+      //          double remainingTime = nextDrawTime - System.nanoTime(); //how much time remains after every drawing
+      //         remainingTime = remainingTime/1000000; //converting nanosecond to milli
+        //        Thread.sleep((long)remainingTime);
+        //        nextDrawTime += drawInterval; // setting next draw time
 
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
+        //    } catch (InterruptedException e) {
+         //       throw new RuntimeException(e);
+       //     }
+       //  }
+      //   }
+
+    @Override
+    public void  run() {
+
+        double drawInterval = 1000000000/FPS; //dividing 1 second by 60 frames
+        double delta = 0;
+        long lastTime = System.nanoTime();
+        long currentTime;
+        double nextDrawTime = System.nanoTime() + drawInterval; // drawing every 0.0166 secs
+        while (thread != null){
+
+            currentTime = System.nanoTime();
+            delta += (currentTime - lastTime)/drawInterval;
+            lastTime = currentTime;
+            if(delta >= 1) {
+                refresh();
+                repaint();
+                delta--;
             }
+
         }
     }
 
@@ -93,6 +116,21 @@ public class GamePanel extends JPanel implements Runnable {
         }
         hero.draw(g2);
         
+    }
+
+    public void playMusic(int index){
+        sound.setFile(index);
+        sound.play();
+        sound.loop();
+    }
+
+    public void stopMusic() {
+        sound.stop();
+    }
+
+    public void playSoundEffect(int index){
+        sound.setFile(index);
+        sound.play();
     }
 
 }
