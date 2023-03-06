@@ -2,13 +2,9 @@ package creature;
 
 import main.GamePanel;
 import main.KeyboardInputs;
-import javax.imageio.ImageIO;
+
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.IOException;
-
-
 
 
 public class Hero extends Creature {
@@ -51,7 +47,7 @@ public class Hero extends Creature {
 
             //npc collision check
             int npcIndex = gamePanel.collisionCheck.checkCreature(this,gamePanel.npc);
-            npcInterraction(npcIndex);
+            npcInteraction(npcIndex);
 
             //object collision check
             int objectIndex = gamePanel.collisionCheck.checkObject(this, true);
@@ -83,10 +79,14 @@ public class Hero extends Creature {
         }
     }
 
-    public void npcInterraction(int index) {
-        if (index!=666){
-            System.out.println("touching");
+    public void npcInteraction(int index) {
+        if (index != 666) {
+            if (gamePanel.keyboardInputs.enterPressed) {
+                gamePanel.gameState = gamePanel.dialogueState;
+                gamePanel.npc[index].speak();
+            }
         }
+        gamePanel.keyboardInputs.enterPressed = false;
     }
 
     public void  pickUpObject(int index) {

@@ -5,6 +5,7 @@ import java.awt.event.KeyListener;
 
 public class KeyboardInputs implements KeyListener {
 
+    public boolean enterPressed ;
     public boolean up = false;
     public boolean down = false;
     public boolean left = false;
@@ -25,24 +26,36 @@ public class KeyboardInputs implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {  //standard WASD controls
         int code = e.getKeyCode();
-        if(code == KeyEvent.VK_W){
-            up = true;
+        if(gamePanel.gameState == gamePanel.playState){
+            if(code == KeyEvent.VK_W){
+                up = true;
 
-        }
-        if(code == KeyEvent.VK_A){
-            left = true;
-        }
-        if(code == KeyEvent.VK_S){
-            down = true;
-        }
-        if(code ==KeyEvent.VK_D){
-            right = true;
-        }
-        if(code ==KeyEvent.VK_P){
-            if(gamePanel.gameState == gamePanel.pauseState){
-                gamePanel.gameState = gamePanel.playState;
-            }else {
+            }
+            else if(code == KeyEvent.VK_A){
+                left = true;
+            }
+            else if(code == KeyEvent.VK_S){
+                down = true;
+            }
+            else if(code == KeyEvent.VK_D){
+                right = true;
+            }
+            else if(code == KeyEvent.VK_P){
+
                 gamePanel.gameState = gamePanel.pauseState;
+           }
+            else if(code == KeyEvent.VK_ENTER){
+                enterPressed = true;
+            }
+        }
+        else if (gamePanel.gameState == gamePanel.pauseState){
+            if(code ==KeyEvent.VK_P){
+                    gamePanel.gameState = gamePanel.playState;
+                }
+        }
+        else if (gamePanel.gameState == gamePanel.dialogueState){
+            if(code == KeyEvent.VK_ENTER){
+                gamePanel.gameState = gamePanel.playState;
             }
         }
         //debug

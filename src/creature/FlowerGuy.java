@@ -16,6 +16,22 @@ public class FlowerGuy extends NPC {
         direction = "right";
         speed = 1;
         actionCounterMax = 30;
+        setDialogue();
+    }
+
+    @Override
+    public void setDialogue() {
+
+        dialogues[0] = "Hello Hero!";
+        dialogues[1] = "I'm the Flower Guy";
+        dialogues[2] = "I can only walk like a crab because of my roots!";
+    }
+
+    @Override
+    public void speak() {
+        super.speak();
+        gamePanel.ui.currentDialogue = dialogues[dialogueIndex];
+        dialogueIndex++;
     }
 
 

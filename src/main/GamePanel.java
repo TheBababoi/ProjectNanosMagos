@@ -25,7 +25,7 @@ public class GamePanel extends JPanel implements Runnable {
     //system
     int FPS = 60;
     Thread thread;
-    KeyboardInputs keyboardInputs = new KeyboardInputs(this);
+    public KeyboardInputs keyboardInputs = new KeyboardInputs(this);
     Sound music = new Sound();
     Sound soundEffect = new Sound();
     BackgroundTileManager backgroundTileManager = new BackgroundTileManager(this);
@@ -43,6 +43,7 @@ public class GamePanel extends JPanel implements Runnable {
     public int gameState;
     public  final int playState = 1;
     public final int pauseState = 2;
+    public final int dialogueState = 3;
 
     public GamePanel(){
 
