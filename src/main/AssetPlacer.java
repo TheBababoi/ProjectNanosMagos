@@ -1,12 +1,13 @@
 package main;
 
+import creature.FlowerGuy;
 import object.*;
 
-public class ObjectPlacer {
+public class AssetPlacer {
 
     GamePanel gamePanel;
 
-    public ObjectPlacer(GamePanel gamePanel) {
+    public AssetPlacer(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
     }
 
@@ -27,5 +28,12 @@ public class ObjectPlacer {
 
         // DO NOT TOUCH THIS WILL BREAK THE GAME
         gamePanel.superObject[9] = new Tampouris();
+    }
+
+    public  void setNPC() {
+        gamePanel.npc[0] = new FlowerGuy(gamePanel);
+        gamePanel.npc[0].worldX = 18*gamePanel.spriteSize;
+        gamePanel.npc[0].worldY = 2*gamePanel.spriteSize;
+
     }
 }

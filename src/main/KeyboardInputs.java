@@ -9,6 +9,14 @@ public class KeyboardInputs implements KeyListener {
     public boolean down = false;
     public boolean left = false;
     public boolean right = false;
+    public GamePanel gamePanel;
+    //debug
+    public boolean debugMode = false;
+
+    public KeyboardInputs(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
     @Override
     public void keyTyped(KeyEvent e) {
         //unused for now? tbd
@@ -30,6 +38,22 @@ public class KeyboardInputs implements KeyListener {
         if(code ==KeyEvent.VK_D){
             right = true;
         }
+        if(code ==KeyEvent.VK_P){
+            if(gamePanel.gameState == gamePanel.pauseState){
+                gamePanel.gameState = gamePanel.playState;
+            }else {
+                gamePanel.gameState = gamePanel.pauseState;
+            }
+        }
+        //debug
+        if(code ==KeyEvent.VK_T){
+            if(!debugMode){
+                debugMode = true;
+            }else {
+                debugMode = false;
+            }
+        }
+
     }
 
     @Override

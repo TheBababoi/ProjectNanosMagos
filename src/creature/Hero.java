@@ -15,47 +15,25 @@ public class Hero extends Creature {
 
     final public int screenX;
     final public int screenY;
-    GamePanel gamePanel;
     KeyboardInputs keyboardInputs;
-    int hasKey = 0;
+    public int hasKey = 0;
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
+        super(gamePanel);
         screenX = gamePanel.screenWidth/2 - gamePanel.spriteSize/2; // centering the "camera" to the player model
         screenY = gamePanel.screenHeight/2 - gamePanel.spriteSize/2;
-        this.gamePanel = gamePanel;
         this.keyboardInputs = keyboardInputs;
-        setValues();
-        getSprites();
+        getSprites("src/sprites/hero/");
         hitbox = new Rectangle(12,24,56,56);
         hitboxX = 12;
         hitboxY = 24;
-    }
-
-    public void setValues() {
-        worldX = gamePanel.spriteSize *2;
-        worldY = gamePanel.spriteSize *2;
-        speed = 10;
+        worldX = gamePanel.spriteSize *15;
+        worldY = gamePanel.spriteSize *4;
+        speed = 5;
         direction = "down";
     }
 
     @Override
-    void getSprites() {
-
-        try{
-            up1 = ImageIO.read(new FileInputStream("src/sprites/hero/hero_up_1.png"));
-            up2 = ImageIO.read(new FileInputStream("src/sprites/hero/hero_up_2.png"));
-            down1 = ImageIO.read(new FileInputStream("src/sprites/hero/hero_down_1.png"));
-            down2 = ImageIO.read(new FileInputStream("src/sprites/hero/hero_down_2.png"));
-            left1 = ImageIO.read(new FileInputStream("src/sprites/hero/hero_left_1.png"));
-            left2 = ImageIO.read(new FileInputStream("src/sprites/hero/hero_left_2.png"));
-            right1 = ImageIO.read(new FileInputStream("src/sprites/hero/hero_right_1.png"));
-            right2 = ImageIO.read(new FileInputStream("src/sprites/hero/hero_right_2.png"));
-
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
-    }
-
     public void refresh() {
         if (keyboardInputs.up || keyboardInputs.down || keyboardInputs.left || keyboardInputs.right){ //checking for keyboard inputs so the sprite wont change when character is standing still
             if(keyboardInputs.up){
@@ -70,6 +48,10 @@ public class Hero extends Creature {
             //background tile collision check
             collision = false;
             gamePanel.collisionCheck.checkBackgroundTile(this);
+
+            //npc collision check
+            int npcIndex = gamePanel.collisionCheck.checkCreature(this,gamePanel.npc);
+            npcInterraction(npcIndex);
 
             //object collision check
             int objectIndex = gamePanel.collisionCheck.checkObject(this, true);
@@ -101,33 +83,45 @@ public class Hero extends Creature {
         }
     }
 
+    public void npcInterraction(int index) {
+        if (index!=666){
+            System.out.println("touching");
+        }
+    }
+
     public void  pickUpObject(int index) {
         if (index !=666) { //if the hero does not touch any objects (any number above the object limit is fine
             String objectName = gamePanel.superObject[index].name;
 
                 switch (objectName) {
                     case "Tampouris":
+                        //gamePanel.ui.showMessage("Gave Tampouris a kiss for good luck!");
+                       // gamePanel.playSoundEffect(4);
                         break;
                     case "Key":
                         gamePanel.playSoundEffect(1);
                         hasKey++;
-                        System.out.println(hasKey);
+                        gamePanel.ui.showMessage("Hero picked up a key!");
                         gamePanel.superObject[index] = null;
                         break;
                     case "Chest":
                         if (hasKey > 0) {
                             gamePanel.playSoundEffect(2);
                             hasKey--;
-                            System.out.println(hasKey);
+                            gamePanel.ui.showMessage("Hero unlocked the Chest!");
                             gamePanel.superObject[index] = null;
+                        }else {
+                            gamePanel.ui.showMessage("Hero needs a key!");
                         }
                         break;
                     case "Door":
                         if (hasKey > 0) {
                             gamePanel.playSoundEffect(3);
                             hasKey--;
-                            System.out.println(hasKey);
+                            gamePanel.ui.showMessage("Hero unlocked the Door!");
                             gamePanel.superObject[index] = null;
+                        }else {
+                            gamePanel.ui.showMessage("Hero needs a key!");
                         }
                         break;
 
