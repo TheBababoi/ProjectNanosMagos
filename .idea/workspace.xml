@@ -5,16 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added basic npc entity - close #8">
-      <change afterPath="$PROJECT_DIR$/src/data/fonts/ENDOR___.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/fonts/LUMOS.TTF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/data/fonts/TolkienUncialMF.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/fonts/DavysRibbons.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/data/fonts/MedievalAlphabet.ttf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/UIElements/face.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/a2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/story.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/thursday.gif" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Team11.iml" beforeDir="false" afterPath="$PROJECT_DIR$/Team11.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/FlowerGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/FlowerGuy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Creature.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/NPC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -36,7 +38,9 @@
     <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectId" id="2MVtub1a1j3OyhaO5Xv6lVqRrzv" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="autoscrollFromSource" value="true" />
     <option name="autoscrollToSource" value="true" />
@@ -61,11 +65,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\UIElements" />
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\data\fonts" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\flowerGuy" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\worldSoundEffects" />
-      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\object" />
-      <recent name="C:\Users\Bababoi\Desktop\Team11\src\tunes\worldMusic" />
     </key>
   </component>
   <component name="RunManager">
@@ -118,6 +122,11 @@
       <workItem from="1678090021022" duration="8942000" />
       <workItem from="1678127622652" duration="5268000" />
       <workItem from="1678133859645" duration="733000" />
+      <workItem from="1678200540596" duration="271000" />
+      <workItem from="1678378603202" duration="8779000" />
+      <workItem from="1678390286126" duration="1844000" />
+      <workItem from="1678432833033" duration="77000" />
+      <workItem from="1678432924576" duration="9029000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -189,7 +198,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678096131703</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added basic npc entity - close #8">
+      <created>1678200742556</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1678200742556</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

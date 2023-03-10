@@ -26,7 +26,13 @@ public class KeyboardInputs implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {  //standard WASD controls
         int code = e.getKeyCode();
-        if(gamePanel.gameState == gamePanel.playState){
+        if (gamePanel.gameState == gamePanel.cutScene) {
+            if(code == KeyEvent.VK_ENTER){
+                gamePanel.gameState = gamePanel.titleScreen;
+
+            }
+        }
+        else if(gamePanel.gameState == gamePanel.playState){
             if(code == KeyEvent.VK_W){
                 up = true;
 
@@ -56,6 +62,32 @@ public class KeyboardInputs implements KeyListener {
         else if (gamePanel.gameState == gamePanel.dialogueState){
             if(code == KeyEvent.VK_ENTER){
                 gamePanel.gameState = gamePanel.playState;
+            }
+        } else if (gamePanel.gameState == gamePanel.titleScreen) {
+            if (code == KeyEvent.VK_W) {
+                gamePanel.ui.commandIndex--;
+                if (gamePanel.ui.commandIndex < 0) {
+                    gamePanel.ui.commandIndex =3;
+                }
+            }
+             else if (code == KeyEvent.VK_S) {
+                gamePanel.ui.commandIndex++;
+                if (gamePanel.ui.commandIndex > 3) {
+                    gamePanel.ui.commandIndex = 0 ;
+                }
+
+            } else if (code == KeyEvent.VK_ENTER) {
+                 if(gamePanel.ui.commandIndex == 0){
+                     gamePanel.gameState = gamePanel.playState;
+                     gamePanel.playMusic(0);
+                 } else if (gamePanel.ui.commandIndex == 1) {
+
+                 } else if (gamePanel.ui.commandIndex == 2 ) {
+
+                 } else if (gamePanel.ui.commandIndex == 3) {
+                     System.exit(0);
+                 }
+
             }
         }
         //debug

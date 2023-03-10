@@ -13,6 +13,7 @@ public class Hero extends Creature {
     final public int screenY;
     KeyboardInputs keyboardInputs;
     public int hasKey = 0;
+    public int maxExp,exp;
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
         super(gamePanel);
@@ -27,6 +28,13 @@ public class Hero extends Creature {
         worldY = gamePanel.spriteSize *4;
         speed = 5;
         direction = "down";
+        maxHealth = 10;
+        health = maxHealth;
+        maxMana = 30;
+        mana = maxMana;
+        maxExp = 100;
+        exp = 5;
+
     }
 
     @Override

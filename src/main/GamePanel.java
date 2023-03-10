@@ -41,9 +41,11 @@ public class GamePanel extends JPanel implements Runnable {
 
     //game state
     public int gameState;
+    public  final int titleScreen = 0;
     public  final int playState = 1;
     public final int pauseState = 2;
     public final int dialogueState = 3;
+    public final int cutScene = 4;
 
     public GamePanel(){
 
@@ -58,8 +60,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         assetPlacer.setObject();
         assetPlacer.setNPC();
-        playMusic(0);
-        gameState = playState;
+        gameState = cutScene;
     }
 
     public void beginThread(){
@@ -68,28 +69,6 @@ public class GamePanel extends JPanel implements Runnable {
         thread.start();
     }
 
-   // @Override
-   // public void run() {
-    //    while (thread!= null){ //implementing the game loop using the "sleep" method (stack overflow is your friend)
-
-    //        double drawInterval = 1000000000/FPS; //dividing 1 second by 60 frames
-       //     double nextDrawTime = System.nanoTime() + drawInterval; // drawing every 0.0166 secs
-            //System.out.println("exe is running");
-       //     refresh();
-      //      repaint(); // refreshing and repainting the screen constantly
-
-
-       //     try {
-      //          double remainingTime = nextDrawTime - System.nanoTime(); //how much time remains after every drawing
-      //         remainingTime = remainingTime/1000000; //converting nanosecond to milli
-        //        Thread.sleep((long)remainingTime);
-        //        nextDrawTime += drawInterval; // setting next draw time
-
-        //    } catch (InterruptedException e) {
-         //       throw new RuntimeException(e);
-       //     }
-       //  }
-      //   }
 
     @Override
     public void  run() {
@@ -118,7 +97,7 @@ public class GamePanel extends JPanel implements Runnable {
 
         }
         if (gameState == playState){
-        hero.refresh();
+            hero.refresh();
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null){
                     npc[i].refresh();
@@ -130,41 +109,61 @@ public class GamePanel extends JPanel implements Runnable {
     public void paintComponent(Graphics g){
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g; // changing the Graphics to Graphics2D
-        backgroundTileManager.draw(g2);
 
-        //debug
-        long drawStart = 0;
-        if ((keyboardInputs.debugMode)){
-            drawStart = System.nanoTime();
-        }
+        if(gameState == titleScreen){
+            try {
+                ui.draw(g2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+        } else if (gameState == cutScene) {
+            try {
+                ui.draw(g2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+        } else  {
+            backgroundTileManager.draw(g2);
+
+            //debug
+            long drawStart = 0;
+            if ((keyboardInputs.debugMode)){
+                drawStart = System.nanoTime();
+            }
 
 
-        //obects
-        for (int i = 0; i <superObject.length; i++) {
-            if(superObject[i]!=null){
-                superObject[i].draw(g2,this);
+            //obects
+            for (int i = 0; i <superObject.length; i++) {
+                if(superObject[i]!=null){
+                    superObject[i].draw(g2,this);
+                }
+            }
+            //NPCs
+            for (int i = 0; i <npc.length; i++) {
+                if (npc[i] !=null ){
+                    npc[i].draw(g2);
+                }
+            }
+            //hero
+            hero.draw(g2);
+
+            //ui
+            try {
+                ui.draw(g2);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
+
+            //debug
+            if(keyboardInputs.debugMode) {
+                long drawEnd = System.nanoTime();
+                long totalTime = drawEnd - drawStart;
+                g2.setColor(Color.black);
+                g2.drawString("Draw time " + totalTime, 10, 200);
             }
         }
-        //NPCs
-        for (int i = 0; i <npc.length; i++) {
-            if (npc[i] !=null ){
-                npc[i].draw(g2);
-            }
-        }
-        //hero
-        hero.draw(g2);
 
-        //ui
-        ui.draw(g2);
-
-        //debug
-        if(keyboardInputs.debugMode) {
-            long drawEnd = System.nanoTime();
-            long totalTime = drawEnd - drawStart;
-            g2.setColor(Color.black);
-            g2.drawString("Draw time " + totalTime, 10, 200);
-        }
-        
     }
 
     public void playMusic(int index){
