@@ -26,13 +26,13 @@ public class KeyboardInputs implements KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {  //standard WASD controls
         int code = e.getKeyCode();
-        if (gamePanel.gameState == gamePanel.cutScene) {
+        if (gamePanel.gameState == GamePanel.Gamestate.CUTSCENE) {
             if(code == KeyEvent.VK_ENTER){
-                gamePanel.gameState = gamePanel.titleScreen;
+                gamePanel.gameState = GamePanel.Gamestate.TITLESCREEM;
 
             }
         }
-        else if(gamePanel.gameState == gamePanel.playState){
+        else if(gamePanel.gameState == GamePanel.Gamestate.PLAYSTATE){
             if(code == KeyEvent.VK_W){
                 up = true;
 
@@ -48,22 +48,22 @@ public class KeyboardInputs implements KeyListener {
             }
             else if(code == KeyEvent.VK_P){
 
-                gamePanel.gameState = gamePanel.pauseState;
+                gamePanel.gameState = GamePanel.Gamestate.PAUSESTATE;
            }
             else if(code == KeyEvent.VK_ENTER){
                 enterPressed = true;
             }
         }
-        else if (gamePanel.gameState == gamePanel.pauseState){
+        else if (gamePanel.gameState == GamePanel.Gamestate.PAUSESTATE){
             if(code ==KeyEvent.VK_P){
-                    gamePanel.gameState = gamePanel.playState;
+                    gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
                 }
         }
-        else if (gamePanel.gameState == gamePanel.dialogueState){
+        else if (gamePanel.gameState == GamePanel.Gamestate.DIALOGUESTATE){
             if(code == KeyEvent.VK_ENTER){
-                gamePanel.gameState = gamePanel.playState;
+                gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
             }
-        } else if (gamePanel.gameState == gamePanel.titleScreen) {
+        } else if (gamePanel.gameState == GamePanel.Gamestate.TITLESCREEM) {
             if (code == KeyEvent.VK_W) {
                 gamePanel.ui.commandIndex--;
                 if (gamePanel.ui.commandIndex < 0) {
@@ -78,7 +78,7 @@ public class KeyboardInputs implements KeyListener {
 
             } else if (code == KeyEvent.VK_ENTER) {
                  if(gamePanel.ui.commandIndex == 0){
-                     gamePanel.gameState = gamePanel.playState;
+                     gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
                      gamePanel.playMusic(0);
                  } else if (gamePanel.ui.commandIndex == 1) {
 

@@ -62,6 +62,8 @@ public class BackgroundTileManager {
             backgroundTile[5].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/sand.png"));
             backgroundTile[4] = new BackgroundTile();
             backgroundTile[4].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/gravel.png"));
+            backgroundTile[6] = new BackgroundTile();
+            backgroundTile[6].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/souravlas.png"));
 
         } catch(IOException e){
             e.printStackTrace();

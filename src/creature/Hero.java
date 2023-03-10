@@ -61,6 +61,11 @@ public class Hero extends Creature {
             int objectIndex = gamePanel.collisionCheck.checkObject(this, true);
             pickUpObject(objectIndex);
 
+            //event check
+            gamePanel.eventHandler.checkEvent();
+
+            gamePanel.keyboardInputs.enterPressed = false;
+
             //if !collision, hero will move
             if(collision == false){
                 if(direction=="up"){
@@ -90,11 +95,11 @@ public class Hero extends Creature {
     public void npcInteraction(int index) {
         if (index != 666) {
             if (gamePanel.keyboardInputs.enterPressed) {
-                gamePanel.gameState = gamePanel.dialogueState;
+                gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
                 gamePanel.npc[index].speak();
             }
         }
-        gamePanel.keyboardInputs.enterPressed = false;
+
     }
 
     public void  pickUpObject(int index) {

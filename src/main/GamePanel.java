@@ -32,6 +32,7 @@ public class GamePanel extends JPanel implements Runnable {
     public UI ui = new UI(this);
     public AssetPlacer assetPlacer = new AssetPlacer(this);
     public CollisionCheck collisionCheck = new CollisionCheck(this);
+    public EventHandler eventHandler = new EventHandler(this);
 
 
     //creatures and objects
@@ -40,12 +41,15 @@ public class GamePanel extends JPanel implements Runnable {
     public NPC npc[] = new NPC[10];
 
     //game state
-    public int gameState;
-    public  final int titleScreen = 0;
-    public  final int playState = 1;
-    public final int pauseState = 2;
-    public final int dialogueState = 3;
-    public final int cutScene = 4;
+    public Gamestate gameState;
+    public enum Gamestate {
+        CUTSCENE,
+        TITLESCREEM,
+        PLAYSTATE,
+        PAUSESTATE,
+        DIALOGUESTATE,
+    }
+
 
     public GamePanel(){
 
@@ -60,7 +64,7 @@ public class GamePanel extends JPanel implements Runnable {
     public void setupGame() {
         assetPlacer.setObject();
         assetPlacer.setNPC();
-        gameState = cutScene;
+        gameState = Gamestate.CUTSCENE;
     }
 
     public void beginThread(){
@@ -93,10 +97,10 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void refresh(){
-        if(gameState == pauseState){
+        if(gameState == Gamestate.PAUSESTATE){
 
         }
-        if (gameState == playState){
+        if (gameState == Gamestate.PLAYSTATE){
             hero.refresh();
             for (int i = 0; i < npc.length; i++) {
                 if (npc[i] != null){
@@ -110,14 +114,14 @@ public class GamePanel extends JPanel implements Runnable {
         super.paintComponent(g);
         Graphics2D g2 = (Graphics2D)g; // changing the Graphics to Graphics2D
 
-        if(gameState == titleScreen){
+        if(gameState == Gamestate.TITLESCREEM){
             try {
                 ui.draw(g2);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
 
-        } else if (gameState == cutScene) {
+        } else if (gameState == Gamestate.TITLESCREEM) {
             try {
                 ui.draw(g2);
             } catch (InterruptedException e) {

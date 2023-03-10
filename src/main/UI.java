@@ -48,17 +48,17 @@ public class UI {
     public void draw(Graphics2D g2) throws InterruptedException {
         g2.setFont(lumos);
         this.g2 = g2;
-        if(gamePanel.gameState == gamePanel.titleScreen){
+        if(gamePanel.gameState == GamePanel.Gamestate.TITLESCREEM){
             drawTitleScreen();
         }
-        if (gamePanel.gameState== gamePanel.pauseState){
+        if (gamePanel.gameState== GamePanel.Gamestate.PAUSESTATE){
             drawPauseScreen();
-        } else if (gamePanel.gameState == gamePanel.playState) {
+        } else if (gamePanel.gameState == GamePanel.Gamestate.PLAYSTATE) {
             drawHeroUI();
 
-        } else if (gamePanel.gameState == gamePanel.dialogueState) {
+        } else if (gamePanel.gameState == GamePanel.Gamestate.DIALOGUESTATE) {
             drawDialogueScreen();
-        } else if ((gamePanel.gameState == gamePanel.cutScene)) {
+        } else if ((gamePanel.gameState == GamePanel.Gamestate.CUTSCENE)) {
             playCutscene();
         }
     }

@@ -28,12 +28,20 @@ public class AssetPlacer {
 
         // DO NOT TOUCH THIS WILL BREAK THE GAME
         gamePanel.superObject[9] = new Tampouris();
+
+
     }
 
     public  void setNPC() {
         gamePanel.npc[0] = new FlowerGuy(gamePanel);
         gamePanel.npc[0].worldX = 18*gamePanel.spriteSize;
         gamePanel.npc[0].worldY = 2*gamePanel.spriteSize;
+        gamePanel.npc[1] = new FlowerGuy(gamePanel);
+        gamePanel.npc[1].worldX = 16*gamePanel.spriteSize;
+        gamePanel.npc[1].worldY = 2*gamePanel.spriteSize;
+        gamePanel.npc[2] = new FlowerGuy(gamePanel);
+        gamePanel.npc[2].worldX = 20*gamePanel.spriteSize;
+        gamePanel.npc[2].worldY = 2*gamePanel.spriteSize;
 
     }
 }
