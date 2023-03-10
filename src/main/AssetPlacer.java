@@ -1,6 +1,7 @@
 package main;
 
 import creature.FlowerGuy;
+import creature.enemies.CloudGuy;
 import object.*;
 
 public class AssetPlacer {
@@ -43,5 +44,11 @@ public class AssetPlacer {
         gamePanel.npc[2].worldX = 20*gamePanel.spriteSize;
         gamePanel.npc[2].worldY = 2*gamePanel.spriteSize;
 
+    }
+
+    public void setEnemy() {
+        gamePanel.enemy[0] = new CloudGuy(gamePanel);
+        gamePanel.enemy[0].worldX = 7*gamePanel.spriteSize;
+        gamePanel.enemy[0].worldY = 3*gamePanel.spriteSize;
     }
 }

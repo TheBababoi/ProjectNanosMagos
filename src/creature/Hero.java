@@ -14,6 +14,7 @@ public class Hero extends Creature {
     KeyboardInputs keyboardInputs;
     public int hasKey = 0;
     public int maxExp,exp;
+    public boolean friendOrFoe;
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
         super(gamePanel);
@@ -61,6 +62,10 @@ public class Hero extends Creature {
             int objectIndex = gamePanel.collisionCheck.checkObject(this, true);
             pickUpObject(objectIndex);
 
+            //monster collision
+            int monsterIndex = gamePanel.collisionCheck.checkCreature(this,gamePanel.enemy);
+            enemyInteraction(monsterIndex);
+
             //event check
             gamePanel.eventHandler.checkEvent();
 
@@ -92,11 +97,19 @@ public class Hero extends Creature {
         }
     }
 
+    private void enemyInteraction(int index) {
+        if (index != 666) {
+                gamePanel.battleHandler.startBattle(index);
+                friendOrFoe = false;
+        }
+    }
+
     public void npcInteraction(int index) {
         if (index != 666) {
             if (gamePanel.keyboardInputs.enterPressed) {
                 gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
                 gamePanel.npc[index].speak();
+                friendOrFoe = true;
             }
         }
 

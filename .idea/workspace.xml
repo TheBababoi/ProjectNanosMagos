@@ -4,7 +4,24 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="implemented event handler changed gamestatus to enum - closes #10" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="implemented event handler changed gamestatus to enum - closes #11">
+      <change afterPath="$PROJECT_DIR$/src/creature/Enemy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/batlleimage1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/left1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/left2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/right1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/right2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Creature.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/FlowerGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/FlowerGuy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -51,11 +68,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\cloudGuy" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\backgroundTiles" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\UIElements" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\data\fonts" />
-      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\flowerGuy" />
     </key>
   </component>
   <component name="RunManager">
@@ -115,6 +132,8 @@
       <workItem from="1678432924576" duration="9863000" />
       <workItem from="1678448023125" duration="5751000" />
       <workItem from="1678453833395" duration="4999000" />
+      <workItem from="1678460984178" duration="485000" />
+      <workItem from="1678476273921" duration="8315000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -200,7 +219,21 @@
       <option name="project" value="LOCAL" />
       <updated>1678445086615</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary="implemented event handler changed gamestatus to enum - closes #10">
+      <created>1678461247316</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1678461247316</updated>
+    </task>
+    <task id="LOCAL-00014" summary="implemented event handler changed gamestatus to enum - closes #11">
+      <created>1678461287523</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1678461287523</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -230,6 +263,7 @@
     <MESSAGE value="added basic npc entity - close #8" />
     <MESSAGE value="added Title Screen , a &quot;cutscene&quot;, nad player ui - close #10" />
     <MESSAGE value="implemented event handler changed gamestatus to enum - closes #10" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented event handler changed gamestatus to enum - closes #10" />
+    <MESSAGE value="implemented event handler changed gamestatus to enum - closes #11" />
+    <option name="LAST_COMMIT_MESSAGE" value="implemented event handler changed gamestatus to enum - closes #11" />
   </component>
 </project>

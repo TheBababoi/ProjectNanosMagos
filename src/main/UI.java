@@ -60,7 +60,52 @@ public class UI {
             drawDialogueScreen();
         } else if ((gamePanel.gameState == GamePanel.Gamestate.CUTSCENE)) {
             playCutscene();
+        } else if(gamePanel.gameState == GamePanel.Gamestate.BATTLESTATE) {
+            drawBattleScreen(gamePanel.battleHandler.monsterIndex);
         }
+    }
+
+    private void drawBattleScreen(int index) {
+        g2.setColor(new Color(0, 0, 0));
+        g2.fillRect(0,0, gamePanel.screenWidth, gamePanel.screenHeight);
+        //g2.setFont(g2.getFont().deriveFont(Font.BOLD,100F));
+        int windowX = 0;
+        int windowY = 750;
+        int width = gamePanel.screenWidth - (gamePanel.spriteSize*16);
+        int height = gamePanel.spriteSize*3;
+        drawSubWindow(windowX,windowY,width,height);
+        int x = gamePanel.screenWidth/2 -500;
+        int y = 0;
+
+        g2.drawImage(image,x,y, 720,492,null);
+
+        //menu
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
+        String text = "Attack";
+        g2.drawString(text,100,850);
+        if(commandIndex == 0 ) {
+            g2.drawString(">",50-gamePanel.spriteSize,y);
+        }
+
+        text = "Defend";
+        g2.drawString(text,350,850);
+        if(commandIndex == 1 ) {
+            g2.drawString(">",100-gamePanel.spriteSize,y);
+        }
+
+        text = "Taunt";;
+        g2.drawString(text,100,925);
+        if(commandIndex == 2 ) {
+            g2.drawString(">",x-gamePanel.spriteSize,y);
+        }
+
+        text = "Inventory";
+        g2.drawString(text,350,925);
+        if(commandIndex == 3 ) {
+            g2.drawString(">",x-gamePanel.spriteSize,y);
+        }
+
+
     }
 
     public void  drawHeroUI(){

@@ -36,7 +36,7 @@ public class FlowerGuy extends NPC {
 
 
     @Override
-    void getSprites(String filePath) {
+    public void getSprites(String filePath) {
         try {
             left1 = ImageIO.read(new FileInputStream(filePath + "/left1.png"));
             left2 = ImageIO.read(new FileInputStream(filePath + "/left2.png"));

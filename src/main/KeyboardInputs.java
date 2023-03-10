@@ -61,7 +61,12 @@ public class KeyboardInputs implements KeyListener {
         }
         else if (gamePanel.gameState == GamePanel.Gamestate.DIALOGUESTATE){
             if(code == KeyEvent.VK_ENTER){
-                gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
+                if(gamePanel.hero.friendOrFoe){
+                    gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
+                } else {
+                    gamePanel.gameState = GamePanel.Gamestate.BATTLESTATE;
+                }
+
             }
         } else if (gamePanel.gameState == GamePanel.Gamestate.TITLESCREEM) {
             if (code == KeyEvent.VK_W) {

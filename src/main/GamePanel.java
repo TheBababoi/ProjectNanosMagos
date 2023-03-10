@@ -1,6 +1,7 @@
 package main;
 
 import backroundTile.BackgroundTileManager;
+import creature.Enemy;
 import creature.Hero;
 import creature.NPC;
 import object.SuperObject;
@@ -33,12 +34,14 @@ public class GamePanel extends JPanel implements Runnable {
     public AssetPlacer assetPlacer = new AssetPlacer(this);
     public CollisionCheck collisionCheck = new CollisionCheck(this);
     public EventHandler eventHandler = new EventHandler(this);
+    public BattleHandler battleHandler = new BattleHandler(this);
 
 
     //creatures and objects
     public Hero hero = new Hero(this,keyboardInputs);
     public SuperObject superObject[] = new SuperObject[10];
     public NPC npc[] = new NPC[10];
+    public Enemy enemy[] = new Enemy[10];
 
     //game state
     public Gamestate gameState;
@@ -48,6 +51,7 @@ public class GamePanel extends JPanel implements Runnable {
         PLAYSTATE,
         PAUSESTATE,
         DIALOGUESTATE,
+        BATTLESTATE,
     }
 
 
@@ -62,9 +66,11 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setupGame() {
+        gameState = Gamestate.CUTSCENE;
         assetPlacer.setObject();
         assetPlacer.setNPC();
-        gameState = Gamestate.CUTSCENE;
+        assetPlacer.setEnemy();
+
     }
 
     public void beginThread(){
@@ -107,6 +113,11 @@ public class GamePanel extends JPanel implements Runnable {
                     npc[i].refresh();
                 }
             }
+            for (int i = 0;i< enemy.length; i++){
+                if (enemy[i] != null){
+                    enemy[i].refresh();
+                }
+            }
         }
     }
 
@@ -147,6 +158,13 @@ public class GamePanel extends JPanel implements Runnable {
             for (int i = 0; i <npc.length; i++) {
                 if (npc[i] !=null ){
                     npc[i].draw(g2);
+                }
+            }
+
+            //enemies
+            for (int i = 0; i <enemy.length; i++) {
+                if (enemy[i] !=null ){
+                    enemy[i].draw(g2);
                 }
             }
             //hero

@@ -40,7 +40,7 @@ public abstract class Creature {
     }
 
 
-    void getSprites(String filePath) {
+    public void getSprites(String filePath) {
 
         try{
             up1 = ImageIO.read(new FileInputStream(filePath+"/up1.png"));
