@@ -5,22 +5,29 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="implemented event handler changed gamestatus to enum - closes #11">
-      <change afterPath="$PROJECT_DIR$/src/creature/Enemy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/batlleimage1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/left2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/right1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/cloudGuy/right2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass03.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass04.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass05.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass06.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass07.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass08.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_down.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_left.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_right.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_up.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel00.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel01.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel02.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/tree.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/water00.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/FlowerGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/FlowerGuy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundTiles/water.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,23 +57,26 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bababoi/Desktop/Java Projects/Team11&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "/home/andreas/IdeaProjects/ProjectNanosMagos00/src/sprites/backgroundTiles",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/sprites/backgroundTiles" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\cloudGuy" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\backgroundTiles" />
