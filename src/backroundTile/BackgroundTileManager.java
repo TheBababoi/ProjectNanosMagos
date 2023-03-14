@@ -50,52 +50,54 @@ public class BackgroundTileManager {
             //insert all grass --------------------------------------------------------------------------------------------
             backgroundTile[0] = new BackgroundTile();
             backgroundTile[0].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass00.png"));
+            backgroundTile[1] = new BackgroundTile();
+            backgroundTile[1].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass01.png"));
+            backgroundTile[2] = new BackgroundTile();
+            backgroundTile[2].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass02.png"));
+            backgroundTile[3] = new BackgroundTile();
+            backgroundTile[3].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass03.png"));
+            backgroundTile[4] = new BackgroundTile();
+            backgroundTile[4].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass04.png"));
+            backgroundTile[5] = new BackgroundTile();
+            backgroundTile[5].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass05.png"));
+            backgroundTile[6] = new BackgroundTile();
+            backgroundTile[6].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass06.png"));
             backgroundTile[7] = new BackgroundTile();
-            backgroundTile[7].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass01.png"));
+            backgroundTile[7].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass07.png"));
             backgroundTile[8] = new BackgroundTile();
-            backgroundTile[8].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass02.png"));
-            backgroundTile[9] = new BackgroundTile();
-            backgroundTile[9].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass03.png"));
-            backgroundTile[10] = new BackgroundTile();
-            backgroundTile[10].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass04.png"));
-            backgroundTile[11] = new BackgroundTile();
-            backgroundTile[11].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass05.png"));
-            backgroundTile[12] = new BackgroundTile();
-            backgroundTile[12].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass06.png"));
-            backgroundTile[13] = new BackgroundTile();
-            backgroundTile[13].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass07.png"));
-            backgroundTile[14] = new BackgroundTile();
-            backgroundTile[14].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass08.png"));
+            backgroundTile[8].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/grass08.png"));
             //-------------------------------------------------------------------------------------------------------------
             //insert all water ------------------------------------------------------------------------------------------------
-            backgroundTile[1] = new BackgroundTile();
-            backgroundTile[1].collision = true;
-            backgroundTile[1].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/water00.png"));
-            //-------------------------------------------------------------------------------------------------------------
-            //insert all bricks ------------------------------------------------------------------------------------------------
-            backgroundTile[2] = new BackgroundTile();
-            backgroundTile[2].collision = true;
-            backgroundTile[2].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/brick.png"));
+            backgroundTile[9] = new BackgroundTile();
+            backgroundTile[9].collision = true;
+            backgroundTile[9].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/water00.png"));
             //-------------------------------------------------------------------------------------------------------------
             //insert all trees ---------------------------------------------------------------------------------------------
-            backgroundTile[3] = new BackgroundTile();
-            backgroundTile[3].collision = true;
-            backgroundTile[3].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/tree.png"));
+            backgroundTile[10] = new BackgroundTile();
+            backgroundTile[10].collision = true;
+            backgroundTile[10].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/tree.png"));
             //-------------------------------------------------------------------------------------------------------------
             //insert all gravels ------------------------------------------------------------------------------------------
-            backgroundTile[4] = new BackgroundTile();
-            backgroundTile[4].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/gravel00.png"));
-            backgroundTile[15] = new BackgroundTile();
-            backgroundTile[15].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/gravel01.png"));
-            backgroundTile[16] = new BackgroundTile();
-            backgroundTile[16].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/gravel02.png"));
+            backgroundTile[11] = new BackgroundTile();
+            backgroundTile[11].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/gravel00.png"));
+            backgroundTile[12] = new BackgroundTile();
+            backgroundTile[12].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/gravel01.png"));
+            backgroundTile[13] = new BackgroundTile();
+            backgroundTile[13].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/gravel02.png"));
             //-------------------------------------------------------------------------------------------------------------
-
-            backgroundTile[5] = new BackgroundTile();
-            backgroundTile[5].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/sand.png"));
-
-            backgroundTile[6] = new BackgroundTile();
-            backgroundTile[6].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/souravlas.png"));
+            //minecraft sand (not important) ------------------------------------------------------------------------------
+            backgroundTile[14] = new BackgroundTile();
+            backgroundTile[14].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/sand.png"));
+            //-------------------------------------------------------------------------------------------------------------
+            //insert all bricks -------------------------------------------------------------------------------------------
+            backgroundTile[15] = new BackgroundTile();
+            backgroundTile[15].collision = true;
+            backgroundTile[15].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/brick.png"));
+            //-------------------------------------------------------------------------------------------------------------
+            //oi kathigites? ----------------------------------------------------------------------------------------------
+            backgroundTile[16] = new BackgroundTile();
+            backgroundTile[16].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/souravlas.png"));
+            //-------------------------------------------------------------------------------------------------------------
 
         } catch(IOException e){
             e.printStackTrace();

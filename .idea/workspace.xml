@@ -5,29 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="close #12">
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_down.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_right.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_up.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/water00.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundTiles/water.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -57,22 +36,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/andreas/IdeaProjects/ProjectNanosMagos00/src/sprites/backgroundTiles",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/andreas/IdeaProjects/ProjectNanosMagos00/src/sprites/backgroundTiles&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/sprites/backgroundTiles" />
@@ -250,7 +229,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678796204418</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="close #12">
+      <created>1678796243924</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1678796243924</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
