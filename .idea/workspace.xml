@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="implemented event handler changed gamestatus to enum - closes #11">
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="close #12">
       <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass00.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass01.png" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass02.png" afterDir="false" />
@@ -243,7 +243,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678461287523</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="close #12">
+      <created>1678796204418</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1678796204418</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -274,6 +281,7 @@
     <MESSAGE value="added Title Screen , a &quot;cutscene&quot;, nad player ui - close #10" />
     <MESSAGE value="implemented event handler changed gamestatus to enum - closes #10" />
     <MESSAGE value="implemented event handler changed gamestatus to enum - closes #11" />
-    <option name="LAST_COMMIT_MESSAGE" value="implemented event handler changed gamestatus to enum - closes #11" />
+    <MESSAGE value="close #12" />
+    <option name="LAST_COMMIT_MESSAGE" value="close #12" />
   </component>
 </project>
