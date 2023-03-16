@@ -17,7 +17,7 @@ public class Sound {
         soundURL[1] = new File("src/tunes/worldSoundEffects/key.wav");
         soundURL[2] = new File("src/tunes/worldSoundEffects/chest.wav");
         soundURL[3] = new File("src/tunes/worldSoundEffects/door.wav");
-        soundURL[4] = new File("src/tunes/worldSoundEffects/kiss.wav");
+        soundURL[4] = new File("src/tunes/worldMusic/fight.wav");
 
     }
 

@@ -1,16 +1,11 @@
 package main;
-import backroundTile.BackgroundTile;
 
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 public class UI {
     GamePanel gamePanel;
@@ -21,6 +16,16 @@ public class UI {
     public String message = "";
     public String currentDialogue;
     public int commandIndex = 0;
+    public int commandIndexX = 0 ,commandIndexY = 0;
+
+    public SubMenu subMenu = SubMenu.MAINMENU;
+    public enum SubMenu{
+        MAINMENU,
+        ATTACKMENU,
+        INVENTORY,
+
+    }
+
     public UI(GamePanel gamePanel){
         this.gamePanel = gamePanel;
         try{
@@ -60,53 +65,228 @@ public class UI {
             drawDialogueScreen();
         } else if ((gamePanel.gameState == GamePanel.Gamestate.CUTSCENE)) {
             playCutscene();
-        } else if(gamePanel.gameState == GamePanel.Gamestate.BATTLESTATE) {
+        } else if(gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEHERO ||gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEENEMY){
             drawBattleScreen(gamePanel.battleHandler.monsterIndex);
+        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGHERO){
+            drawBattleScreen(gamePanel.battleHandler.monsterIndex);
+            drawBattleLogHero(gamePanel.battleHandler.monsterIndex,gamePanel.keyboardInputs.playerChoice);
+
+        }
+        else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY){
+            drawBattleScreen(gamePanel.battleHandler.monsterIndex);
+            drawBattleLogEnemy(gamePanel.battleHandler.monsterIndex,gamePanel.keyboardInputs.enemyChoice);
+
+        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLEWON){
+            drawBattleScreen(gamePanel.battleHandler.monsterIndex);
+            drawVictoryLog(gamePanel.battleHandler.monsterIndex);
+        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOST){
+            drawBattleScreen(gamePanel.battleHandler.monsterIndex);
+            drawLossLog(gamePanel.battleHandler.monsterIndex);
         }
     }
 
-    private void drawBattleScreen(int index) {
+    private void drawLossLog(int monsterIndex) {
+        int x = gamePanel.screenWidth - (gamePanel.spriteSize*16);
+        int y = 750;
+        String text = "Game Over!";
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));
+
+        for(String line : text.split("\n"));{
+            Color color = new Color(255,255,255,255);
+            g2.setColor(color);
+            g2.drawString(text,x,y);
+            y += 40;
+        }
+    }
+
+    private void drawVictoryLog(int monsterIndex) {
+        int x = gamePanel.screenWidth - (gamePanel.spriteSize*16);
+        int y = 750;
+        String text = "Hero Won! Gained xp";
+
+
+
+
+        for(String line : text.split("\n"));{
+            Color color = new Color(255,255,255,255);
+            g2.setColor(color);
+            g2.drawString(text,x,y);
+            y += 40;
+        }
+    }
+
+    void drawBattleScreen(int index) {
         g2.setColor(new Color(0, 0, 0));
         g2.fillRect(0,0, gamePanel.screenWidth, gamePanel.screenHeight);
-        //g2.setFont(g2.getFont().deriveFont(Font.BOLD,100F));
-        int windowX = 0;
-        int windowY = 750;
-        int width = gamePanel.screenWidth - (gamePanel.spriteSize*16);
-        int height = gamePanel.spriteSize*3;
-        drawSubWindow(windowX,windowY,width,height);
-        int x = gamePanel.screenWidth/2 -500;
-        int y = 0;
+        drawHeroUI();
+        g2.setColor(Color.white);
+        String text = gamePanel.enemy[index].name;
+        int x3 = getXforCenteredText(text) -150;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,60F));
+        g2.drawString(text,x3,100);
 
+        int x = gamePanel.screenWidth/2 -400;
+        int y = 200;
         g2.drawImage(image,x,y, 720,492,null);
+        double healthScale = (double)gamePanel.spriteSize/gamePanel.enemy[index].maxHealth;
+        double hpBarTotal = healthScale*gamePanel.enemy[index].health;
+        g2.setColor(new Color(35,35,35));
+        g2.fillRect(700,600,gamePanel.spriteSize*5,40);
+        g2.setColor(new Color(255,0,30));
+        g2.fillRect(702,602,(int)hpBarTotal*5,40);
+        g2.setColor((Color.black));
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,30F));
+        String healthText = "HP: " + gamePanel.enemy[index].health + "/" +gamePanel.enemy[index].maxHealth;
+        g2.drawString(healthText,700 + gamePanel.spriteSize,630);
+        int window2X = gamePanel.screenWidth - (gamePanel.spriteSize*16);
+        int window2Y = 750;
+        int width2 = gamePanel.screenWidth - (gamePanel.spriteSize*10);
+        int height2 = gamePanel.spriteSize*3;
+        drawSubWindow(window2X,window2Y,width2,height2);
+        if (subMenu == SubMenu.MAINMENU) {
+            int windowX = 0;
+            int windowY = 750;
+            int width = gamePanel.screenWidth - (gamePanel.spriteSize*16);
+            int height = gamePanel.spriteSize*3;
+            drawSubWindow(windowX,windowY,width,height);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+            text = "Attack";
+            g2.drawString(text, 100, 850);
+            if (commandIndexX == 0 && commandIndexY == 0) {
+                g2.drawString(">", 100 - gamePanel.spriteSize, 850);
+            }
 
-        //menu
-        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
-        String text = "Attack";
-        g2.drawString(text,100,850);
-        if(commandIndex == 0 ) {
-            g2.drawString(">",50-gamePanel.spriteSize,y);
+            text = "Defend";
+            g2.drawString(text, 350, 850);
+            if (commandIndexX == 1 && commandIndexY == 0) {
+                g2.drawString(">", 350 - gamePanel.spriteSize, 850);
+            }
+
+            text = "Taunt";
+            ;
+            g2.drawString(text, 100, 925);
+            if (commandIndexX == 0 && commandIndexY == 1) {
+                g2.drawString(">", 100 - gamePanel.spriteSize, 925);
+            }
+
+            text = "Inventory";
+            g2.drawString(text, 350, 925);
+            if (commandIndexX == 1 && commandIndexY == 1) {
+                g2.drawString(">", 350 - gamePanel.spriteSize, 925);
+            }
+        }
+            else if (subMenu == SubMenu.ATTACKMENU) {
+                int windowX = 0;
+                int windowY = 750;
+                int width = gamePanel.screenWidth - (gamePanel.spriteSize*16);
+                int height = gamePanel.spriteSize*3;
+                drawSubWindow(windowX,windowY,width,height);
+                g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
+                text = "Fireball";
+                g2.drawString(text,100,850);
+                if(commandIndexX == 0 && commandIndexY == 0) {
+                    g2.drawString(">",100-gamePanel.spriteSize,850);
+                }
+
+                text = "Flamestrike";
+                g2.drawString(text,350,850);
+                if(commandIndexX == 1 && commandIndexY == 0 ) {
+                    g2.drawString(">",350-gamePanel.spriteSize,850);
+                }
+
+                text = "Ice Spear";;
+                g2.drawString(text,100,925);
+                if(commandIndexX == 0 && commandIndexY == 1 ) {
+                    g2.drawString(">",100-gamePanel.spriteSize,925);
+                }
+
+                text = "Blizzard";
+                g2.drawString(text,350,925);
+                if(commandIndexX == 1 && commandIndexY == 1 ) {
+                    g2.drawString(">",350 -gamePanel.spriteSize,925);
+                }
+            }
+        else if (subMenu == SubMenu.INVENTORY) {
+            int windowX = 0;
+            int windowY = 350;
+            int width = gamePanel.screenWidth - (gamePanel.spriteSize*16);
+            int height = gamePanel.spriteSize*10;
+            drawSubWindow(windowX,windowY,width,height);
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
+            int x2 = 100;
+            int y2 =600;
+            text = "Health Potion x5";
+            g2.drawString(text,x2,y2);
+            if(commandIndexY == 0 ) {
+                g2.drawString(">",x2-gamePanel.spriteSize,y2);
+            }
+            text = "Mana potion x4";
+            g2.drawString(text,x2,y2 + 75);
+            if(commandIndexY == 1 ) {
+                g2.drawString(">",x2-gamePanel.spriteSize,y2 + 75);
+            }
+            text = "Potion of Courage x7";
+            g2.drawString(text,x2,y2 + 150);
+            if(commandIndexY == 2 ) {
+                g2.drawString(">",x2-gamePanel.spriteSize,y2 +150);
+            }
+
+            text = "Potion of Wisdom x1";
+            g2.drawString(text,x2,y2 + 225);
+            if(commandIndexY == 3 ) {
+                g2.drawString(">",x2-gamePanel.spriteSize,y2 + 225);
+            }
         }
 
-        text = "Defend";
-        g2.drawString(text,350,850);
-        if(commandIndex == 1 ) {
-            g2.drawString(">",100-gamePanel.spriteSize,y);
         }
 
-        text = "Taunt";;
-        g2.drawString(text,100,925);
-        if(commandIndex == 2 ) {
-            g2.drawString(">",x-gamePanel.spriteSize,y);
-        }
+        public void drawBattleLogHero(int enemyIndex, int moveIndex){
+            int x = gamePanel.screenWidth - (gamePanel.spriteSize*16);
+            int y = 750;
+            String text = "";
+            g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));
+            //System.out.println("damage damage" + damage);
+            if(gamePanel.battleHandler.damage > 0){
+            text =  "Hero used   " + gamePanel.hero.attackMove[moveIndex]
+                    + "\n" + " and caused " + gamePanel.battleHandler.damage + " damage!";}
+            else {
+                text= "Hero used " + gamePanel.hero.attackMove[moveIndex] + " but missed!";
+            }
 
-        text = "Inventory";
-        g2.drawString(text,350,925);
-        if(commandIndex == 3 ) {
-            g2.drawString(">",x-gamePanel.spriteSize,y);
-        }
 
-
+            for(String line : text.split("\n"));{
+                Color color = new Color(255,255,255,255);
+                g2.setColor(color);
+                g2.drawString(text,x,y);
+                y += 40;
+            }
     }
+
+    public void drawBattleLogEnemy(int enemyIndex, int moveIndex){
+        int x = gamePanel.screenWidth - (gamePanel.spriteSize*16);
+        int y = 750;
+        String text = "";
+        int damage = gamePanel.battleHandler.damage;
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));
+        if (damage>0){
+
+            text = gamePanel.enemy[enemyIndex].name + " used" + gamePanel.enemy[enemyIndex].attackMove[moveIndex]
+                    + "\n" + " and caused " + damage + " damage!";
+        }
+        else {
+            text = gamePanel.enemy[enemyIndex].name + " used " + gamePanel.enemy[enemyIndex].attackMove[moveIndex] + " but missed!";
+        }
+
+
+
+
+        for(String line : text.split("\n"));{
+            Color color = new Color(255,255,255,255);
+            g2.setColor(color);
+            g2.drawString(text,x,y);
+        }
+    }
+
 
     public void  drawHeroUI(){
 

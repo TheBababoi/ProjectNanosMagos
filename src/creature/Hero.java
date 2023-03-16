@@ -13,8 +13,11 @@ public class Hero extends Creature {
     final public int screenY;
     KeyboardInputs keyboardInputs;
     public int hasKey = 0;
-    public int maxExp,exp;
+    public int maxHealth,health,maxMana,mana,maxExp,exp,defence,strength,dexterity;
     public boolean friendOrFoe;
+    public String[] attackMove = new String[4];
+    public int[] attackPower = new int[4];
+    public int[] attackAccuracy = new int[4];
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
         super(gamePanel);
@@ -29,12 +32,39 @@ public class Hero extends Creature {
         worldY = gamePanel.spriteSize *4;
         speed = 5;
         direction = "down";
-        maxHealth = 10;
+
+        maxExp = 100;
+        exp = 5;
+
+        setBattleStats();
+
+
+    }
+
+    public void setBattleStats() {
+        maxHealth = 30;
         health = maxHealth;
         maxMana = 30;
         mana = maxMana;
-        maxExp = 100;
-        exp = 5;
+        strength = 10;
+        defence = 1;
+        dexterity = 8;
+        heroMoves();
+    }
+    public void heroMoves() {
+        attackMove[0] = "Fireball";
+        attackPower[0] = 75;
+        attackAccuracy[0] = 10;
+        attackMove[1] = "Flamestrike";
+        attackPower[1] = 150;
+        attackAccuracy[1] = 6;
+        attackAccuracy[2] = 7;
+        attackMove[2] = "IceSpear";
+        attackPower[2] = 100;
+        attackAccuracy[3] = 8;
+        attackMove[3] = "Blizzard";
+        attackPower[3] = 200;
+        attackAccuracy[3] = 5;
 
     }
 
@@ -72,7 +102,7 @@ public class Hero extends Creature {
             gamePanel.keyboardInputs.enterPressed = false;
 
             //if !collision, hero will move
-            if(collision == false){
+            if(!collision){
                 if(direction=="up"){
                     worldY -= speed;
                 } else if (direction=="down") {

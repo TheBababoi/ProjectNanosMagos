@@ -24,7 +24,7 @@ public class FlowerGuy extends NPC {
 
         dialogues[0] = "Hello Hero!";
         dialogues[1] = "I'm the Flower Guy";
-        dialogues[2] = "I can only walk like a crab because of my roots!";
+        dialogues[2] = "I can only walk like a crab \n because of my roots!";
     }
 
     @Override

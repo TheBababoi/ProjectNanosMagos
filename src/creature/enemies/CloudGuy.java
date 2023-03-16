@@ -12,9 +12,25 @@ public class CloudGuy extends Enemy {
     public CloudGuy(GamePanel gamePanel) {
         super(gamePanel);
         getSprites("src/sprites/cloudGuy");
+        name = "CloudGuy";
         direction = "right";
         speed = 1;
         actionCounterMax = 30;
+        setBattleStats();
+
+
+
+    }
+
+    @Override
+    public void setBattleStats() {
+        maxHealth = 1000;
+        health = maxHealth;
+        strength = 10;
+        defence = 10;
+        dexterity = 11;
+
+        enemyMoves();
     }
 
     @Override
@@ -27,6 +43,22 @@ public class CloudGuy extends Enemy {
         }
     }
 
+    @Override
+    public void enemyMoves() {
+        attackMove[0] = "Thunder";
+        attackPower[0] = 3;
+        attackAccuracy[0] = 5;
+        attackMove[1] = "Rain";
+        attackPower[1] = 1;
+        attackAccuracy[1] = 10;
+        attackMove[2] = "Wind";
+        attackAccuracy[2] = 8;
+        attackPower[2] = 2;
+        attackMove[3] = "Fog";
+        attackPower[3] = 2;
+        attackAccuracy[3] = 8;
+
+    }
 
 
     @Override

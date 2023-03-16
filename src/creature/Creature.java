@@ -28,8 +28,8 @@ public abstract class Creature {
     public int actionCounter;
     public int actionCounterMax;
 
-    // combat values
-    public int maxHealth,health,maxMana,mana;
+
+
 
 
     public Creature(GamePanel gamePanel) {

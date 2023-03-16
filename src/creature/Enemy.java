@@ -2,13 +2,18 @@ package creature;
 
 import main.GamePanel;
 
-import javax.xml.namespace.QName;
+
 import java.awt.image.BufferedImage;
 
 public abstract class Enemy extends Creature{
-    String name;
+    public String name;
     public BufferedImage battleImage;
-    int health,maxHealth;
+    public int health,maxHealth,strength,defence,dexterity;
+
+    public int enemyChoice =99;
+    public String[] attackMove = new String[4];
+    public int[] attackPower = new int[4];
+    public int[] attackAccuracy = new int[4];
 
     public Enemy(GamePanel gamePanel) {
         super(gamePanel);
@@ -16,7 +21,11 @@ public abstract class Enemy extends Creature{
 
     }
 
+    public abstract void setBattleStats();
+
     public abstract void setBattleSprites();
+
+    public abstract void enemyMoves();
 
 
 

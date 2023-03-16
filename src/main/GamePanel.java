@@ -51,7 +51,10 @@ public class GamePanel extends JPanel implements Runnable {
         PLAYSTATE,
         PAUSESTATE,
         DIALOGUESTATE,
-        BATTLESTATE,
+        BATTLESTATEHERO,
+        BATTLESTATEENEMY,
+        BATTLELOGHERO,
+        BATTLEWON, BATTLELOST, BATTLELOGENEMY
     }
 
 
@@ -132,12 +135,6 @@ public class GamePanel extends JPanel implements Runnable {
                 throw new RuntimeException(e);
             }
 
-        } else if (gameState == Gamestate.TITLESCREEM) {
-            try {
-                ui.draw(g2);
-            } catch (InterruptedException e) {
-                throw new RuntimeException(e);
-            }
         } else  {
             backgroundTileManager.draw(g2);
 
