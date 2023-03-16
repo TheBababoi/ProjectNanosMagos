@@ -33,12 +33,15 @@ public class EventHandler {
 
     public void checkEvent(){
         if(hitCheck(0, 0, "any")&&(!eventHitbox[0][0].eventDone)){
+            gamePanel.hero.friendOrFoe = true;
             healSpot(0,0, GamePanel.Gamestate.DIALOGUESTATE);
         }
         if(hitCheck(2, 1, "any")&&(!eventHitbox[2][1].eventDone)){
+            gamePanel.hero.friendOrFoe = true;
             expSpot(2,1, GamePanel.Gamestate.DIALOGUESTATE);
         }
         if(hitCheck(3, 1, "any")){
+            gamePanel.hero.friendOrFoe = true;
            teleporter(3,1,GamePanel.Gamestate.DIALOGUESTATE);
         }
     }
@@ -83,6 +86,7 @@ public class EventHandler {
         if(gamePanel.keyboardInputs.enterPressed){
             gamePanel.gameState = gameState;
             gamePanel.ui.currentDialogue = "Souravlas Has granted you his wisdom - Gain 50 exp!";
+
             gamePanel.hero.exp += 50;
             eventHitbox[collumn][row].eventDone = true;
 
