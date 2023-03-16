@@ -4,40 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="started implementation of battle ui">
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass03.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass04.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass05.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass06.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass07.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass08.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_down.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_left.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_right.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass_gravel_up.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel01.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel02.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/tree.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/water00.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/worldMusic/fight.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Creature.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Creature.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/FlowerGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/FlowerGuy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/BattleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundTiles/grass.png" beforeDir="false" />
-    </list>
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added combat 1.0 close #13" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +123,7 @@
       <workItem from="1678699370015" duration="6943000" />
       <workItem from="1678792539826" duration="2748000" />
       <workItem from="1678968574606" duration="9265000" />
-      <workItem from="1678979459461" duration="4935000" />
+      <workItem from="1678979459461" duration="5226000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -263,7 +230,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678484933314</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="added combat 1.0 close #13">
+      <created>1678984657525</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1678984657525</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -295,6 +269,7 @@
     <MESSAGE value="implemented event handler changed gamestatus to enum - closes #10" />
     <MESSAGE value="implemented event handler changed gamestatus to enum - closes #11" />
     <MESSAGE value="started implementation of battle ui" />
-    <option name="LAST_COMMIT_MESSAGE" value="started implementation of battle ui" />
+    <MESSAGE value="added combat 1.0 close #13" />
+    <option name="LAST_COMMIT_MESSAGE" value="added combat 1.0 close #13" />
   </component>
 </project>
