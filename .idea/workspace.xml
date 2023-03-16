@@ -4,13 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundTiles/gravel.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/backgroundTiles/water.png" beforeDir="false" />
-    </list>
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added combat v1.0 close #13" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -25,6 +19,7 @@
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="UPDATE_TYPE" value="REBASE" />
   </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
@@ -246,7 +241,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678796243924</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary="added combat 1.0 close #13">
+      <created>1678986256082</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1678986256082</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,8 +280,8 @@
     <MESSAGE value="implemented event handler changed gamestatus to enum - closes #10" />
     <MESSAGE value="implemented event handler changed gamestatus to enum - closes #11" />
     <MESSAGE value="started implementation of battle ui" />
-    <MESSAGE value="added combat 1.0 close #13" />
     <MESSAGE value="close #12" />
-    <option name="LAST_COMMIT_MESSAGE" value="close #12" />
+    <MESSAGE value="added combat 1.0 close #13" />
+    <option name="LAST_COMMIT_MESSAGE" value="added combat 1.0 close #13" />
   </component>
 </project>
