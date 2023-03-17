@@ -10,7 +10,7 @@ import java.net.URL;
 public class Sound {
 
     Clip clip;
-    File[] soundURL = new File[30];
+    public File[] soundURL = new File[30];
 
     public Sound() {
         soundURL[0] = new File("src/tunes/worldMusic/World.wav");
@@ -18,6 +18,10 @@ public class Sound {
         soundURL[2] = new File("src/tunes/worldSoundEffects/chest.wav");
         soundURL[3] = new File("src/tunes/worldSoundEffects/door.wav");
         soundURL[4] = new File("src/tunes/worldMusic/fight.wav");
+        soundURL[5] = new File("src/tunes/battleSoundEffects/attack.wav");
+        soundURL[6] = new File("src/tunes/battleSoundEffects/hit.wav");
+        soundURL[7] = new File("src/tunes/battleSoundEffects/menu.wav");
+        soundURL[8] = new File("src/tunes/battleSoundEffects/fireball.wav");
 
     }
 

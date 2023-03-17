@@ -62,6 +62,7 @@ public class KeyboardInputs implements KeyListener {
                 if (gamePanel.hero.friendOrFoe) {
                     gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
                 } else {
+                    gamePanel.stopMusic();
                     gamePanel.playMusic(4);
                     gamePanel.gameState = GamePanel.Gamestate.BATTLESTATEHERO;
                 }
@@ -82,6 +83,7 @@ public class KeyboardInputs implements KeyListener {
             } else if (code == KeyEvent.VK_ENTER) {
                 if (gamePanel.ui.commandIndex == 0) {
                     gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
+                    System.out.println("playstate");
                     gamePanel.playMusic(0);
                 } else if (gamePanel.ui.commandIndex == 1) {
 
@@ -99,43 +101,51 @@ public class KeyboardInputs implements KeyListener {
 
             if (gamePanel.ui.subMenu == UI.SubMenu.INVENTORY) {
                 if (code == KeyEvent.VK_W) {
-
+                    gamePanel.playSoundEffect(7);
                     if (gamePanel.ui.commandIndexY > 0) {
                         gamePanel.ui.commandIndexY--;
                     }
                 } else if (code == KeyEvent.VK_S) {
+                    gamePanel.playSoundEffect(7);
                     if (gamePanel.ui.commandIndexY < 3) {
                         gamePanel.ui.commandIndexY++;
                     }
                 } else if (code == KeyEvent.VK_ESCAPE) {
+                    gamePanel.playSoundEffect(7);
                     gamePanel.ui.subMenu = UI.SubMenu.MAINMENU;
                     gamePanel.ui.commandIndexY = 1;
                 }
 
             } else {
                 if (code == KeyEvent.VK_W) {
+                    gamePanel.playSoundEffect(7);
                     gamePanel.ui.commandIndexY--;
                     if (gamePanel.ui.commandIndexY < 0) {
                         gamePanel.ui.commandIndexY = 1;
                     }
                 } else if (code == KeyEvent.VK_S) {
+                    gamePanel.playSoundEffect(7);
                     gamePanel.ui.commandIndexY++;
                     if (gamePanel.ui.commandIndexY > 1) {
                         gamePanel.ui.commandIndexY = 0;
                     }
                 } else if (code == KeyEvent.VK_A) {
+                    gamePanel.playSoundEffect(7);
                     gamePanel.ui.commandIndexX--;
                     if (gamePanel.ui.commandIndexX < 0) {
                         gamePanel.ui.commandIndexX = 1;
                     }
                 } else if (code == KeyEvent.VK_D) {
+                    gamePanel.playSoundEffect(7);
                     gamePanel.ui.commandIndexX++;
                     if (gamePanel.ui.commandIndexX > 1) {
                         gamePanel.ui.commandIndexX = 0;
                     }
                 } else if (code == KeyEvent.VK_ENTER) {
+                    gamePanel.playSoundEffect(7);
                     if (gamePanel.ui.subMenu == UI.SubMenu.ATTACKMENU) {
                         if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndexY == 0) {
+
                             playerChoice = 0;
 
                             System.out.println("Player choice 0");
@@ -146,6 +156,7 @@ public class KeyboardInputs implements KeyListener {
 
                         }
                         if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndexY == 0) {
+
                             playerChoice = 1;
 
                             System.out.println("Player choice 1");
@@ -154,6 +165,7 @@ public class KeyboardInputs implements KeyListener {
                             gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
                         }
                         if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndexY == 1) {
+
                             playerChoice = 2;
 
                             System.out.println("Player choice 2");
@@ -162,6 +174,7 @@ public class KeyboardInputs implements KeyListener {
                             gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
                         }
                         if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndexY == 1) {
+
                             playerChoice = 3;
 
                             System.out.println("Player choice 3");
@@ -188,12 +201,14 @@ public class KeyboardInputs implements KeyListener {
 
                     }
                 } else if (code == KeyEvent.VK_ESCAPE) {
+                    gamePanel.playSoundEffect(7);
                     gamePanel.ui.subMenu = UI.SubMenu.MAINMENU;
                 }
             }
         } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEENEMY) {
             Random random = new Random();
              enemyChoice = random.nextInt(3);
+            gamePanel.playSoundEffect(6);
 
                 gamePanel.battleHandler.calculateEnemyAttack(enemyChoice);
                 gamePanel.gameState = GamePanel.Gamestate.BATTLELOGENEMY;
@@ -201,6 +216,7 @@ public class KeyboardInputs implements KeyListener {
 
         } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGHERO) {
             if (code == KeyEvent.VK_ENTER) {
+                gamePanel.playSoundEffect(7);
                     if(gamePanel.enemy[gamePanel.battleHandler.monsterIndex].health<=0){
                         gamePanel.gameState = GamePanel.Gamestate.BATTLEWON;
                     }
@@ -211,6 +227,7 @@ public class KeyboardInputs implements KeyListener {
             }
         } else if(gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY){
             if (code == KeyEvent.VK_ENTER) {
+                gamePanel.playSoundEffect(7);
                 if(gamePanel.hero.health<=0){
                     gamePanel.gameState = GamePanel.Gamestate.BATTLELOST;
                 }
@@ -225,15 +242,19 @@ public class KeyboardInputs implements KeyListener {
 
         }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLEWON) {
             if (code == KeyEvent.VK_ENTER) {
+                gamePanel.playSoundEffect(7);
                 gamePanel.music.stop();
                 gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
+                System.out.println("battlewon");
                 gamePanel.playMusic(0);
                 gamePanel.enemy[gamePanel.battleHandler.monsterIndex] = null;
+
 
             }
 
         }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOST) {
             if (code == KeyEvent.VK_ENTER) {
+                gamePanel.playSoundEffect(7);
                gamePanel.music.stop();
                 gamePanel.gameState = GamePanel.Gamestate.TITLESCREEM;
 

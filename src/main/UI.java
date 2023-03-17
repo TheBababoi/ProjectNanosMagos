@@ -17,6 +17,7 @@ public class UI {
     public String currentDialogue;
     public int commandIndex = 0;
     public int commandIndexX = 0 ,commandIndexY = 0;
+    public int defeatedCounter = 5;
 
     public SubMenu subMenu = SubMenu.MAINMENU;
     public enum SubMenu{
@@ -85,6 +86,18 @@ public class UI {
         }
     }
 
+
+        public void defeatedAnimation(Graphics2D g2) {
+
+
+
+    }
+
+    public  void changeAlpha(Graphics2D g2, float alphaValue){
+        g2.setComposite((AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alphaValue)));
+    }
+
+
     private void drawLossLog(int monsterIndex) {
         int x = gamePanel.screenWidth - (gamePanel.spriteSize*16);
         int y = 750;
@@ -127,6 +140,36 @@ public class UI {
 
         int x = gamePanel.screenWidth/2 -400;
         int y = 200;
+
+        if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY && (gamePanel.battleHandler.damage != 0)){
+            image = gamePanel.enemy[index].battleImageAttack;
+            defeatedCounter++;
+            if(defeatedCounter <= 3){
+                changeAlpha(g2,0f);
+            }
+            if (defeatedCounter > 3 && defeatedCounter <= 6) {
+                changeAlpha(g2,1f);
+            }
+
+
+        }
+        else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY){
+            image = gamePanel.enemy[index].battleImageAttack;
+            defeatedCounter = 0;
+        }else if(gamePanel.gameState == GamePanel.Gamestate.BATTLELOGHERO && (gamePanel.battleHandler.damage != 0)){
+            image = gamePanel.enemy[index].battleImageHurt;
+
+            defeatedCounter = 0;
+
+
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLEWON) {
+            image = gamePanel.enemy[index].battleImageHurt;
+            defeatedCounter = 0;
+        } else {
+            image = gamePanel.enemy[index].battleImageDefault;
+            defeatedCounter = 0;
+        }
+        gamePanel.enemy[index].setBattleSprites(image);
         g2.drawImage(image,x,y, 720,492,null);
         double healthScale = (double)gamePanel.spriteSize/gamePanel.enemy[index].maxHealth;
         double hpBarTotal = healthScale*gamePanel.enemy[index].health;
@@ -237,6 +280,10 @@ public class UI {
                 g2.drawString(">",x2-gamePanel.spriteSize,y2 + 225);
             }
         }
+
+        }
+
+        public void drawBattleEnemy(int index){
 
         }
 

@@ -28,6 +28,7 @@ public class BattleHandler {
     }
 
     public void calculateHeroAttack(int index){
+        gamePanel.playSoundEffect(gamePanel.hero.attackSoundIndex[index]);
         Random random = new Random();
         int roll = random.nextInt(10)+1;
         int chanceToHit = gamePanel.hero.attackAccuracy[index] + roll;

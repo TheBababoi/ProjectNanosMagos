@@ -4,10 +4,15 @@ import creature.Enemy;
 import main.GamePanel;
 
 import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
 import java.io.FileInputStream;
 import java.io.IOException;
 
+
+
 public class CloudGuy extends Enemy {
+    public boolean alive = true;
+    public boolean defeated = false;
 
     public CloudGuy(GamePanel gamePanel) {
         super(gamePanel);
@@ -34,13 +39,17 @@ public class CloudGuy extends Enemy {
     }
 
     @Override
-    public void setBattleSprites() {
+    public void setBattleSprites(BufferedImage image) {
         try{
-            battleImage = ImageIO.read(new FileInputStream("src/sprites/cloudGuy/batlleimage1.png"));
+            battleImageDefault = ImageIO.read(new FileInputStream("src/sprites/cloudGuy/battleimagedefault.png"));
+            battleImageAttack = ImageIO.read(new FileInputStream("src/sprites/cloudGuy/battleimageattack.png"));
+            battleImageHurt = ImageIO.read(new FileInputStream("src/sprites/cloudGuy/battleimagehurt.png"));
 
         }catch (IOException e) {
             e.printStackTrace();
         }
+
+
     }
 
     @Override

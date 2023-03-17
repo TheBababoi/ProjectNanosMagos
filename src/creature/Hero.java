@@ -5,6 +5,7 @@ import main.KeyboardInputs;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.io.File;
 
 
 public class Hero extends Creature {
@@ -18,6 +19,8 @@ public class Hero extends Creature {
     public String[] attackMove = new String[4];
     public int[] attackPower = new int[4];
     public int[] attackAccuracy = new int[4];
+    public int[] attackSoundIndex = new int[4];
+
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
         super(gamePanel);
@@ -55,16 +58,20 @@ public class Hero extends Creature {
         attackMove[0] = "Fireball";
         attackPower[0] = 75;
         attackAccuracy[0] = 10;
+        attackSoundIndex[0] = 8;
         attackMove[1] = "Flamestrike";
         attackPower[1] = 150;
         attackAccuracy[1] = 6;
+        attackSoundIndex[1] = 5;
         attackAccuracy[2] = 7;
         attackMove[2] = "IceSpear";
         attackPower[2] = 100;
+        attackSoundIndex[2] = 5;
         attackAccuracy[3] = 8;
         attackMove[3] = "Blizzard";
-        attackPower[3] = 200;
+        attackPower[3] = 800;
         attackAccuracy[3] = 5;
+        attackSoundIndex[3] = 5;
 
     }
 

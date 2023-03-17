@@ -28,7 +28,7 @@ public class GamePanel extends JPanel implements Runnable {
     Thread thread;
     public KeyboardInputs keyboardInputs = new KeyboardInputs(this);
     Sound music = new Sound();
-    Sound soundEffect = new Sound();
+    public Sound soundEffect = new Sound();
     BackgroundTileManager backgroundTileManager = new BackgroundTileManager(this);
     public UI ui = new UI(this);
     public AssetPlacer assetPlacer = new AssetPlacer(this);
@@ -161,7 +161,7 @@ public class GamePanel extends JPanel implements Runnable {
             //enemies
             for (int i = 0; i <enemy.length; i++) {
                 if (enemy[i] !=null ){
-                    enemy[i].draw(g2);
+                        enemy[i].draw(g2);
                 }
             }
             //hero
