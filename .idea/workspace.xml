@@ -4,27 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added combat v1.0 close #13">
-      <change afterPath="$PROJECT_DIR$/src/Items/Equipment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Items/Item.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Items/consumables/Gold.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Items/consumables/Key.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Items/equipment/Armor.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/Items/equipment/Weapon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/Items/gold.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/Items/lollipop.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/Items/mushroom.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/equipment/armor.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/equipment/sword.png" afterDir="false" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added level up system and inventory close 14">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/BattleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -159,7 +141,7 @@
       <workItem from="1679051731061" duration="5440000" />
       <workItem from="1679058214654" duration="302000" />
       <workItem from="1679140089122" duration="667000" />
-      <workItem from="1679148794536" duration="17070000" />
+      <workItem from="1679148794536" duration="17768000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -287,7 +269,14 @@
       <option name="project" value="LOCAL" />
       <updated>1678986476416</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="added level up system and inventory close 14">
+      <created>1679166301174</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1679166301174</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,6 +311,7 @@
     <MESSAGE value="close #12" />
     <MESSAGE value="added combat 1.0 close #13" />
     <MESSAGE value="added combat v1.0 close #13" />
-    <option name="LAST_COMMIT_MESSAGE" value="added combat v1.0 close #13" />
+    <MESSAGE value="added level up system and inventory close 14" />
+    <option name="LAST_COMMIT_MESSAGE" value="added level up system and inventory close 14" />
   </component>
 </project>

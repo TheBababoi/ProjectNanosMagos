@@ -300,6 +300,14 @@ public class UI {
             if (defeatedCounter > 3 && defeatedCounter <= 6) {
                 changeAlpha(g2,1f);
             }
+            if (defeatedCounter > 6 && defeatedCounter <= 9 ) {
+                changeAlpha(g2,0f);
+            }
+            if (defeatedCounter > 9 && defeatedCounter <= 12) {
+                changeAlpha(g2,1f);
+            }
+
+
 
 
         }
