@@ -88,6 +88,7 @@ public class EventHandler {
             gamePanel.ui.currentDialogue = "Souravlas Has granted you his wisdom - Gain 50 exp!";
 
             gamePanel.hero.exp += 50;
+            gamePanel.hero.checkLevelUp();
             eventHitbox[collumn][row].eventDone = true;
 
         }

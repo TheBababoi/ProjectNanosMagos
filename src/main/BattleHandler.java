@@ -36,7 +36,10 @@ public class BattleHandler {
 
 
         if(gamePanel.enemy[monsterIndex].dexterity<= chanceToHit){
-            damage = -gamePanel.enemy[monsterIndex].defence + gamePanel.hero.attackPower[index];
+            damage = -gamePanel.enemy[monsterIndex].defence + gamePanel.hero.attackPower[index] +gamePanel.hero.strength;
+            if(damage < 0){
+                damage = 0;
+            }
             gamePanel.enemy[gamePanel.battleHandler.monsterIndex].health -= damage;
             if(gamePanel.enemy[gamePanel.battleHandler.monsterIndex].health<0){
                 gamePanel.enemy[gamePanel.battleHandler.monsterIndex].health = 0;
@@ -61,6 +64,9 @@ public class BattleHandler {
             System.out.println("enemy choice" + choice);
             damage = -gamePanel.hero.defence + gamePanel.enemy[monsterIndex].attackPower[choice];
             System.out.println("enemy damage " + damage + "\n");
+            if(damage < 0){
+                damage = 0;
+            }
             gamePanel.hero.health -= damage;
             if(gamePanel.hero.health< 0){
                 gamePanel.hero.health = 0;

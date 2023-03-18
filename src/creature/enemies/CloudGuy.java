@@ -34,6 +34,7 @@ public class CloudGuy extends Enemy {
         strength = 10;
         defence = 10;
         dexterity = 11;
+        exp = 20;
 
         enemyMoves();
     }

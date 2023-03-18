@@ -9,7 +9,7 @@ import java.awt.image.BufferedImage;
 public abstract class Enemy extends Creature{
     public String name;
     public BufferedImage battleImageDefault,battleImageAttack,battleImageHurt;
-    public int health,maxHealth,strength,defence,dexterity;
+    public int health,maxHealth,strength,defence,dexterity,exp;
 
     public int enemyChoice =99;
     public String[] attackMove = new String[4];
@@ -70,7 +70,7 @@ public abstract class Enemy extends Creature{
 
     public abstract void enemyMoves();
 
-
-
-
+    public int getExp() {
+        return exp;
+    }
 }

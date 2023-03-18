@@ -1,11 +1,19 @@
 package creature;
 
+
+import Items.Item;
+import Items.consumables.Gold;
+import Items.consumables.Key;
+import Items.consumables.Mushroom;
+import Items.equipment.Armor;
+import Items.equipment.Weapon;
+
 import main.GamePanel;
 import main.KeyboardInputs;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
-import java.io.File;
+import java.util.ArrayList;
 
 
 public class Hero extends Creature {
@@ -14,12 +22,16 @@ public class Hero extends Creature {
     final public int screenY;
     KeyboardInputs keyboardInputs;
     public int hasKey = 0;
-    public int maxHealth,health,maxMana,mana,maxExp,exp,defence,strength,dexterity;
+    public int level,maxHealth,health,maxMana,mana, nextLevelExp,exp,defence,strength,dexterity,gold;
+    public Weapon currentWeapon;
+    public Armor currentArmor;
     public boolean friendOrFoe;
     public String[] attackMove = new String[4];
     public int[] attackPower = new int[4];
     public int[] attackAccuracy = new int[4];
     public int[] attackSoundIndex = new int[4];
+    public ArrayList<Item> inventory = new ArrayList<>();
+    public int inventorySize = 20;
 
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
@@ -33,18 +45,33 @@ public class Hero extends Creature {
         hitboxY = 24;
         worldX = gamePanel.spriteSize *15;
         worldY = gamePanel.spriteSize *4;
-        speed = 5;
+
         direction = "down";
 
-        maxExp = 100;
-        exp = 5;
 
-        setBattleStats();
+
+        setStats();
+        heroMoves();
+        setInventory();
 
 
     }
 
-    public void setBattleStats() {
+    private void setInventory() {
+
+        inventory.add((currentWeapon));
+        inventory.add(currentArmor);
+        inventory.add((new Mushroom(gamePanel)));
+        inventory.add(new Gold(gamePanel));
+        inventory.add((new Mushroom(gamePanel)));
+        inventory.add(new Gold(gamePanel));
+        inventory.add(new Gold(gamePanel));
+        inventory.add((new Mushroom(gamePanel)));
+    }
+
+    public void setStats() {
+        level = 1;
+        speed = 5;
         maxHealth = 30;
         health = maxHealth;
         maxMana = 30;
@@ -52,7 +79,15 @@ public class Hero extends Creature {
         strength = 10;
         defence = 1;
         dexterity = 8;
-        heroMoves();
+        exp = 0;
+        nextLevelExp = 20;
+        gold = 0;
+        currentWeapon = new Weapon(gamePanel);
+        currentArmor = new Armor(gamePanel);
+        strength += currentWeapon.getAttack();
+        defence += currentArmor.getDefence();
+
+
     }
     public void heroMoves() {
         attackMove[0] = "Fireball";
@@ -228,5 +263,83 @@ public class Hero extends Creature {
             }
         }
         g2.drawImage(sprite, screenX,screenY, gamePanel.spriteSize,gamePanel.spriteSize,null);
+    }
+
+    public int getLevel() {
+        return level;
+    }
+
+    public int getMaxHealth() {
+        return maxHealth;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public int getMaxMana() {
+        return maxMana;
+    }
+
+    public int getMana() {
+        return mana;
+    }
+
+    public int getNextLevelExp() {
+        return nextLevelExp;
+    }
+
+    public int getExp() {
+        return exp;
+    }
+
+
+
+    public int getDefence() {
+        return defence;
+    }
+
+    public int getStrength() {
+        return strength;
+    }
+
+    public int getDexterity() {
+        return dexterity;
+    }
+
+    public int getGold() {
+        return gold;
+    }
+
+    public Weapon getCurrentWeapon() {
+        return currentWeapon;
+    }
+
+    public Armor getCurrentArmor() {
+        return currentArmor;
+    }
+
+    public void setExp(int exp) {
+        this.exp = exp;
+    }
+
+    public void checkLevelUp() {
+        if (exp >= nextLevelExp){
+            level++;
+            nextLevelExp *= 3;
+            maxHealth += 5;
+            health = maxHealth;
+            maxMana +=5;
+            mana = maxMana;
+            strength += 2;
+            defence += 2;
+            dexterity += 1;
+            gamePanel.playSoundEffect(6);
+            friendOrFoe = true;
+            gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
+            gamePanel.ui.currentDialogue = "Level Up! Your Stats Have Been Raised!";
+
+
+        }
     }
 }
