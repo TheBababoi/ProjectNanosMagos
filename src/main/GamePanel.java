@@ -8,6 +8,7 @@ import object.SuperObject;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -17,8 +18,9 @@ public class GamePanel extends JPanel implements Runnable {
     final public int spriteSize = originalSpriteSize * scaling; //5*16=80px
     final public int maxScreenColumn = 24;
     final public int maxScreenRow = 13;
-    final public int screenHeight = spriteSize*maxScreenRow; //13*80=1040px
-    final public int screenWidth = spriteSize* maxScreenColumn;
+    public int screenHeight = spriteSize*maxScreenRow; //13*80=1040px
+    public int screenWidth = spriteSize* maxScreenColumn;
+
 
     final public int maxWorldColumn = 50;
     final public int maxWorldRow = 50;
@@ -68,10 +70,13 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setupGame() {
+        setFullScreen();
         gameState = Gamestate.CUTSCENE;
         assetPlacer.setObject();
         assetPlacer.setNPC();
         assetPlacer.setEnemy();
+
+
 
     }
 
@@ -121,6 +126,24 @@ public class GamePanel extends JPanel implements Runnable {
                 }
             }
         }
+    }
+    public void setFullScreen(){
+
+        Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+
+        double width = screenSize.getWidth();
+
+        double height = screenSize.getHeight();
+
+        Main.mainWindow.setExtendedState(JFrame.MAXIMIZED_BOTH);
+
+        screenWidth = (int) width;
+
+        screenHeight = (int) height;
+
+
+
+
     }
 
     public void paintComponent(Graphics g){
