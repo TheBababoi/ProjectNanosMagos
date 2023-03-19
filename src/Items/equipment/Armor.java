@@ -15,6 +15,11 @@ public class Armor extends Equipment {
         defence = 2;
     }
 
+    @Override
+    public void recalculateHeroStats(GamePanel gamePanel) {
+        gamePanel.hero.setDefence(gamePanel.hero.getBaseDefence() + this.defence);
+    }
+
     public int getDefence() {
         return defence;
     }

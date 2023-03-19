@@ -3,19 +3,21 @@ package Items.equipment;
 import Items.Equipment;
 import main.GamePanel;
 
-public class Weapon extends Equipment {
+public abstract class Weapon extends Equipment {
 
     int attack;
 
     public Weapon(GamePanel gamePanel) {
         super(gamePanel);
-        name = "sword";
-        description = "(Purple Sword) \n +2 attack";
-        getSprite("src/sprites/equipment/sword.png");
-        attack = 2;
 
 
 
+
+    }
+
+    @Override
+    public void recalculateHeroStats(GamePanel gamePanel) {
+        gamePanel.hero.setStrength(gamePanel.hero.getBaseStrength() + this.attack);
     }
 
     public int getAttack() {

@@ -6,8 +6,7 @@ import java.util.Random;
 
 public class KeyboardInputs implements KeyListener {
 
-    public boolean enterPressed ;
-    public int damage;
+    public boolean enterPressed,looted ;
     public boolean up = false;
     public boolean down = false;
     public boolean left = false;
@@ -15,7 +14,7 @@ public class KeyboardInputs implements KeyListener {
     public GamePanel gamePanel;
     //debug
     public boolean debugMode = false;
-    public int playerChoice,enemyChoice;
+    public int playerChoice,enemyChoice,goldlooted;
 
     int i =0;
 
@@ -265,6 +264,10 @@ public class KeyboardInputs implements KeyListener {
             gamePanel.playSoundEffect(7);
             if(gamePanel.enemy[gamePanel.battleHandler.monsterIndex].health<=0){
                 gamePanel.gameState = GamePanel.Gamestate.BATTLEWON;
+                looted = gamePanel.hero.lootEnemyDrop(gamePanel.battleHandler.monsterIndex);
+                goldlooted = gamePanel.hero.lootEnemyGold(gamePanel.battleHandler.monsterIndex);
+
+
             }
             else{
                 gamePanel.gameState = GamePanel.Gamestate.BATTLESTATEENEMY;
@@ -335,6 +338,9 @@ public class KeyboardInputs implements KeyListener {
                 gamePanel.playSoundEffect(7);
             }
 
+        }
+        if (code == KeyEvent.VK_ENTER){
+            gamePanel.hero.equipItem();
         }
     }
 

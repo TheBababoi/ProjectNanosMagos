@@ -1,11 +1,15 @@
 package creature;
 
 
+import Items.Consumable;
 import Items.Item;
 import Items.consumables.Gold;
 import Items.consumables.Key;
 import Items.consumables.Mushroom;
 import Items.equipment.Armor;
+import Items.equipment.LegendaryPen;
+import Items.equipment.PurpleSword;
+
 import Items.equipment.Weapon;
 
 import main.GamePanel;
@@ -14,6 +18,7 @@ import main.KeyboardInputs;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class Hero extends Creature {
@@ -22,7 +27,7 @@ public class Hero extends Creature {
     final public int screenY;
     KeyboardInputs keyboardInputs;
     public int hasKey = 0;
-    public int level,maxHealth,health,maxMana,mana, nextLevelExp,exp,defence,strength,dexterity,gold;
+    public int level,maxHealth,health,maxMana,mana, nextLevelExp,exp,baseDefence,defence,baseStrength,strength,dexterity,gold;
     public Weapon currentWeapon;
     public Armor currentArmor;
     public boolean friendOrFoe;
@@ -57,9 +62,31 @@ public class Hero extends Creature {
 
     }
 
+    public boolean lootEnemyDrop(int index){
+
+        if (inventory.size() != inventorySize){
+            Random random = new Random();
+            int roll = random.nextInt(10) + 1 + gamePanel.enemy[index].dropChance;
+            if (roll >= 10){
+                System.out.println("looted");
+                inventory.add(gamePanel.enemy[index].drop);
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public int lootEnemyGold(int index){
+        Random random = new Random();
+        int goldLoot = (random.nextInt(10) + 1)*gamePanel.enemy[index].goldDrop;
+        System.out.println(goldLoot);
+        this.gold += goldLoot;
+        return goldLoot;
+    }
+
     private void setInventory() {
 
-        inventory.add((currentWeapon));
+        inventory.add(currentWeapon);
         inventory.add(currentArmor);
         inventory.add((new Mushroom(gamePanel)));
         inventory.add(new Gold(gamePanel));
@@ -67,6 +94,7 @@ public class Hero extends Creature {
         inventory.add(new Gold(gamePanel));
         inventory.add(new Gold(gamePanel));
         inventory.add((new Mushroom(gamePanel)));
+        inventory.add(new LegendaryPen(gamePanel));
     }
 
     public void setStats() {
@@ -76,16 +104,17 @@ public class Hero extends Creature {
         health = maxHealth;
         maxMana = 30;
         mana = maxMana;
-        strength = 10;
-        defence = 1;
+        baseStrength = 10;
+        baseDefence = 1;
         dexterity = 8;
         exp = 0;
-        nextLevelExp = 20;
+        nextLevelExp = 80;
         gold = 0;
-        currentWeapon = new Weapon(gamePanel);
+        currentWeapon = new PurpleSword(gamePanel);
         currentArmor = new Armor(gamePanel);
-        strength += currentWeapon.getAttack();
-        defence += currentArmor.getDefence();
+        strength = baseStrength + currentWeapon.getAttack();
+        defence = baseDefence + currentArmor.getDefence();
+
 
 
     }
@@ -108,6 +137,25 @@ public class Hero extends Creature {
         attackAccuracy[3] = 5;
         attackSoundIndex[3] = 5;
 
+    }
+
+    public void equipItem() {
+        int itemIndex = gamePanel.ui.getItemIndex();
+        if(itemIndex < inventory.size()){
+            Item selectedItem = inventory.get(itemIndex);
+            if(selectedItem instanceof Armor ){
+                currentArmor = (Armor) selectedItem;
+                currentArmor.recalculateHeroStats(gamePanel);
+            }
+            else if(selectedItem instanceof Weapon ){
+                currentWeapon = (Weapon) selectedItem;
+                currentWeapon.recalculateHeroStats(gamePanel);
+            }
+            else if(selectedItem instanceof Consumable){
+                 ((Consumable) selectedItem).overWorldUse();
+                 inventory.remove(itemIndex);
+            }
+        }
     }
 
     @Override
@@ -319,8 +367,40 @@ public class Hero extends Creature {
         return currentArmor;
     }
 
+    public int getScreenX() {
+        return screenX;
+    }
+
+    public int getBaseDefence() {
+        return baseDefence;
+    }
+
+    public int getBaseStrength() {
+        return baseStrength;
+    }
+
     public void setExp(int exp) {
         this.exp = exp;
+    }
+
+    public void setBaseStrength(int baseStrength) {
+        this.baseStrength = baseStrength;
+    }
+
+    public void setStrength(int strength) {
+        this.strength = strength;
+    }
+
+    public void setBaseDefence(int baseDefence) {
+        this.baseDefence = baseDefence;
+    }
+
+    public void setDefence(int defence) {
+        this.defence = defence;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 
     public void checkLevelUp() {
@@ -332,7 +412,9 @@ public class Hero extends Creature {
             maxMana +=5;
             mana = maxMana;
             strength += 2;
+            baseStrength += 2;
             defence += 2;
+            baseDefence += 2;
             dexterity += 1;
             gamePanel.playSoundEffect(6);
             friendOrFoe = true;

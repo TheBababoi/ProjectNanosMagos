@@ -1,5 +1,6 @@
 package creature;
 
+import Items.Item;
 import main.GamePanel;
 
 
@@ -15,6 +16,8 @@ public abstract class Enemy extends Creature{
     public String[] attackMove = new String[4];
     public int[] attackPower = new int[4];
     public int[] attackAccuracy = new int[4];
+    public Item drop;
+    public int dropChance,goldDrop;
 
 
     @Override
@@ -63,6 +66,10 @@ public abstract class Enemy extends Creature{
 
 
     }
+
+    public abstract void setDrops(GamePanel gamePanel);
+
+
 
     public abstract void setBattleStats();
 

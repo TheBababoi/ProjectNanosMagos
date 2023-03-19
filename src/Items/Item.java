@@ -8,7 +8,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public abstract class Item {
-    GamePanel gamePanel;
+    protected GamePanel gamePanel;
     protected String name;
     protected String description;
     BufferedImage image;

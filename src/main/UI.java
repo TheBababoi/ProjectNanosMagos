@@ -95,7 +95,7 @@ public class UI {
 
     private void drawInventory() {
 
-        final  int frameX = gamePanel.spriteSize*16,frameY = gamePanel.spriteSize,frameWidth = gamePanel.spriteSize*6,frameHeight = gamePanel.spriteSize*6;
+        final  int frameX = gamePanel.spriteSize*9,frameY = gamePanel.spriteSize,frameWidth = gamePanel.spriteSize*6,frameHeight = gamePanel.spriteSize*6;
         drawSubWindow(frameX,frameY,frameWidth,frameHeight);
         // slots
         final int slotXstart = frameX + 40;
@@ -104,6 +104,13 @@ public class UI {
         int slotY = slotYstart;
         // draw items
         for (int i = 0; i < gamePanel.hero.inventory.size(); i++){
+            if((gamePanel.hero.inventory.get(i) == gamePanel.hero.currentWeapon) || (gamePanel.hero.inventory.get(i) == gamePanel.hero.currentArmor)){
+                g2.setColor(new Color(204, 195, 17, 255));
+                g2.fillRoundRect(slotX,slotY,gamePanel.spriteSize,gamePanel.spriteSize,20,20);
+            }
+
+
+
             g2.drawImage(gamePanel.hero.inventory.get(i).getImage(),slotX,slotY,null);
             slotX += gamePanel.spriteSize;
 
@@ -126,12 +133,13 @@ public class UI {
         int dFramyY = frameY + frameHeight;
         int dFrameWidth =frameWidth;
         int dFrameHeight = gamePanel.spriteSize*3;
-        drawSubWindow(dFrameX,dFramyY,dFrameWidth,dFrameHeight);
+
         int textX = dFrameX + 40;
         int textY = dFramyY + gamePanel.spriteSize;
-        g2.setFont(g2.getFont().deriveFont(30F));
+        g2.setFont(g2.getFont().deriveFont(25F));
         int itemIndex = getItemIndex();
         if (itemIndex < gamePanel.hero.inventory.size()){
+            drawSubWindow(dFrameX,dFramyY,dFrameWidth,dFrameHeight);
             for(String line : gamePanel.hero.inventory.get(itemIndex).getDescription().split("\n")){
                 g2.drawString(line,textX,textY);
                 textY += 40;
@@ -145,7 +153,7 @@ public class UI {
     }
 
     private void drawEquipmentScreen(){
-        final  int frame2X = gamePanel.spriteSize*9,frame2Y = gamePanel.spriteSize,frameWidth2 = gamePanel.spriteSize*6,frameHeight2 = gamePanel.spriteSize*10;
+        final  int frame2X = gamePanel.spriteSize*16,frame2Y = gamePanel.spriteSize,frameWidth2 = gamePanel.spriteSize*6,frameHeight2 = gamePanel.spriteSize*10;
         drawSubWindow(frame2X,frame2Y,frameWidth2,frameHeight2);
         final int lineHeight = 52;
         int text2X = frame2X +30;
@@ -200,39 +208,39 @@ public class UI {
         String value;
 
         value = String.valueOf(gamePanel.hero.getLevel());
-        textX = getXforRightAllignement(value,tailX);
+        textX = getXforRightAllignement(value,tailX)-15;
         g2.drawString(value,textX,textY);
         textY += lineHeight;
         value = String.valueOf(gamePanel.hero.getMaxHealth());
-        textX = getXforRightAllignement(value,tailX);
+        textX = getXforRightAllignement(value,tailX)-15;
         g2.drawString(value,textX,textY);
         textY += lineHeight;
         value = String.valueOf(gamePanel.hero.getMaxMana());
-        textX = getXforRightAllignement(value,tailX);
+        textX = getXforRightAllignement(value,tailX)-15;
         g2.drawString(value,textX,textY);
         textY += lineHeight;
         value = String.valueOf(gamePanel.hero.getStrength());
-        textX = getXforRightAllignement(value,tailX);
+        textX = getXforRightAllignement(value,tailX)-15;
         g2.drawString(value,textX,textY);
         textY += lineHeight;
         value = String.valueOf(gamePanel.hero.getDefence());
-        textX = getXforRightAllignement(value,tailX);
+        textX = getXforRightAllignement(value,tailX)-15;
         g2.drawString(value,textX,textY);
         textY += lineHeight;
         value = String.valueOf(gamePanel.hero.getDexterity());
-        textX = getXforRightAllignement(value,tailX);
+        textX = getXforRightAllignement(value,tailX)-15;
         g2.drawString(value,textX,textY);
         textY += lineHeight;
         value = String.valueOf(gamePanel.hero.getExp());
-        textX = getXforRightAllignement(value,tailX);
+        textX = getXforRightAllignement(value,tailX)-15;
         g2.drawString(value,textX,textY);
         textY += lineHeight;
         value = String.valueOf(gamePanel.hero.getNextLevelExp());
-        textX = getXforRightAllignement(value,tailX);
+        textX = getXforRightAllignement(value,tailX)-15;
         g2.drawString(value,textX,textY);
         textY += lineHeight;
         value = String.valueOf(gamePanel.hero.getGold());
-        textX = getXforRightAllignement(value,tailX);
+        textX = getXforRightAllignement(value,tailX)-15;
         g2.drawString(value,textX,textY);
 
 
@@ -248,8 +256,8 @@ public class UI {
 
 
     private void drawLossLog(int monsterIndex) {
-        int x = gamePanel.screenWidth - (gamePanel.spriteSize*16);
-        int y = 750;
+        int x = gamePanel.screenWidth - (gamePanel.spriteSize*15);
+        int y = 850;
         String text = "Game Over!";
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));
 
@@ -257,25 +265,32 @@ public class UI {
             Color color = new Color(255,255,255,255);
             g2.setColor(color);
             g2.drawString(text,x,y);
-            y += 40;
+            y += 80;
         }
     }
 
     private void drawVictoryLog(int index) {
-        int x = gamePanel.screenWidth - (gamePanel.spriteSize*16);
-        int y = 750;
-        String text = "Hero Won! Gained " + gamePanel.enemy[index].getExp() + " EXP!" ;
+        int x = gamePanel.screenWidth - (gamePanel.spriteSize*15);
+        int y = 850;
+        String text = "";
+        if(gamePanel.keyboardInputs.looted){
+             text = "Hero Won! Gained " + gamePanel.enemy[index].getExp() + " EXP!\n" + "Hero looted 1 " + gamePanel.enemy[index].drop.getName()+ " and "
+                    +  gamePanel.keyboardInputs.goldlooted + " gold!";
+        }else {
+            text = "Hero Won! Gained " + gamePanel.enemy[index].getExp() + " EXP!\n" + "Hero looted " + gamePanel.keyboardInputs.goldlooted + " gold!";
+        }
 
 
 
 
-        for (String line : text.split("\n"));{
 
+        for (String line : text.split("\n")){
             Color color = new Color(255,255,255,255);
             g2.setColor(color);
-            g2.drawString(text,x,y);
-            y += 40;
+            g2.drawString(line,x,y);
+            y += 80;
         }
+
     }
 
     void drawBattleScreen(int index) {
@@ -445,7 +460,7 @@ public class UI {
 
         public void drawBattleLogHero(int enemyIndex, int moveIndex){
             int x = gamePanel.screenWidth - (gamePanel.spriteSize*15);
-            int y = 830;
+            int y = 850;
             String text = "";
             g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));
             //System.out.println("damage damage" + damage);
@@ -465,8 +480,8 @@ public class UI {
     }
 
     public void drawBattleLogEnemy(int enemyIndex, int moveIndex){
-        int x = gamePanel.screenWidth - (gamePanel.spriteSize*16);
-        int y = 750;
+        int x = gamePanel.screenWidth - (gamePanel.spriteSize*15);
+        int y = 850;
         String text = "";
         int damage = gamePanel.battleHandler.damage;
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));
@@ -482,7 +497,7 @@ public class UI {
             Color color = new Color(255,255,255,255);
             g2.setColor(color);
             g2.drawString(line,x,y);
-            y += 40;
+            y += 80;
         }
     }
 

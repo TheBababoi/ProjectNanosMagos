@@ -1,5 +1,6 @@
 package creature.enemies;
 
+import Items.consumables.Mushroom;
 import creature.Enemy;
 import main.GamePanel;
 
@@ -22,9 +23,19 @@ public class CloudGuy extends Enemy {
         speed = 1;
         actionCounterMax = 30;
         setBattleStats();
+        setDrops(gamePanel);
 
 
 
+
+
+    }
+
+    @Override
+    public void setDrops(GamePanel gamePanel) {
+        drop = new  Mushroom(gamePanel);
+        dropChance = 10;
+        goldDrop = 10;
     }
 
     @Override

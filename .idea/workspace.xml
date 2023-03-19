@@ -4,9 +4,22 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added level up system and inventory close 14">
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added level up system and inventory close #14">
+      <change afterPath="$PROJECT_DIR$/src/Items/Consumable.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Items/equipment/LegendaryPen.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Items/equipment/PurpleSword.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/equipment/legendaryPen.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/Equipment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/Equipment.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/equipment/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/equipment/Armor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/equipment/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/equipment/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/BattleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -60,8 +73,8 @@
       <recent name="$PROJECT_DIR$/src/sprites/backgroundTiles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\Items" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\equipment" />
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\Items" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\worldMusic" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\cloudGuy" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\battleSoundEffects" />
@@ -141,7 +154,8 @@
       <workItem from="1679051731061" duration="5440000" />
       <workItem from="1679058214654" duration="302000" />
       <workItem from="1679140089122" duration="667000" />
-      <workItem from="1679148794536" duration="17768000" />
+      <workItem from="1679148794536" duration="17889000" />
+      <workItem from="1679218059596" duration="10916000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -276,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679166301174</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="added level up system and inventory close #14">
+      <created>1679166856707</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1679166856707</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -312,6 +333,7 @@
     <MESSAGE value="added combat 1.0 close #13" />
     <MESSAGE value="added combat v1.0 close #13" />
     <MESSAGE value="added level up system and inventory close 14" />
-    <option name="LAST_COMMIT_MESSAGE" value="added level up system and inventory close 14" />
+    <MESSAGE value="added level up system and inventory close #14" />
+    <option name="LAST_COMMIT_MESSAGE" value="added level up system and inventory close #14" />
   </component>
 </project>

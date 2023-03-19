@@ -2,8 +2,9 @@ package Items;
 
 import main.GamePanel;
 
-public class Equipment extends Item {
+public abstract class Equipment extends Item {
     public Equipment(GamePanel gamePanel) {
         super(gamePanel);
     }
+    public abstract void recalculateHeroStats(GamePanel gamePanel);
 }
