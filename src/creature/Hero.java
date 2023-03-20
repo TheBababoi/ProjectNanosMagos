@@ -62,6 +62,17 @@ public class Hero extends Creature {
 
     }
 
+    public void setDefault(){
+        worldX = gamePanel.spriteSize *15;
+        worldY = gamePanel.spriteSize *4;
+
+        direction = "down";
+        setStats();
+        heroMoves();
+        setInventory();
+
+    }
+
     public boolean lootEnemyDrop(int index){
 
         if (inventory.size() != inventorySize){
@@ -85,7 +96,7 @@ public class Hero extends Creature {
     }
 
     private void setInventory() {
-
+        inventory.clear();
         inventory.add(currentWeapon);
         inventory.add(currentArmor);
         inventory.add((new Mushroom(gamePanel)));

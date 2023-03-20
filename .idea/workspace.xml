@@ -9,17 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added fullscreen mode close #19">
-      <change afterPath="$PROJECT_DIR$/.idea/artifacts/Team11_jar.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added options menu close #20">
+      <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -157,7 +149,7 @@
       <workItem from="1679218059596" duration="18016000" />
       <workItem from="1679244338643" duration="674000" />
       <workItem from="1679245265652" duration="750000" />
-      <workItem from="1679308402708" duration="6193000" />
+      <workItem from="1679308402708" duration="6472000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -313,7 +305,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679240026989</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="added options menu close #20">
+      <created>1679315527395</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1679315527395</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,6 +351,7 @@
     <MESSAGE value="added level up system and inventory close #14" />
     <MESSAGE value="added ability to equip Equipment and to use Consumables" />
     <MESSAGE value="added fullscreen mode close #19" />
-    <option name="LAST_COMMIT_MESSAGE" value="added fullscreen mode close #19" />
+    <MESSAGE value="added options menu close #20" />
+    <option name="LAST_COMMIT_MESSAGE" value="added options menu close #20" />
   </component>
 </project>

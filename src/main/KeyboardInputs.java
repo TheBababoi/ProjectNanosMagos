@@ -173,6 +173,7 @@ public class KeyboardInputs implements KeyListener {
     }
     private void cutscene(int code) {
         if (code == KeyEvent.VK_ENTER) {
+            gamePanel.stopMusic();
             gamePanel.gameState = GamePanel.Gamestate.TITLESCREEM;
 
         }
@@ -349,6 +350,7 @@ public class KeyboardInputs implements KeyListener {
             gamePanel.playSoundEffect(7);
             gamePanel.music.stop();
             gamePanel.gameState = GamePanel.Gamestate.TITLESCREEM;
+            gamePanel.restart();
         }
     }
     private void battleWon(int code){

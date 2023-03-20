@@ -67,16 +67,16 @@ public class CloudGuy extends Enemy {
     @Override
     public void enemyMoves() {
         attackMove[0] = "Thunder";
-        attackPower[0] = 6;
+        attackPower[0] = 20;
         attackAccuracy[0] = 7;
         attackMove[1] = "Rain";
-        attackPower[1] = 5;
+        attackPower[1] = 25;
         attackAccuracy[1] = 1;
         attackMove[2] = "Wind";
         attackAccuracy[2] = 8;
-        attackPower[2] = 7;
+        attackPower[2] = 27;
         attackMove[3] = "Fog";
-        attackPower[3] = 7;
+        attackPower[3] = 27;
         attackAccuracy[3] = 8;
 
     }

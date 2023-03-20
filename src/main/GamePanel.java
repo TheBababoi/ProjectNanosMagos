@@ -86,6 +86,12 @@ public class GamePanel extends JPanel implements Runnable {
 
 
     }
+    public void restart(){
+        assetPlacer.setObject();
+        assetPlacer.setNPC();
+        assetPlacer.setEnemy();
+        hero.setDefault();
+    }
 
     public void beginThread(){
 
