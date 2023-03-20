@@ -41,7 +41,9 @@ public class KeyboardInputs implements KeyListener {
             dialogueState(code);
         } else if (gamePanel.gameState == GamePanel.Gamestate.TITLESCREEM) {
             titleScreen(code);
-        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEHERO) {
+        }else if(gamePanel.gameState == GamePanel.Gamestate.OPTIONSMENU){
+            optionsMenu(code);
+        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEHERO) {
             battleStateHero(code);
         } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEENEMY) {
             battleStateEnemy();
@@ -59,19 +61,72 @@ public class KeyboardInputs implements KeyListener {
 
     }
 
-    private void titleScreen(int code) {
+    private void optionsMenu(int code) {
+        if (code == KeyEvent.VK_ENTER) {
+            //enterPressed = true;
+            if (gamePanel.ui.commandIndex == 0){
+               if (gamePanel.fullScreenOn) {
+                    gamePanel.fullScreenOn =false;
+               } else {
+                   gamePanel.fullScreenOn = true;
+               }
+            }
+            if(gamePanel.ui.commandIndex == 3){
+                gamePanel.gameState = GamePanel.Gamestate.TITLESCREEM;
+                gamePanel.ui.commandIndex =0;
+            }
+        }
         if (code == KeyEvent.VK_W) {
+            gamePanel.playSoundEffect(7);
             gamePanel.ui.commandIndex--;
             if (gamePanel.ui.commandIndex < 0) {
                 gamePanel.ui.commandIndex = 3;
             }
         } else if (code == KeyEvent.VK_S) {
+            gamePanel.playSoundEffect(7);
+            gamePanel.ui.commandIndex++;
+            if (gamePanel.ui.commandIndex > 3) {
+                gamePanel.ui.commandIndex = 0;
+            }
+        } else if (code == KeyEvent.VK_A) {
+            if (gamePanel.ui.commandIndex == 1 && gamePanel.music.volumeScale > 0) {
+                gamePanel.music.volumeScale--;
+                gamePanel.music.checkVolume();
+                gamePanel.playSoundEffect(7);
+            }
+            if (gamePanel.ui.commandIndex == 2 && gamePanel.soundEffect.volumeScale > 0) {
+                gamePanel.soundEffect.volumeScale--;
+                gamePanel.playSoundEffect(7);
+            }
+        } else if (code == KeyEvent.VK_D) {
+            if (gamePanel.ui.commandIndex == 1 && gamePanel.music.volumeScale < 10) {
+                gamePanel.playSoundEffect(7);
+                gamePanel.music.volumeScale++;
+                gamePanel.music.checkVolume();
+            }
+            if (gamePanel.ui.commandIndex == 2 && gamePanel.soundEffect.volumeScale < 10) {
+                gamePanel.playSoundEffect(7);
+                gamePanel.soundEffect.volumeScale++;
+            }
+        }
+    }
+
+    private void titleScreen(int code) {
+        if (code == KeyEvent.VK_W) {
+            gamePanel.playSoundEffect(7);
+            gamePanel.ui.commandIndex--;
+            if (gamePanel.ui.commandIndex < 0) {
+                gamePanel.ui.commandIndex = 3;
+            }
+        } else if (code == KeyEvent.VK_S) {
+            gamePanel.playSoundEffect(7);
             gamePanel.ui.commandIndex++;
             if (gamePanel.ui.commandIndex > 3) {
                 gamePanel.ui.commandIndex = 0;
             }
 
         } else if (code == KeyEvent.VK_ENTER) {
+            gamePanel.playSoundEffect(7);
             if (gamePanel.ui.commandIndex == 0) {
                 gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
                 System.out.println("playstate");
@@ -79,6 +134,8 @@ public class KeyboardInputs implements KeyListener {
             } else if (gamePanel.ui.commandIndex == 1) {
 
             } else if (gamePanel.ui.commandIndex == 2) {
+                gamePanel.gameState = GamePanel.Gamestate.OPTIONSMENU;
+                gamePanel.ui.commandIndex =0;
 
             } else if (gamePanel.ui.commandIndex == 3) {
                 System.exit(0);

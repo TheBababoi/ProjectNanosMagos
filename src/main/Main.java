@@ -13,10 +13,13 @@ public class Main {
         GamePanel gamePanel = new GamePanel();
 
         mainWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        mainWindow.setResizable(false);
+        mainWindow.setResizable(true);
         mainWindow.setTitle("Project Nanos Magos");
-        mainWindow.setUndecorated(true);
         mainWindow.add(gamePanel);
+        gamePanel.config.loadConfig();
+        if(gamePanel.fullScreenOn){
+            mainWindow.setUndecorated(true);
+        }
         mainWindow.pack(); //makes window fit the panel
         mainWindow.setLocationRelativeTo(null);
         mainWindow.setVisible(true);

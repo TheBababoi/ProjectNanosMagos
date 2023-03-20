@@ -59,8 +59,10 @@ public class UI {
         this.g2 = g2;
         if(gamePanel.gameState == GamePanel.Gamestate.TITLESCREEM){
             drawTitleScreen();
+        }else if(gamePanel.gameState == GamePanel.Gamestate.OPTIONSMENU){
+            drawOptionsMenu();
         }
-        if (gamePanel.gameState== GamePanel.Gamestate.PAUSESTATE){
+        else if (gamePanel.gameState== GamePanel.Gamestate.PAUSESTATE){
             drawPauseScreen();
         } else if (gamePanel.gameState == GamePanel.Gamestate.PLAYSTATE) {
             drawHeroUI();
@@ -92,6 +94,70 @@ public class UI {
             drawInventory();
         }
     }
+
+    private void drawOptionsMenu(){
+        g2.setColor(new Color(77, 10, 162));
+        g2.fillRect(0,0, gamePanel.screenWidth, gamePanel.screenHeight);
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,80));
+        String text = "Options";
+        int x = getXforCenteredText(text);
+        int y = gamePanel.spriteSize*3;
+        g2.setColor((Color.black));
+        g2.drawString(text,x+10,y+10);
+        g2.setColor(Color.cyan);
+        g2.drawString(text,x,y);
+
+
+        //menu
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,40F));
+        text = "FullScreen";
+        x = getXforCenteredText(text)-100;
+        int x2 = x+gamePanel.spriteSize*3 +40;
+        y += gamePanel.spriteSize*2;
+        g2.drawString(text,x,y);
+        if(commandIndex ==0 ) {
+            g2.drawString(">",x-gamePanel.spriteSize,y);
+        }
+        g2.setStroke(new BasicStroke(5));
+        g2.drawRect(x2,y -25 ,30,30);
+        if (gamePanel.fullScreenOn){
+            g2.fillRect(x2,y -25 ,30,30);
+        }
+
+        text = "Music";
+        x = getXforCenteredText(text)-100;
+        y += gamePanel.spriteSize*2;
+        g2.drawString(text,x,y);
+        if(commandIndex ==1 ) {
+            g2.drawString(">",x-gamePanel.spriteSize,y);
+        }
+        g2.drawRect(x2,y-25,200,30); //200/10 = 20;
+        int volumeWidth = 20*gamePanel.music.volumeScale;
+        g2.fillRect(x2,y-25,volumeWidth,30);
+
+        text = "Sound Effects";
+        x = getXforCenteredText(text)-100;
+        y += gamePanel.spriteSize*2;
+        g2.drawString(text,x,y);
+        if(commandIndex ==2 ) {
+            g2.drawString(">",x-gamePanel.spriteSize,y);
+        }
+        g2.drawRect(x2,y-25,200,30);
+         volumeWidth = 20*gamePanel.soundEffect.volumeScale;
+        g2.fillRect(x2,y-25,volumeWidth,30);
+
+        text = "Back";
+        x = getXforCenteredText(text)-100;
+        y += gamePanel.spriteSize*2;
+        g2.drawString(text,x,y);
+        if(commandIndex == 3 ) {
+            g2.drawString(">",x-gamePanel.spriteSize,y);
+        }
+        gamePanel.config.saveConfig();
+
+    }
+
+
 
     private void drawInventory() {
 
@@ -250,6 +316,7 @@ public class UI {
 
 
 
+
     public  void changeAlpha(Graphics2D g2, float alphaValue){
         g2.setComposite((AlphaComposite.getInstance(AlphaComposite.SRC_OVER,alphaValue)));
     }
@@ -261,10 +328,10 @@ public class UI {
         String text = "Game Over!";
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));
 
-        for(String line : text.split("\n"));{
+        for(String line : text.split("\n")){
             Color color = new Color(255,255,255,255);
             g2.setColor(color);
-            g2.drawString(text,x,y);
+            g2.drawString(line,x,y);
             y += 80;
         }
     }

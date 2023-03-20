@@ -27,6 +27,7 @@ public class GamePanel extends JPanel implements Runnable {
 
     //system
     int FPS = 60;
+    Config config = new Config(this);
     Thread thread;
     public KeyboardInputs keyboardInputs = new KeyboardInputs(this);
     Sound music = new Sound();
@@ -37,6 +38,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionCheck collisionCheck = new CollisionCheck(this);
     public EventHandler eventHandler = new EventHandler(this);
     public BattleHandler battleHandler = new BattleHandler(this);
+    public boolean fullScreenOn = false;
 
 
     //creatures and objects
@@ -50,6 +52,7 @@ public class GamePanel extends JPanel implements Runnable {
     public enum Gamestate {
         CUTSCENE,
         TITLESCREEM,
+        OPTIONSMENU,
         PLAYSTATE,
         PAUSESTATE,
         DIALOGUESTATE,
@@ -70,7 +73,11 @@ public class GamePanel extends JPanel implements Runnable {
     }
 
     public void setupGame() {
-        setFullScreen();
+        if (fullScreenOn){
+            setFullScreen();
+        }
+
+        playMusic(0);
         gameState = Gamestate.CUTSCENE;
         assetPlacer.setObject();
         assetPlacer.setNPC();
