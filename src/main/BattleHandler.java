@@ -32,14 +32,14 @@ public class BattleHandler {
         System.out.println("hit roll: " + chanceToHit + "\n");
 
 
-        if (gamePanel.enemy[monsterIndex].dexterity <= chanceToHit) {
-            damage = -gamePanel.enemy[monsterIndex].defence + gamePanel.hero.attackPower[index] + gamePanel.hero.strength;
+        if (gamePanel.enemy[gamePanel.currentMap][monsterIndex].dexterity <= chanceToHit) {
+            damage = -gamePanel.enemy[gamePanel.currentMap][monsterIndex].defence + gamePanel.hero.attackPower[index] + gamePanel.hero.strength;
             if (damage < 0) {
                 damage = 0;
             }
-            gamePanel.enemy[gamePanel.battleHandler.monsterIndex].health -= damage;
-            if (gamePanel.enemy[gamePanel.battleHandler.monsterIndex].health < 0) {
-                gamePanel.enemy[gamePanel.battleHandler.monsterIndex].health = 0;
+            gamePanel.enemy[gamePanel.currentMap][monsterIndex].health -= damage;
+            if (gamePanel.enemy[gamePanel.currentMap][monsterIndex].health < 0) {
+                gamePanel.enemy[gamePanel.currentMap][monsterIndex].health = 0;
             }
             System.out.println("damage " + damage + "\n");
 
@@ -52,13 +52,13 @@ public class BattleHandler {
     public void calculateEnemyAttack(int choice) {
         Random random = new Random();
         int roll = random.nextInt(10) + 1;
-        int chanceToHit = gamePanel.enemy[monsterIndex].attackAccuracy[choice] + roll;
+        int chanceToHit = gamePanel.enemy[gamePanel.currentMap][monsterIndex].attackAccuracy[choice] + roll;
         System.out.println("enemy hit roll: " + chanceToHit + "\n");
 
 
         if (gamePanel.hero.dexterity <= chanceToHit) {
             System.out.println("enemy choice" + choice);
-            damage = -gamePanel.hero.defence + gamePanel.enemy[monsterIndex].attackPower[choice];
+            damage = -gamePanel.hero.defence + gamePanel.enemy[gamePanel.currentMap][monsterIndex].attackPower[choice];
             System.out.println("enemy damage " + damage + "\n");
             if (damage < 0) {
                 damage = 0;

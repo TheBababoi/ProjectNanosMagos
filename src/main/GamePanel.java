@@ -24,6 +24,8 @@ public class GamePanel extends JPanel implements Runnable {
 
     final public int maxWorldColumn = 50;
     final public int maxWorldRow = 50;
+    public final int maxMap = 10;
+    public int currentMap = 0;
 
     //system
     int FPS = 60;
@@ -43,9 +45,9 @@ public class GamePanel extends JPanel implements Runnable {
 
     //creatures and objects
     public Hero hero = new Hero(this,keyboardInputs);
-    public SuperObject superObject[] = new SuperObject[10];
-    public NPC npc[] = new NPC[10];
-    public Enemy enemy[] = new Enemy[10];
+    public SuperObject superObject[][] = new SuperObject[maxMap][10];
+    public NPC npc[][] = new NPC[maxMap][10];
+    public Enemy enemy[][] = new Enemy[maxMap][10];
 
     //game state
     public Gamestate gameState;
@@ -128,14 +130,14 @@ public class GamePanel extends JPanel implements Runnable {
         }
         if (gameState == Gamestate.PLAYSTATE){
             hero.refresh();
-            for (int i = 0; i < npc.length; i++) {
-                if (npc[i] != null){
-                    npc[i].refresh();
+            for (int i = 0; i < npc[1].length; i++) {
+                if (npc[currentMap][i] != null){
+                    npc[currentMap][i].refresh();
                 }
             }
-            for (int i = 0;i< enemy.length; i++){
-                if (enemy[i] != null){
-                    enemy[i].refresh();
+            for (int i = 0;i< enemy[1].length; i++){
+                if (enemy[currentMap][i] != null){
+                    enemy[currentMap][i].refresh();
                 }
             }
         }
@@ -181,22 +183,22 @@ public class GamePanel extends JPanel implements Runnable {
 
 
             //obects
-            for (int i = 0; i <superObject.length; i++) {
-                if(superObject[i]!=null){
-                    superObject[i].draw(g2,this);
+            for (int i = 0; i <superObject[1].length; i++) {
+                if(superObject[currentMap][i]!=null){
+                    superObject[currentMap][i].draw(g2,this);
                 }
             }
             //NPCs
-            for (int i = 0; i <npc.length; i++) {
-                if (npc[i] !=null ){
-                    npc[i].draw(g2);
+            for (int i = 0; i < npc[1].length; i++) {
+                if (npc[currentMap][i] !=null ){
+                    npc[currentMap][i].draw(g2);
                 }
             }
 
             //enemies
-            for (int i = 0; i <enemy.length; i++) {
-                if (enemy[i] !=null ){
-                        enemy[i].draw(g2);
+            for (int i = 0; i <enemy[1].length; i++) {
+                if (enemy[currentMap][i] !=null ){
+                        enemy[currentMap][i].draw(g2);
                 }
             }
             //hero

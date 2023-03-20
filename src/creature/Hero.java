@@ -77,10 +77,10 @@ public class Hero extends Creature {
 
         if (inventory.size() != inventorySize){
             Random random = new Random();
-            int roll = random.nextInt(10) + 1 + gamePanel.enemy[index].dropChance;
+            int roll = random.nextInt(10) + 1 + gamePanel.enemy[gamePanel.currentMap][index].dropChance;
             if (roll >= 10){
                 System.out.println("looted");
-                inventory.add(gamePanel.enemy[index].drop);
+                inventory.add(gamePanel.enemy[gamePanel.currentMap][index].drop);
                 return true;
             }
         }
@@ -89,7 +89,7 @@ public class Hero extends Creature {
 
     public int lootEnemyGold(int index){
         Random random = new Random();
-        int goldLoot = (random.nextInt(10) + 1)*gamePanel.enemy[index].goldDrop;
+        int goldLoot = (random.nextInt(10) + 1)*gamePanel.enemy[gamePanel.currentMap][index].goldDrop;
         System.out.println(goldLoot);
         this.gold += goldLoot;
         return goldLoot;
@@ -239,7 +239,7 @@ public class Hero extends Creature {
         if (index != 666) {
             if (gamePanel.keyboardInputs.enterPressed) {
                 gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
-                gamePanel.npc[index].speak();
+                gamePanel.npc[gamePanel.currentMap][index].speak();
                 friendOrFoe = true;
             }
         }
@@ -248,7 +248,7 @@ public class Hero extends Creature {
 
     public void  pickUpObject(int index) {
         if (index !=666) { //if the hero does not touch any objects (any number above the object limit is fine
-            String objectName = gamePanel.superObject[index].name;
+            String objectName = gamePanel.superObject[gamePanel.currentMap][index].name;
 
                 switch (objectName) {
                     case "Tampouris":
@@ -259,14 +259,14 @@ public class Hero extends Creature {
                         gamePanel.playSoundEffect(1);
                         hasKey++;
                         gamePanel.ui.showMessage("Hero picked up a key!");
-                        gamePanel.superObject[index] = null;
+                        gamePanel.superObject[gamePanel.currentMap][index] = null;
                         break;
                     case "Chest":
                         if (hasKey > 0) {
                             gamePanel.playSoundEffect(2);
                             hasKey--;
                             gamePanel.ui.showMessage("Hero unlocked the Chest!");
-                            gamePanel.superObject[index] = null;
+                            gamePanel.superObject[gamePanel.currentMap][index] = null;
                         }else {
                             gamePanel.ui.showMessage("Hero needs a key!");
                         }
@@ -276,7 +276,7 @@ public class Hero extends Creature {
                             gamePanel.playSoundEffect(3);
                             hasKey--;
                             gamePanel.ui.showMessage("Hero unlocked the Door!");
-                            gamePanel.superObject[index] = null;
+                            gamePanel.superObject[gamePanel.currentMap][index] = null;
                         }else {
                             gamePanel.ui.showMessage("Hero needs a key!");
                         }

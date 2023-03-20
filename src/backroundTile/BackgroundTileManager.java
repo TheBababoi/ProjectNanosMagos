@@ -9,17 +9,18 @@ import java.io.*;
 public class BackgroundTileManager {
     GamePanel gamePanel;
     public BackgroundTile[] backgroundTile;
-    public int mapLayout[][];
+    public int mapLayout[][][];
 
     public BackgroundTileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         backgroundTile = new BackgroundTile[40];
-        mapLayout= new int[gamePanel.maxWorldColumn][gamePanel.maxWorldRow];
+        mapLayout= new int[gamePanel.maxMap][gamePanel.maxWorldColumn][gamePanel.maxWorldRow];
         getTileImage();
-        loadMapfromTextFile("src/sprites/maps/world01.txt");
+        loadMapfromTextFile("src/sprites/maps/world01.txt",0);
+        loadMapfromTextFile("src/sprites/maps/map1.txt",1);
     }
 
-    public void loadMapfromTextFile(String filePath){
+    public void loadMapfromTextFile(String filePath,int mapNumber){
         try {
             InputStream inputStream = new FileInputStream(filePath);
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
@@ -30,7 +31,7 @@ public class BackgroundTileManager {
                 while(collumn < gamePanel.maxWorldColumn){
                     String digit[] = line.split(" "); // fills the array with the digits that are getting split up by the spaces
                     int digit2 = Integer.parseInt(digit[collumn]); // converting string to int
-                    mapLayout[collumn][row] = digit2;
+                    mapLayout[mapNumber][collumn][row] = digit2;
                     collumn++;
                 }
                 if(collumn==gamePanel.maxWorldColumn){
@@ -98,6 +99,9 @@ public class BackgroundTileManager {
             backgroundTile[16] = new BackgroundTile();
             backgroundTile[16].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/souravlas.png"));
             //-------------------------------------------------------------------------------------------------------------
+            backgroundTile[17] = new BackgroundTile();
+            backgroundTile[17].image = ImageIO.read((new FileInputStream("src/sprites/backgroundTiles/house.png")));
+
 
         } catch(IOException e){
             e.printStackTrace();
@@ -108,7 +112,7 @@ public class BackgroundTileManager {
         int worldCollumn = 0;
         int worldRow = 0;
         while(worldCollumn < gamePanel.maxWorldColumn && worldRow< gamePanel.maxWorldRow) {
-            int tileDigit = mapLayout[worldCollumn][worldRow];
+            int tileDigit = mapLayout[gamePanel.currentMap][worldCollumn][worldRow];
             int worldX = worldCollumn * gamePanel.spriteSize;
             int worldY = worldRow * gamePanel.spriteSize;
             int screenX = worldX - gamePanel.hero.worldX + gamePanel.hero.screenX; // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map

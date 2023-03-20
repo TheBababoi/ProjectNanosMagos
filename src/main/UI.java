@@ -341,10 +341,10 @@ public class UI {
         int y = 850;
         String text = "";
         if(gamePanel.keyboardInputs.looted){
-             text = "Hero Won! Gained " + gamePanel.enemy[index].getExp() + " EXP!\n" + "Hero looted 1 " + gamePanel.enemy[index].drop.getName()+ " and "
+             text = "Hero Won! Gained " + gamePanel.enemy[gamePanel.currentMap][index].getExp() + " EXP!\n" + "Hero looted 1 " + gamePanel.enemy[gamePanel.currentMap][index].drop.getName()+ " and "
                     +  gamePanel.keyboardInputs.goldlooted + " gold!";
         }else {
-            text = "Hero Won! Gained " + gamePanel.enemy[index].getExp() + " EXP!\n" + "Hero looted " + gamePanel.keyboardInputs.goldlooted + " gold!";
+            text = "Hero Won! Gained " + gamePanel.enemy[gamePanel.currentMap][index].getExp() + " EXP!\n" + "Hero looted " + gamePanel.keyboardInputs.goldlooted + " gold!";
         }
 
 
@@ -365,7 +365,7 @@ public class UI {
         g2.fillRect(0,0, gamePanel.screenWidth, gamePanel.screenHeight);
         drawHeroUI();
         g2.setColor(Color.white);
-        String text = gamePanel.enemy[index].name;
+        String text = gamePanel.enemy[gamePanel.currentMap][index].name;
         int x3 = getXforCenteredText(text) -150;
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,60F));
         g2.drawString(text,x3,100);
@@ -374,7 +374,7 @@ public class UI {
         int y = 200;
 
         if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY && (gamePanel.battleHandler.damage != 0)){
-            image = gamePanel.enemy[index].battleImageAttack;
+            image = gamePanel.enemy[gamePanel.currentMap][index].battleImageAttack;
             defeatedCounter++;
             if(defeatedCounter <= 3){
                 changeAlpha(g2,0f);
@@ -394,32 +394,32 @@ public class UI {
 
         }
         else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY){
-            image = gamePanel.enemy[index].battleImageAttack;
+            image = gamePanel.enemy[gamePanel.currentMap][index].battleImageAttack;
             defeatedCounter = 0;
         }else if(gamePanel.gameState == GamePanel.Gamestate.BATTLELOGHERO && (gamePanel.battleHandler.damage != 0)){
-            image = gamePanel.enemy[index].battleImageHurt;
+            image = gamePanel.enemy[gamePanel.currentMap][index].battleImageHurt;
 
             defeatedCounter = 0;
 
 
         } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLEWON) {
-            image = gamePanel.enemy[index].battleImageHurt;
+            image = gamePanel.enemy[gamePanel.currentMap][index].battleImageHurt;
             defeatedCounter = 0;
         } else {
-            image = gamePanel.enemy[index].battleImageDefault;
+            image = gamePanel.enemy[gamePanel.currentMap][index].battleImageDefault;
             defeatedCounter = 0;
         }
-        gamePanel.enemy[index].setBattleSprites(image);
+        gamePanel.enemy[gamePanel.currentMap][index].setBattleSprites(image);
         g2.drawImage(image,x,y, 720,492,null);
-        double healthScale = (double)gamePanel.spriteSize/gamePanel.enemy[index].maxHealth;
-        double hpBarTotal = healthScale*gamePanel.enemy[index].health;
+        double healthScale = (double)gamePanel.spriteSize/gamePanel.enemy[gamePanel.currentMap][index].maxHealth;
+        double hpBarTotal = healthScale*gamePanel.enemy[gamePanel.currentMap][index].health;
         g2.setColor(new Color(35,35,35));
         g2.fillRect(700,600,gamePanel.spriteSize*5,40);
         g2.setColor(new Color(255,0,30));
         g2.fillRect(702,602,(int)hpBarTotal*5,40);
         g2.setColor((Color.black));
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,30F));
-        String healthText = "HP: " + gamePanel.enemy[index].health + "/" +gamePanel.enemy[index].maxHealth;
+        String healthText = "HP: " + gamePanel.enemy[gamePanel.currentMap][index].health + "/" +gamePanel.enemy[gamePanel.currentMap][index].maxHealth;
         g2.drawString(healthText,700 + gamePanel.spriteSize,630);
         int window2X = gamePanel.screenWidth - (gamePanel.spriteSize*16);
         int window2Y = 750;
@@ -554,11 +554,11 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));
         if (damage>0){
 
-            text = gamePanel.enemy[enemyIndex].name + " used" + gamePanel.enemy[enemyIndex].attackMove[moveIndex]
+            text = gamePanel.enemy[gamePanel.currentMap][enemyIndex].name + " used" + gamePanel.enemy[gamePanel.currentMap][enemyIndex].attackMove[moveIndex]
                     + "\n" + " and caused " + damage + " damage!";
         }
         else {
-            text = gamePanel.enemy[enemyIndex].name + " used " + gamePanel.enemy[enemyIndex].attackMove[moveIndex] + " but missed!";
+            text = gamePanel.enemy[gamePanel.currentMap][enemyIndex].name + " used " + gamePanel.enemy[gamePanel.currentMap][enemyIndex].attackMove[moveIndex] + " but missed!";
         }
         for(String line : text.split("\n")){
             Color color = new Color(255,255,255,255);

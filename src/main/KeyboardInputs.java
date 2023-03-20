@@ -320,7 +320,7 @@ public class KeyboardInputs implements KeyListener {
     private void battleLogHero(int code){
         if (code == KeyEvent.VK_ENTER) {
             gamePanel.playSoundEffect(7);
-            if(gamePanel.enemy[gamePanel.battleHandler.monsterIndex].health<=0){
+            if(gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.monsterIndex].health<=0){
                 gamePanel.gameState = GamePanel.Gamestate.BATTLEWON;
                 looted = gamePanel.hero.lootEnemyDrop(gamePanel.battleHandler.monsterIndex);
                 goldlooted = gamePanel.hero.lootEnemyGold(gamePanel.battleHandler.monsterIndex);
@@ -357,10 +357,10 @@ public class KeyboardInputs implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
             gamePanel.playSoundEffect(7);
             gamePanel.music.stop();
-            gamePanel.hero.setExp(gamePanel.hero.getExp() + gamePanel.enemy[gamePanel.battleHandler.monsterIndex].getExp());
+            gamePanel.hero.setExp(gamePanel.hero.getExp() + gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.monsterIndex].getExp());
             gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
             gamePanel.playMusic(0);
-            gamePanel.enemy[gamePanel.battleHandler.monsterIndex] = null;
+            gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.monsterIndex] = null;
             gamePanel.hero.checkLevelUp();
 
 

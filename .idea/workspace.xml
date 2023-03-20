@@ -9,9 +9,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added options menu close #20">
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added game over restart function close #18">
+      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/house.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/BattleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/CollisionCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CollisionCheck.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/maps/world01.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/maps/world01.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,11 +76,11 @@
       <recent name="$PROJECT_DIR$/src/sprites/backgroundTiles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\backgroundTiles" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\equipment" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\Items" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\worldMusic" />
-      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\cloudGuy" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Items" />
@@ -149,7 +161,8 @@
       <workItem from="1679218059596" duration="18016000" />
       <workItem from="1679244338643" duration="674000" />
       <workItem from="1679245265652" duration="750000" />
-      <workItem from="1679308402708" duration="6472000" />
+      <workItem from="1679308402708" duration="7169000" />
+      <workItem from="1679325140665" duration="4950000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -312,7 +325,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679315527395</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="added game over restart function close #18">
+      <created>1679316109851</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1679316109851</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -352,6 +372,7 @@
     <MESSAGE value="added ability to equip Equipment and to use Consumables" />
     <MESSAGE value="added fullscreen mode close #19" />
     <MESSAGE value="added options menu close #20" />
-    <option name="LAST_COMMIT_MESSAGE" value="added options menu close #20" />
+    <MESSAGE value="added game over restart function close #18" />
+    <option name="LAST_COMMIT_MESSAGE" value="added game over restart function close #18" />
   </component>
 </project>
