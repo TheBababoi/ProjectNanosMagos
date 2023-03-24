@@ -187,7 +187,7 @@ public class GamePanel extends JPanel implements Runnable {
             //obects
             for (int i = 0; i <superObject[1].length; i++) {
                 if(superObject[currentMap][i]!=null){
-                    superObject[currentMap][i].draw(g2,this);
+                    superObject[currentMap][i].draw(g2);
                 }
             }
             //NPCs

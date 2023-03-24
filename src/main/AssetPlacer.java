@@ -15,25 +15,19 @@ public class AssetPlacer {
 
     public  void setObject() {
         int mapNumber =0;
-        gamePanel.superObject[mapNumber][0] = new Key();
-        gamePanel.superObject[mapNumber][0].worldX = 5*gamePanel.spriteSize;
-        gamePanel.superObject[mapNumber][0].worldY = 5*gamePanel.spriteSize;
-        gamePanel.superObject[mapNumber][1] = new Key();
-        gamePanel.superObject[mapNumber][1].worldX = 10*gamePanel.spriteSize;
-        gamePanel.superObject[mapNumber][1].worldY = 11*gamePanel.spriteSize;
-        gamePanel.superObject[mapNumber][2] = new Door();
+        gamePanel.superObject[mapNumber][2] = new Door(gamePanel);
         gamePanel.superObject[mapNumber][2].worldX = 5*gamePanel.spriteSize;
         gamePanel.superObject[mapNumber][2].worldY = 8*gamePanel.spriteSize;
-        gamePanel.superObject[mapNumber][3] = new Chest();
+        gamePanel.superObject[mapNumber][3] = new Chest(gamePanel);
         gamePanel.superObject[mapNumber][3].worldX = 6*gamePanel.spriteSize;
         gamePanel.superObject[mapNumber][3].worldY = 5*gamePanel.spriteSize;
 
 
         // DO NOT TOUCH THIS WILL BREAK THE GAME
-        gamePanel.superObject[mapNumber][9] = new Tampouris();
+        gamePanel.superObject[mapNumber][9] = new Tampouris(gamePanel);
 
          mapNumber =1;
-        gamePanel.superObject[mapNumber][9] = new Tampouris();
+        gamePanel.superObject[mapNumber][9] = new Tampouris(gamePanel);
 
 
     }

@@ -14,6 +14,7 @@ import Items.equipment.Weapon;
 
 import main.GamePanel;
 import main.KeyboardInputs;
+import object.Chest;
 
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -26,10 +27,10 @@ public class Hero extends Creature {
     final public int screenX;
     final public int screenY;
     KeyboardInputs keyboardInputs;
-    public int hasKey = 0;
     public int level,maxHealth,health,maxMana,mana, nextLevelExp,exp,baseDefence,defence,baseStrength,strength,dexterity,gold;
     public Weapon currentWeapon;
     public Armor currentArmor;
+    public Key key;
     public boolean friendOrFoe;
     public String[] attackMove = new String[4];
     public int[] attackPower = new int[4];
@@ -37,6 +38,7 @@ public class Hero extends Creature {
     public int[] attackSoundIndex = new int[4];
     public ArrayList<Item> inventory = new ArrayList<>();
     public int inventorySize = 25;
+    Chest currentChest;
 
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
@@ -251,35 +253,34 @@ public class Hero extends Creature {
             String objectName = gamePanel.superObject[gamePanel.currentMap][index].name;
 
                 switch (objectName) {
-                    case "Tampouris":
-                        //gamePanel.ui.showMessage("Gave Tampouris a kiss for good luck!");
-                       // gamePanel.playSoundEffect(4);
-                        break;
                     case "Key":
                         gamePanel.playSoundEffect(1);
-                        hasKey++;
                         gamePanel.ui.showMessage("Hero picked up a key!");
                         gamePanel.superObject[gamePanel.currentMap][index] = null;
                         break;
                     case "Chest":
-                        if (hasKey > 0) {
+                        if (inventory.size() == inventorySize){
+                            friendOrFoe = true;
+                            gamePanel.ui.currentDialogue = "Inventory is full";
+                            gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
+
+                        } else {
                             gamePanel.playSoundEffect(2);
-                            hasKey--;
-                            gamePanel.ui.showMessage("Hero unlocked the Chest!");
+                            currentChest = (Chest) gamePanel.superObject[gamePanel.currentMap][index];
+                            gamePanel.ui.currentDialogue = "Hero found: " + currentChest.content.getName() ;
+                            inventory.add(currentChest.content);
+                            friendOrFoe = true;
+                            gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
                             gamePanel.superObject[gamePanel.currentMap][index] = null;
-                        }else {
-                            gamePanel.ui.showMessage("Hero needs a key!");
                         }
+
                         break;
                     case "Door":
-                        if (hasKey > 0) {
                             gamePanel.playSoundEffect(3);
-                            hasKey--;
-                            gamePanel.ui.showMessage("Hero unlocked the Door!");
+                            friendOrFoe = true;
+                            gamePanel.ui.currentDialogue = "Hero opened the door";
+                            gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
                             gamePanel.superObject[gamePanel.currentMap][index] = null;
-                        }else {
-                            gamePanel.ui.showMessage("Hero needs a key!");
-                        }
                         break;
 
                 }

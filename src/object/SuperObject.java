@@ -6,6 +6,11 @@ import java.awt.*;
 import java.awt.image.BufferedImage;
 
 public abstract class SuperObject {
+    GamePanel gamePanel;
+
+    public SuperObject(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
 
     public BufferedImage image;
     public String name;
@@ -15,7 +20,7 @@ public abstract class SuperObject {
     public int hitboxX = 0;
     public int hitboxY = 0;
 
-    public void draw(Graphics2D g2, GamePanel gamePanel){
+    public void draw(Graphics2D g2){
         int screenX = worldX - gamePanel.hero.worldX + gamePanel.hero.screenX; // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map
         int screenY = worldY - gamePanel.hero.worldY + gamePanel.hero.screenY;
         g2.drawImage(image,screenX,screenY, gamePanel.spriteSize,gamePanel.spriteSize,null);
