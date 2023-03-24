@@ -10,6 +10,7 @@ public class PurpleSword extends Weapon{
         description = "(Purple Sword) \n +2 attack";
         getSprite("src/sprites/equipment/sword.png");
         attack = 2;
+        price = 100;
     }
 
 

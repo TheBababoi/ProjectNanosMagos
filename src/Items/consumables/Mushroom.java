@@ -10,6 +10,7 @@ public class Mushroom extends Consumable {
         name = "Mushroom";
         description = "(Purple Mushroom) \n Restores 20 HP \n \"Very tasty!\"";
         getSprite("src/sprites/Items/mushroom.png");
+        price = 3;
     }
 
     @Override

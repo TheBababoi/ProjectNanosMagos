@@ -27,12 +27,7 @@ public class FlowerGuy extends NPC {
         dialogues[2] = "I can only walk like a crab \n because of my roots!";
     }
 
-    @Override
-    public void speak() {
-        super.speak();
-        gamePanel.ui.currentDialogue = dialogues[dialogueIndex];
-        dialogueIndex++;
-    }
+
 
 
     @Override

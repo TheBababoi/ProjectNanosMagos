@@ -8,5 +8,6 @@ public class Key extends Item {
         super(gamePanel);
         getSprite("src/sprites/objects/key.png");
         name = "Key";
+        price = 150;
     }
 }

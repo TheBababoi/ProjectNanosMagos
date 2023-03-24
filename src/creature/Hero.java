@@ -36,7 +36,7 @@ public class Hero extends Creature {
     public int[] attackAccuracy = new int[4];
     public int[] attackSoundIndex = new int[4];
     public ArrayList<Item> inventory = new ArrayList<>();
-    public int inventorySize = 20;
+    public int inventorySize = 25;
 
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
@@ -120,7 +120,7 @@ public class Hero extends Creature {
         dexterity = 8;
         exp = 0;
         nextLevelExp = 80;
-        gold = 0;
+        gold = 500;
         currentWeapon = new PurpleSword(gamePanel);
         currentArmor = new Armor(gamePanel);
         strength = baseStrength + currentWeapon.getAttack();

@@ -64,6 +64,8 @@ public class CloudGuy extends Enemy {
 
     }
 
+
+
     @Override
     public void enemyMoves() {
         attackMove[0] = "Thunder";

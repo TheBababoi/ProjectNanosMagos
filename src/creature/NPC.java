@@ -25,7 +25,11 @@ public abstract class NPC extends Creature {
         if (dialogues[dialogueIndex] == null){
             dialogueIndex = 0;
         }
+        gamePanel.ui.currentDialogue = dialogues[dialogueIndex];
+        dialogueIndex++;
     }
+
+
 
     public  void switchDirection(){
         switch (gamePanel.hero.direction){

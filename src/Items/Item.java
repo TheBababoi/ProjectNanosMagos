@@ -12,6 +12,7 @@ public abstract class Item {
     protected String name;
     protected String description;
     BufferedImage image;
+    public int price;
 
     public Item(GamePanel gamePanel) {
         this.gamePanel = gamePanel;

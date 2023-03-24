@@ -1,5 +1,9 @@
 package main;
 
+import creature.Creature;
+import creature.Merchant;
+import creature.NPC;
+
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
@@ -10,46 +14,57 @@ import java.io.InputStream;
 public class UI {
     GamePanel gamePanel;
     Graphics2D g2;
-    Font lumos,ribbon;
-    BufferedImage image,heroFace;
-    public  boolean messageOn = false;
+    Font lumos, ribbon;
+    BufferedImage image, heroFace,gold;
+    public boolean messageOn = false;
     public String message = "";
     public String currentDialogue;
     public int commandIndex = 0;
-    public int commandIndexX = 0 ,commandIndexY = 0;
+    public int commandIndexX = 0, commandIndexY = 0;
     public int defeatedCounter = 5;
     int slotCollumn = 0;
     int slotRow = 0;
+    int MerchantslotCollumn = 0;
+    int MerchantslotRow = 0;
+    int counter = 0;
+    int itemIndex = 0;
+    public Merchant merchant;
+    public TradeState tradeState;
+    public enum TradeState{
+        SELECT,BUY,SELL
+    }
 
 
     public SubMenu subMenu = SubMenu.MAINMENU;
-    public enum SubMenu{
+
+    public enum SubMenu {
         MAINMENU,
         ATTACKMENU,
         INVENTORY,
 
     }
 
-    public UI(GamePanel gamePanel){
+    public UI(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-        try{
+        try {
             heroFace = ImageIO.read(new FileInputStream("src/sprites/UIElements/face.jpg"));
-        } catch(IOException e){
+            gold = ImageIO.read(new FileInputStream("src/sprites/Items/gold.png"));
+        } catch (IOException e) {
             e.printStackTrace();
         }
         try {
             InputStream inputStream = new FileInputStream("src/data/fonts/LUMOS.TTF");
-            lumos = Font.createFont(Font.TRUETYPE_FONT,inputStream);
+            lumos = Font.createFont(Font.TRUETYPE_FONT, inputStream);
             InputStream inputStream2 = new FileInputStream("src/data/fonts/DavysRibbons.ttf");
-            ribbon = Font.createFont(Font.TRUETYPE_FONT,inputStream);
-        }catch (Exception E){
+            ribbon = Font.createFont(Font.TRUETYPE_FONT, inputStream);
+        } catch (Exception E) {
 
         }
 
 
     }
 
-    public void showMessage(String text){
+    public void showMessage(String text) {
         message = text;
         messageOn = true;
     }
@@ -57,12 +72,11 @@ public class UI {
     public void draw(Graphics2D g2) throws InterruptedException {
         g2.setFont(lumos);
         this.g2 = g2;
-        if(gamePanel.gameState == GamePanel.Gamestate.TITLESCREEM){
+        if (gamePanel.gameState == GamePanel.Gamestate.TITLESCREEM) {
             drawTitleScreen();
-        }else if(gamePanel.gameState == GamePanel.Gamestate.OPTIONSMENU){
+        } else if (gamePanel.gameState == GamePanel.Gamestate.OPTIONSMENU) {
             drawOptionsMenu();
-        }
-        else if (gamePanel.gameState== GamePanel.Gamestate.PAUSESTATE){
+        } else if (gamePanel.gameState == GamePanel.Gamestate.PAUSESTATE) {
             drawPauseScreen();
         } else if (gamePanel.gameState == GamePanel.Gamestate.PLAYSTATE) {
             drawHeroUI();
@@ -71,29 +85,174 @@ public class UI {
             drawDialogueScreen();
         } else if ((gamePanel.gameState == GamePanel.Gamestate.CUTSCENE)) {
             playCutscene();
-        } else if(gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEHERO ||gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEENEMY){
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEHERO || gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEENEMY) {
             drawBattleScreen(gamePanel.battleHandler.monsterIndex);
-        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGHERO){
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGHERO) {
             drawBattleScreen(gamePanel.battleHandler.monsterIndex);
-            drawBattleLogHero(gamePanel.battleHandler.monsterIndex,gamePanel.keyboardInputs.playerChoice);
-
-        }
-        else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY){
+            drawBattleLogHero(gamePanel.battleHandler.monsterIndex, gamePanel.keyboardInputs.playerChoice);
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY) {
             drawBattleScreen(gamePanel.battleHandler.monsterIndex);
-            drawBattleLogEnemy(gamePanel.battleHandler.monsterIndex,gamePanel.keyboardInputs.enemyChoice);
-
-        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLEWON){
+            drawBattleLogEnemy(gamePanel.battleHandler.monsterIndex, gamePanel.keyboardInputs.enemyChoice);
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLEWON) {
             drawBattleScreen(gamePanel.battleHandler.monsterIndex);
             drawVictoryLog(gamePanel.battleHandler.monsterIndex);
-        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOST){
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOST) {
             drawBattleScreen(gamePanel.battleHandler.monsterIndex);
             drawLossLog(gamePanel.battleHandler.monsterIndex);
-        }else if (gamePanel.gameState == GamePanel.Gamestate.HEROSTATS){
+        } else if (gamePanel.gameState == GamePanel.Gamestate.HEROSTATS) {
             drawStatScreen();
             drawEquipmentScreen();
-            drawInventory();
+            drawInventory(true);
+        } else if (gamePanel.gameState == GamePanel.Gamestate.TRANSITION) {
+            drawTransition();
+        } else if (gamePanel.gameState == GamePanel.Gamestate.TRANSITIONBATTLE) {
+            drawTransitionToBattle();
+        } else if (gamePanel.gameState == GamePanel.Gamestate.TRADEMENU){
+            drawTradeMenu();
+        } else if (gamePanel.gameState == GamePanel.Gamestate.TRADEDIALOGUE) {
+            drawTradeMenu();
+            drawTradeDialogue();
         }
     }
+
+    void drawTradeDialogue() {
+        int x = gamePanel.spriteSize*2;
+        int y = gamePanel.spriteSize*10;
+        int width = gamePanel.screenWidth - (gamePanel.spriteSize*12);
+        int height = gamePanel.spriteSize*2;
+        drawMainWindow(x,y,width,height);
+
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,48F));
+        x += gamePanel.spriteSize;
+        y += gamePanel.spriteSize ;
+        for(String line : currentDialogue.split("\n")){
+            Color color = new Color(255,255,255,255);
+            g2.setColor(color);
+            g2.drawString(line,x,y);
+            y += 40;
+        }
+    }
+
+    private void drawTradeMenu() {
+
+        if (tradeState == TradeState.SELECT){
+            tradeSelect();
+        } else if (tradeState == TradeState.BUY) {
+            tradeBuy();
+        } else if (tradeState == TradeState.SELL) {
+            tradeSell();
+        }
+        gamePanel.keyboardInputs.enterPressed = false;
+    }
+
+    private void tradeSell() {
+        g2.setColor(new Color(0, 0, 0));
+        g2.fillRect(0,0, gamePanel.screenWidth, gamePanel.screenHeight);
+        counter++;
+        if (counter<=100){
+            image = merchant.merchant1;
+        } else if (counter<=200){
+            image = merchant.merchant2;
+        } else if (counter<=300) {
+            image = merchant.merchant3;
+        }
+        else {
+            counter = 0;
+        }
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,32F));
+        drawSubWindow(gamePanel.spriteSize*15,gamePanel.spriteSize*10,gamePanel.spriteSize*6,gamePanel.spriteSize*2);
+        g2.drawString("Your         :" + gamePanel.hero.gold,gamePanel.spriteSize*15+50,gamePanel.spriteSize*10+80 );
+        g2.drawImage(gold,gamePanel.spriteSize*17 -5,gamePanel.spriteSize*11-40,60,60,null);
+        g2.drawImage(image,gamePanel.spriteSize*3,gamePanel.spriteSize -100,  gamePanel.spriteSize*7, gamePanel.spriteSize*12,null);
+        itemIndex = getItemIndex();
+        if(itemIndex < gamePanel.hero.inventory.size()){
+            drawSubWindow(gamePanel.spriteSize*9,gamePanel.spriteSize*10,gamePanel.spriteSize*6,gamePanel.spriteSize*2);
+            g2.drawString("Price        :" + gamePanel.hero.inventory.get(itemIndex).price,gamePanel.spriteSize*9+50,gamePanel.spriteSize*10+80 );
+            g2.drawImage(gold,gamePanel.spriteSize*11 -10,gamePanel.spriteSize*11-40,60,60,null);
+        }
+        drawInventory(true);
+    }
+
+    private void tradeBuy() {
+        g2.setColor(new Color(0, 0, 0));
+        g2.fillRect(0,0, gamePanel.screenWidth, gamePanel.screenHeight);
+        counter++;
+        if (counter<=100){
+            image = merchant.merchant1;
+        } else if (counter<=200){
+            image = merchant.merchant2;
+        } else if (counter<=300) {
+            image = merchant.merchant3;
+        }
+        else {
+            counter = 0;
+        }
+
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD,32F));
+        drawSubWindow(gamePanel.spriteSize*15,gamePanel.spriteSize*10,gamePanel.spriteSize*6,gamePanel.spriteSize*2);
+        g2.drawString("Your         :" + gamePanel.hero.gold,gamePanel.spriteSize*15+50,gamePanel.spriteSize*10+80 );
+        g2.drawImage(gold,gamePanel.spriteSize*17 -5,gamePanel.spriteSize*11-40,60,60,null);
+        g2.drawImage(image,gamePanel.spriteSize*3,gamePanel.spriteSize -100,  gamePanel.spriteSize*7, gamePanel.spriteSize*12,null);
+         itemIndex = getItemIndex();
+        if(itemIndex < merchant.inventory.size()){
+            drawSubWindow(gamePanel.spriteSize*9,gamePanel.spriteSize*7,gamePanel.spriteSize*6,gamePanel.spriteSize*2);
+            g2.drawString("Price        :" + merchant.inventory.get(itemIndex).price,gamePanel.spriteSize*9+50,gamePanel.spriteSize*7+80 );
+            g2.drawImage(gold,gamePanel.spriteSize*11 -10,gamePanel.spriteSize*8-40,60,60,null);
+        }
+        drawInventory(false);
+        drawMerchantInventory(true);
+    }
+
+    private void tradeSelect() {
+        drawDialogueScreen();
+        int x = gamePanel.spriteSize *20;
+        int y = (int)(gamePanel.spriteSize*2.4);
+        int width = gamePanel.spriteSize*3;
+        int height = gamePanel.spriteSize*4;
+        drawSubWindow(x,y,width,height);
+        x += gamePanel.spriteSize;
+        y += gamePanel.spriteSize;
+        g2.drawString("Buy",x,y);
+        if (commandIndex == 0) {
+            g2.drawString(">",x-30,y);
+        }
+        y += gamePanel.spriteSize;
+        g2.drawString("Sell",x,y);
+        if (commandIndex == 1) {
+            g2.drawString(">",x-30,y);
+        }
+        y += gamePanel.spriteSize;
+        g2.drawString("Bye!",x,y);
+        if (commandIndex == 2) {
+            g2.drawString(">",x-30,y);
+        }
+        y += gamePanel.spriteSize;
+    }
+
+
+    public void drawTransition() {
+        counter++;
+        g2.setColor(new Color(0,0,0,counter*5));
+        g2.fillRect(0,0,gamePanel.screenWidth,gamePanel.screenHeight);
+        if(counter == 50){
+            counter = 0;
+            gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
+            gamePanel.currentMap = gamePanel.eventHandler.tempMap;
+            gamePanel.hero.worldX = gamePanel.spriteSize*gamePanel.eventHandler.tempCol;
+            gamePanel.hero.worldY = gamePanel.spriteSize*gamePanel.eventHandler.tempRow;
+        }
+    }
+    public void drawTransitionToBattle() {
+        counter++;
+        g2.setColor(new Color(0,0,0,counter*5));
+        g2.fillRect(0,0,gamePanel.screenWidth,gamePanel.screenHeight);
+        if(counter == 50){
+            counter = 0;
+            gamePanel.gameState = GamePanel.Gamestate.BATTLESTATEHERO;
+        }
+    }
+
 
     private void drawOptionsMenu(){
         g2.setColor(new Color(77, 10, 162));
@@ -159,7 +318,7 @@ public class UI {
 
 
 
-    private void drawInventory() {
+    private void drawInventory( boolean cursor) {
 
         final  int frameX = gamePanel.spriteSize*9,frameY = gamePanel.spriteSize,frameWidth = gamePanel.spriteSize*6,frameHeight = gamePanel.spriteSize*6;
         drawSubWindow(frameX,frameY,frameWidth,frameHeight);
@@ -180,38 +339,95 @@ public class UI {
             g2.drawImage(gamePanel.hero.inventory.get(i).getImage(),slotX,slotY,null);
             slotX += gamePanel.spriteSize;
 
+            if (i == 4 || i == 9 || i== 14 || i == 19){
+                slotX = slotXstart;
+                slotY += gamePanel.spriteSize;
+            }
+        }
+
+        if(cursor){
+            // cursor
+            int cursorX = slotXstart + gamePanel.spriteSize*slotCollumn;
+            int cursorY = slotYstart + gamePanel.spriteSize*slotRow;
+            int cursorWidth = gamePanel.spriteSize;
+            int cursorHeight = gamePanel.spriteSize;
+            // draw cursor
+            g2.setColor(Color.white);
+            g2.setStroke(new BasicStroke(5));
+            g2.drawRoundRect(cursorX,cursorY,cursorWidth,cursorHeight,20,20);
+            // draw Item description
+            int dFrameX = frameX;
+            int dFramyY = frameY + frameHeight;
+            int dFrameWidth =frameWidth;
+            int dFrameHeight = gamePanel.spriteSize*3;
+
+            int textX = dFrameX + 40;
+            int textY = dFramyY + gamePanel.spriteSize;
+            g2.setFont(g2.getFont().deriveFont(25F));
+            int itemIndex = getItemIndex();
+            if (itemIndex < gamePanel.hero.inventory.size()){
+                drawSubWindow(dFrameX,dFramyY,dFrameWidth,dFrameHeight);
+                for(String line : gamePanel.hero.inventory.get(itemIndex).getDescription().split("\n")){
+                    g2.drawString(line,textX,textY);
+                    textY += 40;
+                }
+
+            }
+        }
+
+    }
+
+    private void drawMerchantInventory( boolean showCursor) {
+
+        final  int frameX = gamePanel.spriteSize*15,frameY = gamePanel.spriteSize,frameWidth = gamePanel.spriteSize*6,frameHeight = gamePanel.spriteSize*6;
+        drawSubWindow(frameX,frameY,frameWidth,frameHeight);
+        // slots
+        final int slotXstart = frameX + 40;
+        final int slotYstart = frameY + 40;
+        int slotX = slotXstart;
+        int slotY = slotYstart;
+        // draw items
+        for (int i = 0; i < merchant.inventory.size(); i++){
+
+            g2.drawImage(merchant.inventory.get(i).getImage(),slotX,slotY,null);
+            slotX += gamePanel.spriteSize;
+
             if (i == 4 || i == 9 || i== 14){
                 slotX = slotXstart;
                 slotY += gamePanel.spriteSize;
             }
         }
-        // cursor
-        int cursorX = slotXstart + gamePanel.spriteSize*slotCollumn;
-        int cursorY = slotYstart + gamePanel.spriteSize*slotRow;
-        int cursorWidth = gamePanel.spriteSize;
-        int cursorHeight = gamePanel.spriteSize;
-        // draw cursor
-        g2.setColor(Color.white);
-        g2.setStroke(new BasicStroke(5));
-        g2.drawRoundRect(cursorX,cursorY,cursorWidth,cursorHeight,20,20);
-        // draw Item description
-        int dFrameX = frameX;
-        int dFramyY = frameY + frameHeight;
-        int dFrameWidth =frameWidth;
-        int dFrameHeight = gamePanel.spriteSize*3;
 
-        int textX = dFrameX + 40;
-        int textY = dFramyY + gamePanel.spriteSize;
-        g2.setFont(g2.getFont().deriveFont(25F));
-        int itemIndex = getItemIndex();
-        if (itemIndex < gamePanel.hero.inventory.size()){
-            drawSubWindow(dFrameX,dFramyY,dFrameWidth,dFrameHeight);
-            for(String line : gamePanel.hero.inventory.get(itemIndex).getDescription().split("\n")){
-                g2.drawString(line,textX,textY);
-                textY += 40;
+        if(showCursor){
+            // cursor
+            int cursorX = slotXstart + gamePanel.spriteSize*slotCollumn;
+            int cursorY = slotYstart + gamePanel.spriteSize*slotRow;
+            int cursorWidth = gamePanel.spriteSize;
+            int cursorHeight = gamePanel.spriteSize;
+            // draw cursor
+            g2.setColor(Color.white);
+            g2.setStroke(new BasicStroke(5));
+            g2.drawRoundRect(cursorX,cursorY,cursorWidth,cursorHeight,20,20);
+            // draw Item description
+            int dFrameX = frameX;
+            int dFramyY = frameY + frameHeight;
+            int dFrameWidth =frameWidth;
+            int dFrameHeight = gamePanel.spriteSize*3;
+
+            int textX = dFrameX + 40;
+            int textY = dFramyY + gamePanel.spriteSize;
+            g2.setFont(g2.getFont().deriveFont(25F));
+            int itemIndex = getItemIndex();
+            if (itemIndex < merchant.inventory.size()){
+                drawSubWindow(dFrameX,dFramyY,dFrameWidth,dFrameHeight);
+                for(String line : merchant.inventory.get(itemIndex).getDescription().split("\n")){
+                    g2.drawString(line,textX,textY);
+                    textY += 40;
+                }
+
             }
-
         }
+
     }
 
     public int getItemIndex(){
@@ -702,6 +918,17 @@ public class UI {
 
     public void drawSubWindow(int x, int y,int width, int height){
         Color color = new Color(0,0,0,150);
+        g2.setColor(color);
+        g2.fillRoundRect(x,y,width,height,50,50);
+
+        color = new Color(255, 255, 255, 255);
+        g2.setColor(color);
+        g2.setStroke(new BasicStroke(10));
+        g2.drawRoundRect(x+10,y+10,width-20,height-20,50,50);
+
+    }
+    public void drawMainWindow(int x, int y,int width, int height){
+        Color color = new Color(0,0,0,255);
         g2.setColor(color);
         g2.fillRoundRect(x,y,width,height,50,50);
 

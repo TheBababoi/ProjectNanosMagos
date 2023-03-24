@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class KeyboardInputs implements KeyListener {
 
-    public boolean enterPressed,looted ;
+    public boolean enterPressed, looted;
     public boolean up = false;
     public boolean down = false;
     public boolean left = false;
@@ -14,9 +14,9 @@ public class KeyboardInputs implements KeyListener {
     public GamePanel gamePanel;
     //debug
     public boolean debugMode = false;
-    public int playerChoice,enemyChoice,goldlooted;
+    public int playerChoice, enemyChoice, goldlooted;
 
-    int i =0;
+    int i = 0;
 
 
     public KeyboardInputs(GamePanel gamePanel) {
@@ -41,22 +41,167 @@ public class KeyboardInputs implements KeyListener {
             dialogueState(code);
         } else if (gamePanel.gameState == GamePanel.Gamestate.TITLESCREEM) {
             titleScreen(code);
-        }else if(gamePanel.gameState == GamePanel.Gamestate.OPTIONSMENU){
+        } else if (gamePanel.gameState == GamePanel.Gamestate.OPTIONSMENU) {
             optionsMenu(code);
-        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEHERO) {
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEHERO) {
             battleStateHero(code);
         } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLESTATEENEMY) {
             battleStateEnemy();
         } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGHERO) {
             battleLogHero(code);
-        } else if(gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY){
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY) {
             battleLogEnemy(code);
-        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLEWON) {
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLEWON) {
             battleWon(code);
-        }else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOST) {
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOST) {
             battleLost(code);
         } else if (gamePanel.gameState == GamePanel.Gamestate.HEROSTATS) {
             heroStats(code);
+        } else if (gamePanel.gameState == GamePanel.Gamestate.TRADEMENU) {
+            tradeMenu(code);
+        } else if (gamePanel.gameState == GamePanel.Gamestate.TRADEDIALOGUE) {
+            tradeDialogue(code);
+        }
+
+    }
+
+    private void tradeDialogue(int code) {
+        if (code == KeyEvent.VK_ENTER) {
+            gamePanel.gameState = GamePanel.Gamestate.TRADEMENU;
+        }
+    }
+
+    private void tradeMenu(int code) {
+
+        if (gamePanel.ui.tradeState == UI.TradeState.SELECT){
+            if (code == KeyEvent.VK_ENTER) {
+                if(gamePanel.ui.commandIndex == 0){
+                    gamePanel.ui.tradeState = UI.TradeState.BUY;
+                } else if (gamePanel.ui.commandIndex == 1) {
+                    gamePanel.ui.tradeState = UI.TradeState.SELL;
+                } else if (gamePanel.ui.commandIndex == 2) {
+                    gamePanel.ui.currentDialogue = "I just know that you will be \n coming back real soon";
+                    gamePanel.hero.friendOrFoe = true;
+                    gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
+
+                }
+            }
+            if (code == KeyEvent.VK_W) {
+                gamePanel.playSoundEffect(7);
+                gamePanel.ui.commandIndex--;
+                if (gamePanel.ui.commandIndex < 0) {
+                    gamePanel.ui.commandIndex = 2;
+                }
+            } else if (code == KeyEvent.VK_S) {
+                gamePanel.playSoundEffect(7);
+                gamePanel.ui.commandIndex++;
+                if (gamePanel.ui.commandIndex > 2) {
+                    gamePanel.ui.commandIndex = 0;
+                }
+            }
+
+         }else if(gamePanel.ui.tradeState == UI.TradeState.BUY){
+            if ( code == KeyEvent.VK_ENTER){
+                if(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex).price>gamePanel.hero.gold){
+                    gamePanel.ui.currentDialogue = "Not enough gold";
+                    gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
+                    gamePanel.ui.drawTradeDialogue();
+
+                } else if (gamePanel.hero.inventory.size() == gamePanel.hero.inventorySize) {
+                    gamePanel.ui.currentDialogue = "Full inventory";
+                    gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
+                    gamePanel.ui.drawTradeDialogue();
+                } else {
+                    gamePanel.hero.gold -= gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex).price;
+                    gamePanel.hero.inventory.add(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex));
+                    gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
+                    gamePanel.ui.currentDialogue = "Thank you for your purchase!";
+                    gamePanel.ui.drawTradeDialogue();
+
+                }
+            }
+
+            if ( code == KeyEvent.VK_ESCAPE){
+                gamePanel.ui.currentDialogue = "Hey psst want some deals?";
+                gamePanel.ui.tradeState = UI.TradeState.SELECT;
+            }
+            if (code == KeyEvent.VK_W){
+                if(gamePanel.ui.slotRow != 0){
+                    gamePanel.ui.slotRow--;
+                    gamePanel.playSoundEffect(7);
+                }
+            }
+            if (code == KeyEvent.VK_A){
+                if(gamePanel.ui.slotCollumn != 0){
+                    gamePanel.ui.slotCollumn--;
+                    gamePanel.playSoundEffect(7);
+                }
+
+            }
+            if (code == KeyEvent.VK_S){
+                if(gamePanel.ui.slotRow != 4){
+                    gamePanel.ui.slotRow++;
+                    gamePanel.playSoundEffect(7);
+                }
+            }
+            if (code == KeyEvent.VK_D){
+                if(gamePanel.ui.slotCollumn != 4){
+                    gamePanel.ui.slotCollumn++;
+                    gamePanel.playSoundEffect(7);
+                }
+
+            }
+
+        }
+        else if(gamePanel.ui.tradeState == UI.TradeState.SELL){
+            if ( code == KeyEvent.VK_ENTER) {
+                if (gamePanel.hero.inventory.get(gamePanel.ui.itemIndex) == gamePanel.hero.currentArmor ||
+                        gamePanel.hero.inventory.get(gamePanel.ui.itemIndex) == gamePanel.hero.currentWeapon) {
+                    gamePanel.ui.currentDialogue = "You are currently wearing that!";
+                    gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
+                    gamePanel.ui.drawTradeDialogue();
+
+                } else {
+                    gamePanel.hero.gold += gamePanel.hero.inventory.get(gamePanel.ui.itemIndex).price;
+                    gamePanel.hero.inventory.remove(gamePanel.ui.itemIndex);
+                    // gamePanel.hero.inventory.add(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex));
+                    gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
+                    gamePanel.ui.currentDialogue = "I'll take that off your hands!";
+                    gamePanel.ui.drawTradeDialogue();
+                }
+            }
+
+            if ( code == KeyEvent.VK_ESCAPE){
+                gamePanel.ui.currentDialogue = "Hey psst want some deals?";
+                gamePanel.ui.tradeState = UI.TradeState.SELECT;
+            }
+            if (code == KeyEvent.VK_W){
+                if(gamePanel.ui.slotRow != 0){
+                    gamePanel.ui.slotRow--;
+                    gamePanel.playSoundEffect(7);
+                }
+            }
+            if (code == KeyEvent.VK_A){
+                if(gamePanel.ui.slotCollumn != 0){
+                    gamePanel.ui.slotCollumn--;
+                    gamePanel.playSoundEffect(7);
+                }
+
+            }
+            if (code == KeyEvent.VK_S){
+                if(gamePanel.ui.slotRow != 4){
+                    gamePanel.ui.slotRow++;
+                    gamePanel.playSoundEffect(7);
+                }
+            }
+            if (code == KeyEvent.VK_D){
+                if(gamePanel.ui.slotCollumn != 4){
+                    gamePanel.ui.slotCollumn++;
+                    gamePanel.playSoundEffect(7);
+                }
+
+            }
+
         }
 
     }
@@ -191,7 +336,7 @@ public class KeyboardInputs implements KeyListener {
             } else {
                 gamePanel.stopMusic();
                 gamePanel.playMusic(4);
-                gamePanel.gameState = GamePanel.Gamestate.BATTLESTATEHERO;
+                gamePanel.gameState = GamePanel.Gamestate.TRANSITIONBATTLE;
             }
 
         }

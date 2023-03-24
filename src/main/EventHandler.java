@@ -7,6 +7,7 @@ public class EventHandler {
     GamePanel gamePanel;
 
     EventHitbox eventHitbox[][][];
+    int tempMap, tempCol, tempRow;
 
     public EventHandler(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -47,7 +48,11 @@ public class EventHandler {
 //        }
         if(hitCheck(0,1, 2, "any")){
             gamePanel.hero.friendOrFoe = true;
-            teleporter(1,30,30,GamePanel.Gamestate.DIALOGUESTATE);
+            teleporter(1,30,30,GamePanel.Gamestate.TRANSITION);
+        }
+        if(hitCheck(1,1, 2, "any")){
+            gamePanel.hero.friendOrFoe = true;
+            teleporter(0,5,5,GamePanel.Gamestate.TRANSITION);
         }
     }
 
@@ -62,7 +67,7 @@ public class EventHandler {
 
             if (gamePanel.hero.hitbox.intersects(eventHitbox[mapNumber][collumn][row])){
                 if(gamePanel.hero.direction.contentEquals(requiredDirection) || requiredDirection.contentEquals("any")) {
-                    System.out.println("hope");
+
                     hitCheck = true;
                 }
             }
@@ -102,17 +107,16 @@ public class EventHandler {
         }
 
     }
-    public  void teleporter(int mapNumber,int collumn , int row, GamePanel.Gamestate gameState){
-       // if(gamePanel.keyboardInputs.enterPressed){
-            System.out.println("ay yo");
+    public  void teleporter(int mapNumber,int column , int row, GamePanel.Gamestate gameState){
+
+
             gamePanel.gameState = gameState;
-            gamePanel.ui.currentDialogue = "Teleported!";
-            gamePanel.currentMap = mapNumber;
-            gamePanel.hero.worldX = collumn*gamePanel.spriteSize;
-            gamePanel.hero.worldY = row*gamePanel.spriteSize;
+            tempMap = mapNumber;
+            tempCol = column;
+            tempRow = row;
 
 
-      //  }
+
 
     }
 

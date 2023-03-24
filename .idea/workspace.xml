@@ -9,21 +9,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added game over restart function close #18">
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/house.png" afterDir="false" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added map transition close #21">
+      <change afterPath="$PROJECT_DIR$/src/creature/Merchant.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/merchant/down1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/merchant/down2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/merchant/merchant1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/merchant/merchant2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/merchant/merchant3.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/consumables/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/consumables/Key.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/equipment/Armor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/equipment/Armor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/equipment/LegendaryPen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/equipment/LegendaryPen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/equipment/PurpleSword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/equipment/PurpleSword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/FlowerGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/FlowerGuy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/NPC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/BattleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/CollisionCheck.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/CollisionCheck.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/maps/world01.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/maps/world01.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/maps/map1.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,11 +85,11 @@
       <recent name="$PROJECT_DIR$/src/sprites/backgroundTiles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\merchant" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\backgroundTiles" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\equipment" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\Items" />
-      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\worldMusic" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Items" />
@@ -162,7 +171,12 @@
       <workItem from="1679244338643" duration="674000" />
       <workItem from="1679245265652" duration="750000" />
       <workItem from="1679308402708" duration="7169000" />
-      <workItem from="1679325140665" duration="4950000" />
+      <workItem from="1679325140665" duration="5588000" />
+      <workItem from="1679346655901" duration="895000" />
+      <workItem from="1679417411884" duration="3964000" />
+      <workItem from="1679421487755" duration="203000" />
+      <workItem from="1679646410799" duration="2859000" />
+      <workItem from="1679649312956" duration="10385000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -332,7 +346,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679316109851</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="added map transition close #21">
+      <created>1679330166048</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1679330166048</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -373,6 +394,7 @@
     <MESSAGE value="added fullscreen mode close #19" />
     <MESSAGE value="added options menu close #20" />
     <MESSAGE value="added game over restart function close #18" />
-    <option name="LAST_COMMIT_MESSAGE" value="added game over restart function close #18" />
+    <MESSAGE value="added map transition close #21" />
+    <option name="LAST_COMMIT_MESSAGE" value="added map transition close #21" />
   </component>
 </project>

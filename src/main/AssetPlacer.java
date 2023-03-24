@@ -1,6 +1,7 @@
 package main;
 
 import creature.FlowerGuy;
+import creature.Merchant;
 import creature.enemies.CloudGuy;
 import object.*;
 
@@ -42,12 +43,10 @@ public class AssetPlacer {
         gamePanel.npc[mapNumber][0] = new FlowerGuy(gamePanel);
         gamePanel.npc[mapNumber][0].worldX = 18*gamePanel.spriteSize;
         gamePanel.npc[mapNumber][0].worldY = 2*gamePanel.spriteSize;
-        gamePanel.npc[mapNumber][1] = new FlowerGuy(gamePanel);
-        gamePanel.npc[mapNumber][1].worldX = 16*gamePanel.spriteSize;
-        gamePanel.npc[mapNumber][1].worldY = 2*gamePanel.spriteSize;
-        gamePanel.npc[mapNumber][2] = new FlowerGuy(gamePanel);
-        gamePanel.npc[mapNumber][2].worldX = 20*gamePanel.spriteSize;
-        gamePanel.npc[mapNumber][2].worldY = 2*gamePanel.spriteSize;
+        gamePanel.npc[mapNumber][1] = new Merchant(gamePanel);
+        gamePanel.npc[mapNumber][1].worldX = 7*gamePanel.spriteSize;
+        gamePanel.npc[mapNumber][1].worldY = 7*gamePanel.spriteSize;
+
 
     }
 

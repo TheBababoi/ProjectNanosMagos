@@ -9,6 +9,7 @@ public class LegendaryPen extends Weapon {
         description = "(Legendary Pen) \n +4 attack \n  \"This pen was used to pass \n Roumelioti's Operating Systems\"  ";
         getSprite("src/sprites/equipment/legendaryPen.png");
         attack = 4;
+        price = 200;
     }
 
 

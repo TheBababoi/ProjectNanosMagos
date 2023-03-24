@@ -13,6 +13,7 @@ public class Armor extends Equipment {
         description = "(Armor) \n +2 defence";
         getSprite("src/sprites/equipment/armor.png");
         defence = 2;
+        price = 100;
     }
 
     @Override
