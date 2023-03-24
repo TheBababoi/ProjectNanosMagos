@@ -9,16 +9,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added merchant close #17">
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added loot chests close #23">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/Item.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/consumables/Gold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/consumables/Gold.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/Chest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/Chest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/Door.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/Door.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/Key.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/Key.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/SuperObject.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/SuperObject.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/Tampouris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/Tampouris.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -162,7 +160,8 @@
       <workItem from="1679417411884" duration="3964000" />
       <workItem from="1679421487755" duration="203000" />
       <workItem from="1679646410799" duration="2859000" />
-      <workItem from="1679649312956" duration="14500000" />
+      <workItem from="1679649312956" duration="15541000" />
+      <workItem from="1679673937316" duration="3105000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -346,7 +345,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679660092282</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="added loot chests close #23">
+      <created>1679664084817</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1679664084817</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -364,7 +370,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Created Basic Game Panel&#10;Started the thread" />
     <MESSAGE value="implemented movement" />
     <MESSAGE value="added sprites and animations to hero close #1" />
     <MESSAGE value="added background close #2" />
@@ -389,6 +394,7 @@
     <MESSAGE value="added game over restart function close #18" />
     <MESSAGE value="added map transition close #21" />
     <MESSAGE value="added merchant close #17" />
-    <option name="LAST_COMMIT_MESSAGE" value="added merchant close #17" />
+    <MESSAGE value="added loot chests close #23" />
+    <option name="LAST_COMMIT_MESSAGE" value="added loot chests close #23" />
   </component>
 </project>

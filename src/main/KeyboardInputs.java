@@ -107,13 +107,13 @@ public class KeyboardInputs implements KeyListener {
                     gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
                     gamePanel.ui.drawTradeDialogue();
 
-                } else if (gamePanel.hero.inventory.size() == gamePanel.hero.inventorySize) {
+                } else if (!gamePanel.hero.canObtainItem(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex))){
                     gamePanel.ui.currentDialogue = "Full inventory";
                     gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
                     gamePanel.ui.drawTradeDialogue();
                 } else {
                     gamePanel.hero.gold -= gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex).price;
-                    gamePanel.hero.inventory.add(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex));
+                    //gamePanel.hero.inventory.add(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex));
                     gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
                     gamePanel.ui.currentDialogue = "Thank you for your purchase!";
                     gamePanel.ui.drawTradeDialogue();
@@ -163,7 +163,11 @@ public class KeyboardInputs implements KeyListener {
 
                 } else {
                     gamePanel.hero.gold += gamePanel.hero.inventory.get(gamePanel.ui.itemIndex).price;
-                    gamePanel.hero.inventory.remove(gamePanel.ui.itemIndex);
+                    if (gamePanel.hero.inventory.get(gamePanel.ui.itemIndex).amount>1){
+                        gamePanel.hero.inventory.get(gamePanel.ui.itemIndex).amount--;
+                    } else {
+                        gamePanel.hero.inventory.remove(gamePanel.ui.itemIndex);
+                    }
                     // gamePanel.hero.inventory.add(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex));
                     gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
                     gamePanel.ui.currentDialogue = "I'll take that off your hands!";

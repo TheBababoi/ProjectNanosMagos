@@ -9,5 +9,6 @@ public class Gold extends Item {
         name = "Purple Gold Coins";
         description = "(Purple Gold Coins) \n Currency";
         getSprite("src/sprites/Items/gold.png");
+        stackable = true;
     }
 }

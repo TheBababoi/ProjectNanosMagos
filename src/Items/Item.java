@@ -13,6 +13,8 @@ public abstract class Item {
     protected String description;
     BufferedImage image;
     public int price;
+    public boolean stackable = false;
+    public  int amount = 1;
 
     public Item(GamePanel gamePanel) {
         this.gamePanel = gamePanel;

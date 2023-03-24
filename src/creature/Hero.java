@@ -16,6 +16,7 @@ import main.GamePanel;
 import main.KeyboardInputs;
 import object.Chest;
 
+import javax.swing.text.html.parser.Entity;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.util.ArrayList;
@@ -80,9 +81,9 @@ public class Hero extends Creature {
         if (inventory.size() != inventorySize){
             Random random = new Random();
             int roll = random.nextInt(10) + 1 + gamePanel.enemy[gamePanel.currentMap][index].dropChance;
-            if (roll >= 10){
+            if (roll >= 10&&canObtainItem(gamePanel.enemy[gamePanel.currentMap][index].drop)){
                 System.out.println("looted");
-                inventory.add(gamePanel.enemy[gamePanel.currentMap][index].drop);
+                //inventory.add(gamePanel.enemy[gamePanel.currentMap][index].drop);
                 return true;
             }
         }
@@ -102,12 +103,7 @@ public class Hero extends Creature {
         inventory.add(currentWeapon);
         inventory.add(currentArmor);
         inventory.add((new Mushroom(gamePanel)));
-        inventory.add(new Gold(gamePanel));
-        inventory.add((new Mushroom(gamePanel)));
-        inventory.add(new Gold(gamePanel));
-        inventory.add(new Gold(gamePanel));
-        inventory.add((new Mushroom(gamePanel)));
-        inventory.add(new LegendaryPen(gamePanel));
+
     }
 
     public void setStats() {
@@ -166,9 +162,49 @@ public class Hero extends Creature {
             }
             else if(selectedItem instanceof Consumable){
                  ((Consumable) selectedItem).overWorldUse();
-                 inventory.remove(itemIndex);
+                 if (selectedItem.amount>1){
+                     selectedItem.amount--;
+                 } else {
+                     inventory.remove(itemIndex);
+                 }
             }
         }
+    }
+
+    public int searchInventory(String itemName) {
+        int itemIndex = 666;
+        for (int i = 0; i < inventory.size(); i++) {
+            if(inventory.get(i).getName().equals(itemName)){
+                itemIndex = i;
+                break;
+            }
+        }
+        return itemIndex;
+    }
+
+    public boolean canObtainItem(Item item){
+        boolean canObtain = false;
+        if(item.stackable){
+            int index = searchInventory(item.getName());
+            if(index != 666){
+                inventory.get(index).amount++;
+                canObtain = true;
+            }
+            else {
+                if(inventory.size() != inventorySize){
+                    inventory.add(item);
+                    canObtain = true;
+                }
+            }
+        }
+        else {
+            if(inventory.size() != inventorySize){
+                inventory.add(item);
+                canObtain = true;
+            }
+
+        }
+        return  canObtain;
     }
 
     @Override
@@ -259,16 +295,15 @@ public class Hero extends Creature {
                         gamePanel.superObject[gamePanel.currentMap][index] = null;
                         break;
                     case "Chest":
-                        if (inventory.size() == inventorySize){
+                        currentChest = (Chest) gamePanel.superObject[gamePanel.currentMap][index];
+                        if (!canObtainItem(currentChest.content)){
                             friendOrFoe = true;
                             gamePanel.ui.currentDialogue = "Inventory is full";
                             gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
 
                         } else {
                             gamePanel.playSoundEffect(2);
-                            currentChest = (Chest) gamePanel.superObject[gamePanel.currentMap][index];
                             gamePanel.ui.currentDialogue = "Hero found: " + currentChest.content.getName() ;
-                            inventory.add(currentChest.content);
                             friendOrFoe = true;
                             gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
                             gamePanel.superObject[gamePanel.currentMap][index] = null;

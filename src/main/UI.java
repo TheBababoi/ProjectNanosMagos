@@ -337,6 +337,12 @@ public class UI {
 
 
             g2.drawImage(gamePanel.hero.inventory.get(i).getImage(),slotX,slotY,null);
+            if(gamePanel.hero.inventory.get(i).amount > 1){
+                g2.setFont(g2.getFont().deriveFont(35f));
+                String string = "" + gamePanel.hero.inventory.get(i).amount;
+                g2.drawString(string,getXforRightAllignement(string,slotX)+15,slotY+gamePanel.spriteSize);
+            }
+
             slotX += gamePanel.spriteSize;
 
             if (i == 4 || i == 9 || i== 14 || i == 19){
