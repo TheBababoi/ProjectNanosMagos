@@ -9,12 +9,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added loot chests close #23">
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added stackable items  close #22">
+      <change afterPath="$PROJECT_DIR$/src/creature/enemies/NanosMagos.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/SaveLoad.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Items/Item.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/Item.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Items/consumables/Gold.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/consumables/Gold.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
     </list>
@@ -59,7 +59,7 @@
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
@@ -80,7 +80,7 @@
     </key>
   </component>
   <component name="RunManager">
-    <configuration name="main.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="main.Main" />
       <module name="Team11" />
       <extension name="coverage">
@@ -95,7 +95,7 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.main.Main" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
   </component>
@@ -161,7 +161,9 @@
       <workItem from="1679421487755" duration="203000" />
       <workItem from="1679646410799" duration="2859000" />
       <workItem from="1679649312956" duration="15541000" />
-      <workItem from="1679673937316" duration="3105000" />
+      <workItem from="1679673937316" duration="3564000" />
+      <workItem from="1679733615431" duration="10030000" />
+      <workItem from="1679752974776" duration="4999000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -352,7 +354,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679664084817</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="added stackable items  close #22">
+      <created>1679677225247</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1679677225247</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -370,7 +379,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="implemented movement" />
     <MESSAGE value="added sprites and animations to hero close #1" />
     <MESSAGE value="added background close #2" />
     <MESSAGE value="added background - close #2" />
@@ -395,6 +403,7 @@
     <MESSAGE value="added map transition close #21" />
     <MESSAGE value="added merchant close #17" />
     <MESSAGE value="added loot chests close #23" />
-    <option name="LAST_COMMIT_MESSAGE" value="added loot chests close #23" />
+    <MESSAGE value="added stackable items  close #22" />
+    <option name="LAST_COMMIT_MESSAGE" value="added stackable items  close #22" />
   </component>
 </project>

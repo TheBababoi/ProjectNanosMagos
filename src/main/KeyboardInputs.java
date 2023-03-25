@@ -277,10 +277,15 @@ public class KeyboardInputs implements KeyListener {
         } else if (code == KeyEvent.VK_ENTER) {
             gamePanel.playSoundEffect(7);
             if (gamePanel.ui.commandIndex == 0) {
+                gamePanel.restart();
                 gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
                 System.out.println("playstate");
                 gamePanel.playMusic(0);
             } else if (gamePanel.ui.commandIndex == 1) {
+                gamePanel.saveLoad.load();
+                gamePanel.playMusic(0);
+                gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
+                gamePanel.ui.commandIndex =0;
 
             } else if (gamePanel.ui.commandIndex == 2) {
                 gamePanel.gameState = GamePanel.Gamestate.OPTIONSMENU;
@@ -303,7 +308,7 @@ public class KeyboardInputs implements KeyListener {
             down = true;
         } else if (code == KeyEvent.VK_D) {
             right = true;
-        } else if (code == KeyEvent.VK_P) {
+        } else if (code == KeyEvent.VK_ESCAPE) {
 
             gamePanel.gameState = GamePanel.Gamestate.PAUSESTATE;
         } else if (code == KeyEvent.VK_ENTER) {
@@ -328,10 +333,46 @@ public class KeyboardInputs implements KeyListener {
         }
     }
     private void pauseState(int code) {
-        if (code == KeyEvent.VK_P) {
+        if (code == KeyEvent.VK_ESCAPE) {
             gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
+            gamePanel.ui.commandIndex = 0;
         }
+        if (code == KeyEvent.VK_W) {
+            gamePanel.playSoundEffect(7);
+            gamePanel.ui.commandIndex--;
+            if (gamePanel.ui.commandIndex < 0) {
+                gamePanel.ui.commandIndex = 3;
+            }
+        } else if (code == KeyEvent.VK_S) {
+            gamePanel.playSoundEffect(7);
+            gamePanel.ui.commandIndex++;
+            if (gamePanel.ui.commandIndex > 3) {
+                gamePanel.ui.commandIndex = 0;
+            }
+        } else if (code == KeyEvent.VK_ENTER) {
+            gamePanel.playSoundEffect(7);
+            if (gamePanel.ui.commandIndex == 0) {
+                gamePanel.saveLoad.save();
+                gamePanel.ui.currentDialogue = "Game Saved!";
+                gamePanel.hero.friendOrFoe = true;
+                gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
 
+            } else if (gamePanel.ui.commandIndex == 1) {
+                gamePanel.saveLoad.save();
+                gamePanel.stopMusic();
+                gamePanel.gameState = GamePanel.Gamestate.TITLESCREEM;
+                gamePanel.ui.commandIndex = 0;
+
+            } else if (gamePanel.ui.commandIndex == 2) {
+                gamePanel.stopMusic();
+                gamePanel.gameState = GamePanel.Gamestate.TITLESCREEM;
+                gamePanel.ui.commandIndex = 0;
+            } else if (gamePanel.ui.commandIndex == 3) {
+                gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
+                gamePanel.ui.commandIndex = 0;
+            }
+
+        }
     }
     private void dialogueState(int code) {
         if (code == KeyEvent.VK_ENTER) {

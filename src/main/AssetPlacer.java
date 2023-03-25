@@ -3,6 +3,7 @@ package main;
 import creature.FlowerGuy;
 import creature.Merchant;
 import creature.enemies.CloudGuy;
+import creature.enemies.NanosMagos;
 import object.*;
 
 public class AssetPlacer {
@@ -49,5 +50,8 @@ public class AssetPlacer {
         gamePanel.enemy[mapNumber][0] = new CloudGuy(gamePanel);
         gamePanel.enemy[mapNumber][0].worldX = 7*gamePanel.spriteSize;
         gamePanel.enemy[mapNumber][0].worldY = 3*gamePanel.spriteSize;
+        gamePanel.enemy[mapNumber][1] = new NanosMagos(gamePanel);
+        gamePanel.enemy[mapNumber][1].worldX = 10*gamePanel.spriteSize;
+        gamePanel.enemy[mapNumber][1].worldY = 10*gamePanel.spriteSize;
     }
 }

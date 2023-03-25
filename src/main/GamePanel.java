@@ -40,6 +40,7 @@ public class GamePanel extends JPanel implements Runnable {
     public CollisionCheck collisionCheck = new CollisionCheck(this);
     public EventHandler eventHandler = new EventHandler(this);
     public BattleHandler battleHandler = new BattleHandler(this);
+    SaveLoad saveLoad = new SaveLoad(this);
     public boolean fullScreenOn = false;
 
 

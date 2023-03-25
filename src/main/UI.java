@@ -946,7 +946,33 @@ public class UI {
     }
 
     public void drawPauseScreen() {
-        g2.drawString("PAUSED",  getXforCenteredText("PAUSED") , gamePanel.screenHeight/2); // java does not like the x axis huh?
+        g2.setFont(g2.getFont().deriveFont(Font.PLAIN,36F));
+        int x = gamePanel.spriteSize *10;
+        int y = (int)(gamePanel.spriteSize*2.4);
+        int width = gamePanel.spriteSize*5;
+        int height = gamePanel.spriteSize*6;
+        drawSubWindow(x,y,width,height);
+        x += gamePanel.spriteSize - 10;
+        y += gamePanel.spriteSize*1.5;
+        g2.drawString("Save",x,y);
+        if (commandIndex == 0) {
+            g2.drawString(">",x-30,y);
+        }
+        y += gamePanel.spriteSize;
+        g2.drawString("Save and Exit",x,y);
+        if (commandIndex == 1) {
+            g2.drawString(">",x-30,y);
+        }
+        y += gamePanel.spriteSize;
+        g2.drawString("Exit to Menu",x,y);
+        if (commandIndex == 2) {
+            g2.drawString(">",x-30,y);
+        }
+        y += gamePanel.spriteSize;
+        g2.drawString("Back",x,y);
+        if (commandIndex == 3) {
+            g2.drawString(">",x-30,y);
+        }
     }
 
     public int getXforCenteredText(String text) {
