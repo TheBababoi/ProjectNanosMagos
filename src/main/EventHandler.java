@@ -46,7 +46,7 @@ public class EventHandler {
 //            gamePanel.hero.friendOrFoe = true;
 //            expSpot(2,1, GamePanel.Gamestate.DIALOGUESTATE);
 //        }
-        if(hitCheck(0,1, 2, "any")){
+        if(hitCheck(0,0, 0, "any")){
             gamePanel.hero.friendOrFoe = true;
             teleporter(1,30,30,GamePanel.Gamestate.TRANSITION);
         }

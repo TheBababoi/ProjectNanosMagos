@@ -51,8 +51,8 @@ public class Hero extends Creature {
         hitbox = new Rectangle(12,24,56,56);
         hitboxX = 12;
         hitboxY = 24;
-        worldX = gamePanel.spriteSize *15;
-        worldY = gamePanel.spriteSize *4;
+        worldX = gamePanel.spriteSize *1;
+        worldY = gamePanel.spriteSize *1;
 
         direction = "down";
 
@@ -66,8 +66,8 @@ public class Hero extends Creature {
     }
 
     public void setDefault(){
-        worldX = gamePanel.spriteSize *15;
-        worldY = gamePanel.spriteSize *4;
+        worldX = gamePanel.spriteSize *1;
+        worldY = gamePanel.spriteSize *1;
 
         direction = "down";
         setStats();

@@ -101,6 +101,14 @@ public class BackgroundTileManager {
             //-------------------------------------------------------------------------------------------------------------
             backgroundTile[17] = new BackgroundTile();
             backgroundTile[17].image = ImageIO.read((new FileInputStream("src/sprites/backgroundTiles/house.png")));
+            backgroundTile[18] = new BackgroundTile();
+            backgroundTile[18].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/18.png"));
+            backgroundTile[19] = new BackgroundTile();
+            backgroundTile[19].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/19.png"));
+            backgroundTile[20] = new BackgroundTile();
+            backgroundTile[20].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/20.png"));
+            backgroundTile[21] = new BackgroundTile();
+            backgroundTile[21].image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/21.png"));
 
 
         } catch(IOException e){
