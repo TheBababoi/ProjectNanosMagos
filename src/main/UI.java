@@ -228,6 +228,7 @@ public class UI {
             g2.drawString(">",x-30,y);
         }
         y += gamePanel.spriteSize;
+        counter = 0;
     }
 
 

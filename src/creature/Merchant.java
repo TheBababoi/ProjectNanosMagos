@@ -61,7 +61,6 @@ public class Merchant extends NPC{
     public void setItems(){
         inventory.add(new Mushroom(gamePanel));
         inventory.add(new Mushroom(gamePanel));
-        inventory.add(new Gold(gamePanel));
         inventory.add(new LegendaryPen(gamePanel));
     }
 

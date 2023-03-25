@@ -9,13 +9,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added stackable items  close #22">
-      <change afterPath="$PROJECT_DIR$/src/creature/enemies/NanosMagos.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/SaveLoad.java" afterDir="false" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added save/load game system close #16">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Merchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Merchant.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -163,7 +159,7 @@
       <workItem from="1679649312956" duration="15541000" />
       <workItem from="1679673937316" duration="3564000" />
       <workItem from="1679733615431" duration="10030000" />
-      <workItem from="1679752974776" duration="4999000" />
+      <workItem from="1679752974776" duration="5680000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -361,7 +357,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679677225247</updated>
     </task>
-    <option name="localTasksCounter" value="29" />
+    <task id="LOCAL-00029" summary="added save/load game system close #16">
+      <created>1679758368959</created>
+      <option name="number" value="00029" />
+      <option name="presentableId" value="LOCAL-00029" />
+      <option name="project" value="LOCAL" />
+      <updated>1679758368959</updated>
+    </task>
+    <option name="localTasksCounter" value="30" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -379,7 +382,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added sprites and animations to hero close #1" />
     <MESSAGE value="added background close #2" />
     <MESSAGE value="added background - close #2" />
     <MESSAGE value="implemented a method to read a text file and generate a map - close #3" />
@@ -404,6 +406,7 @@
     <MESSAGE value="added merchant close #17" />
     <MESSAGE value="added loot chests close #23" />
     <MESSAGE value="added stackable items  close #22" />
-    <option name="LAST_COMMIT_MESSAGE" value="added stackable items  close #22" />
+    <MESSAGE value="added save/load game system close #16" />
+    <option name="LAST_COMMIT_MESSAGE" value="added save/load game system close #16" />
   </component>
 </project>
