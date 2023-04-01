@@ -9,18 +9,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added save/load game system close #16">
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/18.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/19.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/20.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/backgroundTiles/21.png" afterDir="false" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="new map">
+      <change afterPath="$PROJECT_DIR$/src/Items/consumables/HealthPotion.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/Items/consumables/ManaPotion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/Consumable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/Consumable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Items/consumables/Mushroom.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/FlowerGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/FlowerGuy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Merchant.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Merchant.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/NPC.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/NPC.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/BattleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/GamePanel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/GamePanel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/maps/world01.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/maps/world01.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,22 +57,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Bababoi/Desktop/Java Projects/Team11/src/sprites/backgroundTiles",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bababoi/Desktop/Java Projects/Team11/src/sprites/backgroundTiles&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\backgroundTiles" />
@@ -169,7 +174,15 @@
       <workItem from="1679673937316" duration="3564000" />
       <workItem from="1679733615431" duration="10030000" />
       <workItem from="1679752974776" duration="5702000" />
-      <workItem from="1679759489132" duration="3031000" />
+      <workItem from="1679759489132" duration="3266000" />
+      <workItem from="1679766423858" duration="220000" />
+      <workItem from="1679837777724" duration="603000" />
+      <workItem from="1679838621868" duration="2168000" />
+      <workItem from="1679844472866" duration="58000" />
+      <workItem from="1679996406544" duration="1717000" />
+      <workItem from="1680286241256" duration="6535000" />
+      <workItem from="1680339597913" duration="12242000" />
+      <workItem from="1680352564101" duration="3573000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -381,7 +394,14 @@
       <option name="project" value="LOCAL" />
       <updated>1679758721009</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="new map">
+      <created>1679763125047</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1679763125047</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -399,7 +419,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="added background close #2" />
     <MESSAGE value="added background - close #2" />
     <MESSAGE value="implemented a method to read a text file and generate a map - close #3" />
     <MESSAGE value="implemented camera and openended map- close #4" />
@@ -424,6 +443,7 @@
     <MESSAGE value="added loot chests close #23" />
     <MESSAGE value="added stackable items  close #22" />
     <MESSAGE value="added save/load game system close #16" />
-    <option name="LAST_COMMIT_MESSAGE" value="added save/load game system close #16" />
+    <MESSAGE value="new map" />
+    <option name="LAST_COMMIT_MESSAGE" value="new map" />
   </component>
 </project>

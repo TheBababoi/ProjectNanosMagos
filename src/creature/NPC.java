@@ -8,9 +8,11 @@ import java.util.Random;
 
 
 public abstract class NPC extends Creature {
-    int dialogueIndex;
 
-    String dialogues[] = new String[20];
+    int dialogueIndex = 0;
+    int dialogueSet = -1;
+    boolean encounteredNPC = false;
+    String dialogues[][] = new String[20][20];
 
 
     public NPC(GamePanel gamePanel) {
@@ -22,16 +24,24 @@ public abstract class NPC extends Creature {
     public abstract void setDialogue();
 
     public void speak(){
-        if (dialogues[dialogueIndex] == null){
-            dialogueIndex = 0;
-        }
-        gamePanel.ui.currentDialogue = dialogues[dialogueIndex];
-        dialogueIndex++;
+      faceHero();
+      startDialogue(this,dialogueSet);
+      dialogueSet++;
+      if (dialogues[dialogueSet][0] == null){
+          dialogueSet = 0;
+      }
+
+    }
+    public void startDialogue(NPC npc, int setNumber){
+        setEncounteredNPC(true);
+        gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
+        gamePanel.ui.npc = npc;
+        dialogueSet = setNumber;
     }
 
 
 
-    public  void switchDirection(){
+    public  void faceHero(){
         switch (gamePanel.hero.direction){
             case "up":
                 direction = "down";
@@ -46,4 +56,34 @@ public abstract class NPC extends Creature {
         }
     }
 
+    public String[][] getDialogues() {
+        return dialogues;
+    }
+
+    public int getDialogueIndex() {
+        return dialogueIndex;
+    }
+
+    public int getDialogueSet() {
+        return dialogueSet;
+    }
+
+    public void setDialogueIndex(int dialogueIndex) {
+        this.dialogueIndex = dialogueIndex;
+    }
+
+    public void setDialogueSet(int dialogueSet) {
+        this.dialogueSet = dialogueSet;
+    }
+    public void increaseDialogueIndex() {
+        this.dialogueIndex++;
+    }
+
+    public boolean isEncounteredNPC() {
+        return encounteredNPC;
+    }
+
+    public void setEncounteredNPC(boolean encounteredNPC) {
+        this.encounteredNPC = encounteredNPC;
+    }
 }

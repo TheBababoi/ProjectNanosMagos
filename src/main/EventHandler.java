@@ -39,7 +39,6 @@ public class EventHandler {
 
     public void checkEvent(){
         if(hitCheck(0,0, 0, "any")&&(!eventHitbox[gamePanel.currentMap][0][0].eventDone)){
-            gamePanel.hero.friendOrFoe = true;
             healSpot(0,0, GamePanel.Gamestate.DIALOGUESTATE);
         }
 //        if(hitCheck(0,2, 1, "any")&&(!eventHitbox[gamePanel.currentMap][2][1].eventDone)){
@@ -47,11 +46,9 @@ public class EventHandler {
 //            expSpot(2,1, GamePanel.Gamestate.DIALOGUESTATE);
 //        }
         if(hitCheck(0,0, 0, "any")){
-            gamePanel.hero.friendOrFoe = true;
             teleporter(1,30,30,GamePanel.Gamestate.TRANSITION);
         }
         if(hitCheck(1,1, 2, "any")){
-            gamePanel.hero.friendOrFoe = true;
             teleporter(0,5,5,GamePanel.Gamestate.TRANSITION);
         }
     }

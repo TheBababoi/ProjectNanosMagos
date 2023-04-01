@@ -47,6 +47,13 @@ public class BattleHandler {
             damage = 0;
 
         }
+
+        if (gamePanel.battleHandler.damage > 0) {
+            gamePanel.ui.setCurrentBattleDialogue("Hero used   " + gamePanel.hero.attackMove[index]
+                    + "\n" + " and caused " + gamePanel.battleHandler.damage + " damage!");
+        } else {
+            gamePanel.ui.setCurrentBattleDialogue("Hero used " + gamePanel.hero.attackMove[index] + " but missed!");
+        }
     }
 
     public void calculateEnemyAttack(int choice) {

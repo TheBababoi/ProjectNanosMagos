@@ -22,9 +22,15 @@ public class FlowerGuy extends NPC {
     @Override
     public void setDialogue() {
 
-        dialogues[0] = "Hello Hero!";
-        dialogues[1] = "I'm the Flower Guy";
-        dialogues[2] = "I can only walk like a crab \n because of my roots!";
+        dialogues[0][0] = "Hello Hero!";
+        dialogues[0][1] = "I'm the Flower Guy";
+        dialogues[0][2] = "I can only walk like a crab \n because of my roots!";
+
+        dialogues[1][0] = "One day this game might be completed";
+        dialogues[1][1] = "One day  I might get some proper dialogue";
+        dialogues[1][2] = "I'm sick at looking at this code";
+
+        dialogues[2][0] = "I wonder if anyone will even help me \n with this shit";
     }
 
 
@@ -68,6 +74,20 @@ public class FlowerGuy extends NPC {
     }
 
     @Override
+    public void faceHero() {
+        switch (gamePanel.hero.direction) {
+            case "left":
+                direction = "right";
+                break;
+            case "right":
+                direction = "left";
+                break;
+        }
+    }
+
+
+
+    @Override
     public void setAction() {
         actionCounter++;
         if (actionCounter>=actionCounterMax){
@@ -82,6 +102,8 @@ public class FlowerGuy extends NPC {
         }
         actionCounter = 0;
     }
+
+
 }
 
 }

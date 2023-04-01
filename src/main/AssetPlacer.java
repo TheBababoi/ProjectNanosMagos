@@ -45,8 +45,8 @@ public class AssetPlacer {
     public  void setNPC() {
         int mapNumber = 0;
         gamePanel.npc[mapNumber][0] = new FlowerGuy(gamePanel);
-        gamePanel.npc[mapNumber][0].worldX = 7*gamePanel.spriteSize;
-        gamePanel.npc[mapNumber][0].worldY = 34*gamePanel.spriteSize;
+        gamePanel.npc[mapNumber][0].worldX = 3*gamePanel.spriteSize;
+        gamePanel.npc[mapNumber][0].worldY = 5*gamePanel.spriteSize;
         gamePanel.npc[mapNumber][1] = new Merchant(gamePanel);
         gamePanel.npc[mapNumber][1].worldX = 7*gamePanel.spriteSize;
         gamePanel.npc[mapNumber][1].worldY = 13*gamePanel.spriteSize;

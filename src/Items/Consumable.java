@@ -8,6 +8,7 @@ public abstract class Consumable extends Item{
     }
 
     public abstract void overWorldUse();
+    public abstract void battleUse();
 
 
 }

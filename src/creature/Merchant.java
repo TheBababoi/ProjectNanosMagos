@@ -30,8 +30,8 @@ public class Merchant extends NPC{
 
     @Override
     public void setDialogue() {
-        dialogues[0] = "Hey psst want some deals?";
-        dialogues[0] = "Hey psst want some deals?";
+        dialogues[0][0] = "Hey psst want some deals?";
+
 
     }
 

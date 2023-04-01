@@ -4,11 +4,11 @@ import Items.Consumable;
 
 import main.GamePanel;
 
-public class Mushroom extends Consumable {
-    public Mushroom(GamePanel gamePanel) {
+public class HealthPotion extends Consumable {
+    public HealthPotion(GamePanel gamePanel) {
         super(gamePanel);
-        name = "Mushroom";
-        description = "(Purple Mushroom) \n Restores 20 HP \n \"Very tasty!\"";
+        name = "Health {ption";
+        description = "(Health Potion) \n Restores 20 HP \n \"Very tasty!\"";
         getSprite("src/sprites/Items/mushroom.png");
         price = 3;
         stackable = true;
@@ -18,7 +18,7 @@ public class Mushroom extends Consumable {
     public void overWorldUse() {
         gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
         gamePanel.playSoundEffect(3);
-        gamePanel.ui.currentDialogue = "You ate the Mushroom! \n Recovered 20 health!";
+        gamePanel.ui.currentDialogue = "You drank the potion \n Recovered 20 health!";
         gamePanel.hero.setHealth(gamePanel.hero.getHealth() +20);
         if (gamePanel.hero.getHealth()>=gamePanel.hero.getMaxHealth()){
             gamePanel.hero.setHealth(gamePanel.hero.maxHealth);
@@ -27,9 +27,8 @@ public class Mushroom extends Consumable {
 
     }
 
-    @Override
     public void battleUse() {
-        gamePanel.ui.setCurrentBattleDialogue("You ate the Mushroom! \n Recovered 20 health!");
+        gamePanel.ui.setCurrentBattleDialogue("You drank the potion \n Recovered 20 health!");
         gamePanel.hero.setHealth(gamePanel.hero.getHealth() +20);
         if (gamePanel.hero.getHealth()>=gamePanel.hero.getMaxHealth()){
             gamePanel.hero.setHealth(gamePanel.hero.maxHealth);

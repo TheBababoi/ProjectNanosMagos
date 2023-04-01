@@ -3,9 +3,7 @@ package creature;
 
 import Items.Consumable;
 import Items.Item;
-import Items.consumables.Gold;
-import Items.consumables.Key;
-import Items.consumables.Mushroom;
+import Items.consumables.*;
 import Items.equipment.Armor;
 import Items.equipment.LegendaryPen;
 import Items.equipment.PurpleSword;
@@ -31,8 +29,8 @@ public class Hero extends Creature {
     public int level,maxHealth,health,maxMana,mana, nextLevelExp,exp,baseDefence,defence,baseStrength,strength,dexterity,gold;
     public Weapon currentWeapon;
     public Armor currentArmor;
-    public Key key;
-    public boolean friendOrFoe;
+    public boolean encounteredEnemy = false;
+     boolean encounteredNPC = false;
     public String[] attackMove = new String[4];
     public int[] attackPower = new int[4];
     public int[] attackAccuracy = new int[4];
@@ -103,6 +101,8 @@ public class Hero extends Creature {
         inventory.add(currentWeapon);
         inventory.add(currentArmor);
         inventory.add((new Mushroom(gamePanel)));
+        inventory.add(new HealthPotion(gamePanel));
+        inventory.add(new ManaPotion(gamePanel));
 
     }
 
@@ -169,6 +169,17 @@ public class Hero extends Creature {
                  }
             }
         }
+    }
+
+    public void useItemInBattle(int index){
+        Item selectedItem = inventory.get(index);
+        ((Consumable) selectedItem).battleUse();
+        if (selectedItem.amount>1){
+            selectedItem.amount--;
+        } else {
+            inventory.remove(index);
+        }
+
     }
 
     public int searchInventory(String itemName) {
@@ -268,17 +279,19 @@ public class Hero extends Creature {
 
     private void enemyInteraction(int index) {
         if (index != 666) {
+                 encounteredEnemy = true;
                 gamePanel.battleHandler.startBattle(index);
-                friendOrFoe = false;
+
+
         }
     }
 
     public void npcInteraction(int index) {
         if (index != 666) {
             if (gamePanel.keyboardInputs.enterPressed) {
-                gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
+                encounteredNPC = true;
                 gamePanel.npc[gamePanel.currentMap][index].speak();
-                friendOrFoe = true;
+
             }
         }
 
@@ -297,14 +310,14 @@ public class Hero extends Creature {
                     case "Chest":
                         currentChest = (Chest) gamePanel.superObject[gamePanel.currentMap][index];
                         if (!canObtainItem(currentChest.content)){
-                            friendOrFoe = true;
+
                             gamePanel.ui.currentDialogue = "Inventory is full";
                             gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
 
                         } else {
                             gamePanel.playSoundEffect(2);
                             gamePanel.ui.currentDialogue = "Hero found: " + currentChest.content.getName() ;
-                            friendOrFoe = true;
+
                             gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
                             gamePanel.superObject[gamePanel.currentMap][index] = null;
                         }
@@ -312,7 +325,7 @@ public class Hero extends Creature {
                         break;
                     case "Door":
                             gamePanel.playSoundEffect(3);
-                            friendOrFoe = true;
+
                             gamePanel.ui.currentDialogue = "Hero opened the door";
                             gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
                             gamePanel.superObject[gamePanel.currentMap][index] = null;
@@ -430,6 +443,10 @@ public class Hero extends Creature {
         this.exp = exp;
     }
 
+    public void setMana(int mana) {
+        this.mana = mana;
+    }
+
     public void setBaseStrength(int baseStrength) {
         this.baseStrength = baseStrength;
     }
@@ -464,11 +481,18 @@ public class Hero extends Creature {
             baseDefence += 2;
             dexterity += 1;
             gamePanel.playSoundEffect(6);
-            friendOrFoe = true;
             gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
             gamePanel.ui.currentDialogue = "Level Up! Your Stats Have Been Raised!";
 
 
         }
+    }
+
+    public boolean isEncounteredNPC() {
+        return encounteredNPC;
+    }
+
+    public void setEncounteredNPC(boolean encounteredNPC) {
+        this.encounteredNPC = encounteredNPC;
     }
 }

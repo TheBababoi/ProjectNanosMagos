@@ -22,6 +22,7 @@ public class GamePanel extends JPanel implements Runnable {
     public int screenWidth = spriteSize* maxScreenColumn;
 
 
+
     final public int maxWorldColumn = 50;
     final public int maxWorldRow = 50;
     public final int maxMap = 10;
@@ -56,6 +57,7 @@ public class GamePanel extends JPanel implements Runnable {
         CUTSCENE,
         TITLESCREEM,
         OPTIONSMENU,
+        CREDITS,
         PLAYSTATE,
         PAUSESTATE,
         DIALOGUESTATE,
@@ -63,7 +65,7 @@ public class GamePanel extends JPanel implements Runnable {
         BATTLELOGHERO, BATTLEWON, BATTLELOST, BATTLELOGENEMY,
         HEROSTATS,
         TRANSITION,TRANSITIONBATTLE,TRANSITIONFROMBATTLE,
-        TRADEMENU,TRADEDIALOGUE
+        TRADEMENU,TRADEDIALOGUE,
     }
 
 
@@ -112,7 +114,6 @@ public class GamePanel extends JPanel implements Runnable {
         double delta = 0;
         long lastTime = System.nanoTime();
         long currentTime;
-        double nextDrawTime = System.nanoTime() + drawInterval; // drawing every 0.0166 secs
         while (thread != null){
 
             currentTime = System.nanoTime();
