@@ -458,62 +458,48 @@ public class KeyboardInputs implements KeyListener {
                 }
             } else if (code == KeyEvent.VK_ENTER) {
                 gamePanel.playSoundEffect(7);
-                if (gamePanel.ui.subMenu == UI.SubMenu.ATTACKMENU) {
+                if (gamePanel.ui.subMenu == UI.SubMenu.MAGICMENU || gamePanel.ui.subMenu == UI.SubMenu.PHYSICALMENU) {
+                    int i = 0;
+                    if (gamePanel.ui.subMenu == UI.SubMenu.MAGICMENU ){
+                        i = 4;
+                    }
                     if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndex == 0) {
-
-                        playerChoice = 0;
-
+                        playerChoice = i;
                         System.out.println("Player choice 0");
-                        gamePanel.battleHandler.calculateHeroAttack(playerChoice);
-
-                        gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
-                        gamePanel.ui.resetcommandIndex();
-
-
                     }
                     if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndex == 0) {
-
-                        playerChoice = 1;
-
+                        playerChoice = 1+i;
                         System.out.println("Player choice 1");
-                        gamePanel.battleHandler.calculateHeroAttack(playerChoice);
-
-                        gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
-                        gamePanel.ui.resetcommandIndex();
                     }
                     if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndex == 1) {
-
-                        playerChoice = 2;
-
+                        playerChoice = 2+i;
                         System.out.println("Player choice 2");
-                        gamePanel.battleHandler.calculateHeroAttack(playerChoice);
-
-                        gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
-                        gamePanel.ui.resetcommandIndex();
                     }
                     if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndex == 1) {
-
-                        playerChoice = 3;
-
+                        playerChoice = 3+i;
                         System.out.println("Player choice 3");
+                    } if (gamePanel.hero.getMana()>gamePanel.hero.getAttackCost(playerChoice)){
                         gamePanel.battleHandler.calculateHeroAttack(playerChoice);
-
                         gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
                         gamePanel.ui.resetcommandIndex();
+                        gamePanel.ui.subMenu = UI.SubMenu.MAINMENU;
                     }
+
                 } else {
 
 
                     if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndex == 0) {
-                        gamePanel.ui.subMenu = UI.SubMenu.ATTACKMENU;
+                        gamePanel.ui.subMenu = UI.SubMenu.PHYSICALMENU;
                         gamePanel.ui.resetcommandIndex();
 
                     }
                     if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndex == 0) {
-
+                        gamePanel.ui.subMenu = UI.SubMenu.MAGICMENU;
+                        gamePanel.ui.resetcommandIndex();
                     }
                     if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndex == 1) {
-
+                        gamePanel.ui.subMenu = UI.SubMenu.BUFFMENU;
+                        gamePanel.ui.resetcommandIndex();
                     }
                     if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndex
                             == 1) {

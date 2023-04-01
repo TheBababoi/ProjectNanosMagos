@@ -30,6 +30,7 @@ public class BattleHandler {
         int roll = random.nextInt(10) + 1;
         int chanceToHit = gamePanel.hero.attackAccuracy[index] + roll;
         System.out.println("hit roll: " + chanceToHit + "\n");
+        gamePanel.hero.setMana(gamePanel.hero.getMana()-gamePanel.hero.attackCost[index]);
 
 
         if (gamePanel.enemy[gamePanel.currentMap][monsterIndex].dexterity <= chanceToHit) {

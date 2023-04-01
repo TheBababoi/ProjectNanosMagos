@@ -31,10 +31,11 @@ public class Hero extends Creature {
     public Armor currentArmor;
     public boolean encounteredEnemy = false;
      boolean encounteredNPC = false;
-    public String[] attackMove = new String[4];
-    public int[] attackPower = new int[4];
-    public int[] attackAccuracy = new int[4];
-    public int[] attackSoundIndex = new int[4];
+    public String[] attackMove = new String[12];
+    public int[] attackPower = new int[12];
+    public int[] attackAccuracy = new int[12];
+    public int[] attackSoundIndex = new int[12];
+    public int[] attackCost = new int[12];
     public ArrayList<Item> inventory = new ArrayList<>();
     public int inventorySize = 25;
     Chest currentChest;
@@ -115,7 +116,7 @@ public class Hero extends Creature {
         mana = maxMana;
         baseStrength = 10;
         baseDefence = 1;
-        dexterity = 8;
+        dexterity = 4;
         exp = 0;
         nextLevelExp = 80;
         gold = 500;
@@ -128,23 +129,48 @@ public class Hero extends Creature {
 
     }
     public void heroMoves() {
-        attackMove[0] = "Fireball";
-        attackPower[0] = 75;
+        attackMove[0] = "Punch";
+        attackPower[0] = 30;
         attackAccuracy[0] = 10;
         attackSoundIndex[0] = 8;
-        attackMove[1] = "Flamestrike";
-        attackPower[1] = 150;
+        attackCost[0] = 0;
+        attackMove[1] = "Kick";
+        attackPower[1] = 35;
         attackAccuracy[1] = 6;
         attackSoundIndex[1] = 5;
         attackAccuracy[2] = 7;
-        attackMove[2] = "IceSpear";
-        attackPower[2] = 100;
+        attackCost[1] = 0;
+        attackMove[2] = "Headbutt";
+        attackPower[2] = 40;
         attackSoundIndex[2] = 5;
         attackAccuracy[3] = 8;
-        attackMove[3] = "Blizzard";
-        attackPower[3] = 800;
+        attackCost[2] = 0;
+        attackMove[3] = "Suplex";
+        attackPower[3] = 50;
         attackAccuracy[3] = 5;
         attackSoundIndex[3] = 5;
+        attackCost[3] = 0;
+        attackMove[4] = "Fireball";
+        attackPower[4] = 75;
+        attackAccuracy[4] = 10;
+        attackSoundIndex[4] = 8;
+        attackCost[4] = 5;
+        attackMove[5] = "Flamestrike";
+        attackPower[5] = 150;
+        attackAccuracy[5] = 6;
+        attackSoundIndex[5] = 5;
+        attackCost[5] = 10;
+        attackMove[6] = "IceSpear";
+        attackPower[6] = 100;
+        attackAccuracy[6] = 7;
+        attackSoundIndex[6] = 5;
+        attackCost[6] = 8;
+        attackMove[7] = "Blizzard";
+        attackPower[7] = 200;
+        attackAccuracy[7] = 5;
+        attackSoundIndex[7] = 5;
+        attackCost[7] = 20;
+
 
     }
 
@@ -465,6 +491,21 @@ public class Hero extends Creature {
 
     public void setHealth(int health) {
         this.health = health;
+    }
+
+
+
+    public int getAttackPower(int index) {
+        return attackPower[index];
+    }
+
+    public int getAttackAccuracy(int index) {
+        return attackAccuracy[index];
+    }
+
+
+    public int getAttackCost(int index) {
+        return attackCost[index];
     }
 
     public void checkLevelUp() {

@@ -9,6 +9,7 @@ public class Mushroom extends Consumable {
         super(gamePanel);
         name = "Mushroom";
         description = "(Purple Mushroom) \n Restores 20 HP \n \"Very tasty!\"";
+        battleDescription = "Restores 20 Health";
         getSprite("src/sprites/Items/mushroom.png");
         price = 3;
         stackable = true;

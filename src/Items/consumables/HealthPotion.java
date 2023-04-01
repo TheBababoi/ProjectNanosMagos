@@ -9,6 +9,7 @@ public class HealthPotion extends Consumable {
         super(gamePanel);
         name = "Health {ption";
         description = "(Health Potion) \n Restores 20 HP \n \"Very tasty!\"";
+        battleDescription = "Restores 20 Health";
         getSprite("src/sprites/Items/mushroom.png");
         price = 3;
         stackable = true;

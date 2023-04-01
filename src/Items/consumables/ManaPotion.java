@@ -9,6 +9,7 @@ public class ManaPotion extends Consumable {
         super(gamePanel);
         name = "mana Potion";
         description = "(Mana Potion) \n Restores 20 Mana \n \"Very tasty!\"";
+        battleDescription = "Restores 20 Mana";
         getSprite("src/sprites/Items/mushroom.png");
         price = 3;
         stackable = true;

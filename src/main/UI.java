@@ -52,7 +52,9 @@ public class UI {
 
     public enum SubMenu {
         MAINMENU,
-        ATTACKMENU,
+        PHYSICALMENU,
+        MAGICMENU,
+        BUFFMENU,
         INVENTORY,
 
     }
@@ -658,7 +660,7 @@ public class UI {
         } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGENEMY) {
             image = gamePanel.enemy[gamePanel.currentMap][index].battleImageAttack;
             defeatedCounter = 0;
-        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGHERO && (gamePanel.battleHandler.damage != 0)) {
+        } else if (gamePanel.gameState == GamePanel.Gamestate.BATTLELOGHERO && (gamePanel.battleHandler.damage != 0)&&!gamePanel.keyboardInputs.isItemUsed()) {
             image = gamePanel.enemy[gamePanel.currentMap][index].battleImageHurt;
 
             defeatedCounter = 0;
@@ -695,19 +697,19 @@ public class UI {
             int height = gamePanel.spriteSize * 3;
             drawSubWindow(windowX, windowY, width, height);
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
-            text = "Attack";
+            text = "Physical";
             g2.drawString(text, 100, 850);
             if (commandIndexX == 0 && commandIndex == 0) {
                 g2.drawString(">", 100 - gamePanel.spriteSize, 850);
             }
 
-            text = "Defend";
+            text = "Magic";
             g2.drawString(text, 350, 850);
             if (commandIndexX == 1 && commandIndex == 0) {
                 g2.drawString(">", 350 - gamePanel.spriteSize, 850);
             }
 
-            text = "Taunt";
+            text = "Buffs";
             ;
             g2.drawString(text, 100, 925);
             if (commandIndexX == 0 && commandIndex == 1) {
@@ -719,7 +721,7 @@ public class UI {
             if (commandIndexX == 1 && commandIndex == 1) {
                 g2.drawString(">", 350 - gamePanel.spriteSize, 925);
             }
-        } else if (subMenu == SubMenu.ATTACKMENU) {
+        } else if (subMenu == SubMenu.MAGICMENU) {
             int windowX = 0;
             int windowY = 750;
             int width = gamePanel.screenWidth - (gamePanel.spriteSize * 16);
@@ -750,6 +752,74 @@ public class UI {
             if (commandIndexX == 1 && commandIndex == 1) {
                 g2.drawString(">", 350 - gamePanel.spriteSize, 925);
             }
+        }else if (subMenu == SubMenu.PHYSICALMENU) {
+                 int windowX = 0;
+                    int windowY = 750;
+            int width = gamePanel.screenWidth - (gamePanel.spriteSize * 16);
+            int height = gamePanel.spriteSize * 3;
+            drawSubWindow(windowX, windowY, width, height);
+
+                g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+                text = "Punch";
+                g2.drawString(text, 100, 850);
+                if (commandIndexX == 0 && commandIndex == 0) {
+                    g2.drawString(">", 100 - gamePanel.spriteSize, 850);
+                }
+
+                text = "Kick";
+                g2.drawString(text, 350, 850);
+                if (commandIndexX == 1 && commandIndex == 0) {
+                    g2.drawString(">", 350 - gamePanel.spriteSize, 850);
+                }
+
+                text = "Headbutt";
+                ;
+                g2.drawString(text, 100, 925);
+                if (commandIndexX == 0 && commandIndex == 1) {
+                    g2.drawString(">", 100 - gamePanel.spriteSize, 925);
+                }
+
+                text = "Suplex";
+                g2.drawString(text, 350, 925);
+                if (commandIndexX == 1 && commandIndex == 1) {
+                    g2.drawString(">", 350 - gamePanel.spriteSize, 925);
+                }
+            }
+
+                else if (subMenu == SubMenu.BUFFMENU) {
+            int windowX = 0;
+            int windowY = 750;
+            int width = gamePanel.screenWidth - (gamePanel.spriteSize * 16);
+            int height = gamePanel.spriteSize * 3;
+            drawSubWindow(windowX, windowY, width, height);
+                    g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
+                    text = "Meditate";
+                    g2.drawString(text, 100, 850);
+                    if (commandIndexX == 0 && commandIndex == 0) {
+                        g2.drawString(">", 100 - gamePanel.spriteSize, 850);
+                    }
+
+                    text = "Focus";
+                    g2.drawString(text, 350, 850);
+                    if (commandIndexX == 1 && commandIndex == 0) {
+                        g2.drawString(">", 350 - gamePanel.spriteSize, 850);
+                    }
+
+                    text = "Defend";
+                    ;
+                    g2.drawString(text, 100, 925);
+                    if (commandIndexX == 0 && commandIndex == 1) {
+                        g2.drawString(">", 100 - gamePanel.spriteSize, 925);
+                    }
+
+                    text = "Enrage";
+                    g2.drawString(text, 350, 925);
+                    if (commandIndexX == 1 && commandIndex == 1) {
+                        g2.drawString(">", 350 - gamePanel.spriteSize, 925);
+                    }
+
+
+
         } else if (subMenu == SubMenu.INVENTORY) {
             System.out.println(commandIndex);
             int windowX = 0;
@@ -793,22 +863,24 @@ public class UI {
         int y = 850;
         if (subMenu == SubMenu.MAINMENU) {
             if (commandIndexX == 0 && commandIndex == 0) {
-                battleTipsText = "List of Attacks";
+                battleTipsText = "List of Physical Attacks";
 
             }
             if (commandIndexX == 1 && commandIndex == 0) {
+                battleTipsText = "List of Magic Attacks";
 
             }
             if (commandIndexX == 0 && commandIndex == 1) {
-
+                battleTipsText = "List of Support Moves";
             }
             if (commandIndexX == 1 && commandIndex == 1) {
 
                 boolean flag = false;
 
                 for (Item item: gamePanel.hero.inventory ){
-                    if (item instanceof Consumable){
+                    if (item instanceof Consumable) {
                         flag = true;
+                        break;
                     }
                 }
                 if (flag){
@@ -819,7 +891,35 @@ public class UI {
 
             }
         } else if (subMenu == SubMenu.INVENTORY) {
-            battleTipsText = gamePanel.hero.inventory.get(itemBattleIndex.get(commandIndex)).getDescription();
+            Item item = gamePanel.hero.inventory.get(itemBattleIndex.get(commandIndex));
+
+            battleTipsText = ((Consumable) item).getBattleDescription();
+        } else if (subMenu == SubMenu.MAGICMENU || subMenu == SubMenu.PHYSICALMENU) {
+            int index = 0;
+            int i =0;
+            if (subMenu == SubMenu.MAGICMENU){
+                i=4;
+            }
+            if (commandIndexX == 0 && commandIndex == 0) {
+                index = i;
+
+            }
+            if (commandIndexX == 1 && commandIndex == 0) {
+                index = i+1;
+
+            }
+            if (commandIndexX == 0 && commandIndex == 1) {
+                index = i+2;
+            }
+            if (commandIndexX == 1 && commandIndex == 1) {
+                index = i+3;
+            }
+            if (gamePanel.hero.getAttackCost(index)>gamePanel.hero.getMana()){
+                battleTipsText = "Not enough mana!";
+            }else {
+                battleTipsText = "Power: " + gamePanel.hero.getAttackPower(index) + " Accuracy: " +gamePanel.hero.getAttackAccuracy(index) + "\nMana Cost: " + gamePanel.hero.getAttackCost(index);
+            }
+
         }
 
 
