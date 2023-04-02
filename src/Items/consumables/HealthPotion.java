@@ -7,7 +7,7 @@ import main.GamePanel;
 public class HealthPotion extends Consumable {
     public HealthPotion(GamePanel gamePanel) {
         super(gamePanel);
-        name = "Health {ption";
+        name = "Health Potion";
         description = "(Health Potion) \n Restores 20 HP \n \"Very tasty!\"";
         battleDescription = "Restores 20 Health";
         getSprite("src/sprites/Items/mushroom.png");

@@ -9,12 +9,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="added mana system, added more moves, added most of the battle tips">
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="Added implementation of support moves">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config.txt" beforeDir="false" afterPath="$PROJECT_DIR$/config.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/BattleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -173,7 +169,7 @@
       <workItem from="1680339597913" duration="12242000" />
       <workItem from="1680352564101" duration="5059000" />
       <workItem from="1680371959133" duration="4528000" />
-      <workItem from="1680423775043" duration="6537000" />
+      <workItem from="1680423775043" duration="7037000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -406,7 +402,14 @@
       <option name="project" value="LOCAL" />
       <updated>1680376398888</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="Added implementation of support moves">
+      <created>1680431007302</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1680431007302</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,7 +427,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="implemented camera and openended map- close #4" />
     <MESSAGE value="added collision close #5" />
     <MESSAGE value="added music and sound effects changed to delta game loop close #7" />
     <MESSAGE value="added basic npc entity - close #8" />
@@ -449,6 +451,7 @@
     <MESSAGE value="new map" />
     <MESSAGE value="added ability to use inventory in battle, added advanced dialogues, added credits close #15 close #25" />
     <MESSAGE value="added mana system, added more moves, added most of the battle tips" />
-    <option name="LAST_COMMIT_MESSAGE" value="added mana system, added more moves, added most of the battle tips" />
+    <MESSAGE value="Added implementation of support moves" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added implementation of support moves" />
   </component>
 </project>

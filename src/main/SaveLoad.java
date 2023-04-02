@@ -1,6 +1,8 @@
 package main;
 
 import Items.Item;
+import Items.consumables.HealthPotion;
+import Items.consumables.ManaPotion;
 import Items.consumables.Mushroom;
 import Items.equipment.Armor;
 import Items.equipment.LegendaryPen;
@@ -197,8 +199,13 @@ public class SaveLoad {
         }else if (name.equals("sword")) {
             item = new PurpleSword(gamePanel);
         }
-        else if (name.equals("armor")) {
+        else if (name.equals("Health Potion")) {
+            item = new HealthPotion(gamePanel);
+        }else if (name.equals("armor")) {
             item = new Armor(gamePanel);
+        }
+        else if (name.equals("Mana Potionr")) {
+            item = new ManaPotion(gamePanel);
         }
         return item;
     }
