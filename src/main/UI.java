@@ -22,8 +22,8 @@ public class UI {
     BufferedImage image, heroFace, gold;
     public boolean messageOn = false;
     public String message = "";
-    public String currentDialogue;
-    private String currentBattleDialogue;
+    public String currentDialogue = "";
+    String currentBattleDialogue = "";
     public int commandIndex = 0;
     public int commandIndexX = 0;
     public int defeatedCounter = 5;
@@ -41,8 +41,8 @@ public class UI {
 
     private int characterIndex = 0;
     private String combinedText = "";
-    private String battleTipsText;
-    private int creditsY = 800;
+    private String battleTipsText= "";
+    private int creditsY = 1000;
     private ArrayList<String> itemNames = new ArrayList<>();
     private ArrayList<Integer> itemBattleIndex = new ArrayList<>();
     private int itemCounter = -1;
@@ -141,7 +141,7 @@ public class UI {
     }
 
     private void drawCredits(int y) {
-        String string = "                   Project Nanos magos \n \n \n How do I get my husband \n to stop going ‘Goblin Mode’ during sex?\n" +
+        String string = "                   Project Nanos magos \n \n \n\n\n\n\n\n\n Goblin mode copy pasta \n\n\n\n\n\n\n How do I get my husband \n to stop going ‘Goblin Mode’ during sex?\n" +
                 "\n" +
                 "TLDR; My husband says ‘Goblin Mode activated’ \n when we start to have sex, growls and acts like a caveman,\n and then says ‘Goblin Mode off’ when we stop, \n and then pretends not to remember afterward.\n" +
                 "\n" +
@@ -325,6 +325,7 @@ public class UI {
         g2.drawString(text, x, y);
         if (commandIndex == 0) {
             g2.drawString(">", x - gamePanel.spriteSize, y);
+            g2.drawString("Requires Game restart", getXforCenteredText("(*(Requires Game restart)") , 1000);
         }
         g2.setStroke(new BasicStroke(5));
         g2.drawRect(x2, y - 25, 30, 30);
@@ -700,26 +701,26 @@ public class UI {
             text = "Physical";
             g2.drawString(text, 100, 850);
             if (commandIndexX == 0 && commandIndex == 0) {
-                g2.drawString(">", 100 - gamePanel.spriteSize, 850);
+                g2.drawString(">", 130 - gamePanel.spriteSize, 850);
             }
 
             text = "Magic";
             g2.drawString(text, 350, 850);
             if (commandIndexX == 1 && commandIndex == 0) {
-                g2.drawString(">", 350 - gamePanel.spriteSize, 850);
+                g2.drawString(">", 380 - gamePanel.spriteSize, 850);
             }
 
             text = "Buffs";
             ;
             g2.drawString(text, 100, 925);
             if (commandIndexX == 0 && commandIndex == 1) {
-                g2.drawString(">", 100 - gamePanel.spriteSize, 925);
+                g2.drawString(">", 130 - gamePanel.spriteSize, 925);
             }
 
             text = "Inventory";
             g2.drawString(text, 350, 925);
             if (commandIndexX == 1 && commandIndex == 1) {
-                g2.drawString(">", 350 - gamePanel.spriteSize, 925);
+                g2.drawString(">", 380 - gamePanel.spriteSize, 925);
             }
         } else if (subMenu == SubMenu.MAGICMENU) {
             int windowX = 0;
@@ -731,26 +732,26 @@ public class UI {
             text = "Fireball";
             g2.drawString(text, 100, 850);
             if (commandIndexX == 0 && commandIndex == 0) {
-                g2.drawString(">", 100 - gamePanel.spriteSize, 850);
+                g2.drawString(">", 130 - gamePanel.spriteSize, 850);
             }
 
             text = "Flamestrike";
             g2.drawString(text, 350, 850);
             if (commandIndexX == 1 && commandIndex == 0) {
-                g2.drawString(">", 350 - gamePanel.spriteSize, 850);
+                g2.drawString(">", 380 - gamePanel.spriteSize, 850);
             }
 
             text = "Ice Spear";
             ;
             g2.drawString(text, 100, 925);
             if (commandIndexX == 0 && commandIndex == 1) {
-                g2.drawString(">", 100 - gamePanel.spriteSize, 925);
+                g2.drawString(">", 130 - gamePanel.spriteSize, 925);
             }
 
             text = "Blizzard";
             g2.drawString(text, 350, 925);
             if (commandIndexX == 1 && commandIndex == 1) {
-                g2.drawString(">", 350 - gamePanel.spriteSize, 925);
+                g2.drawString(">", 380 - gamePanel.spriteSize, 925);
             }
         }else if (subMenu == SubMenu.PHYSICALMENU) {
                  int windowX = 0;
@@ -763,26 +764,26 @@ public class UI {
                 text = "Punch";
                 g2.drawString(text, 100, 850);
                 if (commandIndexX == 0 && commandIndex == 0) {
-                    g2.drawString(">", 100 - gamePanel.spriteSize, 850);
+                    g2.drawString(">", 130 - gamePanel.spriteSize, 850);
                 }
 
                 text = "Kick";
                 g2.drawString(text, 350, 850);
                 if (commandIndexX == 1 && commandIndex == 0) {
-                    g2.drawString(">", 350 - gamePanel.spriteSize, 850);
+                    g2.drawString(">", 380 - gamePanel.spriteSize, 850);
                 }
 
                 text = "Headbutt";
                 ;
                 g2.drawString(text, 100, 925);
                 if (commandIndexX == 0 && commandIndex == 1) {
-                    g2.drawString(">", 100 - gamePanel.spriteSize, 925);
+                    g2.drawString(">", 130 - gamePanel.spriteSize, 925);
                 }
 
                 text = "Suplex";
                 g2.drawString(text, 350, 925);
                 if (commandIndexX == 1 && commandIndex == 1) {
-                    g2.drawString(">", 350 - gamePanel.spriteSize, 925);
+                    g2.drawString(">", 380 - gamePanel.spriteSize, 925);
                 }
             }
 
@@ -796,26 +797,26 @@ public class UI {
                     text = "Meditate";
                     g2.drawString(text, 100, 850);
                     if (commandIndexX == 0 && commandIndex == 0) {
-                        g2.drawString(">", 100 - gamePanel.spriteSize, 850);
+                        g2.drawString(">", 130 - gamePanel.spriteSize, 850);
                     }
 
                     text = "Focus";
                     g2.drawString(text, 350, 850);
                     if (commandIndexX == 1 && commandIndex == 0) {
-                        g2.drawString(">", 350 - gamePanel.spriteSize, 850);
+                        g2.drawString(">", 380 - gamePanel.spriteSize, 850);
                     }
 
-                    text = "Defend";
+                    text = "Dance";
                     ;
                     g2.drawString(text, 100, 925);
                     if (commandIndexX == 0 && commandIndex == 1) {
-                        g2.drawString(">", 100 - gamePanel.spriteSize, 925);
+                        g2.drawString(">", 130 - gamePanel.spriteSize, 925);
                     }
 
                     text = "Enrage";
                     g2.drawString(text, 350, 925);
                     if (commandIndexX == 1 && commandIndex == 1) {
-                        g2.drawString(">", 350 - gamePanel.spriteSize, 925);
+                        g2.drawString(">", 380 - gamePanel.spriteSize, 925);
                     }
 
 
@@ -846,7 +847,7 @@ public class UI {
 
             for (int i = 0; i <= itemCounter; i++) {
                 g2.drawString(itemNames.get(i), x2, y2);
-                g2.drawString(String.valueOf(gamePanel.hero.inventory.get(itemBattleIndex.get(i)).amount), x2 + 300, y2);
+                g2.drawString(String.valueOf("x" + gamePanel.hero.inventory.get(itemBattleIndex.get(i)).amount), x2 + 300, y2);
                 if (commandIndex == i) {
                     g2.drawString(">", x2 - gamePanel.spriteSize, y2);
                 }
@@ -896,31 +897,60 @@ public class UI {
             battleTipsText = ((Consumable) item).getBattleDescription();
         } else if (subMenu == SubMenu.MAGICMENU || subMenu == SubMenu.PHYSICALMENU) {
             int index = 0;
-            int i =0;
-            if (subMenu == SubMenu.MAGICMENU){
-                i=4;
+            int i = 0;
+            if (subMenu == SubMenu.MAGICMENU) {
+                i = 4;
             }
             if (commandIndexX == 0 && commandIndex == 0) {
                 index = i;
 
             }
             if (commandIndexX == 1 && commandIndex == 0) {
-                index = i+1;
+                index = i + 1;
 
             }
             if (commandIndexX == 0 && commandIndex == 1) {
-                index = i+2;
+                index = i + 2;
             }
             if (commandIndexX == 1 && commandIndex == 1) {
-                index = i+3;
+                index = i + 3;
             }
-            if (gamePanel.hero.getAttackCost(index)>gamePanel.hero.getMana()){
+            if (gamePanel.hero.getAttackCost(index) > gamePanel.hero.getMana()) {
                 battleTipsText = "Not enough mana!";
-            }else {
-                battleTipsText = "Power: " + gamePanel.hero.getAttackPower(index) + " Accuracy: " +gamePanel.hero.getAttackAccuracy(index) + "\nMana Cost: " + gamePanel.hero.getAttackCost(index);
+            } else {
+                battleTipsText = "Power: " + gamePanel.hero.getAttackPower(index) + " Accuracy: " + gamePanel.hero.getAttackAccuracy(index) + "\nMana Cost: " + gamePanel.hero.getAttackCost(index);
+            }
+        }
+        else if (subMenu == SubMenu.BUFFMENU) {
+                if (commandIndexX == 0 && commandIndex == 0) {
+                    battleTipsText = "Restores 1/3 of Hero's mana";
+                }
+                if (commandIndexX == 1 && commandIndex == 0) {
+                    if (!gamePanel.battleHandler.isUsedFocus()){
+                        battleTipsText = "Raises Hero's accuracy by 1 once";
+                    }else {
+                        battleTipsText = "Can't focus anymore";
+                    }
+
+                }
+                if (commandIndexX == 0 && commandIndex == 1) {
+                    if (!gamePanel.battleHandler.isUsedDance()){
+                        battleTipsText = "Raises Hero's dexterity by 1 once";
+                    } else {
+                        battleTipsText = "Can't dance anymore";
+                    }
+
+                }
+                if (commandIndexX == 1 && commandIndex == 1) {
+                    if(!gamePanel.battleHandler.isUsedEnrage()){
+                        battleTipsText = "Raises Hero's attack by 5 once";
+                    } else {
+                        battleTipsText = "Can't get any more enraged!";
+                    }
+                }
+
             }
 
-        }
 
 
         g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));for(String line : battleTipsText.split("\n")){
@@ -937,7 +967,6 @@ public class UI {
         public void drawBattleLogHero(int enemyIndex, int moveIndex){
             int x = gamePanel.screenWidth - (gamePanel.spriteSize*15);
             int y = 850;
-            String text = "";
             g2.setFont(g2.getFont().deriveFont(Font.BOLD,50F));
             //System.out.println("damage damage" + damage);
             char[] characters = currentBattleDialogue.toCharArray();
@@ -1219,7 +1248,7 @@ public class UI {
     }
 
     public void resetCreditsY() {
-        creditsY = 0;
+        creditsY = 1000 ;
     }
 
     public int getItemBattleIndex(int index) {

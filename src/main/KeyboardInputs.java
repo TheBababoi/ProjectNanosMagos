@@ -97,6 +97,7 @@ public class KeyboardInputs implements KeyListener {
                     gamePanel.ui.currentDialogue = "I just know that you will be \n coming back real soon";
 
                     gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
+                    gamePanel.ui.resetcommandIndex();
 
                 }
             }
@@ -137,7 +138,11 @@ public class KeyboardInputs implements KeyListener {
 
             if ( code == KeyEvent.VK_ESCAPE){
                 gamePanel.ui.currentDialogue = "Hey psst want some deals?";
+                char[] characters = gamePanel.ui.currentBattleDialogue.toCharArray();
+                gamePanel.ui.displayLetterbyLetter(characters);
+
                 gamePanel.ui.tradeState = UI.TradeState.SELECT;
+                gamePanel.ui.resetcommandIndex();
             }
             if (code == KeyEvent.VK_W){
                 if(gamePanel.ui.slotRow != 0){
@@ -192,6 +197,7 @@ public class KeyboardInputs implements KeyListener {
             if ( code == KeyEvent.VK_ESCAPE){
                 gamePanel.ui.currentDialogue = "Hey psst want some deals?";
                 gamePanel.ui.tradeState = UI.TradeState.SELECT;
+                gamePanel.ui.resetcommandIndex();
             }
             if (code == KeyEvent.VK_W){
                 if(gamePanel.ui.slotRow != 0){
@@ -237,6 +243,7 @@ public class KeyboardInputs implements KeyListener {
             if(gamePanel.ui.commandIndex == 3){
                 gamePanel.gameState = GamePanel.Gamestate.TITLESCREEM;
                 gamePanel.ui.commandIndex =0;
+                gamePanel.ui.resetcommandIndex();
             }
         }
         if (code == KeyEvent.VK_W) {
@@ -460,7 +467,7 @@ public class KeyboardInputs implements KeyListener {
                 gamePanel.playSoundEffect(7);
                 if (gamePanel.ui.subMenu == UI.SubMenu.MAGICMENU || gamePanel.ui.subMenu == UI.SubMenu.PHYSICALMENU) {
                     int i = 0;
-                    if (gamePanel.ui.subMenu == UI.SubMenu.MAGICMENU ){
+                    if (gamePanel.ui.subMenu == UI.SubMenu.MAGICMENU) {
                         i = 4;
                     }
                     if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndex == 0) {
@@ -468,24 +475,66 @@ public class KeyboardInputs implements KeyListener {
                         System.out.println("Player choice 0");
                     }
                     if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndex == 0) {
-                        playerChoice = 1+i;
+                        playerChoice = 1 + i;
                         System.out.println("Player choice 1");
                     }
                     if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndex == 1) {
-                        playerChoice = 2+i;
+                        playerChoice = 2 + i;
                         System.out.println("Player choice 2");
                     }
                     if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndex == 1) {
-                        playerChoice = 3+i;
+                        playerChoice = 3 + i;
                         System.out.println("Player choice 3");
-                    } if (gamePanel.hero.getMana()>gamePanel.hero.getAttackCost(playerChoice)){
+                    }
+                    if (gamePanel.hero.getMana() >= gamePanel.hero.getAttackCost(playerChoice)) {
                         gamePanel.battleHandler.calculateHeroAttack(playerChoice);
                         gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
                         gamePanel.ui.resetcommandIndex();
                         gamePanel.ui.subMenu = UI.SubMenu.MAINMENU;
                     }
+                }else if(gamePanel.ui.subMenu == UI.SubMenu.BUFFMENU){
+                        if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndex == 0) {
+                            gamePanel.battleHandler.meditate();
+                            gamePanel.ui.setCurrentBattleDialogue("Hero mediated to restore some mana!");
+                            gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
+                            gamePanel.ui.resetcommandIndex();
+                            gamePanel.ui.subMenu = UI.SubMenu.MAINMENU;
 
-                } else {
+                        }
+                        if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndex == 0) {
+                            if (!gamePanel.battleHandler.isUsedFocus()){
+                                gamePanel.battleHandler.setUsedFocus(true);
+                                gamePanel.ui.setCurrentBattleDialogue("Hero became very focused! \n His Accuracy rose!");
+                                gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
+                                gamePanel.ui.resetcommandIndex();
+                                gamePanel.ui.subMenu = UI.SubMenu.MAINMENU;
+
+                            }
+
+                        }
+                        if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndex == 1) {
+                            if (!gamePanel.battleHandler.isUsedDance()){
+                                gamePanel.battleHandler.setUsedDance(true);
+                                gamePanel.ui.setCurrentBattleDialogue("Hero began to dance! \n His Dexterity rose!");
+                                gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
+                                gamePanel.ui.resetcommandIndex();
+                                gamePanel.ui.subMenu = UI.SubMenu.MAINMENU;
+
+                            }
+                        }
+                        if (gamePanel.ui.commandIndexX == 1 && gamePanel.ui.commandIndex == 1) {
+                            if (!gamePanel.battleHandler.isUsedEnrage()){
+                                gamePanel.battleHandler.setUsedEnrage(true);
+                                gamePanel.ui.setCurrentBattleDialogue("Hero got really mad! \n His Attack rose!");
+                                gamePanel.gameState = GamePanel.Gamestate.BATTLELOGHERO;
+                                gamePanel.ui.resetcommandIndex();
+                                gamePanel.ui.subMenu = UI.SubMenu.MAINMENU;
+
+                            }
+                        }
+                    }
+
+                    else {
 
 
                     if (gamePanel.ui.commandIndexX == 0 && gamePanel.ui.commandIndex == 0) {
@@ -513,8 +562,6 @@ public class KeyboardInputs implements KeyListener {
                       if (flag){
                             gamePanel.ui.subMenu = UI.SubMenu.INVENTORY;
                              gamePanel.ui.resetcommandIndex();}
-                    } else{
-                        gamePanel.ui.setBattleTipsText("Inventory is Empty!");
                     }
 
                 }
@@ -546,8 +593,6 @@ public class KeyboardInputs implements KeyListener {
                 gamePanel.gameState = GamePanel.Gamestate.BATTLEWON;
                 looted = gamePanel.hero.lootEnemyDrop(gamePanel.battleHandler.monsterIndex);
                 goldlooted = gamePanel.hero.lootEnemyGold(gamePanel.battleHandler.monsterIndex);
-
-
             }
             else{
                 itemUsed = false;
@@ -577,6 +622,7 @@ public class KeyboardInputs implements KeyListener {
             gamePanel.music.stop();
             gamePanel.gameState = GamePanel.Gamestate.TITLESCREEM;
             gamePanel.restart();
+            gamePanel.battleHandler.resetBuffs();
         }
     }
     private void battleWon(int code){
@@ -585,6 +631,7 @@ public class KeyboardInputs implements KeyListener {
             gamePanel.playSoundEffect(7);
             gamePanel.music.stop();
             gamePanel.hero.setExp(gamePanel.hero.getExp() + gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.monsterIndex].getExp());
+            gamePanel.battleHandler.resetBuffs();
             gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
             gamePanel.playMusic(0);
             gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.monsterIndex] = null;
