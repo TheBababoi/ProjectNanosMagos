@@ -17,12 +17,12 @@ public class Mushroom extends Consumable {
 
     @Override
     public void overWorldUse() {
-        gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
+        gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
         gamePanel.playSoundEffect(3);
-        gamePanel.ui.currentDialogue = "You ate the Mushroom! \n Recovered 20 health!";
-        gamePanel.hero.setHealth(gamePanel.hero.getHealth() +20);
-        if (gamePanel.hero.getHealth()>=gamePanel.hero.getMaxHealth()){
-            gamePanel.hero.setHealth(gamePanel.hero.getMaxHealth());
+        gamePanel.getUi().setCurrentDialogue("You ate the Mushroom! \n Recovered 20 health!");
+        gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() +20);
+        if (gamePanel.getHero().getHealth()>= gamePanel.getHero().getMaxHealth()){
+            gamePanel.getHero().setHealth(gamePanel.getHero().getMaxHealth());
         }
 
 
@@ -30,10 +30,10 @@ public class Mushroom extends Consumable {
 
     @Override
     public void battleUse() {
-        gamePanel.ui.setCurrentBattleDialogue("You ate the Mushroom! \n Recovered 20 health!");
-        gamePanel.hero.setHealth(gamePanel.hero.getHealth() +20);
-        if (gamePanel.hero.getHealth()>=gamePanel.hero.getMaxHealth()){
-            gamePanel.hero.setHealth(gamePanel.hero.getMaxHealth());
+        gamePanel.getUi().setCurrentBattleDialogue("You ate the Mushroom! \n Recovered 20 health!");
+        gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() +20);
+        if (gamePanel.getHero().getHealth()>= gamePanel.getHero().getMaxHealth()){
+            gamePanel.getHero().setHealth(gamePanel.getHero().getMaxHealth());
         }
     }
 }

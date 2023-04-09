@@ -29,21 +29,11 @@ public abstract class Item {
         }
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public BufferedImage getImage() {
-        return image;
-    }
 
     public String getDescription() {
         return description;
     }
 
-    public GamePanel getGamePanel() {
-        return gamePanel;
-    }
 
     public int getPrice() {
         return price;
@@ -57,31 +47,15 @@ public abstract class Item {
         return amount;
     }
 
-    public void setGamePanel(GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public void setImage(BufferedImage image) {
-        this.image = image;
-    }
-
-    public void setPrice(int price) {
-        this.price = price;
-    }
-
-    public void setStackable(boolean stackable) {
-        this.stackable = stackable;
-    }
-
     public void setAmount(int amount) {
         this.amount = amount;
+    }
+
+    public BufferedImage getImage() {
+        return image;
+    }
+
+    public String getName() {
+        return name;
     }
 }

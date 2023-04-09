@@ -17,7 +17,7 @@ public abstract class Weapon extends Equipment {
 
     @Override
     public void recalculateHeroStats(GamePanel gamePanel) {
-        gamePanel.hero.setStrength(gamePanel.hero.getBaseStrength() + this.attack);
+        gamePanel.getHero().setStrength(gamePanel.getHero().getBaseStrength() + this.attack);
     }
 
     public int getAttack() {

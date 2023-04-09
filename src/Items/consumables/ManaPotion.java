@@ -7,7 +7,7 @@ import main.GamePanel;
 public class ManaPotion extends Consumable {
     public ManaPotion(GamePanel gamePanel) {
         super(gamePanel);
-        name = "mana Potion";
+        name = "Mana Potion";
         description = "(Mana Potion) \n Restores 20 Mana \n \"Very tasty!\"";
         battleDescription = "Restores 20 Mana";
         getSprite("src/sprites/Items/mushroom.png");
@@ -17,12 +17,12 @@ public class ManaPotion extends Consumable {
 
     @Override
     public void overWorldUse() {
-        gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
+        gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
         gamePanel.playSoundEffect(3);
-        gamePanel.ui.currentDialogue = "You drank the potion! \n Recovered 20 mana!";
-        gamePanel.hero.setMana(gamePanel.hero.getMana() +20);
-        if (gamePanel.hero.getMana()>=gamePanel.hero.getMaxMana()){
-            gamePanel.hero.setMana(gamePanel.hero.getMaxMana());
+        gamePanel.getUi().setCurrentDialogue("You drank the potion! \n Recovered 20 mana!");
+        gamePanel.getHero().setMana(gamePanel.getHero().getMana() +20);
+        if (gamePanel.getHero().getMana()>= gamePanel.getHero().getMaxMana()){
+            gamePanel.getHero().setMana(gamePanel.getHero().getMaxMana());
         }
 
 
@@ -30,10 +30,10 @@ public class ManaPotion extends Consumable {
 
     @Override
     public void battleUse() {
-        gamePanel.ui.setCurrentBattleDialogue("You drank the potion! \n Recovered 20 mana!");
-        gamePanel.hero.setMana(gamePanel.hero.getMana() +20);
-        if (gamePanel.hero.getMana()>=gamePanel.hero.getMaxMana()){
-            gamePanel.hero.setMana(gamePanel.hero.getMaxMana());
+        gamePanel.getUi().setCurrentBattleDialogue("You drank the potion! \n Recovered 20 mana!");
+        gamePanel.getHero().setMana(gamePanel.getHero().getMana() +20);
+        if (gamePanel.getHero().getMana()>= gamePanel.getHero().getMaxMana()){
+            gamePanel.getHero().setMana(gamePanel.getHero().getMaxMana());
         }
     }
 }

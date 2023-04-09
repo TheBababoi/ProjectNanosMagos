@@ -14,7 +14,7 @@ public class BackgroundTileManager {
     public BackgroundTileManager(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
         backgroundTile = new BackgroundTile[40];
-        mapLayout= new int[gamePanel.maxMap][gamePanel.maxWorldColumn][gamePanel.maxWorldRow];
+        mapLayout= new int[gamePanel.getMaxMap()][gamePanel.getMaxWorldColumn()][gamePanel.getMaxWorldRow()];
         getTileImage();
         loadMapfromTextFile("src/sprites/maps/world01.txt",0);
         loadMapfromTextFile("src/sprites/maps/map1.txt",1);
@@ -26,15 +26,15 @@ public class BackgroundTileManager {
             BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
             int collumn = 0;
             int row = 0;
-            while(collumn < gamePanel.maxWorldColumn && row < gamePanel.maxWorldRow){
+            while(collumn < gamePanel.getMaxWorldColumn() && row < gamePanel.getMaxWorldRow()){
                 String line = bufferedReader.readLine();
-                while(collumn < gamePanel.maxWorldColumn){
+                while(collumn < gamePanel.getMaxWorldColumn()){
                     String digit[] = line.split(" "); // fills the array with the digits that are getting split up by the spaces
                     int digit2 = Integer.parseInt(digit[collumn]); // converting string to int
                     mapLayout[mapNumber][collumn][row] = digit2;
                     collumn++;
                 }
-                if(collumn==gamePanel.maxWorldColumn){
+                if(collumn== gamePanel.getMaxWorldColumn()){
                     collumn = 0;
                     row++;
                 }
@@ -119,18 +119,18 @@ public class BackgroundTileManager {
     public void draw(Graphics2D g2){
         int worldCollumn = 0;
         int worldRow = 0;
-        while(worldCollumn < gamePanel.maxWorldColumn && worldRow< gamePanel.maxWorldRow) {
-            int tileDigit = mapLayout[gamePanel.currentMap][worldCollumn][worldRow];
-            int worldX = worldCollumn * gamePanel.spriteSize;
-            int worldY = worldRow * gamePanel.spriteSize;
-            int screenX = worldX - gamePanel.hero.getWorldX() + gamePanel.hero.getScreenX(); // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map
-            int screenY = worldY - gamePanel.hero.getWorldY() + gamePanel.hero.getScreenY();
+        while(worldCollumn < gamePanel.getMaxWorldColumn() && worldRow< gamePanel.getMaxWorldRow()) {
+            int tileDigit = mapLayout[gamePanel.getCurrentMap()][worldCollumn][worldRow];
+            int worldX = worldCollumn * gamePanel.getSpriteSize();
+            int worldY = worldRow * gamePanel.getSpriteSize();
+            int screenX = worldX - gamePanel.getHero().getWorldX() + gamePanel.getHero().getScreenX(); // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map
+            int screenY = worldY - gamePanel.getHero().getWorldY() + gamePanel.getHero().getScreenY();
 
 
-            g2.drawImage(backgroundTile[tileDigit].image,screenX,screenY, gamePanel.spriteSize,gamePanel.spriteSize,null);
+            g2.drawImage(backgroundTile[tileDigit].image,screenX,screenY, gamePanel.getSpriteSize(), gamePanel.getSpriteSize(),null);
             worldCollumn++;
 
-            if(worldCollumn == gamePanel.maxWorldColumn){
+            if(worldCollumn == gamePanel.getMaxWorldColumn()){
                 worldCollumn = 0;
                 worldRow++;
             }

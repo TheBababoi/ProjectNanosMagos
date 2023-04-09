@@ -21,9 +21,9 @@ public abstract class SuperObject {
     protected int hitboxY = 0;
 
     public void draw(Graphics2D g2){
-        int screenX = worldX - gamePanel.hero.getWorldX() + gamePanel.hero.getScreenX(); // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map
-        int screenY = worldY - gamePanel.hero.getWorldY() + gamePanel.hero.getScreenY();
-        g2.drawImage(image,screenX,screenY, gamePanel.spriteSize,gamePanel.spriteSize,null);
+        int screenX = worldX - gamePanel.getHero().getWorldX() + gamePanel.getHero().getScreenX(); // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map
+        int screenY = worldY - gamePanel.getHero().getWorldY() + gamePanel.getHero().getScreenY();
+        g2.drawImage(image,screenX,screenY, gamePanel.getSpriteSize(), gamePanel.getSpriteSize(),null);
 
     }
 
@@ -75,9 +75,6 @@ public abstract class SuperObject {
         this.name = name;
     }
 
-    public void setCollision(boolean collision) {
-        this.collision = collision;
-    }
 
     public void setWorldX(int worldX) {
         this.worldX = worldX;
@@ -87,15 +84,4 @@ public abstract class SuperObject {
         this.worldY = worldY;
     }
 
-    public void setHitbox(Rectangle hitbox) {
-        this.hitbox = hitbox;
-    }
-
-    public void setHitboxX(int hitboxX) {
-        this.hitboxX = hitboxX;
-    }
-
-    public void setHitboxY(int hitboxY) {
-        this.hitboxY = hitboxY;
-    }
 }

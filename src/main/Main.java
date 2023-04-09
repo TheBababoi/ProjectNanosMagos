@@ -16,8 +16,8 @@ public class Main {
         mainWindow.setResizable(true);
         mainWindow.setTitle("Project Nanos Magos");
         mainWindow.add(gamePanel);
-        gamePanel.config.loadConfig();
-        if(gamePanel.fullScreenOn){
+        gamePanel.getConfig().loadConfig();
+        if(gamePanel.isFullScreenOn()){
             mainWindow.setUndecorated(true);
         }
         mainWindow.pack(); //makes window fit the panel

@@ -17,22 +17,22 @@ public class HealthPotion extends Consumable {
 
     @Override
     public void overWorldUse() {
-        gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
+        gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
         gamePanel.playSoundEffect(3);
-        gamePanel.ui.currentDialogue = "You drank the potion \n Recovered 20 health!";
-        gamePanel.hero.setHealth(gamePanel.hero.getHealth() +20);
-        if (gamePanel.hero.getHealth()>=gamePanel.hero.getMaxHealth()){
-            gamePanel.hero.setHealth(gamePanel.hero.getMaxHealth());
+        gamePanel.getUi().setCurrentDialogue("You drank the potion \n Recovered 20 health!");
+        gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() +20);
+        if (gamePanel.getHero().getHealth()>= gamePanel.getHero().getMaxHealth()){
+            gamePanel.getHero().setHealth(gamePanel.getHero().getMaxHealth());
         }
 
 
     }
 
     public void battleUse() {
-        gamePanel.ui.setCurrentBattleDialogue("You drank the potion \n Recovered 20 health!");
-        gamePanel.hero.setHealth(gamePanel.hero.getHealth() +20);
-        if (gamePanel.hero.getHealth()>=gamePanel.hero.getMaxHealth()){
-            gamePanel.hero.setHealth(gamePanel.hero.getMaxHealth());
+        gamePanel.getUi().setCurrentBattleDialogue("You drank the potion \n Recovered 20 health!");
+        gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() +20);
+        if (gamePanel.getHero().getHealth()>= gamePanel.getHero().getMaxHealth()){
+            gamePanel.getHero().setHealth(gamePanel.getHero().getMaxHealth());
         }
     }
 }

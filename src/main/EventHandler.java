@@ -11,9 +11,9 @@ public class EventHandler {
 
     public EventHandler(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
-        eventHitbox = new EventHitbox[gamePanel.maxMap][gamePanel.maxWorldColumn][gamePanel.maxWorldRow];
+        eventHitbox = new EventHitbox[gamePanel.getMaxMap()][gamePanel.getMaxWorldColumn()][gamePanel.getMaxWorldRow()];
         int collumn = 0, row =0 , map =0;
-        while ((collumn< gamePanel.maxWorldColumn && row< gamePanel.maxWorldRow && map < gamePanel.maxMap )){
+        while ((collumn< gamePanel.getMaxWorldColumn() && row< gamePanel.getMaxWorldRow() && map < gamePanel.getMaxMap())){
             eventHitbox[map][collumn][row] = new EventHitbox();
             eventHitbox[map][collumn][row].x = 40;
             eventHitbox[map][collumn][row].y = 40;
@@ -22,10 +22,10 @@ public class EventHandler {
             eventHitbox[map][collumn][row].eventHitboxX = eventHitbox[map][collumn][row].x;
             eventHitbox[map][collumn][row].eventHitboxY = eventHitbox[map][collumn][row].y;
             collumn++;
-            if (collumn == gamePanel.maxWorldColumn) {
+            if (collumn == gamePanel.getMaxWorldColumn()) {
                 collumn = 0;
                 row++;
-                if ((row == gamePanel.maxWorldRow)){
+                if ((row == gamePanel.getMaxWorldRow())){
                     row = 0;
                     map++;
                 }
@@ -38,7 +38,7 @@ public class EventHandler {
     }
 
     public void checkEvent(){
-        if(hitCheck(0,0, 0, "any")&&(!eventHitbox[gamePanel.currentMap][0][0].eventDone)){
+        if(hitCheck(0,0, 0, "any")&&(!eventHitbox[gamePanel.getCurrentMap()][0][0].eventDone)){
             healSpot(0,0, GamePanel.Gamestate.DIALOGUESTATE);
         }
 //        if(hitCheck(0,2, 1, "any")&&(!eventHitbox[gamePanel.currentMap][2][1].eventDone)){
@@ -56,21 +56,21 @@ public class EventHandler {
     public boolean hitCheck(int mapNumber,int collumn, int row, String requiredDirection ){
 
         boolean hitCheck = false;
-        if(mapNumber == gamePanel.currentMap){
-            gamePanel.hero.hitbox.x = gamePanel.hero.getWorldX() + gamePanel.hero.hitbox.x;
-            gamePanel.hero.hitbox.y = gamePanel.hero.getWorldY() + gamePanel.hero.hitbox.y;
-            eventHitbox[mapNumber][collumn][row].x = collumn*gamePanel.spriteSize + eventHitbox[mapNumber][collumn][row].x;
-            eventHitbox[mapNumber][collumn][row].y = row*gamePanel.spriteSize + eventHitbox[mapNumber][collumn][row].y;
+        if(mapNumber == gamePanel.getCurrentMap()){
+            gamePanel.getHero().hitbox.x = gamePanel.getHero().getWorldX() + gamePanel.getHero().hitbox.x;
+            gamePanel.getHero().hitbox.y = gamePanel.getHero().getWorldY() + gamePanel.getHero().hitbox.y;
+            eventHitbox[mapNumber][collumn][row].x = collumn* gamePanel.getSpriteSize() + eventHitbox[mapNumber][collumn][row].x;
+            eventHitbox[mapNumber][collumn][row].y = row* gamePanel.getSpriteSize() + eventHitbox[mapNumber][collumn][row].y;
 
-            if (gamePanel.hero.hitbox.intersects(eventHitbox[mapNumber][collumn][row])){
-                if(gamePanel.hero.getDirection().contentEquals(requiredDirection) || requiredDirection.contentEquals("any")) {
+            if (gamePanel.getHero().hitbox.intersects(eventHitbox[mapNumber][collumn][row])){
+                if(gamePanel.getHero().getDirection().contentEquals(requiredDirection) || requiredDirection.contentEquals("any")) {
 
                     hitCheck = true;
                 }
             }
             // reset to default
-            gamePanel.hero.hitbox.x = gamePanel.hero.getHitboxX();
-            gamePanel.hero.hitbox.y = gamePanel.hero.getHitboxY();
+            gamePanel.getHero().hitbox.x = gamePanel.getHero().getHitboxX();
+            gamePanel.getHero().hitbox.y = gamePanel.getHero().getHitboxY();
             eventHitbox[mapNumber][collumn][row].x = eventHitbox[mapNumber][collumn][row].eventHitboxX;
             eventHitbox[mapNumber][collumn][row].y = eventHitbox[mapNumber][collumn][row].eventHitboxY;
 
@@ -81,25 +81,25 @@ public class EventHandler {
     }
 
     public  void healSpot(int collumn , int row, GamePanel.Gamestate gameState){
-        if(gamePanel.keyboardInputs.isEnterPressed()){
-            gamePanel.gameState = gameState;
-            gamePanel.ui.currentDialogue = "Restored to full Health";
-            gamePanel.hero.setHealth(gamePanel.hero.getMaxHealth());
-            gamePanel.hero.setMana(gamePanel.hero.getMaxMana());
-            eventHitbox[gamePanel.maxMap][collumn][row].eventDone = true;
+        if(gamePanel.getKeyboardInputs().isEnterPressed()){
+            gamePanel.setGameState(gameState);
+            gamePanel.getUi().setCurrentDialogue("Restored to full Health");
+            gamePanel.getHero().setHealth(gamePanel.getHero().getMaxHealth());
+            gamePanel.getHero().setMana(gamePanel.getHero().getMaxMana());
+            eventHitbox[gamePanel.getMaxMap()][collumn][row].eventDone = true;
 
         }
 
     }
 
     public  void expSpot(int collumn , int row, GamePanel.Gamestate gameState){
-        if(gamePanel.keyboardInputs.isEnterPressed()){
-            gamePanel.gameState = gameState;
-            gamePanel.ui.currentDialogue = "Souravlas Has granted you his wisdom - Gain 50 exp!";
+        if(gamePanel.getKeyboardInputs().isEnterPressed()){
+            gamePanel.setGameState(gameState);
+            gamePanel.getUi().setCurrentDialogue("Souravlas Has granted you his wisdom - Gain 50 exp!");
 
-            gamePanel.hero.setExp(gamePanel.hero.getExp() + 50);
-            gamePanel.hero.checkLevelUp();
-            eventHitbox[gamePanel.maxMap][collumn][row].eventDone = true;
+            gamePanel.getHero().setExp(gamePanel.getHero().getExp() + 50);
+            gamePanel.getHero().checkLevelUp();
+            eventHitbox[gamePanel.getMaxMap()][collumn][row].eventDone = true;
 
         }
 
@@ -107,7 +107,7 @@ public class EventHandler {
     public  void teleporter(int mapNumber,int column , int row, GamePanel.Gamestate gameState){
 
 
-            gamePanel.gameState = gameState;
+            gamePanel.setGameState(gameState);
             tempMap = mapNumber;
             tempCol = column;
             tempRow = row;
@@ -117,13 +117,6 @@ public class EventHandler {
 
     }
 
-    public GamePanel getGamePanel() {
-        return gamePanel;
-    }
-
-    public EventHitbox[][][] getEventHitbox() {
-        return eventHitbox;
-    }
 
     public int getTempMap() {
         return tempMap;
@@ -138,23 +131,4 @@ public class EventHandler {
     }
 
 
-    public void setGamePanel(GamePanel gamePanel) {
-        this.gamePanel = gamePanel;
-    }
-
-    public void setEventHitbox(EventHitbox[][][] eventHitbox) {
-        this.eventHitbox = eventHitbox;
-    }
-
-    public void setTempMap(int tempMap) {
-        this.tempMap = tempMap;
-    }
-
-    public void setTempCol(int tempCol) {
-        this.tempCol = tempCol;
-    }
-
-    public void setTempRow(int tempRow) {
-        this.tempRow = tempRow;
-    }
 }

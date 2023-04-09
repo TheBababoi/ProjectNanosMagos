@@ -67,8 +67,8 @@ public abstract class Creature {
 
     public void draw(Graphics2D g2){
         BufferedImage image = null;
-        int screenX = worldX - gamePanel.hero.worldX + gamePanel.hero.getScreenX(); // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map
-        int screenY = worldY - gamePanel.hero.worldY + gamePanel.hero.getScreenY();
+        int screenX = worldX - gamePanel.getHero().worldX + gamePanel.getHero().getScreenX(); // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map
+        int screenY = worldY - gamePanel.getHero().worldY + gamePanel.getHero().getScreenY();
         if(direction=="up"){
             if(spriteNumber == 1){
                 image = up1;
@@ -99,7 +99,7 @@ public abstract class Creature {
                 image = right2;
             }
         }
-        g2.drawImage(image,screenX,screenY, gamePanel.spriteSize,gamePanel.spriteSize,null);
+        g2.drawImage(image,screenX,screenY, gamePanel.getSpriteSize(), gamePanel.getSpriteSize(),null);
 
     }
 
@@ -108,9 +108,9 @@ public abstract class Creature {
         setAction();
 
         collision = false;
-        gamePanel.collisionCheck.checkBackgroundTile(this);
-        gamePanel.collisionCheck.checkObject(this,false);
-        gamePanel.collisionCheck.checkPlayer(this);
+        gamePanel.getCollisionCheck().checkBackgroundTile(this);
+        gamePanel.getCollisionCheck().checkObject(this,false);
+        gamePanel.getCollisionCheck().checkPlayer(this);
         if (collision == false) {
             if (direction == "up") {
                 worldY -= speed;
@@ -158,9 +158,6 @@ public abstract class Creature {
 
     }
 
-    public GamePanel getGamePanel() {
-        return gamePanel;
-    }
 
     public int getWorldX() {
         return worldX;
@@ -174,53 +171,10 @@ public abstract class Creature {
         return speed;
     }
 
-    public BufferedImage getUp1() {
-        return up1;
-    }
-
-    public BufferedImage getUp2() {
-        return up2;
-    }
-
-    public BufferedImage getDown1() {
-        return down1;
-    }
-
-    public BufferedImage getDown2() {
-        return down2;
-    }
-
-    public BufferedImage getLeft1() {
-        return left1;
-    }
-
-    public BufferedImage getLeft2() {
-        return left2;
-    }
-
-    public BufferedImage getRight1() {
-        return right1;
-    }
-
-    public BufferedImage getRight2() {
-        return right2;
-    }
-
     public String getDirection() {
         return direction;
     }
 
-    public int getSpriteCounter() {
-        return spriteCounter;
-    }
-
-    public int getSpriteNumber() {
-        return spriteNumber;
-    }
-
-    public Rectangle getHitbox() {
-        return hitbox;
-    }
 
     public int getHitboxX() {
         return hitboxX;
@@ -228,18 +182,6 @@ public abstract class Creature {
 
     public int getHitboxY() {
         return hitboxY;
-    }
-
-    public boolean isCollision() {
-        return collision;
-    }
-
-    public int getActionCounter() {
-        return actionCounter;
-    }
-
-    public int getActionCounterMax() {
-        return actionCounterMax;
     }
 
     public void setGamePanel(GamePanel gamePanel) {
@@ -254,75 +196,10 @@ public abstract class Creature {
         this.worldY = worldY;
     }
 
-    public void setSpeed(int speed) {
-        this.speed = speed;
-    }
 
-    public void setUp1(BufferedImage up1) {
-        this.up1 = up1;
-    }
-
-    public void setUp2(BufferedImage up2) {
-        this.up2 = up2;
-    }
-
-    public void setDown1(BufferedImage down1) {
-        this.down1 = down1;
-    }
-
-    public void setDown2(BufferedImage down2) {
-        this.down2 = down2;
-    }
-
-    public void setLeft1(BufferedImage left1) {
-        this.left1 = left1;
-    }
-
-    public void setLeft2(BufferedImage left2) {
-        this.left2 = left2;
-    }
-
-    public void setRight1(BufferedImage right1) {
-        this.right1 = right1;
-    }
-
-    public void setRight2(BufferedImage right2) {
-        this.right2 = right2;
-    }
-
-    public void setDirection(String direction) {
-        this.direction = direction;
-    }
-
-    public void setSpriteCounter(int spriteCounter) {
-        this.spriteCounter = spriteCounter;
-    }
-
-    public void setSpriteNumber(int spriteNumber) {
-        this.spriteNumber = spriteNumber;
-    }
-
-    public void setHitbox(Rectangle hitbox) {
-        this.hitbox = hitbox;
-    }
-
-    public void setHitboxX(int hitboxX) {
-        this.hitboxX = hitboxX;
-    }
-
-    public void setHitboxY(int hitboxY) {
-        this.hitboxY = hitboxY;
-    }
 
     public void setCollision(boolean collision) {
         this.collision = collision;
     }
 
-    public void setActionCounter(int actionCounter) {
-        this.actionCounter = actionCounter;
-    }
-
-    public void setActionCounterMax(int actionCounterMax) {
-        this.actionCounterMax = actionCounterMax;
-    }
 }

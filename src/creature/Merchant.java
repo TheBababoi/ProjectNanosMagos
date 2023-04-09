@@ -66,9 +66,9 @@ public class Merchant extends NPC{
     @Override
     public void speak() {
         super.speak();
-        gamePanel.gameState = GamePanel.Gamestate.TRADEMENU;
-        gamePanel.ui.tradeState = UI.TradeState.SELECT;
-        gamePanel.ui.merchant = this;
+        gamePanel.setGameState(GamePanel.Gamestate.TRADEMENU);
+        gamePanel.getUi().setTradeState(UI.TradeState.SELECT);
+        gamePanel.getUi().setMerchant(this);
     }
 
     public ArrayList<Item> getInventory() {
@@ -87,19 +87,4 @@ public class Merchant extends NPC{
         return merchant3;
     }
 
-    public void setInventory(ArrayList<Item> inventory) {
-        this.inventory = inventory;
-    }
-
-    public void setMerchant1(BufferedImage merchant1) {
-        this.merchant1 = merchant1;
-    }
-
-    public void setMerchant2(BufferedImage merchant2) {
-        this.merchant2 = merchant2;
-    }
-
-    public void setMerchant3(BufferedImage merchant3) {
-        this.merchant3 = merchant3;
-    }
 }

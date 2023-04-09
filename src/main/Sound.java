@@ -71,43 +71,12 @@ public class Sound {
         clip.stop();
     }
 
-    public Clip getClip() {
-        return clip;
-    }
-
-    public File[] getSoundURL() {
-        return soundURL;
-    }
-
-    public FloatControl getFloatControl() {
-        return floatControl;
-    }
-
     public int getVolumeScale() {
         return volumeScale;
     }
 
-    public float getVolume() {
-        return volume;
-    }
-
-    public void setClip(Clip clip) {
-        this.clip = clip;
-    }
-
-    public void setSoundURL(File[] soundURL) {
-        this.soundURL = soundURL;
-    }
-
-    public void setFloatControl(FloatControl floatControl) {
-        this.floatControl = floatControl;
-    }
 
     public void setVolumeScale(int volumeScale) {
         this.volumeScale = volumeScale;
-    }
-
-    public void setVolume(float volume) {
-        this.volume = volume;
     }
 }

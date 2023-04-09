@@ -12,47 +12,49 @@ import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel implements Runnable {
 
-    final int originalSpriteSize = 16;
-    final int scaling = 5;
+    final private int originalSpriteSize = 16;
+    final private int scaling = 5;
 
-    final public int spriteSize = originalSpriteSize * scaling; //5*16=80px
-    final public int maxScreenColumn = 24;
-    final public int maxScreenRow = 13;
-    public int screenHeight = spriteSize*maxScreenRow; //13*80=1040px
-    public int screenWidth = spriteSize* maxScreenColumn;
+    final private int spriteSize = originalSpriteSize * scaling; //5*16=80px
+    final private int maxScreenColumn = 24;
+    final private int maxScreenRow = 13;
+    private int screenHeight = spriteSize*maxScreenRow; //13*80=1040px
+    private int screenWidth = spriteSize* maxScreenColumn;
 
 
 
-    final public int maxWorldColumn = 50;
-    final public int maxWorldRow = 50;
-    public final int maxMap = 10;
-    public int currentMap = 0;
+    final private int maxWorldColumn = 50;
+    final private int maxWorldRow = 50;
+    private final int maxMap = 10;
+    private int currentMap = 0;
 
     //system
-    int FPS = 60;
-    Config config = new Config(this);
-    Thread thread;
-    public KeyboardInputs keyboardInputs = new KeyboardInputs(this);
-    Sound music = new Sound();
-    public Sound soundEffect = new Sound();
-    BackgroundTileManager backgroundTileManager = new BackgroundTileManager(this);
-    public UI ui = new UI(this);
-    public AssetPlacer assetPlacer = new AssetPlacer(this);
-    public CollisionCheck collisionCheck = new CollisionCheck(this);
-    public EventHandler eventHandler = new EventHandler(this);
-    public BattleHandler battleHandler = new BattleHandler(this);
-    SaveLoad saveLoad = new SaveLoad(this);
-    public boolean fullScreenOn = false;
+    private int FPS = 60;
+    private Config config = new Config(this);
+    private Thread thread;
+    private KeyboardInputs keyboardInputs = new KeyboardInputs(this);
+    private Sound music = new Sound();
+    private Sound soundEffect = new Sound();
+    private BackgroundTileManager backgroundTileManager = new BackgroundTileManager(this);
+    private UI ui = new UI(this);
+    private AssetPlacer assetPlacer = new AssetPlacer(this);
+    private CollisionCheck collisionCheck = new CollisionCheck(this);
+    private EventHandler eventHandler = new EventHandler(this);
+    private BattleHandler battleHandler = new BattleHandler(this);
+    private SaveLoad saveLoad = new SaveLoad(this);
+    private boolean fullScreenOn = false;
 
 
     //creatures and objects
-    public Hero hero = new Hero(this,keyboardInputs);
-    public SuperObject superObject[][] = new SuperObject[maxMap][10];
-    public NPC npc[][] = new NPC[maxMap][10];
-    public Enemy enemy[][] = new Enemy[maxMap][10];
+    private Hero hero = new Hero(this,keyboardInputs);
+    private SuperObject superObject[][] = new SuperObject[maxMap][10];
+    private NPC npc[][] = new NPC[maxMap][10];
+    private Enemy enemy[][] = new Enemy[maxMap][10];
 
     //game state
-    public Gamestate gameState;
+    private Gamestate gameState;
+
+
     public enum Gamestate {
         CUTSCENE,
         TITLESCREEM,
@@ -239,6 +241,116 @@ public class GamePanel extends JPanel implements Runnable {
     public void playSoundEffect(int index){
         soundEffect.setFile(index);
         soundEffect.play();
+    }
+
+
+    public int getSpriteSize() {
+        return spriteSize;
+    }
+
+
+    public int getScreenHeight() {
+        return screenHeight;
+    }
+
+    public int getScreenWidth() {
+        return screenWidth;
+    }
+
+    public int getMaxWorldColumn() {
+        return maxWorldColumn;
+    }
+
+    public int getMaxWorldRow() {
+        return maxWorldRow;
+    }
+
+    public int getMaxMap() {
+        return maxMap;
+    }
+
+    public int getCurrentMap() {
+        return currentMap;
+    }
+
+    public Config getConfig() {
+        return config;
+    }
+
+    public KeyboardInputs getKeyboardInputs() {
+        return keyboardInputs;
+    }
+
+    public Sound getMusic() {
+        return music;
+    }
+
+    public Sound getSoundEffect() {
+        return soundEffect;
+    }
+
+    public BackgroundTileManager getBackgroundTileManager() {
+        return backgroundTileManager;
+    }
+
+    public UI getUi() {
+        return ui;
+    }
+
+    public AssetPlacer getAssetPlacer() {
+        return assetPlacer;
+    }
+
+    public CollisionCheck getCollisionCheck() {
+        return collisionCheck;
+    }
+
+    public EventHandler getEventHandler() {
+        return eventHandler;
+    }
+
+    public BattleHandler getBattleHandler() {
+        return battleHandler;
+    }
+
+    public SaveLoad getSaveLoad() {
+        return saveLoad;
+    }
+
+    public boolean isFullScreenOn() {
+        return fullScreenOn;
+    }
+
+    public Hero getHero() {
+        return hero;
+    }
+
+    public SuperObject[][] getSuperObject() {
+        return superObject;
+    }
+
+    public NPC[][] getNpc() {
+        return npc;
+    }
+
+    public Enemy[][] getEnemy() {
+        return enemy;
+    }
+
+    public Gamestate getGameState() {
+        return gameState;
+    }
+
+    public void setCurrentMap(int currentMap) {
+        this.currentMap = currentMap;
+    }
+
+    public void setGameState(Gamestate gameState) {
+        this.gameState = gameState;
+    }
+
+    public void setFullScreenOn(boolean fullScreenOn) {
+        this.fullScreenOn = fullScreenOn;
     }
 
 }

@@ -34,15 +34,15 @@ public abstract class NPC extends Creature {
     }
     public void startDialogue(NPC npc, int setNumber){
         setEncounteredNPC(true);
-        gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
-        gamePanel.ui.npc = npc;
+        gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
+        gamePanel.getUi().setNpc(npc);
         dialogueSet = setNumber;
     }
 
 
 
     public  void faceHero(){
-        switch (gamePanel.hero.direction){
+        switch (gamePanel.getHero().direction){
             case "up":
                 direction = "down";
                 break;
@@ -72,22 +72,13 @@ public abstract class NPC extends Creature {
         this.dialogueIndex = dialogueIndex;
     }
 
-    public void setDialogueSet(int dialogueSet) {
-        this.dialogueSet = dialogueSet;
-    }
     public void increaseDialogueIndex() {
         this.dialogueIndex++;
     }
 
-    public boolean isEncounteredNPC() {
-        return encounteredNPC;
-    }
 
     public void setEncounteredNPC(boolean encounteredNPC) {
         this.encounteredNPC = encounteredNPC;
     }
 
-    public void setDialogues(String[][] dialogues) {
-        this.dialogues = dialogues;
-    }
 }

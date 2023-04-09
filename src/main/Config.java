@@ -14,16 +14,16 @@ public class Config {
     public void saveConfig(){
         try{
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("config.txt"));
-            if ((gamePanel.fullScreenOn)){
+            if ((gamePanel.isFullScreenOn())){
                 bufferedWriter.write("On");
             }else{
                 bufferedWriter.write("Off");
             }
             bufferedWriter.newLine();
 
-            bufferedWriter.write(String.valueOf((gamePanel.music.getVolumeScale())));
+            bufferedWriter.write(String.valueOf((gamePanel.getMusic().getVolumeScale())));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf((gamePanel.soundEffect.getVolumeScale())));
+            bufferedWriter.write(String.valueOf((gamePanel.getSoundEffect().getVolumeScale())));
             bufferedWriter.close();
         }catch (IOException e){
             e.printStackTrace();
@@ -37,14 +37,14 @@ public class Config {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("config.txt"));
             String string = bufferedReader.readLine();
             if (string.equals("On")){
-                gamePanel.fullScreenOn = true;
+                gamePanel.setFullScreenOn(true);
             }else {
-                gamePanel.fullScreenOn = false;
+                gamePanel.setFullScreenOn(false);
             }
             string = bufferedReader.readLine();
-            gamePanel.music.setVolumeScale(Integer.parseInt(string));
+            gamePanel.getMusic().setVolumeScale(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.soundEffect.setVolumeScale(Integer.parseInt(string));
+            gamePanel.getSoundEffect().setVolumeScale(Integer.parseInt(string));
             bufferedReader.close();
 
         }catch (Exception e){

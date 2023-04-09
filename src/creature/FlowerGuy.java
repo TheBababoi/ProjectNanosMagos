@@ -53,8 +53,8 @@ public class FlowerGuy extends NPC {
     public void draw(Graphics2D g2) {
         super.draw(g2);
         BufferedImage image = null;
-        int screenX = worldX - gamePanel.hero.worldX + gamePanel.hero.getScreenX();
-        int screenY = worldY - gamePanel.hero.worldY + gamePanel.hero.getScreenY();
+        int screenX = worldX - gamePanel.getHero().worldX + gamePanel.getHero().getScreenX();
+        int screenY = worldY - gamePanel.getHero().worldY + gamePanel.getHero().getScreenY();
         if (direction == "left") {
             if (spriteNumber == 1) {
                 image = left1;
@@ -70,12 +70,12 @@ public class FlowerGuy extends NPC {
                 image = right2;
             }
         }
-        g2.drawImage(image,screenX,screenY, gamePanel.spriteSize,gamePanel.spriteSize,null);
+        g2.drawImage(image,screenX,screenY, gamePanel.getSpriteSize(), gamePanel.getSpriteSize(),null);
     }
 
     @Override
     public void faceHero() {
-        switch (gamePanel.hero.direction) {
+        switch (gamePanel.getHero().direction) {
             case "left":
                 direction = "right";
                 break;
