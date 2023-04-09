@@ -5,7 +5,7 @@ import java.io.*;
 
 public class Config {
 
-    GamePanel gamePanel;
+    private GamePanel gamePanel;
 
     public Config(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -21,9 +21,9 @@ public class Config {
             }
             bufferedWriter.newLine();
 
-            bufferedWriter.write(String.valueOf((gamePanel.music.volumeScale)));
+            bufferedWriter.write(String.valueOf((gamePanel.music.getVolumeScale())));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf((gamePanel.soundEffect.volumeScale)));
+            bufferedWriter.write(String.valueOf((gamePanel.soundEffect.getVolumeScale())));
             bufferedWriter.close();
         }catch (IOException e){
             e.printStackTrace();
@@ -42,9 +42,9 @@ public class Config {
                 gamePanel.fullScreenOn = false;
             }
             string = bufferedReader.readLine();
-            gamePanel.music.volumeScale = Integer.parseInt(string);
+            gamePanel.music.setVolumeScale(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.soundEffect.volumeScale = Integer.parseInt(string);
+            gamePanel.soundEffect.setVolumeScale(Integer.parseInt(string));
             bufferedReader.close();
 
         }catch (Exception e){

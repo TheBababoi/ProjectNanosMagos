@@ -181,7 +181,7 @@ public class GamePanel extends JPanel implements Runnable {
 
             //debug
             long drawStart = 0;
-            if ((keyboardInputs.debugMode)){
+            if ((keyboardInputs.isDebugMode())){
                 drawStart = System.nanoTime();
             }
 
@@ -216,7 +216,7 @@ public class GamePanel extends JPanel implements Runnable {
             }
 
             //debug
-            if(keyboardInputs.debugMode) {
+            if(keyboardInputs.isDebugMode()) {
                 long drawEnd = System.nanoTime();
                 long totalTime = drawEnd - drawStart;
                 g2.setColor(Color.black);

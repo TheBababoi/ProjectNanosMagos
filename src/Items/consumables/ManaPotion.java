@@ -22,7 +22,7 @@ public class ManaPotion extends Consumable {
         gamePanel.ui.currentDialogue = "You drank the potion! \n Recovered 20 mana!";
         gamePanel.hero.setMana(gamePanel.hero.getMana() +20);
         if (gamePanel.hero.getMana()>=gamePanel.hero.getMaxMana()){
-            gamePanel.hero.setMana(gamePanel.hero.maxMana);
+            gamePanel.hero.setMana(gamePanel.hero.getMaxMana());
         }
 
 
@@ -33,7 +33,7 @@ public class ManaPotion extends Consumable {
         gamePanel.ui.setCurrentBattleDialogue("You drank the potion! \n Recovered 20 mana!");
         gamePanel.hero.setMana(gamePanel.hero.getMana() +20);
         if (gamePanel.hero.getMana()>=gamePanel.hero.getMaxMana()){
-            gamePanel.hero.setMana(gamePanel.hero.maxMana);
+            gamePanel.hero.setMana(gamePanel.hero.getMaxMana());
         }
     }
 }

@@ -15,9 +15,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class Merchant extends NPC{
-    public ArrayList<Item> inventory = new ArrayList<>();
-    public int inventorySize = 25;
-    public BufferedImage merchant1,merchant2,merchant3;
+    private ArrayList<Item> inventory = new ArrayList<>();
+    private BufferedImage merchant1,merchant2,merchant3;
     public Merchant(GamePanel gamePanel) {
         super(gamePanel);
         getSprites("src/sprites/merchant");
@@ -70,5 +69,37 @@ public class Merchant extends NPC{
         gamePanel.gameState = GamePanel.Gamestate.TRADEMENU;
         gamePanel.ui.tradeState = UI.TradeState.SELECT;
         gamePanel.ui.merchant = this;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
+    public BufferedImage getMerchant1() {
+        return merchant1;
+    }
+
+    public BufferedImage getMerchant2() {
+        return merchant2;
+    }
+
+    public BufferedImage getMerchant3() {
+        return merchant3;
+    }
+
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
+    }
+
+    public void setMerchant1(BufferedImage merchant1) {
+        this.merchant1 = merchant1;
+    }
+
+    public void setMerchant2(BufferedImage merchant2) {
+        this.merchant2 = merchant2;
+    }
+
+    public void setMerchant3(BufferedImage merchant3) {
+        this.merchant3 = merchant3;
     }
 }

@@ -9,10 +9,10 @@ import java.util.Random;
 
 public abstract class NPC extends Creature {
 
-    int dialogueIndex = 0;
-    int dialogueSet = -1;
-    boolean encounteredNPC = false;
-    String dialogues[][] = new String[20][20];
+    private int dialogueIndex = 0;
+    private int dialogueSet = -1;
+    private boolean encounteredNPC = false;
+    protected String[][] dialogues = new String[20][20];
 
 
     public NPC(GamePanel gamePanel) {
@@ -85,5 +85,9 @@ public abstract class NPC extends Creature {
 
     public void setEncounteredNPC(boolean encounteredNPC) {
         this.encounteredNPC = encounteredNPC;
+    }
+
+    public void setDialogues(String[][] dialogues) {
+        this.dialogues = dialogues;
     }
 }

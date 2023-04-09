@@ -10,11 +10,11 @@ import java.net.URL;
 
 public class Sound {
 
-    Clip clip;
-    public File[] soundURL = new File[30];
-    FloatControl floatControl;
-    int volumeScale = 5;
-    float volume;
+    private Clip clip;
+    private File[] soundURL = new File[30];
+    private FloatControl floatControl;
+    private int volumeScale = 5;
+    private float volume;
 
     public Sound() {
         soundURL[0] = new File("src/tunes/worldMusic/World.wav");
@@ -69,5 +69,45 @@ public class Sound {
 
     public void stop(){
         clip.stop();
+    }
+
+    public Clip getClip() {
+        return clip;
+    }
+
+    public File[] getSoundURL() {
+        return soundURL;
+    }
+
+    public FloatControl getFloatControl() {
+        return floatControl;
+    }
+
+    public int getVolumeScale() {
+        return volumeScale;
+    }
+
+    public float getVolume() {
+        return volume;
+    }
+
+    public void setClip(Clip clip) {
+        this.clip = clip;
+    }
+
+    public void setSoundURL(File[] soundURL) {
+        this.soundURL = soundURL;
+    }
+
+    public void setFloatControl(FloatControl floatControl) {
+        this.floatControl = floatControl;
+    }
+
+    public void setVolumeScale(int volumeScale) {
+        this.volumeScale = volumeScale;
+    }
+
+    public void setVolume(float volume) {
+        this.volume = volume;
     }
 }

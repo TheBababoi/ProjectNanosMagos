@@ -9,7 +9,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 
 public class Chest extends SuperObject{
-    public Item content;
+    private Item content;
     public Chest(GamePanel gamePanel) {
         super(gamePanel);
         name = "Chest";
@@ -21,5 +21,11 @@ public class Chest extends SuperObject{
 
         }
     }
+
+    public Item getContent() {
+        return content;
+    }
+
+
 }
 

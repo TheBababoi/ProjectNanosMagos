@@ -24,8 +24,8 @@ public abstract class Enemy extends Creature{
     public void draw(Graphics2D g2) {
 
         BufferedImage image = null;
-        int screenX = worldX - gamePanel.hero.worldX + gamePanel.hero.screenX; // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map
-        int screenY = worldY - gamePanel.hero.worldY + gamePanel.hero.screenY;
+        int screenX = worldX - gamePanel.hero.worldX + gamePanel.hero.getScreenX(); // tile's position in the world - hero's position in the world + the "camera's" range so the hero will always remain in the middle of the screen even if he is on the corner of the world map
+        int screenY = worldY - gamePanel.hero.worldY + gamePanel.hero.getScreenY();
         if(direction=="up"){
             if(spriteNumber == 1){
                 image = up1;

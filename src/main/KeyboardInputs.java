@@ -9,19 +9,16 @@ import java.util.Random;
 
 public class KeyboardInputs implements KeyListener {
 
-    public boolean enterPressed, looted;
+    private boolean enterPressed, looted;
     private boolean itemUsed;
-    public boolean up = false;
-    public boolean down = false;
-    public boolean left = false;
-    public boolean right = false;
-    public GamePanel gamePanel;
+    private boolean up = false;
+    private boolean down = false;
+    private boolean left = false;
+    private boolean right = false;
+    private GamePanel gamePanel;
     //debug
-    public boolean debugMode = false;
-    public int playerChoice, enemyChoice, goldlooted;
-
-
-    int i = 0;
+    private boolean debugMode = false;
+    private int playerChoice, enemyChoice, goldlooted;
 
 
     public KeyboardInputs(GamePanel gamePanel) {
@@ -117,17 +114,17 @@ public class KeyboardInputs implements KeyListener {
 
          }else if(gamePanel.ui.tradeState == UI.TradeState.BUY){
             if ( code == KeyEvent.VK_ENTER){
-                if(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex).price>gamePanel.hero.gold){
+                if(gamePanel.ui.merchant.getInventory().get(gamePanel.ui.itemIndex).getPrice() >gamePanel.hero.getGold()){
                     gamePanel.ui.currentDialogue = "Not enough gold";
                     gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
                     gamePanel.ui.drawTradeDialogue();
 
-                } else if (!gamePanel.hero.canObtainItem(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex))){
+                } else if (!gamePanel.hero.canObtainItem(gamePanel.ui.merchant.getInventory().get(gamePanel.ui.itemIndex))){
                     gamePanel.ui.currentDialogue = "Full inventory";
                     gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
                     gamePanel.ui.drawTradeDialogue();
                 } else {
-                    gamePanel.hero.gold -= gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex).price;
+                    gamePanel.hero.setGold(gamePanel.hero.getGold() - gamePanel.ui.merchant.getInventory().get(gamePanel.ui.itemIndex).getPrice());
                     //gamePanel.hero.inventory.add(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex));
                     gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
                     gamePanel.ui.currentDialogue = "Thank you for your purchase!";
@@ -174,18 +171,18 @@ public class KeyboardInputs implements KeyListener {
         }
         else if(gamePanel.ui.tradeState == UI.TradeState.SELL){
             if ( code == KeyEvent.VK_ENTER) {
-                if (gamePanel.hero.inventory.get(gamePanel.ui.itemIndex) == gamePanel.hero.currentArmor ||
-                        gamePanel.hero.inventory.get(gamePanel.ui.itemIndex) == gamePanel.hero.currentWeapon) {
+                if (gamePanel.hero.getInventory().get(gamePanel.ui.itemIndex) == gamePanel.hero.getCurrentArmor() ||
+                        gamePanel.hero.getInventory().get(gamePanel.ui.itemIndex) == gamePanel.hero.getCurrentWeapon()) {
                     gamePanel.ui.currentDialogue = "You are currently wearing that!";
                     gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
                     gamePanel.ui.drawTradeDialogue();
 
                 } else {
-                    gamePanel.hero.gold += gamePanel.hero.inventory.get(gamePanel.ui.itemIndex).price;
-                    if (gamePanel.hero.inventory.get(gamePanel.ui.itemIndex).amount>1){
-                        gamePanel.hero.inventory.get(gamePanel.ui.itemIndex).amount--;
+                    gamePanel.hero.setGold(gamePanel.hero.getInventory().get(gamePanel.ui.itemIndex).getPrice() + gamePanel.hero.getGold());
+                    if (gamePanel.hero.getInventory().get(gamePanel.ui.itemIndex).getAmount() >1){
+                        gamePanel.hero.getInventory().get(gamePanel.ui.itemIndex).setAmount(gamePanel.hero.getInventory().get(gamePanel.ui.itemIndex).getAmount() -1);
                     } else {
-                        gamePanel.hero.inventory.remove(gamePanel.ui.itemIndex);
+                        gamePanel.hero.getInventory().remove(gamePanel.ui.itemIndex);
                     }
                     // gamePanel.hero.inventory.add(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex));
                     gamePanel.gameState = GamePanel.Gamestate.TRADEDIALOGUE;
@@ -259,24 +256,24 @@ public class KeyboardInputs implements KeyListener {
                 gamePanel.ui.commandIndex = 0;
             }
         } else if (code == KeyEvent.VK_A) {
-            if (gamePanel.ui.commandIndex == 1 && gamePanel.music.volumeScale > 0) {
-                gamePanel.music.volumeScale--;
+            if (gamePanel.ui.commandIndex == 1 && gamePanel.music.getVolumeScale() > 0) {
+                gamePanel.music.setVolumeScale(gamePanel.music.getVolumeScale() - 1);
                 gamePanel.music.checkVolume();
                 gamePanel.playSoundEffect(7);
             }
-            if (gamePanel.ui.commandIndex == 2 && gamePanel.soundEffect.volumeScale > 0) {
-                gamePanel.soundEffect.volumeScale--;
+            if (gamePanel.ui.commandIndex == 2 && gamePanel.soundEffect.getVolumeScale() > 0) {
+                gamePanel.soundEffect.setVolumeScale(gamePanel.soundEffect.getVolumeScale() - 1);
                 gamePanel.playSoundEffect(7);
             }
         } else if (code == KeyEvent.VK_D) {
-            if (gamePanel.ui.commandIndex == 1 && gamePanel.music.volumeScale < 10) {
+            if (gamePanel.ui.commandIndex == 1 && gamePanel.music.getVolumeScale() < 10) {
                 gamePanel.playSoundEffect(7);
-                gamePanel.music.volumeScale++;
+                gamePanel.music.setVolumeScale(gamePanel.music.getVolumeScale() + 1);
                 gamePanel.music.checkVolume();
             }
-            if (gamePanel.ui.commandIndex == 2 && gamePanel.soundEffect.volumeScale < 10) {
+            if (gamePanel.ui.commandIndex == 2 && gamePanel.soundEffect.getVolumeScale() < 10) {
                 gamePanel.playSoundEffect(7);
-                gamePanel.soundEffect.volumeScale++;
+                gamePanel.soundEffect.setVolumeScale(gamePanel.soundEffect.getVolumeScale() + 1);
             }
         }
     }
@@ -399,13 +396,13 @@ public class KeyboardInputs implements KeyListener {
     }
     private void dialogueState(int code) {
         if (code == KeyEvent.VK_ENTER) {
-            if (!gamePanel.hero.encounteredEnemy&&gamePanel.hero.isEncounteredNPC()) {
+            if (!gamePanel.hero.isEncounteredEnemy()&&gamePanel.hero.isEncounteredNPC()) {
                 enterPressed = true;
-            } else if (!gamePanel.hero.isEncounteredNPC()&&gamePanel.hero.encounteredEnemy){
+            } else if (!gamePanel.hero.isEncounteredNPC()&&gamePanel.hero.isEncounteredEnemy()){
                 gamePanel.stopMusic();
                 gamePanel.playMusic(4);
                 gamePanel.gameState = GamePanel.Gamestate.TRANSITIONBATTLE;
-                gamePanel.hero.encounteredEnemy = false;
+                gamePanel.hero.setEncounteredEnemy(false);
             }else {
                 gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
             }
@@ -554,7 +551,7 @@ public class KeyboardInputs implements KeyListener {
                             == 1) {
                         boolean flag = false;
 
-                      for (Item item: gamePanel.hero.inventory ){
+                      for (Item item: gamePanel.hero.getInventory()){
                           if (item instanceof Consumable){
                               flag = true;
                           }
@@ -589,10 +586,10 @@ public class KeyboardInputs implements KeyListener {
             gamePanel.ui.resetLetterbyLetter();
             gamePanel.playSoundEffect(7);
             gamePanel.ui.resetItemCounter();
-            if(gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.monsterIndex].health<=0){
+            if(gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.getMonsterIndex()].health<=0){
                 gamePanel.gameState = GamePanel.Gamestate.BATTLEWON;
-                looted = gamePanel.hero.lootEnemyDrop(gamePanel.battleHandler.monsterIndex);
-                goldlooted = gamePanel.hero.lootEnemyGold(gamePanel.battleHandler.monsterIndex);
+                looted = gamePanel.hero.lootEnemyDrop(gamePanel.battleHandler.getMonsterIndex());
+                goldlooted = gamePanel.hero.lootEnemyGold(gamePanel.battleHandler.getMonsterIndex());
             }
             else{
                 itemUsed = false;
@@ -605,7 +602,7 @@ public class KeyboardInputs implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
             gamePanel.ui.resetLetterbyLetter();
             gamePanel.playSoundEffect(7);
-            if(gamePanel.hero.health<=0){
+            if(gamePanel.hero.getHealth() <=0){
                 gamePanel.gameState = GamePanel.Gamestate.BATTLELOST;
             }
             else {
@@ -630,11 +627,11 @@ public class KeyboardInputs implements KeyListener {
             gamePanel.ui.resetLetterbyLetter();
             gamePanel.playSoundEffect(7);
             gamePanel.music.stop();
-            gamePanel.hero.setExp(gamePanel.hero.getExp() + gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.monsterIndex].getExp());
+            gamePanel.hero.setExp(gamePanel.hero.getExp() + gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.getMonsterIndex()].getExp());
             gamePanel.battleHandler.resetBuffs();
             gamePanel.gameState = GamePanel.Gamestate.PLAYSTATE;
             gamePanel.playMusic(0);
-            gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.monsterIndex] = null;
+            gamePanel.enemy[gamePanel.currentMap][gamePanel.battleHandler.getMonsterIndex()] = null;
             gamePanel.hero.checkLevelUp();
 
 
@@ -702,5 +699,93 @@ public class KeyboardInputs implements KeyListener {
 
     public void setItemUsed(boolean itemUsed) {
         this.itemUsed = itemUsed;
+    }
+
+    public boolean isEnterPressed() {
+        return enterPressed;
+    }
+
+    public boolean isLooted() {
+        return looted;
+    }
+
+    public boolean isUp() {
+        return up;
+    }
+
+    public boolean isDown() {
+        return down;
+    }
+
+    public boolean isLeft() {
+        return left;
+    }
+
+    public boolean isRight() {
+        return right;
+    }
+
+    public GamePanel getGamePanel() {
+        return gamePanel;
+    }
+
+    public boolean isDebugMode() {
+        return debugMode;
+    }
+
+    public int getPlayerChoice() {
+        return playerChoice;
+    }
+
+    public int getEnemyChoice() {
+        return enemyChoice;
+    }
+
+    public int getGoldlooted() {
+        return goldlooted;
+    }
+
+    public void setEnterPressed(boolean enterPressed) {
+        this.enterPressed = enterPressed;
+    }
+
+    public void setLooted(boolean looted) {
+        this.looted = looted;
+    }
+
+    public void setUp(boolean up) {
+        this.up = up;
+    }
+
+    public void setDown(boolean down) {
+        this.down = down;
+    }
+
+    public void setLeft(boolean left) {
+        this.left = left;
+    }
+
+    public void setRight(boolean right) {
+        this.right = right;
+    }
+
+    public void setGamePanel(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
+    public void setDebugMode(boolean debugMode) {
+        this.debugMode = debugMode;
+    }
+
+    public void setPlayerChoice(int playerChoice) {
+        this.playerChoice = playerChoice;
+    }
+
+    public void setEnemyChoice(int enemyChoice) {
+        this.enemyChoice = enemyChoice;
+    }
+
+    public void setGoldlooted(int goldlooted) {
+        this.goldlooted = goldlooted;
     }
 }

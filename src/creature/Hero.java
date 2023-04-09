@@ -23,22 +23,22 @@ import java.util.Random;
 
 public class Hero extends Creature {
 
-    final public int screenX;
-    final public int screenY;
-    KeyboardInputs keyboardInputs;
-    public int level,maxHealth,health,maxMana,mana, nextLevelExp,exp,baseDefence,defence,baseStrength,strength,dexterity,gold;
-    public Weapon currentWeapon;
-    public Armor currentArmor;
-    public boolean encounteredEnemy = false;
-     boolean encounteredNPC = false;
-    public String[] attackMove = new String[12];
-    public int[] attackPower = new int[12];
-    public int[] attackAccuracy = new int[12];
-    public int[] attackSoundIndex = new int[12];
-    public int[] attackCost = new int[12];
-    public ArrayList<Item> inventory = new ArrayList<>();
-    public int inventorySize = 25;
-    Chest currentChest;
+    final private int screenX;
+    final private int screenY;
+    private KeyboardInputs keyboardInputs;
+    private int level,maxHealth,health,maxMana,mana, nextLevelExp,exp,baseDefence,defence,baseStrength,strength,dexterity,gold;
+    private Weapon currentWeapon;
+    private Armor currentArmor;
+    private boolean encounteredEnemy = false;
+    private boolean encounteredNPC = false;
+    private String[] attackMove = new String[12];
+    private int[] attackPower = new int[12];
+    private int[] attackAccuracy = new int[12];
+    private int[] attackSoundIndex = new int[12];
+    private int[] attackCost = new int[12];
+    private ArrayList<Item> inventory = new ArrayList<>();
+    private int inventorySize = 25;
+    private Chest currentChest;
 
 
     public Hero(GamePanel gamePanel, KeyboardInputs keyboardInputs) {
@@ -166,7 +166,7 @@ public class Hero extends Creature {
         attackSoundIndex[6] = 5;
         attackCost[6] = 8;
         attackMove[7] = "Blizzard";
-        attackPower[7] = 200;
+        attackPower[7] = 1000;
         attackAccuracy[7] = 5;
         attackSoundIndex[7] = 5;
         attackCost[7] = 20;
@@ -188,8 +188,8 @@ public class Hero extends Creature {
             }
             else if(selectedItem instanceof Consumable){
                  ((Consumable) selectedItem).overWorldUse();
-                 if (selectedItem.amount>1){
-                     selectedItem.amount--;
+                 if (selectedItem.getAmount() >1){
+                     selectedItem.setAmount(selectedItem.getAmount()-1);
                  } else {
                      inventory.remove(itemIndex);
                  }
@@ -200,8 +200,8 @@ public class Hero extends Creature {
     public void useItemInBattle(int index){
         Item selectedItem = inventory.get(index);
         ((Consumable) selectedItem).battleUse();
-        if (selectedItem.amount>1){
-            selectedItem.amount--;
+        if (selectedItem.getAmount()>1){
+            selectedItem.setAmount(selectedItem.getAmount()-1);
         } else {
             inventory.remove(index);
         }
@@ -221,10 +221,10 @@ public class Hero extends Creature {
 
     public boolean canObtainItem(Item item){
         boolean canObtain = false;
-        if(item.stackable){
+        if(item.isStackable()){
             int index = searchInventory(item.getName());
             if(index != 666){
-                inventory.get(index).amount++;
+                inventory.get(index).setAmount(inventory.get(index).getAmount() +1);
                 canObtain = true;
             }
             else {
@@ -246,14 +246,14 @@ public class Hero extends Creature {
 
     @Override
     public void refresh() {
-        if (keyboardInputs.up || keyboardInputs.down || keyboardInputs.left || keyboardInputs.right){ //checking for keyboard inputs so the sprite wont change when character is standing still
-            if(keyboardInputs.up){
+        if (keyboardInputs.isUp() || keyboardInputs.isDown() || keyboardInputs.isLeft() || keyboardInputs.isRight()){ //checking for keyboard inputs so the sprite wont change when character is standing still
+            if(keyboardInputs.isUp()){
                 direction = "up";
-            } else if (keyboardInputs.down) {
+            } else if (keyboardInputs.isDown()) {
                 direction = "down";
-            } else if (keyboardInputs.left) {
+            } else if (keyboardInputs.isLeft()) {
                 direction = "left";
-            } else if (keyboardInputs.right) {
+            } else if (keyboardInputs.isRight()) {
                 direction = "right";
             }
             //background tile collision check
@@ -275,7 +275,7 @@ public class Hero extends Creature {
             //event check
             gamePanel.eventHandler.checkEvent();
 
-            gamePanel.keyboardInputs.enterPressed = false;
+            gamePanel.keyboardInputs.setEnterPressed(false);
 
             //if !collision, hero will move
             if(!collision){
@@ -314,7 +314,7 @@ public class Hero extends Creature {
 
     public void npcInteraction(int index) {
         if (index != 666) {
-            if (gamePanel.keyboardInputs.enterPressed) {
+            if (gamePanel.keyboardInputs.isEnterPressed()) {
                 encounteredNPC = true;
                 gamePanel.npc[gamePanel.currentMap][index].speak();
 
@@ -325,7 +325,7 @@ public class Hero extends Creature {
 
     public void  pickUpObject(int index) {
         if (index !=666) { //if the hero does not touch any objects (any number above the object limit is fine
-            String objectName = gamePanel.superObject[gamePanel.currentMap][index].name;
+            String objectName = gamePanel.superObject[gamePanel.currentMap][index].getName();
 
                 switch (objectName) {
                     case "Key":
@@ -335,14 +335,14 @@ public class Hero extends Creature {
                         break;
                     case "Chest":
                         currentChest = (Chest) gamePanel.superObject[gamePanel.currentMap][index];
-                        if (!canObtainItem(currentChest.content)){
+                        if (!canObtainItem(currentChest.getContent())){
 
                             gamePanel.ui.currentDialogue = "Inventory is full";
                             gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
 
                         } else {
                             gamePanel.playSoundEffect(2);
-                            gamePanel.ui.currentDialogue = "Hero found: " + currentChest.content.getName() ;
+                            gamePanel.ui.currentDialogue = "Hero found: " + currentChest.getContent().getName() ;
 
                             gamePanel.gameState = GamePanel.Gamestate.DIALOGUESTATE;
                             gamePanel.superObject[gamePanel.currentMap][index] = null;
@@ -533,7 +533,126 @@ public class Hero extends Creature {
         return encounteredNPC;
     }
 
+    public int getScreenY() {
+        return screenY;
+    }
+
+    public KeyboardInputs getKeyboardInputs() {
+        return keyboardInputs;
+    }
+
+    public boolean isEncounteredEnemy() {
+        return encounteredEnemy;
+    }
+
+    public String[] getAttackMove() {
+        return attackMove;
+    }
+
+    public int[] getAttackPower() {
+        return attackPower;
+    }
+
+    public int[] getAttackAccuracy() {
+        return attackAccuracy;
+    }
+
+    public int[] getAttackSoundIndex() {
+        return attackSoundIndex;
+    }
+
+    public int[] getAttackCost() {
+        return attackCost;
+    }
+
+    public ArrayList<Item> getInventory() {
+        return inventory;
+    }
+
+    public int getInventorySize() {
+        return inventorySize;
+    }
+
+    public Chest getCurrentChest() {
+        return currentChest;
+    }
+
+    public void setKeyboardInputs(KeyboardInputs keyboardInputs) {
+        this.keyboardInputs = keyboardInputs;
+    }
+
+    public void setLevel(int level) {
+        this.level = level;
+    }
+
+    public void setMaxHealth(int maxHealth) {
+        this.maxHealth = maxHealth;
+    }
+
+    public void setMaxMana(int maxMana) {
+        this.maxMana = maxMana;
+    }
+
+    public void setNextLevelExp(int nextLevelExp) {
+        this.nextLevelExp = nextLevelExp;
+    }
+
+    public void setDexterity(int dexterity) {
+        this.dexterity = dexterity;
+    }
+
+    public void setGold(int gold) {
+        this.gold = gold;
+    }
+
+    public void setCurrentWeapon(Weapon currentWeapon) {
+        this.currentWeapon = currentWeapon;
+    }
+
+    public void setCurrentArmor(Armor currentArmor) {
+        this.currentArmor = currentArmor;
+    }
+
+    public void setEncounteredEnemy(boolean encounteredEnemy) {
+        this.encounteredEnemy = encounteredEnemy;
+    }
+
+    public void setAttackMove(String[] attackMove) {
+        this.attackMove = attackMove;
+    }
+
+    public void setAttackPower(int[] attackPower) {
+        this.attackPower = attackPower;
+    }
+
+    public void setAttackAccuracy(int[] attackAccuracy) {
+        this.attackAccuracy = attackAccuracy;
+    }
+
+    public void setAttackSoundIndex(int[] attackSoundIndex) {
+        this.attackSoundIndex = attackSoundIndex;
+    }
+
+    public void setAttackCost(int[] attackCost) {
+        this.attackCost = attackCost;
+    }
+
+    public void setInventory(ArrayList<Item> inventory) {
+        this.inventory = inventory;
+    }
+
+    public void setInventorySize(int inventorySize) {
+        this.inventorySize = inventorySize;
+    }
+
+    public void setCurrentChest(Chest currentChest) {
+        this.currentChest = currentChest;
+    }
+
     public void setEncounteredNPC(boolean encounteredNPC) {
         this.encounteredNPC = encounteredNPC;
     }
 }
+
+
+

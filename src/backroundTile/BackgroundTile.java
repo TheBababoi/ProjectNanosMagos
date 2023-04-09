@@ -4,7 +4,15 @@ import java.awt.image.BufferedImage;
 
 public class BackgroundTile {
 
-    public BufferedImage image;
-    public Boolean collision = false;
+    BufferedImage image;
+    Boolean collision = false;
 
+    public Boolean getCollision() {
+        return collision;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
 }
+

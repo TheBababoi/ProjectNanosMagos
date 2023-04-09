@@ -4,10 +4,10 @@ import java.awt.*;
 
 public class EventHandler {
 
-    GamePanel gamePanel;
+    private GamePanel gamePanel;
 
-    EventHitbox eventHitbox[][][];
-    int tempMap, tempCol, tempRow;
+    private EventHitbox eventHitbox[][][];
+    private int tempMap, tempCol, tempRow;
 
     public EventHandler(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -57,20 +57,20 @@ public class EventHandler {
 
         boolean hitCheck = false;
         if(mapNumber == gamePanel.currentMap){
-            gamePanel.hero.hitbox.x = gamePanel.hero.worldX + gamePanel.hero.hitbox.x;
-            gamePanel.hero.hitbox.y = gamePanel.hero.worldY + gamePanel.hero.hitbox.y;
+            gamePanel.hero.hitbox.x = gamePanel.hero.getWorldX() + gamePanel.hero.hitbox.x;
+            gamePanel.hero.hitbox.y = gamePanel.hero.getWorldY() + gamePanel.hero.hitbox.y;
             eventHitbox[mapNumber][collumn][row].x = collumn*gamePanel.spriteSize + eventHitbox[mapNumber][collumn][row].x;
             eventHitbox[mapNumber][collumn][row].y = row*gamePanel.spriteSize + eventHitbox[mapNumber][collumn][row].y;
 
             if (gamePanel.hero.hitbox.intersects(eventHitbox[mapNumber][collumn][row])){
-                if(gamePanel.hero.direction.contentEquals(requiredDirection) || requiredDirection.contentEquals("any")) {
+                if(gamePanel.hero.getDirection().contentEquals(requiredDirection) || requiredDirection.contentEquals("any")) {
 
                     hitCheck = true;
                 }
             }
             // reset to default
-            gamePanel.hero.hitbox.x = gamePanel.hero.hitboxX;
-            gamePanel.hero.hitbox.y = gamePanel.hero.hitboxY;
+            gamePanel.hero.hitbox.x = gamePanel.hero.getHitboxX();
+            gamePanel.hero.hitbox.y = gamePanel.hero.getHitboxY();
             eventHitbox[mapNumber][collumn][row].x = eventHitbox[mapNumber][collumn][row].eventHitboxX;
             eventHitbox[mapNumber][collumn][row].y = eventHitbox[mapNumber][collumn][row].eventHitboxY;
 
@@ -81,11 +81,11 @@ public class EventHandler {
     }
 
     public  void healSpot(int collumn , int row, GamePanel.Gamestate gameState){
-        if(gamePanel.keyboardInputs.enterPressed){
+        if(gamePanel.keyboardInputs.isEnterPressed()){
             gamePanel.gameState = gameState;
             gamePanel.ui.currentDialogue = "Restored to full Health";
-            gamePanel.hero.health = gamePanel.hero.maxHealth;
-            gamePanel.hero.mana = gamePanel.hero.maxMana;
+            gamePanel.hero.setHealth(gamePanel.hero.getMaxHealth());
+            gamePanel.hero.setMana(gamePanel.hero.getMaxMana());
             eventHitbox[gamePanel.maxMap][collumn][row].eventDone = true;
 
         }
@@ -93,11 +93,11 @@ public class EventHandler {
     }
 
     public  void expSpot(int collumn , int row, GamePanel.Gamestate gameState){
-        if(gamePanel.keyboardInputs.enterPressed){
+        if(gamePanel.keyboardInputs.isEnterPressed()){
             gamePanel.gameState = gameState;
             gamePanel.ui.currentDialogue = "Souravlas Has granted you his wisdom - Gain 50 exp!";
 
-            gamePanel.hero.exp += 50;
+            gamePanel.hero.setExp(gamePanel.hero.getExp() + 50);
             gamePanel.hero.checkLevelUp();
             eventHitbox[gamePanel.maxMap][collumn][row].eventDone = true;
 
@@ -117,5 +117,44 @@ public class EventHandler {
 
     }
 
+    public GamePanel getGamePanel() {
+        return gamePanel;
+    }
 
+    public EventHitbox[][][] getEventHitbox() {
+        return eventHitbox;
+    }
+
+    public int getTempMap() {
+        return tempMap;
+    }
+
+    public int getTempCol() {
+        return tempCol;
+    }
+
+    public int getTempRow() {
+        return tempRow;
+    }
+
+
+    public void setGamePanel(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
+    public void setEventHitbox(EventHitbox[][][] eventHitbox) {
+        this.eventHitbox = eventHitbox;
+    }
+
+    public void setTempMap(int tempMap) {
+        this.tempMap = tempMap;
+    }
+
+    public void setTempCol(int tempCol) {
+        this.tempCol = tempCol;
+    }
+
+    public void setTempRow(int tempRow) {
+        this.tempRow = tempRow;
+    }
 }

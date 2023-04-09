@@ -53,8 +53,8 @@ public class FlowerGuy extends NPC {
     public void draw(Graphics2D g2) {
         super.draw(g2);
         BufferedImage image = null;
-        int screenX = worldX - gamePanel.hero.worldX + gamePanel.hero.screenX;
-        int screenY = worldY - gamePanel.hero.worldY + gamePanel.hero.screenY;
+        int screenX = worldX - gamePanel.hero.worldX + gamePanel.hero.getScreenX();
+        int screenY = worldY - gamePanel.hero.worldY + gamePanel.hero.getScreenY();
         if (direction == "left") {
             if (spriteNumber == 1) {
                 image = left1;

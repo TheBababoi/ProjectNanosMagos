@@ -11,10 +11,10 @@ public abstract class Item {
     protected GamePanel gamePanel;
     protected String name;
     protected String description;
-    BufferedImage image;
-    public int price;
-    public boolean stackable = false;
-    public  int amount = 1;
+    private BufferedImage image;
+    protected int price;
+    protected boolean stackable = false;
+    private   int amount = 1;
 
     public Item(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -39,5 +39,49 @@ public abstract class Item {
 
     public String getDescription() {
         return description;
+    }
+
+    public GamePanel getGamePanel() {
+        return gamePanel;
+    }
+
+    public int getPrice() {
+        return price;
+    }
+
+    public boolean isStackable() {
+        return stackable;
+    }
+
+    public int getAmount() {
+        return amount;
+    }
+
+    public void setGamePanel(GamePanel gamePanel) {
+        this.gamePanel = gamePanel;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public void setImage(BufferedImage image) {
+        this.image = image;
+    }
+
+    public void setPrice(int price) {
+        this.price = price;
+    }
+
+    public void setStackable(boolean stackable) {
+        this.stackable = stackable;
+    }
+
+    public void setAmount(int amount) {
+        this.amount = amount;
     }
 }

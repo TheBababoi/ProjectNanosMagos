@@ -4,7 +4,8 @@ import java.awt.*;
 
 public class EventHitbox extends Rectangle {
 
-    int eventHitboxX,eventHitboxY;
-    boolean eventDone = false;
+    protected int eventHitboxX;
+    protected int eventHitboxY;
+    protected boolean eventDone = false;
 
 }

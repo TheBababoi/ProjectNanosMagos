@@ -13,7 +13,7 @@ import main.GamePanel;
 import java.io.*;
 
 public class SaveLoad {
-    GamePanel gamePanel;
+    private GamePanel gamePanel;
 
     public SaveLoad(GamePanel gamePanel) {
         this.gamePanel = gamePanel;
@@ -24,53 +24,53 @@ public class SaveLoad {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("save.txt"));
 
             //hero
-            bufferedWriter.write(String.valueOf((gamePanel.hero.level)));
+            bufferedWriter.write(String.valueOf((gamePanel.hero.getLevel())));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.maxHealth));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getMaxHealth()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.health));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getHealth()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.maxMana));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getMaxMana()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.mana));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getMana()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.nextLevelExp));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getNextLevelExp()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.exp));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getExp()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.baseDefence));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getBaseDefence()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.defence));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getDefence()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.baseStrength));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getBaseStrength()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.strength));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getStrength()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.dexterity));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getDexterity()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.gold));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getGold()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.worldX));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getWorldX()));
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.worldY));
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getWorldY()));
 
             //inventory
             bufferedWriter.newLine();
-            bufferedWriter.write(String.valueOf(gamePanel.hero.inventory.size()));
-            for(Item item : gamePanel.hero.inventory){
+            bufferedWriter.write(String.valueOf(gamePanel.hero.getInventory().size()));
+            for(Item item : gamePanel.hero.getInventory()){
                 bufferedWriter.newLine();
                 bufferedWriter.write(item.getName());
                 bufferedWriter.newLine();
-                bufferedWriter.write(String.valueOf(item.amount));
+                bufferedWriter.write(String.valueOf(item.getAmount()));
             }
 
             //equipment
             String weapon = "", armor = "";
-            for (int i = 0; i <gamePanel.hero.inventory.size(); i++) {
-                if (gamePanel.hero.inventory.get(i) == gamePanel.hero.currentWeapon){
+            for (int i = 0; i < gamePanel.hero.getInventory().size(); i++) {
+                if (gamePanel.hero.getInventory().get(i) == gamePanel.hero.getCurrentWeapon()){
                     weapon = String.valueOf(i);
 
-                } else  if (gamePanel.hero.inventory.get(i) == gamePanel.hero.currentArmor){
+                } else  if (gamePanel.hero.getInventory().get(i) == gamePanel.hero.getCurrentArmor()){
                     armor = String.valueOf(i);
 
                 }
@@ -114,57 +114,57 @@ public class SaveLoad {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("save.txt"));
             String string = bufferedReader.readLine();
             
-            gamePanel.hero.level = Integer.parseInt(string);
+            gamePanel.hero.setLevel(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.maxHealth = Integer.parseInt(string);
+            gamePanel.hero.setMaxHealth(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.health = Integer.parseInt(string);
+            gamePanel.hero.setHealth(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.maxMana = Integer.parseInt(string);
+            gamePanel.hero.setMaxMana(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.mana = Integer.parseInt(string);
+            gamePanel.hero.setMana(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.nextLevelExp = Integer.parseInt(string);
+            gamePanel.hero.setNextLevelExp(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.exp = Integer.parseInt(string);
+            gamePanel.hero.setExp(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.baseDefence = Integer.parseInt(string);
+            gamePanel.hero.setBaseDefence(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.defence = Integer.parseInt(string);
+            gamePanel.hero.setDefence(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.baseStrength = Integer.parseInt(string);
+            gamePanel.hero.setBaseStrength(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.strength = Integer.parseInt(string);
+            gamePanel.hero.setStrength(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.dexterity = Integer.parseInt(string);
+            gamePanel.hero.setDexterity(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.gold = Integer.parseInt(string);
+            gamePanel.hero.setGold(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.worldX = Integer.parseInt(string);
+            gamePanel.hero.setWorldX(Integer.parseInt(string));
             string = bufferedReader.readLine();
-            gamePanel.hero.worldY = Integer.parseInt(string);
+            gamePanel.hero.setWorldY(Integer.parseInt(string));
 
             //inventory
-            gamePanel.hero.inventory.clear();
+            gamePanel.hero.getInventory().clear();
             string = bufferedReader.readLine();
             int itemCount = Integer.parseInt(string);
             for (int i = 0; i < itemCount; i++) {
                 string = bufferedReader.readLine();
                 Item item = loadItem(string);
-                gamePanel.hero.inventory.add(item);
+                gamePanel.hero.getInventory().add(item);
                 string = bufferedReader.readLine();
-                gamePanel.hero.inventory.get(i).amount = Integer.parseInt(string);
+                gamePanel.hero.getInventory().get(i).setAmount(Integer.parseInt(string));
             }
 
             //equipment
             string = bufferedReader.readLine();
-            Weapon weapon = (Weapon)gamePanel.hero.inventory.get(Integer.parseInt(string));
-            gamePanel.hero.currentWeapon = weapon;
-            gamePanel.hero.currentWeapon.recalculateHeroStats(gamePanel);
+            Weapon weapon = (Weapon) gamePanel.hero.getInventory().get(Integer.parseInt(string));
+            gamePanel.hero.setCurrentWeapon(weapon);
+            gamePanel.hero.getCurrentWeapon().recalculateHeroStats(gamePanel);
             string = bufferedReader.readLine();
-            Armor armor = (Armor) gamePanel.hero.inventory.get(Integer.parseInt(string));
-            gamePanel.hero.currentArmor = armor;
-            gamePanel.hero.currentArmor.recalculateHeroStats(gamePanel);
+            Armor armor = (Armor) gamePanel.hero.getInventory().get(Integer.parseInt(string));
+            gamePanel.hero.setCurrentArmor(armor);
+            gamePanel.hero.getCurrentArmor().recalculateHeroStats(gamePanel);
 
             //enemies and objects
             for (int i = 0; i <gamePanel.maxMap; i++) {

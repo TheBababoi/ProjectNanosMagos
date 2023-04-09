@@ -22,7 +22,7 @@ public class Mushroom extends Consumable {
         gamePanel.ui.currentDialogue = "You ate the Mushroom! \n Recovered 20 health!";
         gamePanel.hero.setHealth(gamePanel.hero.getHealth() +20);
         if (gamePanel.hero.getHealth()>=gamePanel.hero.getMaxHealth()){
-            gamePanel.hero.setHealth(gamePanel.hero.maxHealth);
+            gamePanel.hero.setHealth(gamePanel.hero.getMaxHealth());
         }
 
 
@@ -33,7 +33,7 @@ public class Mushroom extends Consumable {
         gamePanel.ui.setCurrentBattleDialogue("You ate the Mushroom! \n Recovered 20 health!");
         gamePanel.hero.setHealth(gamePanel.hero.getHealth() +20);
         if (gamePanel.hero.getHealth()>=gamePanel.hero.getMaxHealth()){
-            gamePanel.hero.setHealth(gamePanel.hero.maxHealth);
+            gamePanel.hero.setHealth(gamePanel.hero.getMaxHealth());
         }
     }
 }
