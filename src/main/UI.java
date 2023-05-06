@@ -5,6 +5,7 @@ import Items.Item;
 import creature.Creature;
 import creature.Merchant;
 import creature.NPC;
+import creature.Nikolaidis;
 import org.w3c.dom.Text;
 
 import javax.imageio.ImageIO;
@@ -30,6 +31,7 @@ public class UI {
     private int counter = 0;
     private int itemIndex = 0;
     private  NPC npc;
+    private Nikolaidis nikolaidis;
     private Merchant merchant;
     private TradeState tradeState;
 
@@ -38,11 +40,17 @@ public class UI {
     public enum TradeState {
         SELECT, BUY, SELL
     }
+    private QuizState quizState;
+    public enum QuizState {
+        SELECT, QUIZ
+    }
+    private int quizIndex = 0 ;
 
     private int characterIndex = 0;
     private String combinedText = "";
     private String battleTipsText= "";
     private int creditsY = 1000;
+    private int loadCounter = 0;
     private ArrayList<String> itemNames = new ArrayList<>();
     private ArrayList<Integer> itemBattleIndex = new ArrayList<>();
     private int itemCounter = -1;
@@ -102,6 +110,13 @@ public class UI {
             drawDialogueScreen();
         } else if ((gamePanel.getGameState() == GamePanel.Gamestate.CUTSCENE)) {
             playCutscene();
+            loadCounter++;
+            if (loadCounter > 800) {
+
+                gamePanel.setGameState(GamePanel.Gamestate.TITLESCREEM);
+                loadCounter = 0;
+                gamePanel.playMusic(9);
+            }
         } else if (gamePanel.getGameState() == GamePanel.Gamestate.BATTLESTATEHERO) {
             drawBattleScreen(gamePanel.getBattleHandler().getMonsterIndex());
             drawBattleTips();
@@ -133,7 +148,151 @@ public class UI {
         } else if (gamePanel.getGameState() == GamePanel.Gamestate.TRADEDIALOGUE) {
             drawTradeMenu();
             drawTradeDialogue();
+        } else if (gamePanel.getGameState() == GamePanel.Gamestate.QUIZMENU) {
+             drawQuizMenu();
+         } else if (gamePanel.getGameState() == GamePanel.Gamestate.QUIZRESULT) {
+            drawQuizMenu();
+            drawQuizResult();
+         } else if (gamePanel.getGameState() == GamePanel.Gamestate.QUIZFINAL) {
+            drawQuizMenu();
+            drawQuizFinal();
         }
+
+    }
+
+    private void drawQuizFinal() {
+        int window2X = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 16);
+        int window2Y = 750;
+        int width2 = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 10);
+        int height2 = gamePanel.getSpriteSize() * 3;
+        drawMainWindow(window2X, window2Y, width2, height2);
+        int x = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 15);
+        int y =850;
+        String text = "";
+        if (gamePanel.getHero().getHealth() == 1){
+            text = "You have failed but I wont \n kill you your quest must go on!";
+            g2.drawImage(nikolaidis.getMamaSad(), gamePanel.getSpriteSize() * 10, gamePanel.getSpriteSize() - 100, gamePanel.getSpriteSize() * 9, gamePanel.getSpriteSize() * 12, null);
+        } else {
+           text = "Congratulations Mama is very Proud! \n Your Max Mana was raised!";
+            g2.drawImage(nikolaidis.getNikolaidisHappy(), gamePanel.getSpriteSize() * 10, gamePanel.getSpriteSize() - 100, gamePanel.getSpriteSize() * 9, gamePanel.getSpriteSize() * 12, null);
+        }
+        for (String line : text.split("\n")) {
+            Color color = new Color(255, 255, 255, 255);
+            g2.setColor(color);
+            g2.drawString(line, x, y);
+            y += 80;
+        }
+    }
+
+    private void drawQuizResult() {
+        int window2X = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 16);
+        int window2Y = 750;
+        int width2 = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 10);
+        int height2 = gamePanel.getSpriteSize() * 3;
+        drawMainWindow(window2X, window2Y, width2, height2);
+        int x = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 15);
+        String text = "";
+        if (gamePanel.getKeyboardInputs().getPlayerChoice() == nikolaidis.getCorrectAnswer()[quizIndex]){
+            text = "Correct";
+            g2.drawImage(nikolaidis.getMamaHappy(), gamePanel.getSpriteSize() * 10, gamePanel.getSpriteSize() - 100, gamePanel.getSpriteSize() * 9, gamePanel.getSpriteSize() * 12, null);
+        } else {
+            g2.drawImage(nikolaidis.getMamaSad(), gamePanel.getSpriteSize() * 10, gamePanel.getSpriteSize() - 100, gamePanel.getSpriteSize() * 9, gamePanel.getSpriteSize() * 12, null);
+            text = "False";
+        }
+        g2.drawString(text, x, 850);
+
+    }
+
+    private void drawQuizMenu() {
+        if (quizState == QuizState.SELECT) {
+            quizSelect();
+        } else if (quizState == QuizState.QUIZ) {
+            quiz();
+        }
+        gamePanel.getKeyboardInputs().setEnterPressed(false);
+    }
+
+    private void quiz() {
+        g2.setColor(new Color(0, 0, 0));
+        g2.fillRect(0, 0, gamePanel.getScreenWidth(), gamePanel.getScreenHeight());
+        counter++;
+        if (counter <= 150) {
+            image = nikolaidis.getNikolaidisInitial();
+        } else if (counter <= 200) {
+            image = nikolaidis.getMamaSpawn();
+        }
+        else if (counter <= 250) {
+            image = nikolaidis.getMamaDefault();
+        }
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32F));
+        if (gamePanel.getGameState() == GamePanel.Gamestate.QUIZMENU){
+            g2.drawImage(image, gamePanel.getSpriteSize() * 10, gamePanel.getSpriteSize() - 100, gamePanel.getSpriteSize() * 9, gamePanel.getSpriteSize() * 12, null);
+            int windowX = 0;
+            int windowY = 675;
+            int width = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 16);
+            int height = gamePanel.getSpriteSize() * 4;
+            drawSubWindow(windowX, windowY, width, height);
+            g2.drawString(nikolaidis.getAnswer()[quizIndex][0], 100, 725);
+            if (commandIndex == 0) {
+                g2.drawString(">", 130 - gamePanel.getSpriteSize(), 725);
+            }
+            g2.drawString(nikolaidis.getAnswer()[quizIndex][1], 100, 800);
+            if (commandIndex == 1) {
+                g2.drawString(">", 130 - gamePanel.getSpriteSize(), 800);
+            }
+            g2.drawString(nikolaidis.getAnswer()[quizIndex][2], 100, 875);
+            if (commandIndex == 2) {
+                g2.drawString(">", 130 - gamePanel.getSpriteSize(), 875);
+            }
+            g2.drawString(nikolaidis.getAnswer()[quizIndex][3], 100, 950);
+            if (commandIndex == 3) {
+                g2.drawString(">", 130 - gamePanel.getSpriteSize(), 950);
+            }
+            int window2X = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 16);
+            int window2Y = 750;
+            int width2 = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 10);
+            int height2 = gamePanel.getSpriteSize() * 3;
+            drawSubWindow(window2X, window2Y, width2, height2);
+            int x = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() * 15);
+            int y = 850;
+
+
+
+            for (String line : nikolaidis.getQuestion()[quizIndex].split("\n")) {
+                Color color = new Color(255, 255, 255, 255);
+                g2.setColor(color);
+                g2.drawString(line, x, y);
+                y += 80;
+            }
+        }
+        drawHeroUI();
+        g2.setFont(g2.getFont().deriveFont(Font.BOLD, 32F));
+
+
+        //counter = 0;
+
+    }
+
+    private void quizSelect() {
+        drawDialogueScreen();
+        int x = gamePanel.getSpriteSize() * 20;
+        int y = (int) (gamePanel.getSpriteSize() * 2.4);
+        int width = gamePanel.getSpriteSize() * 3;
+        int height = gamePanel.getSpriteSize() * 4;
+        drawSubWindow(x, y, width, height);
+        x += gamePanel.getSpriteSize();
+        y += gamePanel.getSpriteSize();
+        g2.drawString("Yes", x, y);
+        if (commandIndex == 0) {
+            g2.drawString(">", x - 30, y);
+        }
+        y += gamePanel.getSpriteSize();
+        g2.drawString("No", x, y);
+        if (commandIndex == 1) {
+            g2.drawString(">", x - 30, y);
+        }
+        y += gamePanel.getSpriteSize();
+        counter = 0;
     }
 
     private void drawCredits(int y) {
@@ -212,7 +371,7 @@ public class UI {
         itemIndex = getItemIndex();
         if (itemIndex < gamePanel.getHero().getInventory().size()) {
             drawSubWindow(gamePanel.getSpriteSize() * 9, gamePanel.getSpriteSize() * 10, gamePanel.getSpriteSize() * 6, gamePanel.getSpriteSize() * 2);
-            g2.drawString("Price        :" + gamePanel.getHero().getInventory().get(itemIndex).getPrice(), gamePanel.getSpriteSize() * 9 + 50, gamePanel.getSpriteSize() * 10 + 80);
+            g2.drawString("Price        :" + gamePanel.getHero().getInventory().get(itemIndex).getPrice()/2, gamePanel.getSpriteSize() * 9 + 50, gamePanel.getSpriteSize() * 10 + 80);
             g2.drawImage(gold, gamePanel.getSpriteSize() * 11 - 10, gamePanel.getSpriteSize() * 11 - 40, 60, 60, null);
         }
         drawInventory(true);
@@ -374,7 +533,7 @@ public class UI {
         int slotY = slotYstart;
         // draw items
         for (int i = 0; i < gamePanel.getHero().getInventory().size(); i++) {
-            if ((gamePanel.getHero().getInventory().get(i) == gamePanel.getHero().getCurrentWeapon()) || (gamePanel.getHero().getInventory().get(i) == gamePanel.getHero().getCurrentArmor())) {
+            if ((gamePanel.getHero().getInventory().get(i) == gamePanel.getHero().getCurrentWeapon()) || (gamePanel.getHero().getInventory().get(i) == gamePanel.getHero().getCurrentArmor()) || (gamePanel.getHero().getInventory().get(i) == gamePanel.getHero().getCurrentTrinket()) || (gamePanel.getHero().getInventory().get(i) == gamePanel.getHero().getCurrentGem())) {
                 g2.setColor(new Color(204, 195, 17, 255));
                 g2.fillRoundRect(slotX, slotY, gamePanel.getSpriteSize(), gamePanel.getSpriteSize(), 20, 20);
             }
@@ -493,12 +652,20 @@ public class UI {
         g2.drawString("Weapon", text2X, text2Y);
         text2Y += lineHeight;
         g2.drawString("Armor", text2X, text2Y + 20);
+        text2Y += lineHeight;
+        g2.drawString("Gem", text2X, text2Y + 40);
+        text2Y += lineHeight;
+        g2.drawString("Trinket", text2X, text2Y + 60);
         int tail2X = frame2X + frameWidth2 - 45;
         text2Y = frame2Y + gamePanel.getSpriteSize(); //resetting
         g2.drawImage(gamePanel.getHero().getCurrentWeapon().getImage(), tail2X - gamePanel.getSpriteSize(), text2Y - 60, null);
         text2Y += gamePanel.getSpriteSize();
         g2.drawImage(gamePanel.getHero().getCurrentArmor().getImage(), tail2X - gamePanel.getSpriteSize(), text2Y - 60, null);
-        text2X += gamePanel.getSpriteSize();
+        text2Y += gamePanel.getSpriteSize();
+        g2.drawImage(gamePanel.getHero().getCurrentGem().getImage(), tail2X - gamePanel.getSpriteSize(), text2Y - 60, null);
+        text2Y += gamePanel.getSpriteSize();
+        g2.drawImage(gamePanel.getHero().getCurrentTrinket().getImage(), tail2X - gamePanel.getSpriteSize(), text2Y - 60, null);
+        text2Y += gamePanel.getSpriteSize();
     }
 
     private void drawStatScreen() {
@@ -634,7 +801,7 @@ public class UI {
         g2.setFont(g2.getFont().deriveFont(Font.BOLD, 60F));
         g2.drawString(text, x3, 100);
 
-        int x = gamePanel.getScreenWidth() / 2 - 400;
+        int x = gamePanel.getScreenWidth() / 2 -400;
         int y = 200;
 
         if (gamePanel.getGameState() == GamePanel.Gamestate.BATTLELOGENEMY && (gamePanel.getBattleHandler().getDamage() != 0)) {
@@ -671,7 +838,7 @@ public class UI {
             defeatedCounter = 0;
         }
         gamePanel.getEnemy()[gamePanel.getCurrentMap()][index].setBattleSprites(image);
-        g2.drawImage(image, x, y, 720, 492, null);
+        g2.drawImage(image, gamePanel.getEnemy()[gamePanel.getCurrentMap()][index].spriteX, gamePanel.getEnemy()[gamePanel.getCurrentMap()][index].spriteY, gamePanel.getEnemy()[gamePanel.getCurrentMap()][index].spritesizeX, gamePanel.getEnemy()[gamePanel.getCurrentMap()][index].spritesizeY, null);
         double healthScale = (double) gamePanel.getSpriteSize() / gamePanel.getEnemy()[gamePanel.getCurrentMap()][index].maxHealth;
         double hpBarTotal = healthScale * gamePanel.getEnemy()[gamePanel.getCurrentMap()][index].health;
         g2.setColor(new Color(35, 35, 35));
@@ -826,7 +993,7 @@ public class UI {
             drawSubWindow(windowX, windowY, width, height);
             g2.setFont(g2.getFont().deriveFont(Font.BOLD, 40F));
             int x2 = 100;
-            int y2 = 600;
+            int y2 = 300;
             if (itemCounter == -1) {
                 itemNames.clear();
                 itemBattleIndex.clear();
@@ -843,7 +1010,7 @@ public class UI {
 
             for (int i = 0; i <= itemCounter; i++) {
                 g2.drawString(itemNames.get(i), x2, y2);
-                g2.drawString(String.valueOf("x" + gamePanel.getHero().getInventory().get(itemBattleIndex.get(i)).getAmount()), x2 + 300, y2);
+                g2.drawString(String.valueOf("x" + gamePanel.getHero().getInventory().get(itemBattleIndex.get(i)).getAmount()), x2 + 430, y2);
                 if (commandIndex == i) {
                     g2.drawString(">", x2 - gamePanel.getSpriteSize(), y2);
                 }
@@ -1045,7 +1212,7 @@ public class UI {
 
     public void playCutscene()  {
         Toolkit toolkit = Toolkit.getDefaultToolkit();
-        Image image = toolkit.getImage("src/sprites/story.gif");
+        Image image = toolkit.getImage("src/sprites/Loading_Animation_Wave_2.gif");
         g2.drawImage(image,0,0,1920,1080,null);
 
 
@@ -1127,7 +1294,7 @@ public class UI {
         int x = gamePanel.getSpriteSize() *2;
         int y = gamePanel.getSpriteSize() /2;
         int width = gamePanel.getScreenWidth() - (gamePanel.getSpriteSize() *3);
-        int height = gamePanel.getSpriteSize() *2;
+        int height = gamePanel.getSpriteSize() *3;
         drawSubWindow(x,y,width,height);
 
         g2.setFont(g2.getFont().deriveFont(Font.PLAIN,48F));
@@ -1353,4 +1520,27 @@ public class UI {
         this.subMenu = subMenu;
     }
 
+    public Nikolaidis getNikolaidis() {
+        return nikolaidis;
+    }
+
+    public void setNikolaidis(Nikolaidis nikolaidis) {
+        this.nikolaidis = nikolaidis;
+    }
+
+    public void setQuizState(QuizState quizState) {
+        this.quizState = quizState;
+    }
+
+    public QuizState getQuizState() {
+        return quizState;
+    }
+
+    public int getQuizIndex() {
+        return quizIndex;
+    }
+
+    public void setQuizIndex(int quizIndex) {
+        this.quizIndex = quizIndex;
+    }
 }

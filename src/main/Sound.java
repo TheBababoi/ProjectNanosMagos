@@ -17,7 +17,7 @@ public class Sound {
     private float volume;
 
     public Sound() {
-        soundURL[0] = new File("src/tunes/worldMusic/World.wav");
+        soundURL[0] = new File("src/tunes/worldMusic/World1.wav");
         soundURL[1] = new File("src/tunes/worldSoundEffects/key.wav");
         soundURL[2] = new File("src/tunes/worldSoundEffects/chest.wav");
         soundURL[3] = new File("src/tunes/worldSoundEffects/door.wav");
@@ -26,6 +26,7 @@ public class Sound {
         soundURL[6] = new File("src/tunes/battleSoundEffects/hit.wav");
         soundURL[7] = new File("src/tunes/battleSoundEffects/menu.wav");
         soundURL[8] = new File("src/tunes/battleSoundEffects/fireball.wav");
+        soundURL[9] = new File("src/tunes/worldMusic/menu.wav");
 
     }
 
@@ -42,19 +43,18 @@ public class Sound {
     }
 
     public void checkVolume(){
-        switch (volumeScale){
-            case 0: volume = - 80f; break;
-            case 1: volume = - 25f; break;
-            case 2: volume = -20f; break;
-            case 3: volume = -16f; break;
-            case 4: volume = -12f;  break;
-            case 5: volume = -8f; break;
-            case 6: volume = -5f; break;
-            case 7: volume = -2f; break;
-            case 8: volume = 1f; break;
-            case 9: volume = 3f; break;
-            case 10: volume = 6f; break;
-
+        switch (volumeScale) {
+            case 0 -> volume = -80f;
+            case 1 -> volume = -25f;
+            case 2 -> volume = -20f;
+            case 3 -> volume = -16f;
+            case 4 -> volume = -12f;
+            case 5 -> volume = -8f;
+            case 6 -> volume = -5f;
+            case 7 -> volume = -2f;
+            case 8 -> volume = 1f;
+            case 9 -> volume = 3f;
+            case 10 -> volume = 6f;
         }
         floatControl.setValue(volume);
     }

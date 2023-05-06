@@ -1,9 +1,8 @@
 package creature;
 
 import Items.Item;
-import Items.consumables.Gold;
-import Items.consumables.Mushroom;
-import Items.equipment.LegendaryPen;
+import Items.consumables.*;
+import Items.equipment.*;
 import main.GamePanel;
 import main.UI;
 
@@ -58,9 +57,19 @@ public class Merchant extends NPC{
 
 
     public void setItems(){
-        inventory.add(new Mushroom(gamePanel));
+        inventory.add(new Watermelon(gamePanel));
         inventory.add(new Mushroom(gamePanel));
         inventory.add(new LegendaryPen(gamePanel));
+        inventory.add(new FortifiedPotion(gamePanel));
+        inventory.add(new FortifiedPotion2(gamePanel));
+        inventory.add(new HealthPotion(gamePanel));
+        inventory.add(new HealthPotion2(gamePanel));
+        inventory.add(new ManaPotion(gamePanel));
+        inventory.add(new ManaPotion2(gamePanel));
+        inventory.add(new CoolStar(gamePanel));
+        inventory.add(new Diamond(gamePanel));
+        inventory.add(new Lolipop(gamePanel));
+        inventory.add(new MagicLock(gamePanel));
     }
 
     @Override

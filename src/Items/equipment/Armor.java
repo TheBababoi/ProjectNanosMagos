@@ -18,7 +18,7 @@ public class Armor extends Equipment {
 
     @Override
     public void recalculateHeroStats(GamePanel gamePanel) {
-        gamePanel.getHero().setDefence(gamePanel.getHero().getBaseDefence() + this.defence);
+        gamePanel.getHero().setDefence(gamePanel.getHero().getBaseDefence() + this.defence + gamePanel.getHero().getCurrentTrinket().getDefence());
     }
 
     public int getDefence() {

@@ -2,6 +2,9 @@ package main;
 
 import Items.Consumable;
 import Items.Item;
+import creature.AchatGood;
+import creature.FlowerGuy;
+import creature.Nikolaidis;
 
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -34,7 +37,7 @@ public class KeyboardInputs implements KeyListener {
     public void keyPressed(KeyEvent e) {  //standard WASD controls
         int code = e.getKeyCode();
         if (gamePanel.getGameState() == GamePanel.Gamestate.CUTSCENE) {
-            cutscene(code);
+
         } else if (gamePanel.getGameState() == GamePanel.Gamestate.PLAYSTATE) {
             playState(code);
         } else if (gamePanel.getGameState() == GamePanel.Gamestate.PAUSESTATE) {
@@ -65,8 +68,104 @@ public class KeyboardInputs implements KeyListener {
             tradeMenu(code);
         } else if (gamePanel.getGameState() == GamePanel.Gamestate.TRADEDIALOGUE) {
             tradeDialogue(code);
+        } else if (gamePanel.getGameState() == GamePanel.Gamestate.QUIZMENU) {
+            quizMenu(code);
+        } else if (gamePanel.getGameState() == GamePanel.Gamestate.QUIZRESULT) {
+            quizResult(code);
+        }else if (gamePanel.getGameState() == GamePanel.Gamestate.QUIZFINAL) {
+            quizFinal(code);
         }
 
+    }
+
+    private void quizFinal(int code) {
+        if (code == KeyEvent.VK_ENTER) {
+
+            if(!(gamePanel.getHero().getHealth() == 1)){
+                gamePanel.getHero().setMaxMana(gamePanel.getHero().getMaxMana() +100);
+                gamePanel.getHero().setMana(gamePanel.getHero().getMaxMana());
+                gamePanel.getUi().getNikolaidis().setQuizStatus(1);
+               // gamePanel.getUi().getNikolaidis().setDialogueIndex(1);
+
+            }else {
+                gamePanel.getUi().getNikolaidis().setQuizStatus(2);
+                //gamePanel.getUi().getNikolaidis().setDialogueIndex(2);
+            }
+            gamePanel.getUi().setQuizIndex(0);
+            gamePanel.getUi().setCurrentDialogue("Hello again");
+            gamePanel.setGameState(GamePanel.Gamestate.PLAYSTATE);
+
+        }
+
+    }
+
+    private void quizResult(int code) {
+        if (code == KeyEvent.VK_ENTER) {
+           if(!(playerChoice == gamePanel.getUi().getNikolaidis().getCorrectAnswer()[gamePanel.getUi().getQuizIndex()])){
+               gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() - gamePanel.getHero().getMaxHealth()/3);
+               if (gamePanel.getHero().getHealth()<=0){
+                   gamePanel.getHero().setHealth(1);
+               }
+           }
+           gamePanel.getUi().setQuizIndex(gamePanel.getUi().getQuizIndex() + 1);
+           if(gamePanel.getHero().getHealth() == 1 || gamePanel.getUi().getQuizIndex()>4){
+               gamePanel.setGameState(GamePanel.Gamestate.QUIZFINAL);
+           }else {
+               gamePanel.setGameState(GamePanel.Gamestate.QUIZMENU);
+           }
+
+        }
+
+    }
+
+    private void quizMenu(int code) {
+        if (gamePanel.getUi().getQuizState() == UI.QuizState.SELECT){
+            if (code == KeyEvent.VK_ENTER) {
+                if(gamePanel.getUi().getCommandIndex() == 0){
+                    gamePanel.getUi().setQuizState(UI.QuizState.QUIZ);
+                } else if (gamePanel.getUi().getCommandIndex() == 1) {
+                    gamePanel.getUi().setCurrentDialogue("You should go and study \nand make Mama Proud!");
+                    gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
+                    gamePanel.getUi().resetcommandIndex();
+
+                }
+            }
+            if (code == KeyEvent.VK_W) {
+                gamePanel.playSoundEffect(7);
+                gamePanel.getUi().setCommandIndex(gamePanel.getUi().getCommandIndex() -1 );
+                if (gamePanel.getUi().getCommandIndex() < 0) {
+                    gamePanel.getUi().setCommandIndex(1);
+                }
+            } else if (code == KeyEvent.VK_S) {
+                gamePanel.playSoundEffect(7);
+                gamePanel.getUi().setCommandIndex(gamePanel.getUi().getCommandIndex() + 1 );
+                if (gamePanel.getUi().getCommandIndex() > 1) {
+                    gamePanel.getUi().setCommandIndex(0);
+                }
+            }
+
+        }else if(gamePanel.getUi().getQuizState() == UI.QuizState.QUIZ){
+            if ( code == KeyEvent.VK_ENTER){
+                playerChoice = gamePanel.getUi().getCommandIndex();
+                gamePanel.playSoundEffect(7);
+                gamePanel.setGameState(GamePanel.Gamestate.QUIZRESULT);
+
+            }
+            if (code == KeyEvent.VK_W){
+                System.out.println("up");
+                if(gamePanel.getUi().getCommandIndex() != 0){
+                    gamePanel.getUi().setCommandIndex(gamePanel.getUi().getCommandIndex() - 1);
+                    gamePanel.playSoundEffect(7);
+                }
+            }
+            if (code == KeyEvent.VK_S){
+                System.out.println("down");
+                if(gamePanel.getUi().getCommandIndex() != 3){
+                    gamePanel.getUi().setCommandIndex(gamePanel.getUi().getCommandIndex() + 1);
+                    gamePanel.playSoundEffect(7);
+                }
+            }
+        }
     }
 
     private void credits(int code) {
@@ -172,13 +271,15 @@ public class KeyboardInputs implements KeyListener {
         else if(gamePanel.getUi().getTradeState() == UI.TradeState.SELL){
             if ( code == KeyEvent.VK_ENTER) {
                 if (gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()) == gamePanel.getHero().getCurrentArmor() ||
-                        gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()) == gamePanel.getHero().getCurrentWeapon()) {
+                        gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()) == gamePanel.getHero().getCurrentWeapon() ||
+                        gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()) == gamePanel.getHero().getCurrentGem() ||
+                        gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()) == gamePanel.getHero().getCurrentTrinket())  {
                     gamePanel.getUi().setCurrentDialogue("You are currently wearing that!");
                     gamePanel.setGameState(GamePanel.Gamestate.TRADEDIALOGUE);
                     gamePanel.getUi().drawTradeDialogue();
 
                 } else {
-                    gamePanel.getHero().setGold(gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()).getPrice() + gamePanel.getHero().getGold());
+                    gamePanel.getHero().setGold(gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()).getPrice()/2 + gamePanel.getHero().getGold());
                     if (gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()).getAmount() >1){
                         gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()).setAmount(gamePanel.getHero().getInventory().get(gamePanel.getUi().getItemIndex()).getAmount() -1);
                     } else {
@@ -299,10 +400,12 @@ public class KeyboardInputs implements KeyListener {
                 gamePanel.restart();
                 gamePanel.setGameState(GamePanel.Gamestate.PLAYSTATE);
                 System.out.println("playstate");
+                gamePanel.stopMusic();
                 gamePanel.playMusic(0);
             } else if (gamePanel.getUi().getCommandIndex() == 1) {
                 gamePanel.getSaveLoad().load();
-                gamePanel.playMusic(0);
+                gamePanel.stopMusic();
+                gamePanel.playMusic(gamePanel.getCurrentMap());
                 gamePanel.setGameState(GamePanel.Gamestate.PLAYSTATE);
                 gamePanel.getUi().setCommandIndex(0);
 
@@ -349,7 +452,6 @@ public class KeyboardInputs implements KeyListener {
     }
     private void cutscene(int code) {
         if (code == KeyEvent.VK_ENTER) {
-            gamePanel.stopMusic();
             gamePanel.setGameState(GamePanel.Gamestate.TITLESCREEM);
 
         }
@@ -631,6 +733,11 @@ public class KeyboardInputs implements KeyListener {
             gamePanel.getBattleHandler().resetBuffs();
             gamePanel.setGameState(GamePanel.Gamestate.PLAYSTATE);
             gamePanel.playMusic(0);
+            if(gamePanel.getBattleHandler().getMonsterIndex()==1){
+                gamePanel.getNpc()[0][9] = new AchatGood(gamePanel);
+                gamePanel.getNpc()[0][9].setWorldX(1 * gamePanel.getSpriteSize());
+                gamePanel.getNpc()[0][9].setWorldY(1 * gamePanel.getSpriteSize());
+            }
             gamePanel.getEnemy()[gamePanel.getCurrentMap()][gamePanel.getBattleHandler().getMonsterIndex()] = null;
             gamePanel.getHero().checkLevelUp();
 

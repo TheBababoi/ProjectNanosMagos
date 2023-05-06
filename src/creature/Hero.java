@@ -4,11 +4,7 @@ package creature;
 import Items.Consumable;
 import Items.Item;
 import Items.consumables.*;
-import Items.equipment.Armor;
-import Items.equipment.LegendaryPen;
-import Items.equipment.PurpleSword;
-
-import Items.equipment.Weapon;
+import Items.equipment.*;
 
 import main.GamePanel;
 import main.KeyboardInputs;
@@ -26,9 +22,11 @@ public class Hero extends Creature {
     final private int screenX;
     final private int screenY;
     private KeyboardInputs keyboardInputs;
-    private int level,maxHealth,health,maxMana,mana, nextLevelExp,exp,baseDefence,defence,baseStrength,strength,dexterity,gold;
+    private int level,maxHealth,health,maxMana, baseMaxMana, mana, nextLevelExp,exp,baseDefence,defence,baseStrength,strength,dexterity,gold;
     private Weapon currentWeapon;
     private Armor currentArmor;
+    private Trinket currentTrinket;
+    private Gem currentGem;
     private boolean encounteredEnemy = false;
     private boolean encounteredNPC = false;
     private String[] attackMove = new String[12];
@@ -65,8 +63,8 @@ public class Hero extends Creature {
     }
 
     public void setDefault(){
-        worldX = gamePanel.getSpriteSize() *1;
-        worldY = gamePanel.getSpriteSize() *1;
+        worldX = gamePanel.getSpriteSize() *0;
+        worldY = gamePanel.getSpriteSize() *8;
 
         direction = "down";
         setStats();
@@ -101,6 +99,8 @@ public class Hero extends Creature {
         inventory.clear();
         inventory.add(currentWeapon);
         inventory.add(currentArmor);
+        inventory.add(currentGem);
+        inventory.add(currentTrinket);
         inventory.add((new Mushroom(gamePanel)));
         inventory.add(new HealthPotion(gamePanel));
         inventory.add(new ManaPotion(gamePanel));
@@ -117,13 +117,17 @@ public class Hero extends Creature {
         baseStrength = 10;
         baseDefence = 1;
         dexterity = 4;
+        baseMaxMana = 30;
         exp = 0;
         nextLevelExp = 80;
-        gold = 500;
+        gold = 900;
         currentWeapon = new PurpleSword(gamePanel);
         currentArmor = new Armor(gamePanel);
+        currentGem = new ShinyMushroom(gamePanel);
+        currentTrinket = new MagicKey(gamePanel);
         strength = baseStrength + currentWeapon.getAttack();
-        defence = baseDefence + currentArmor.getDefence();
+        defence = baseDefence + currentArmor.getDefence() +currentTrinket.getDefence();
+        maxMana = currentGem.getMana() + baseMaxMana;
 
 
 
@@ -166,8 +170,8 @@ public class Hero extends Creature {
         attackSoundIndex[6] = 5;
         attackCost[6] = 8;
         attackMove[7] = "Blizzard";
-        attackPower[7] = 1000;
-        attackAccuracy[7] = 5;
+        attackPower[7] = 1500;
+        attackAccuracy[7] = 666;
         attackSoundIndex[7] = 5;
         attackCost[7] = 20;
 
@@ -182,9 +186,17 @@ public class Hero extends Creature {
                 currentArmor = (Armor) selectedItem;
                 currentArmor.recalculateHeroStats(gamePanel);
             }
+            else if(selectedItem instanceof Trinket ){
+                currentTrinket = (Trinket) selectedItem;
+                currentTrinket.recalculateHeroStats(gamePanel);
+            }
             else if(selectedItem instanceof Weapon ){
                 currentWeapon = (Weapon) selectedItem;
                 currentWeapon.recalculateHeroStats(gamePanel);
+            }
+            else if(selectedItem instanceof Gem ){
+                currentGem = (Gem) selectedItem;
+                currentGem.recalculateHeroStats(gamePanel);
             }
             else if(selectedItem instanceof Consumable){
                  ((Consumable) selectedItem).overWorldUse();
@@ -345,11 +357,17 @@ public class Hero extends Creature {
 
                         break;
                     case "Door":
-                            gamePanel.playSoundEffect(3);
+                            if( gamePanel.getEnemy()[0][0] == null){
+                                gamePanel.playSoundEffect(3);
 
-                            gamePanel.getUi().setCurrentDialogue("Hero opened the door");
-                            gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
-                            gamePanel.getSuperObject()[gamePanel.getCurrentMap()][index] = null;
+                                gamePanel.getUi().setCurrentDialogue("Hero opened the door");
+                                gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
+                                gamePanel.getSuperObject()[gamePanel.getCurrentMap()][index] = null;
+                            }else {
+                                gamePanel.getUi().setCurrentDialogue("An enemy is keeping the door locked");
+                                gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
+                            }
+
                         break;
 
                 }
@@ -506,11 +524,12 @@ public class Hero extends Creature {
     public void checkLevelUp() {
         if (exp >= nextLevelExp){
             level++;
-            nextLevelExp *= 3;
+            nextLevelExp *= 2;
             maxHealth += 5;
             health = maxHealth;
             maxMana +=5;
             mana = maxMana;
+            baseMaxMana +=5;
             strength += 2;
             baseStrength += 2;
             defence += 2;
@@ -568,6 +587,7 @@ public class Hero extends Creature {
         this.maxHealth = maxHealth;
     }
 
+
     public void setMaxMana(int maxMana) {
         this.maxMana = maxMana;
     }
@@ -599,7 +619,28 @@ public class Hero extends Creature {
     public void setEncounteredNPC(boolean encounteredNPC) {
         this.encounteredNPC = encounteredNPC;
     }
+
+    public Trinket getCurrentTrinket() {
+        return currentTrinket;
+    }
+
+    public Gem getCurrentGem() {
+        return currentGem;
+    }
+
+    public void setCurrentTrinket(Trinket currentTrinket) {
+        this.currentTrinket = currentTrinket;
+    }
+
+    public void setCurrentGem(Gem currentGem) {
+        this.currentGem = currentGem;
+    }
+
+    public int getBaseMaxMana() {
+        return baseMaxMana;
+    }
 }
+
 
 
 

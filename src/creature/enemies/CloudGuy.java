@@ -12,8 +12,7 @@ import java.io.IOException;
 
 
 public class CloudGuy extends Enemy {
-    public boolean alive = true;
-    public boolean defeated = false;
+
 
     public CloudGuy(GamePanel gamePanel) {
         super(gamePanel);
@@ -24,6 +23,11 @@ public class CloudGuy extends Enemy {
         actionCounterMax = 30;
         setBattleStats();
         setDrops(gamePanel);
+        spritesizeX=720;
+        spritesizeY = 480;
+        spriteX =  gamePanel.getScreenWidth() / 2 -400;
+        spriteY = 200;
+        battleText = "You can't hide from me. I' ll find you and shock you wherever you are.";
 
 
 

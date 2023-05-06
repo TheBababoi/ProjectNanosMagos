@@ -1,13 +1,9 @@
 package main;
 
 import Items.Item;
-import Items.consumables.HealthPotion;
-import Items.consumables.ManaPotion;
-import Items.consumables.Mushroom;
-import Items.equipment.Armor;
-import Items.equipment.LegendaryPen;
-import Items.equipment.PurpleSword;
-import Items.equipment.Weapon;
+import Items.consumables.*;
+import Items.equipment.*;
+import creature.Nikolaidis;
 import main.GamePanel;
 
 import java.io.*;
@@ -24,6 +20,8 @@ public class SaveLoad {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter("save.txt"));
 
             //hero
+            bufferedWriter.write(String.valueOf((gamePanel.getCurrentMap())));
+            bufferedWriter.newLine();
             bufferedWriter.write(String.valueOf((gamePanel.getHero().getLevel())));
             bufferedWriter.newLine();
             bufferedWriter.write(String.valueOf(gamePanel.getHero().getMaxHealth()));
@@ -54,6 +52,14 @@ public class SaveLoad {
             bufferedWriter.newLine();
             bufferedWriter.write(String.valueOf(gamePanel.getHero().getWorldY()));
 
+            //quiz
+            bufferedWriter.newLine();
+            if(gamePanel.getUi().getNikolaidis()==null){
+                bufferedWriter.write("0");
+            }else {
+                bufferedWriter.write(String.valueOf(gamePanel.getUi().getNikolaidis().getQuizStatus()));
+            }
+
             //inventory
             bufferedWriter.newLine();
             bufferedWriter.write(String.valueOf(gamePanel.getHero().getInventory().size()));
@@ -65,7 +71,7 @@ public class SaveLoad {
             }
 
             //equipment
-            String weapon = "", armor = "";
+            String weapon = "", armor = "", gem = "", trinket = "";
             for (int i = 0; i < gamePanel.getHero().getInventory().size(); i++) {
                 if (gamePanel.getHero().getInventory().get(i) == gamePanel.getHero().getCurrentWeapon()){
                     weapon = String.valueOf(i);
@@ -74,11 +80,23 @@ public class SaveLoad {
                     armor = String.valueOf(i);
 
                 }
+                else  if (gamePanel.getHero().getInventory().get(i) == gamePanel.getHero().getCurrentGem()){
+                    gem = String.valueOf(i);
+
+                }
+                else  if (gamePanel.getHero().getInventory().get(i) == gamePanel.getHero().getCurrentTrinket()){
+                    trinket = String.valueOf(i);
+
+                }
             }
             bufferedWriter.newLine();
             bufferedWriter.write(weapon);
             bufferedWriter.newLine();
             bufferedWriter.write(armor);
+            bufferedWriter.newLine();
+            bufferedWriter.write(gem);
+            bufferedWriter.newLine();
+            bufferedWriter.write(trinket);
 
             //enemies and objects
             for (int i = 0; i < gamePanel.getMaxMap(); i++) {
@@ -113,7 +131,8 @@ public class SaveLoad {
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("save.txt"));
             String string = bufferedReader.readLine();
-            
+            gamePanel.setCurrentMap(Integer.parseInt(string));
+            string = bufferedReader.readLine();
             gamePanel.getHero().setLevel(Integer.parseInt(string));
             string = bufferedReader.readLine();
             gamePanel.getHero().setMaxHealth(Integer.parseInt(string));
@@ -144,6 +163,22 @@ public class SaveLoad {
             string = bufferedReader.readLine();
             gamePanel.getHero().setWorldY(Integer.parseInt(string));
 
+            //quiz
+            string = bufferedReader.readLine();
+            if(string.equals("0")){
+
+                gamePanel.setQuizStatus(0);
+            } else if(string.equals("1")){
+
+                gamePanel.setQuizStatus(1);
+            }else if(string.equals("2")){
+
+                gamePanel.setQuizStatus(2);
+            }
+            System.out.println(gamePanel.getQuizStatus());
+
+
+
             //inventory
             gamePanel.getHero().getInventory().clear();
             string = bufferedReader.readLine();
@@ -165,6 +200,14 @@ public class SaveLoad {
             Armor armor = (Armor) gamePanel.getHero().getInventory().get(Integer.parseInt(string));
             gamePanel.getHero().setCurrentArmor(armor);
             gamePanel.getHero().getCurrentArmor().recalculateHeroStats(gamePanel);
+            string = bufferedReader.readLine();
+            Gem gem = (Gem) gamePanel.getHero().getInventory().get(Integer.parseInt(string));
+            gamePanel.getHero().setCurrentGem(gem);
+            gamePanel.getHero().getCurrentGem().recalculateHeroStats(gamePanel);
+            string = bufferedReader.readLine();
+            Trinket trinket = (Trinket) gamePanel.getHero().getInventory().get(Integer.parseInt(string));
+            gamePanel.getHero().setCurrentTrinket(trinket);
+            gamePanel.getHero().getCurrentTrinket().recalculateHeroStats(gamePanel);
 
             //enemies and objects
             for (int i = 0; i < gamePanel.getMaxMap(); i++) {
@@ -194,19 +237,45 @@ public class SaveLoad {
         Item item = null;
         if (name.equals("Mushroom")){
             item = new Mushroom(gamePanel);
-        } else if (name.equals("Legendary Pen")) {
+        } else if (name.equals("Watermelon")) {
+            item = new Watermelon(gamePanel);
+        } else if (name.equals("Lollipop")) {
+            item = new Lolipop(gamePanel);
+        } else if (name.equals("Cool Star")) {
+            item = new CoolStar(gamePanel);
+        } else if (name.equals("Shiny Mushroom")) {
+            item = new ShinyMushroom(gamePanel);
+        } else if (name.equals("Diamond")) {
+            item = new Diamond(gamePanel);
+        } else if (name.equals("Magic Key")) {
+            item = new MagicKey(gamePanel);
+        } else if (name.equals("Magic Lock")) {
+            item = new MagicLock(gamePanel);
+        }
+        else if (name.equals("Legendary Pen")) {
             item = new LegendaryPen(gamePanel);
         }else if (name.equals("sword")) {
             item = new PurpleSword(gamePanel);
-        } else if (name.equals("Health Potion")) {
+        } else if (name.equals("Pink Health Potion")) {
+            item = new HealthPotion2(gamePanel);
+       } else if (name.equals("Health Potion")) {
             item = new HealthPotion(gamePanel);
-       }
+        }
        else if (name.equals("armor")) {
             item = new Armor(gamePanel);
         }
-       else if (name.equals("Mana Potion")) {
-           item = new ManaPotion(gamePanel);
+       else if (name.equals("Yel. Mana Potion")) {
+           item = new ManaPotion2(gamePanel);
        }
+        else if (name.equals("Mana Potion")) {
+            item = new ManaPotion(gamePanel);
+        }
+        else if (name.equals("Fort. Potion")) {
+            item = new FortifiedPotion(gamePanel);
+        }
+        else if (name.equals("Or. Fort. Potion")) {
+            item = new FortifiedPotion2(gamePanel);
+        }
         return item;
     }
 }

@@ -10,7 +10,7 @@ import java.util.Random;
 public abstract class NPC extends Creature {
 
     private int dialogueIndex = 0;
-    private int dialogueSet = -1;
+    protected int dialogueSet = -1;
     private boolean encounteredNPC = false;
     protected String[][] dialogues = new String[20][20];
 

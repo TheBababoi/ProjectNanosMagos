@@ -4,11 +4,11 @@ import backroundTile.BackgroundTileManager;
 import creature.Enemy;
 import creature.Hero;
 import creature.NPC;
+import creature.Nikolaidis;
 import object.SuperObject;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.image.BufferedImage;
 
 public class GamePanel extends JPanel implements Runnable {
 
@@ -26,7 +26,7 @@ public class GamePanel extends JPanel implements Runnable {
     final private int maxWorldColumn = 50;
     final private int maxWorldRow = 50;
     private final int maxMap = 10;
-    private int currentMap = 0;
+    private int currentMap ;
 
     //system
     private int FPS = 60;
@@ -43,6 +43,8 @@ public class GamePanel extends JPanel implements Runnable {
     private BattleHandler battleHandler = new BattleHandler(this);
     private SaveLoad saveLoad = new SaveLoad(this);
     private boolean fullScreenOn = false;
+    private int quizStatus = 0;
+
 
 
     //creatures and objects
@@ -68,6 +70,7 @@ public class GamePanel extends JPanel implements Runnable {
         HEROSTATS,
         TRANSITION,TRANSITIONBATTLE,TRANSITIONFROMBATTLE,
         TRADEMENU,TRADEDIALOGUE,
+        QUIZMENU, QUIZRESULT,QUIZFINAL
     }
 
 
@@ -86,7 +89,7 @@ public class GamePanel extends JPanel implements Runnable {
             setFullScreen();
         }
 
-        playMusic(0);
+        //playMusic(0);
         gameState = Gamestate.CUTSCENE;
         assetPlacer.setObject();
         assetPlacer.setNPC();
@@ -96,10 +99,12 @@ public class GamePanel extends JPanel implements Runnable {
 
     }
     public void restart(){
+        currentMap = 0;
         assetPlacer.setObject();
         assetPlacer.setNPC();
         assetPlacer.setEnemy();
         hero.setDefault();
+        quizStatus = 0;
     }
 
     public void beginThread(){
@@ -297,10 +302,6 @@ public class GamePanel extends JPanel implements Runnable {
         return ui;
     }
 
-    public AssetPlacer getAssetPlacer() {
-        return assetPlacer;
-    }
-
     public CollisionCheck getCollisionCheck() {
         return collisionCheck;
     }
@@ -353,4 +354,11 @@ public class GamePanel extends JPanel implements Runnable {
         this.fullScreenOn = fullScreenOn;
     }
 
+    public int getQuizStatus() {
+        return quizStatus;
+    }
+
+    public void setQuizStatus(int quizStatus) {
+        this.quizStatus = quizStatus;
+    }
 }

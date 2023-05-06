@@ -12,12 +12,13 @@ public abstract class Enemy extends Creature{
     public BufferedImage battleImageDefault,battleImageAttack,battleImageHurt;
     public int health,maxHealth,strength,defence,dexterity,exp;
 
-    public int enemyChoice =99;
     public String[] attackMove = new String[4];
     public int[] attackPower = new int[4];
     public int[] attackAccuracy = new int[4];
     public Item drop;
     public int dropChance,goldDrop;
+    public int spriteX,spriteY, spritesizeX,spritesizeY;
+    public String battleText;
 
 
     @Override

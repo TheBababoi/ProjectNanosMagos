@@ -10,10 +10,10 @@ import java.io.IOException;
 
 public class Chest extends SuperObject{
     private Item content;
-    public Chest(GamePanel gamePanel) {
+    public Chest(GamePanel gamePanel, Item item) {
         super(gamePanel);
         name = "Chest";
-        content = new LegendaryPen(gamePanel);
+        content = item;
         try {
             image = ImageIO.read(new FileInputStream("src/sprites/objects/chest.png"));
         } catch (IOException e) {

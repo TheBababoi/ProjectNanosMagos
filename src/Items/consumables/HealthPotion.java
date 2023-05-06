@@ -8,10 +8,10 @@ public class HealthPotion extends Consumable {
     public HealthPotion(GamePanel gamePanel) {
         super(gamePanel);
         name = "Health Potion";
-        description = "(Health Potion) \n Restores 20 HP \n \"Very tasty!\"";
-        battleDescription = "Restores 20 Health";
-        getSprite("src/sprites/Items/mushroom.png");
-        price = 3;
+        description = "(Health Potion) \n Restores 30 HP \n \"Very tasty!\"";
+        battleDescription = "Restores 30 Health";
+        getSprite("src/sprites/Items/healthpotion.png");
+        price = 30;
         stackable = true;
     }
 
@@ -19,8 +19,8 @@ public class HealthPotion extends Consumable {
     public void overWorldUse() {
         gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
         gamePanel.playSoundEffect(3);
-        gamePanel.getUi().setCurrentDialogue("You drank the potion \n Recovered 20 health!");
-        gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() +20);
+        gamePanel.getUi().setCurrentDialogue("You drank the potion \n Recovered 30 health!");
+        gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() +30);
         if (gamePanel.getHero().getHealth()>= gamePanel.getHero().getMaxHealth()){
             gamePanel.getHero().setHealth(gamePanel.getHero().getMaxHealth());
         }
@@ -29,8 +29,8 @@ public class HealthPotion extends Consumable {
     }
 
     public void battleUse() {
-        gamePanel.getUi().setCurrentBattleDialogue("You drank the potion \n Recovered 20 health!");
-        gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() +20);
+        gamePanel.getUi().setCurrentBattleDialogue("You drank the potion \n Recovered 30 health!");
+        gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() +30);
         if (gamePanel.getHero().getHealth()>= gamePanel.getHero().getMaxHealth()){
             gamePanel.getHero().setHealth(gamePanel.getHero().getMaxHealth());
         }

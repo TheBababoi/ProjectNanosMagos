@@ -20,7 +20,7 @@ public class BattleHandler {
         monsterIndex = index;
         gamePanel.getMusic().stop();
         gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
-        gamePanel.getUi().setCurrentDialogue(battle);
+        gamePanel.getUi().setCurrentDialogue(gamePanel.getEnemy()[gamePanel.getCurrentMap()][monsterIndex].battleText);
         gamePanel.getUi().drawDialogueScreen();
 
 

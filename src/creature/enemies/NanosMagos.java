@@ -24,6 +24,11 @@ public class NanosMagos extends Enemy {
         actionCounterMax = 30;
         setBattleStats();
         setDrops(gamePanel);
+        spritesizeX = 300;
+        spritesizeY = 500;
+        spriteX = gamePanel.getScreenWidth() / 2 -150;
+        spriteY = 200;
+        battleText = "I am you";
 
 
 
