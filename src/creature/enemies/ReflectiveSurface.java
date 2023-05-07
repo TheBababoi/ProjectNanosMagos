@@ -1,5 +1,6 @@
 package creature.enemies;
 
+import Items.consumables.FortifiedPotion;
 import Items.consumables.Mushroom;
 import creature.Enemy;
 import main.GamePanel;
@@ -17,7 +18,7 @@ public class ReflectiveSurface extends Enemy {
     public ReflectiveSurface(GamePanel gamePanel) {
         super(gamePanel);
         getSprites("src/sprites/reflectiveSurface");
-        name = "ReflectiveSurface";
+        name = "ShinyGuy";
         direction = "right";
         speed = 1;
         actionCounterMax = 30;
@@ -28,6 +29,7 @@ public class ReflectiveSurface extends Enemy {
         spriteX =  gamePanel.getScreenWidth() / 2 -400;
         spriteY = 200;
         battleText = "With the power of sun, I can blind you instantly.";
+        soundIndex = 21;
 
 
 
@@ -37,19 +39,19 @@ public class ReflectiveSurface extends Enemy {
 
     @Override
     public void setDrops(GamePanel gamePanel) {
-        drop = new  Mushroom(gamePanel);
-        dropChance = 10;
-        goldDrop = 10;
+        drop = new FortifiedPotion(gamePanel);
+        dropChance = 6;
+        goldDrop = 15;
     }
 
     @Override
     public void setBattleStats() {
-        maxHealth = 1000;
+        maxHealth = 80;
         health = maxHealth;
-        strength = 10;
-        defence = 10;
+        strength = 13;
+        defence = 12;
         dexterity = 11;
-        exp = 20;
+        exp = 150;
 
         enemyMoves();
     }
@@ -72,18 +74,18 @@ public class ReflectiveSurface extends Enemy {
 
     @Override
     public void enemyMoves() {
-        attackMove[0] = "Thunder";
-        attackPower[0] = 10;
+        attackMove[0] = "Flash";
+        attackPower[0] = 12;
         attackAccuracy[0] = 10;
-        attackMove[1] = "Rain";
-        attackPower[1] = 8;
-        attackAccuracy[1] = 12;
-        attackMove[2] = "Wind";
+        attackMove[1] = "Screech";
+        attackPower[1] = 10;
+        attackAccuracy[1] = 14;
+        attackMove[2] = "Sun Beam";
         attackAccuracy[2] = 8;
-        attackPower[2] = 6;
-        attackMove[3] = "Fog";
-        attackPower[3] = 5;
-        attackAccuracy[3] = 8;
+        attackPower[2] = 20;
+        attackMove[3] = "Pointy Edge";
+        attackPower[3] = 9;
+        attackAccuracy[3] = 15;
 
     }
 

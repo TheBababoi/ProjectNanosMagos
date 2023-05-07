@@ -19,6 +19,7 @@ public abstract class Enemy extends Creature{
     public int dropChance,goldDrop;
     public int spriteX,spriteY, spritesizeX,spritesizeY;
     public String battleText;
+    public int soundIndex;
 
 
     @Override

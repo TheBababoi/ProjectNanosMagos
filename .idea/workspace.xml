@@ -10,45 +10,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="implementing level 1">
-      <change afterPath="$PROJECT_DIR$/src/sprites/META-INF/MANIFEST.MF" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/achatEvil/down1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/achatEvil/down2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/achatGood/down1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/achatGood/down2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/bird/down1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/bird/down2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/bird/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/bird/left2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/bird/right1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/bird/right2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/bird/up1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/bird/up2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/equipment/80.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/faucet/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/faucet/left2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/faucet/right1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/faucet/right2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/reflectiveSurface/attack.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/reflectiveSurface/hurt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/reflectiveSurface/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/reflectiveSurface/left2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/reflectiveSurface/right1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/reflectiveSurface/right2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/sentoni/down1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/sentoni/down2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/sentoni/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/sentoni/left2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/sentoni/right1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/sentoni/right2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/sentoni/up1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/sentoni/up2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/treedude/down1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/treedude/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/treedude/right1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/worm/down1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/worm/hurt.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/worm/left1.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/worm/right1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/maps/beach_map.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sprites/maps/map1interior.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/cloud(1).wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/cloud.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/dance.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/eating.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/electric.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/focus.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/headbutt.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/kick.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/lamarina.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/magos_foties.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/meditation.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/punch.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/suplex.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/thunderstorm.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/vrisi.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/worm.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/worldSoundEffects/correct.wav" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/tunes/worldSoundEffects/wrong.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Bird.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Bunny1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Bunny1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Enemy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Nikolaidis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Nikolaidis.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Treedude.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Treedude.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/enemies/AchatEvil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/AchatEvil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/enemies/Faucet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/Faucet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/enemies/ReflectiveSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/ReflectiveSurface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/enemies/Worm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/Worm.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/object/Tampouris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/Tampouris.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/equipment/armor.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/equipment/armor.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/sprites/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/maps/map1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tunes/worldSoundEffects/chest.wav" beforeDir="false" afterPath="$PROJECT_DIR$/src/tunes/worldSoundEffects/chest.wav" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/tunes/worldSoundEffects/door.wav" beforeDir="false" afterPath="$PROJECT_DIR$/src/tunes/worldSoundEffects/door.wav" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,7 +90,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Bababoi/Desktop/Java Projects/Team11/src/sprites/backgroundTiles",
+    "last_opened_file_path": "C:/Users/Bababoi/Desktop/Java Projects/Team11/src/tunes/worldSoundEffects",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -98,17 +102,18 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\worldSoundEffects" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\backgroundTiles" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\bunny1" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites" />
       <recent name="$PROJECT_DIR$/src/sprites/backgroundTiles" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites" />
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\worldSoundEffects" />
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\battleSoundEffects" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\maps" />
+      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites" />
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\equipment" />
-      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\sprites\Items" />
-      <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\worldMusic" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="Items" />
@@ -225,7 +230,10 @@
       <workItem from="1683285615717" duration="1195000" />
       <workItem from="1683303663057" duration="6550000" />
       <workItem from="1683310350851" duration="2542000" />
-      <workItem from="1683360355816" duration="21684000" />
+      <workItem from="1683360355816" duration="22810000" />
+      <workItem from="1683447255198" duration="191000" />
+      <workItem from="1683448199030" duration="7443000" />
+      <workItem from="1683476181977" duration="7740000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -493,7 +501,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683391184645</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="implementing level 1">
+      <created>1683391524286</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1683391524286</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

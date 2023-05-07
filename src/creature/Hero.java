@@ -48,7 +48,7 @@ public class Hero extends Creature {
         hitbox = new Rectangle(12,24,56,56);
         hitboxX = 12;
         hitboxY = 24;
-        worldX = gamePanel.getSpriteSize() *1;
+        worldX = gamePanel.getSpriteSize() *4;
         worldY = gamePanel.getSpriteSize() *1;
 
         direction = "down";
@@ -63,8 +63,8 @@ public class Hero extends Creature {
     }
 
     public void setDefault(){
-        worldX = gamePanel.getSpriteSize() *0;
-        worldY = gamePanel.getSpriteSize() *8;
+        worldX = gamePanel.getSpriteSize() *4;
+        worldY = gamePanel.getSpriteSize() *1;
 
         direction = "down";
         setStats();
@@ -113,15 +113,15 @@ public class Hero extends Creature {
         maxHealth = 30;
         health = maxHealth;
         maxMana = 30;
-        mana = maxMana;
+        mana = maxMana+10;
         baseStrength = 10;
         baseDefence = 1;
         dexterity = 4;
         baseMaxMana = 30;
         exp = 0;
         nextLevelExp = 80;
-        gold = 900;
-        currentWeapon = new PurpleSword(gamePanel);
+        gold = 0;
+        currentWeapon = new Lolipop(gamePanel);
         currentArmor = new Armor(gamePanel);
         currentGem = new ShinyMushroom(gamePanel);
         currentTrinket = new MagicKey(gamePanel);
@@ -134,44 +134,43 @@ public class Hero extends Creature {
     }
     public void heroMoves() {
         attackMove[0] = "Punch";
-        attackPower[0] = 30;
-        attackAccuracy[0] = 10;
-        attackSoundIndex[0] = 8;
+        attackPower[0] = 5;
+        attackAccuracy[0] = 8;
+        attackSoundIndex[0] = 10;
         attackCost[0] = 0;
         attackMove[1] = "Kick";
-        attackPower[1] = 35;
-        attackAccuracy[1] = 6;
-        attackSoundIndex[1] = 5;
-        attackAccuracy[2] = 7;
+        attackPower[1] = 7;
+        attackAccuracy[1] = 7;
+        attackSoundIndex[1] = 11;
         attackCost[1] = 0;
-        attackMove[2] = "Headbutt";
-        attackPower[2] = 40;
-        attackSoundIndex[2] = 5;
-        attackAccuracy[3] = 8;
+        attackAccuracy[2] = 7;
         attackCost[2] = 0;
-        attackMove[3] = "Suplex";
-        attackPower[3] = 50;
-        attackAccuracy[3] = 5;
-        attackSoundIndex[3] = 5;
+        attackMove[2] = "Headbutt";
+        attackPower[2] = 10;
+        attackSoundIndex[2] = 13;
+        attackAccuracy[3] = 6;
         attackCost[3] = 0;
+        attackMove[3] = "Suplex";
+        attackPower[3] = 12;
+        attackSoundIndex[3] = 13;
         attackMove[4] = "Fireball";
-        attackPower[4] = 75;
+        attackPower[4] = 20;
         attackAccuracy[4] = 10;
         attackSoundIndex[4] = 8;
         attackCost[4] = 5;
         attackMove[5] = "Flamestrike";
-        attackPower[5] = 150;
+        attackPower[5] = 30;
         attackAccuracy[5] = 6;
-        attackSoundIndex[5] = 5;
+        attackSoundIndex[5] = 8;
         attackCost[5] = 10;
         attackMove[6] = "IceSpear";
-        attackPower[6] = 100;
+        attackPower[6] = 25;
         attackAccuracy[6] = 7;
         attackSoundIndex[6] = 5;
         attackCost[6] = 8;
         attackMove[7] = "Blizzard";
-        attackPower[7] = 1500;
-        attackAccuracy[7] = 666;
+        attackPower[7] = 40;
+        attackAccuracy[7] = 6;
         attackSoundIndex[7] = 5;
         attackCost[7] = 20;
 
@@ -199,6 +198,7 @@ public class Hero extends Creature {
                 currentGem.recalculateHeroStats(gamePanel);
             }
             else if(selectedItem instanceof Consumable){
+                gamePanel.playSoundEffect(18);
                  ((Consumable) selectedItem).overWorldUse();
                  if (selectedItem.getAmount() >1){
                      selectedItem.setAmount(selectedItem.getAmount()-1);
@@ -357,7 +357,7 @@ public class Hero extends Creature {
 
                         break;
                     case "Door":
-                            if( gamePanel.getEnemy()[0][0] == null){
+                            if( gamePanel.getEnemy()[0][1] == null){
                                 gamePanel.playSoundEffect(3);
 
                                 gamePanel.getUi().setCurrentDialogue("Hero opened the door");

@@ -1,6 +1,7 @@
 package creature.enemies;
 
 import Items.consumables.Mushroom;
+import Items.equipment.Diamond;
 import creature.Enemy;
 import main.GamePanel;
 
@@ -27,8 +28,9 @@ public class AchatEvil extends Enemy {
         spritesizeY = 720;
         spriteX =  gamePanel.getScreenWidth() / 2 -400;
         spriteY = 100;
-        battleText = "Who are you? What are you doing in Flowerland? I'm Chatzigeorgiou, \n the wizard of this place.You don't seem trustworthy." +
+        battleText = "Who are you? What are you doing in Flowerland?\n I'm Chatzigeorgiou, the wizard of this place.\nYou don't seem trustworthy." +
                 "I will not allow you to go forth to Sunny bay \n unless I'm certain about your intentions.";
+        soundIndex = 23;
 
 
 
@@ -38,19 +40,19 @@ public class AchatEvil extends Enemy {
 
     @Override
     public void setDrops(GamePanel gamePanel) {
-        drop = new  Mushroom(gamePanel);
+        drop = new Diamond(gamePanel);
         dropChance = 10;
-        goldDrop = 10;
+        goldDrop = 25;
     }
 
     @Override
     public void setBattleStats() {
-        maxHealth = 100;
+        maxHealth = 200;
         health = maxHealth;
         strength = 10;
         defence = 10;
         dexterity = 11;
-        exp = 20;
+        exp = 500;
 
         enemyMoves();
     }
@@ -73,18 +75,18 @@ public class AchatEvil extends Enemy {
 
     @Override
     public void enemyMoves() {
-        attackMove[0] = "Thunder";
-        attackPower[0] = 10;
+        attackMove[0] = "Fire Blast";
+        attackPower[0] = 25;
         attackAccuracy[0] = 10;
-        attackMove[1] = "Rain";
-        attackPower[1] = 8;
+        attackMove[1] = "Inferno";
+        attackPower[1] = 30;
         attackAccuracy[1] = 12;
-        attackMove[2] = "Wind";
+        attackMove[2] = "Eruption";
         attackAccuracy[2] = 8;
-        attackPower[2] = 6;
-        attackMove[3] = "Fog";
-        attackPower[3] = 5;
-        attackAccuracy[3] = 8;
+        attackPower[2] = 40;
+        attackMove[3] = "Flame Wheel";
+        attackPower[3] = 20;
+        attackAccuracy[3] = 13;
 
     }
 

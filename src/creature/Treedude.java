@@ -14,7 +14,7 @@ public class Treedude extends NPC {
         super(gamePanel);
         getSprites("src/sprites/treedude");
         direction = "right";
-        speed = 1;
+        speed = 0;
         actionCounterMax = 30;
         setDialogue();
     }

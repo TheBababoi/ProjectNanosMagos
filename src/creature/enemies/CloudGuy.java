@@ -1,5 +1,6 @@
 package creature.enemies;
 
+import Items.consumables.HealthPotion;
 import Items.consumables.Mushroom;
 import creature.Enemy;
 import main.GamePanel;
@@ -27,7 +28,8 @@ public class CloudGuy extends Enemy {
         spritesizeY = 480;
         spriteX =  gamePanel.getScreenWidth() / 2 -400;
         spriteY = 200;
-        battleText = "You can't hide from me. I' ll find you and shock you wherever you are.";
+        battleText = "You can't hide from me. \n I' ll find you and shock you wherever you are.";
+        soundIndex = 19;
 
 
 
@@ -37,19 +39,19 @@ public class CloudGuy extends Enemy {
 
     @Override
     public void setDrops(GamePanel gamePanel) {
-        drop = new  Mushroom(gamePanel);
-        dropChance = 10;
+        drop = new HealthPotion(gamePanel);
+        dropChance = 4;
         goldDrop = 10;
     }
 
     @Override
     public void setBattleStats() {
-        maxHealth = 1000;
+        maxHealth = 60;
         health = maxHealth;
-        strength = 10;
-        defence = 10;
-        dexterity = 11;
-        exp = 20;
+        strength = 15;
+        defence = 12;
+        dexterity = 10;
+        exp = 60;
 
         enemyMoves();
     }
@@ -73,16 +75,16 @@ public class CloudGuy extends Enemy {
     @Override
     public void enemyMoves() {
         attackMove[0] = "Thunder";
-        attackPower[0] = 10;
+        attackPower[0] = 12;
         attackAccuracy[0] = 10;
         attackMove[1] = "Rain";
-        attackPower[1] = 8;
+        attackPower[1] = 10;
         attackAccuracy[1] = 12;
         attackMove[2] = "Wind";
         attackAccuracy[2] = 8;
-        attackPower[2] = 6;
+        attackPower[2] = 8;
         attackMove[3] = "Fog";
-        attackPower[3] = 5;
+        attackPower[3] = 7;
         attackAccuracy[3] = 8;
 
     }

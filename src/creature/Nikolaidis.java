@@ -30,31 +30,31 @@ public class Nikolaidis extends NPC{
     }
 
     public void setQuiz() {
-        question[0] = "Let us begin with Question 1";
-        answer[0][0] = "Wrong answer";
-        answer[0][1] = "Wrong answer";
-        answer[0][2] = "Wrong answer";
-        answer[0][3] = "Correct answer";
-        question[1] = "Question 2";
-        answer[1][0] = "Wrong answer";
-        answer[1][1] = "Correct answer";
-        answer[1][2] = "Wrong answer";
-        answer[1][3] = "Wrong answer";
-        question[2] = "Question 3";
-        answer[2][0] = "Wrong answer";
-        answer[2][1] = "Wrong answer";
-        answer[2][2] = "Correct answer";
-        answer[2][3] = "Wrong answer";
-        question[3] = "Question 4";
-        answer[3][0] = "Wrong answer";
-        answer[3][1] = "Wrong answer";
-        answer[3][2] = "Wrong answer";
-        answer[3][3] = "Correct answer";
-        question[4] = "Question 5";
-        answer[4][0] = "Correct answer";
-        answer[4][1] = "Wrong answer";
-        answer[4][2] = "Wrong answer";
-        answer[4][3] = "Wrong answer";
+        question[0] = "Mama asks: Which of the following measures of\n central tendency is most affected by outliers?";
+        answer[0][0] = "Range";
+        answer[0][1] = "Mode";
+        answer[0][2] = "Median";
+        answer[0][3] = "Mean";
+        question[1] = "Mama asks: Which of the following is most \n commonly used to represent the spread of a data set?";
+        answer[1][0] = "Range";
+        answer[1][1] = "Standard Deviation";
+        answer[1][2] = "Variance";
+        answer[1][3] = "Interquartile range";
+        question[2] = "Mama asks: Which of the following graphs is used \n to display categorical data?";
+        answer[2][0] = "Historygram";
+        answer[2][1] = "Box Plot";
+        answer[2][2] = "Pie Chart";
+        answer[2][3] = "Scatterplot";
+        question[3] = "Which of the following is a characteristic \nof a normal distribution?";
+        answer[3][0] = "It is skewed to the left";
+        answer[3][1] = "It has a uniform shape";
+        answer[3][2] = "It has a high kurtosis value";
+        answer[3][3] = " It is bell-shaped";
+        question[4] = "Mama asks: What kind of art is Statistics?";
+        answer[4][0] = "The art of approximation";
+        answer[4][1] = "The art of math expansion";
+        answer[4][2] = "It's not art";
+        answer[4][3] = "But is it art?";
         correctAnswer[0] = 3;
         correctAnswer[1] = 1;
         correctAnswer[2] = 2;
@@ -106,8 +106,10 @@ public class Nikolaidis extends NPC{
 
     @Override
     public void speak() {
+        System.out.println(quizStatus);
         quizStatus = gamePanel.getQuizStatus();
         if (quizStatus == 0){
+            System.out.println("wtf");
             faceHero();
             startDialogue(this,dialogueSet);
             dialogueSet = 0;

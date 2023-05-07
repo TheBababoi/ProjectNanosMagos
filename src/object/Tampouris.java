@@ -12,7 +12,7 @@ public class Tampouris extends SuperObject {
         super(gamePanel);
         name = "Tampouris";
         try {
-            image = ImageIO.read(new FileInputStream("src/sprites/objects/tampouris.png"));
+            image = ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/029.png"));
         } catch (IOException e) {
             e.printStackTrace();
             ;

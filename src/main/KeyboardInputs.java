@@ -85,14 +85,17 @@ public class KeyboardInputs implements KeyListener {
                 gamePanel.getHero().setMaxMana(gamePanel.getHero().getMaxMana() +100);
                 gamePanel.getHero().setMana(gamePanel.getHero().getMaxMana());
                 gamePanel.getUi().getNikolaidis().setQuizStatus(1);
+                gamePanel.setQuizStatus(1);
                // gamePanel.getUi().getNikolaidis().setDialogueIndex(1);
 
             }else {
                 gamePanel.getUi().getNikolaidis().setQuizStatus(2);
+                gamePanel.setQuizStatus(2);
                 //gamePanel.getUi().getNikolaidis().setDialogueIndex(2);
             }
             gamePanel.getUi().setQuizIndex(0);
             gamePanel.getUi().setCurrentDialogue("Hello again");
+            gamePanel.getUi().setCounter(0);
             gamePanel.setGameState(GamePanel.Gamestate.PLAYSTATE);
 
         }
@@ -103,11 +106,14 @@ public class KeyboardInputs implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
            if(!(playerChoice == gamePanel.getUi().getNikolaidis().getCorrectAnswer()[gamePanel.getUi().getQuizIndex()])){
                gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() - gamePanel.getHero().getMaxHealth()/3);
+
+
                if (gamePanel.getHero().getHealth()<=0){
                    gamePanel.getHero().setHealth(1);
                }
+
            }
-           gamePanel.getUi().setQuizIndex(gamePanel.getUi().getQuizIndex() + 1);
+            gamePanel.getUi().setQuizIndex(gamePanel.getUi().getQuizIndex() + 1);
            if(gamePanel.getHero().getHealth() == 1 || gamePanel.getUi().getQuizIndex()>4){
                gamePanel.setGameState(GamePanel.Gamestate.QUIZFINAL);
            }else {
@@ -147,7 +153,13 @@ public class KeyboardInputs implements KeyListener {
         }else if(gamePanel.getUi().getQuizState() == UI.QuizState.QUIZ){
             if ( code == KeyEvent.VK_ENTER){
                 playerChoice = gamePanel.getUi().getCommandIndex();
-                gamePanel.playSoundEffect(7);
+
+                if(!(playerChoice == gamePanel.getUi().getNikolaidis().getCorrectAnswer()[gamePanel.getUi().getQuizIndex()])){
+                    gamePanel.getHero().setHealth(gamePanel.getHero().getHealth() - gamePanel.getHero().getMaxHealth()/3);
+                    gamePanel.playSoundEffect(25);}
+                else {
+                    gamePanel.playSoundEffect(24);
+                }
                 gamePanel.setGameState(GamePanel.Gamestate.QUIZRESULT);
 
             }
@@ -226,6 +238,7 @@ public class KeyboardInputs implements KeyListener {
                     gamePanel.getHero().setGold(gamePanel.getHero().getGold() - gamePanel.getUi().getMerchant().getInventory().get(gamePanel.getUi().getItemIndex()).getPrice());
                     //gamePanel.hero.inventory.add(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex));
                     gamePanel.setGameState(GamePanel.Gamestate.TRADEDIALOGUE);
+                    gamePanel.playSoundEffect(1);
                     gamePanel.getUi().setCurrentDialogue("Thank you for your purchase!");
                     gamePanel.getUi().drawTradeDialogue();
 
@@ -287,6 +300,7 @@ public class KeyboardInputs implements KeyListener {
                     }
                     // gamePanel.hero.inventory.add(gamePanel.ui.merchant.inventory.get(gamePanel.ui.itemIndex));
                     gamePanel.setGameState(GamePanel.Gamestate.TRADEDIALOGUE);
+                    gamePanel.playSoundEffect(1);
                     gamePanel.getUi().setCurrentDialogue("I'll take that off your hands!");
                     gamePanel.getUi().drawTradeDialogue();
                 }
@@ -530,7 +544,7 @@ public class KeyboardInputs implements KeyListener {
                 gamePanel.getUi().setSubMenu(UI.SubMenu.MAINMENU);
                 gamePanel.getUi().setCommandIndex(1);
             } else if (code == KeyEvent.VK_ENTER){
-                gamePanel.playSoundEffect(7);
+                gamePanel.playSoundEffect(18);
                 gamePanel.getUi().setSubMenu(UI.SubMenu.MAINMENU);
                 itemUsed = true;
                 gamePanel.setGameState(GamePanel.Gamestate.BATTLELOGHERO);
@@ -595,6 +609,7 @@ public class KeyboardInputs implements KeyListener {
                 }else if(gamePanel.getUi().getSubMenu() == UI.SubMenu.BUFFMENU){
                         if (gamePanel.getUi().getCommandIndexX() == 0 && gamePanel.getUi().getCommandIndex() == 0) {
                             gamePanel.getBattleHandler().meditate();
+                            gamePanel.playSoundEffect(14);
                             gamePanel.getUi().setCurrentBattleDialogue("Hero mediated to restore some mana!");
                             gamePanel.setGameState(GamePanel.Gamestate.BATTLELOGHERO);
                             gamePanel.getUi().resetcommandIndex();
@@ -604,6 +619,7 @@ public class KeyboardInputs implements KeyListener {
                         if (gamePanel.getUi().getCommandIndexX() == 1 && gamePanel.getUi().getCommandIndex() == 0) {
                             if (!gamePanel.getBattleHandler().isUsedFocus()){
                                 gamePanel.getBattleHandler().setUsedFocus(true);
+                                gamePanel.playSoundEffect(16);
                                 gamePanel.getUi().setCurrentBattleDialogue("Hero became very focused! \n His Accuracy rose!");
                                 gamePanel.setGameState(GamePanel.Gamestate.BATTLELOGHERO);
                                 gamePanel.getUi().resetcommandIndex();
@@ -615,6 +631,7 @@ public class KeyboardInputs implements KeyListener {
                         if (gamePanel.getUi().getCommandIndexX() == 0 && gamePanel.getUi().getCommandIndex() == 1) {
                             if (!gamePanel.getBattleHandler().isUsedDance()){
                                 gamePanel.getBattleHandler().setUsedDance(true);
+                                gamePanel.playSoundEffect(15);
                                 gamePanel.getUi().setCurrentBattleDialogue("Hero began to dance! \n His Dexterity rose!");
                                 gamePanel.setGameState(GamePanel.Gamestate.BATTLELOGHERO);
                                 gamePanel.getUi().resetcommandIndex();
@@ -625,6 +642,7 @@ public class KeyboardInputs implements KeyListener {
                         if (gamePanel.getUi().getCommandIndexX() == 1 && gamePanel.getUi().getCommandIndex() == 1) {
                             if (!gamePanel.getBattleHandler().isUsedEnrage()){
                                 gamePanel.getBattleHandler().setUsedEnrage(true);
+                                gamePanel.playSoundEffect(17);
                                 gamePanel.getUi().setCurrentBattleDialogue("Hero got really mad! \n His Attack rose!");
                                 gamePanel.setGameState(GamePanel.Gamestate.BATTLELOGHERO);
                                 gamePanel.getUi().resetcommandIndex();
@@ -675,7 +693,7 @@ public class KeyboardInputs implements KeyListener {
     private void battleStateEnemy(){
         Random random = new Random();
         enemyChoice = random.nextInt(3);
-        gamePanel.playSoundEffect(6);
+        gamePanel.playSoundEffect(gamePanel.getEnemy()[gamePanel.getCurrentMap()][gamePanel.getBattleHandler().getMonsterIndex()].soundIndex);
 
         gamePanel.getBattleHandler().calculateEnemyAttack(enemyChoice);
         gamePanel.getUi().resetLetterbyLetter();
@@ -736,7 +754,7 @@ public class KeyboardInputs implements KeyListener {
             if(gamePanel.getBattleHandler().getMonsterIndex()==1){
                 gamePanel.getNpc()[0][9] = new AchatGood(gamePanel);
                 gamePanel.getNpc()[0][9].setWorldX(1 * gamePanel.getSpriteSize());
-                gamePanel.getNpc()[0][9].setWorldY(1 * gamePanel.getSpriteSize());
+                gamePanel.getNpc()[0][9].setWorldY(47 * gamePanel.getSpriteSize());
             }
             gamePanel.getEnemy()[gamePanel.getCurrentMap()][gamePanel.getBattleHandler().getMonsterIndex()] = null;
             gamePanel.getHero().checkLevelUp();

@@ -1,5 +1,6 @@
 package creature.enemies;
 
+import Items.consumables.ManaPotion;
 import Items.consumables.Mushroom;
 import creature.Enemy;
 import main.GamePanel;
@@ -17,7 +18,7 @@ public class Faucet extends Enemy {
     public Faucet(GamePanel gamePanel) {
         super(gamePanel);
         getSprites("src/sprites/faucet");
-        name = "Faucet";
+        name = "Mr Leaky";
         direction = "right";
         speed = 1;
         actionCounterMax = 30;
@@ -28,6 +29,7 @@ public class Faucet extends Enemy {
         spriteX =  gamePanel.getScreenWidth() / 2 -400;
         spriteY = 200;
         battleText = "Do you like hot water? Cuz like it or not, it's coming at you.";
+        soundIndex = 22;
 
 
 
@@ -37,16 +39,16 @@ public class Faucet extends Enemy {
 
     @Override
     public void setDrops(GamePanel gamePanel) {
-        drop = new  Mushroom(gamePanel);
-        dropChance = 10;
-        goldDrop = 10;
+        drop = new ManaPotion(gamePanel);
+        dropChance = 5;
+        goldDrop = 20;
     }
 
     @Override
     public void setBattleStats() {
-        maxHealth = 1000;
+        maxHealth = 100;
         health = maxHealth;
-        strength = 10;
+        strength = 15;
         defence = 10;
         dexterity = 11;
         exp = 20;
@@ -72,18 +74,18 @@ public class Faucet extends Enemy {
 
     @Override
     public void enemyMoves() {
-        attackMove[0] = "Thunder";
-        attackPower[0] = 10;
+        attackMove[0] = "Headbutt";
+        attackPower[0] = 15;
         attackAccuracy[0] = 10;
-        attackMove[1] = "Rain";
-        attackPower[1] = 8;
+        attackMove[1] = "Water Pistol";
+        attackPower[1] = 13;
         attackAccuracy[1] = 12;
-        attackMove[2] = "Wind";
-        attackAccuracy[2] = 8;
-        attackPower[2] = 6;
-        attackMove[3] = "Fog";
-        attackPower[3] = 5;
-        attackAccuracy[3] = 8;
+        attackMove[2] = "Water Pump";
+        attackAccuracy[2] = 20;
+        attackPower[2] = 10;
+        attackMove[3] = "Boiling Water";
+        attackPower[3] = 30;
+        attackAccuracy[3] = 9;
 
     }
 

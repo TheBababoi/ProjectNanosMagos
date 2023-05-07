@@ -27,6 +27,23 @@ public class Sound {
         soundURL[7] = new File("src/tunes/battleSoundEffects/menu.wav");
         soundURL[8] = new File("src/tunes/battleSoundEffects/fireball.wav");
         soundURL[9] = new File("src/tunes/worldMusic/menu.wav");
+        soundURL[10] = new File("src/tunes/battleSoundEffects/punch.wav");
+        soundURL[11] = new File("src/tunes/battleSoundEffects/kick.wav");
+        soundURL[12] = new File("src/tunes/battleSoundEffects/suplex.wav");
+        soundURL[13] = new File("src/tunes/battleSoundEffects/headbutt.wav");
+        soundURL[14] = new File("src/tunes/battleSoundEffects/meditation.wav");
+        soundURL[15] = new File("src/tunes/battleSoundEffects/dance.wav");
+        soundURL[16] = new File("src/tunes/battleSoundEffects/focus.wav");
+        soundURL[17] = new File("src/tunes/battleSoundEffects/focus.wav");
+        soundURL[18] = new File("src/tunes/battleSoundEffects/eating.wav");
+        soundURL[19] = new File("src/tunes/battleSoundEffects/cloud(1).wav");
+        soundURL[20] = new File("src/tunes/battleSoundEffects/worm.wav");
+        soundURL[21] = new File("src/tunes/battleSoundEffects/lamarina.wav");
+        soundURL[22] = new File("src/tunes/battleSoundEffects/vrisi.wav");
+        soundURL[23] = new File("src/tunes/battleSoundEffects/magos_foties.wav");
+        soundURL[24] = new File("src/tunes/worldSoundEffects/correct.wav");
+        soundURL[25] = new File("src/tunes/worldSoundEffects/wrong.wav");
+
 
     }
 

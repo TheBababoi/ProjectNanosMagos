@@ -38,18 +38,27 @@ public class EventHandler {
     }
 
     public void checkEvent(){
-        if(hitCheck(0,0, 0, "any")&&(!eventHitbox[gamePanel.getCurrentMap()][0][0].eventDone)){
-            healSpot(0,0, GamePanel.Gamestate.DIALOGUESTATE);
+
+        if(hitCheck(1,29, 25, "any")){
+            teleporter(0,11,14,GamePanel.Gamestate.TRANSITION);
         }
-//        if(hitCheck(0,2, 1, "any")&&(!eventHitbox[gamePanel.currentMap][2][1].eventDone)){
-//            gamePanel.hero.friendOrFoe = true;
-//            expSpot(2,1, GamePanel.Gamestate.DIALOGUESTATE);
-//        }
-        if(hitCheck(0,0, 0, "any")){
-            teleporter(1,30,30,GamePanel.Gamestate.TRANSITION);
+        if(hitCheck(0,10, 14, "any")){
+            teleporter(1,30,25,GamePanel.Gamestate.TRANSITION);
         }
-        if(hitCheck(1,1, 2, "any")){
-            teleporter(0,5,5,GamePanel.Gamestate.TRANSITION);
+        if(hitCheck(0,39, 14, "any")){
+            teleporter(1,29,39,GamePanel.Gamestate.TRANSITION);
+        }
+        if(hitCheck(1,28, 39, "any")){
+            teleporter(0,40,14,GamePanel.Gamestate.TRANSITION);
+        }
+        if(hitCheck(0,38, 1, "any")){
+            teleporter(1,10,7,GamePanel.Gamestate.TRANSITION);
+        }
+        if(hitCheck(1,10, 6, "any")){
+            teleporter(0,39,1,GamePanel.Gamestate.TRANSITION);
+        }
+        if(hitCheck(0,0, 45, "any")){
+            teleporter(2,11,14,GamePanel.Gamestate.TRANSITION);
         }
     }
 

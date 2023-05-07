@@ -194,10 +194,12 @@ public class UI {
         String text = "";
         if (gamePanel.getKeyboardInputs().getPlayerChoice() == nikolaidis.getCorrectAnswer()[quizIndex]){
             text = "Correct";
+
             g2.drawImage(nikolaidis.getMamaHappy(), gamePanel.getSpriteSize() * 10, gamePanel.getSpriteSize() - 100, gamePanel.getSpriteSize() * 9, gamePanel.getSpriteSize() * 12, null);
         } else {
             g2.drawImage(nikolaidis.getMamaSad(), gamePanel.getSpriteSize() * 10, gamePanel.getSpriteSize() - 100, gamePanel.getSpriteSize() * 9, gamePanel.getSpriteSize() * 12, null);
             text = "False";
+
         }
         g2.drawString(text, x, 850);
 
@@ -1542,5 +1544,9 @@ public class UI {
 
     public void setQuizIndex(int quizIndex) {
         this.quizIndex = quizIndex;
+    }
+
+    public void setCounter(int counter) {
+        this.counter = counter;
     }
 }

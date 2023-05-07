@@ -16,8 +16,9 @@ public class BackgroundTileManager {
         backgroundTile = new BackgroundTile[40];
         mapLayout= new int[gamePanel.getMaxMap()][gamePanel.getMaxWorldColumn()][gamePanel.getMaxWorldRow()];
         getTileImage();
-        loadMapfromTextFile("src/sprites/maps/world01.txt",0);
-        loadMapfromTextFile("src/sprites/maps/map1.txt",1);
+        loadMapfromTextFile("src/sprites/maps/map1.txt",0);
+        loadMapfromTextFile("src/sprites/maps/map1interior.txt",1);
+        loadMapfromTextFile("src/sprites/maps/beach_map.txt",2);
     }
 
     public void loadMapfromTextFile(String filePath,int mapNumber){
@@ -140,20 +141,22 @@ public class BackgroundTileManager {
             backgroundTile[32].collision = true;
             backgroundTile[32].setImage(ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/032.png")));
             backgroundTile[33] = new BackgroundTile();
-            backgroundTile[33].collision = true;
+
             backgroundTile[33].setImage(ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/033.png")));
             backgroundTile[34] = new BackgroundTile();
-            backgroundTile[34].collision = true;
+
             backgroundTile[34].setImage(ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/034.png")));
             backgroundTile[35] = new BackgroundTile();
-            backgroundTile[35].collision = true;
+
             backgroundTile[35].setImage(ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/035.png")));
             backgroundTile[36] = new BackgroundTile();
-            backgroundTile[36].collision = true;
+
             backgroundTile[36].setImage(ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/036.png")));
             backgroundTile[37] = new BackgroundTile();
-            backgroundTile[37].collision = true;
+
             backgroundTile[37].setImage(ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/037.png")));
+            backgroundTile[38] = new BackgroundTile();;
+            backgroundTile[38].setImage(ImageIO.read(new FileInputStream("src/sprites/backgroundTiles/038.png")));
 
 
         } catch(IOException e){

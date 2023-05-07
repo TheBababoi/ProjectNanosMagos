@@ -17,7 +17,7 @@ public class Worm extends Enemy {
     public Worm(GamePanel gamePanel) {
         super(gamePanel);
         getSprites("src/sprites/worm");
-        name = "Worm";
+        name = "Wooormy";
         direction = "right";
         speed = 0;
         actionCounterMax = 300;
@@ -28,6 +28,7 @@ public class Worm extends Enemy {
         spriteX =  gamePanel.getScreenWidth() / 2 -400;
         spriteY = 200;
         battleText = "You're never alone, my friends are always around you.";
+        soundIndex = 20;
 
 
 
@@ -38,17 +39,17 @@ public class Worm extends Enemy {
     @Override
     public void setDrops(GamePanel gamePanel) {
         drop = new  Mushroom(gamePanel);
-        dropChance = 10;
-        goldDrop = 10;
+        dropChance = 7;
+        goldDrop = 3;
     }
 
     @Override
     public void setBattleStats() {
-        maxHealth = 100;
+        maxHealth = 30;
         health = maxHealth;
         strength = 10;
-        defence = 10;
-        dexterity = 11;
+        defence = 5;
+        dexterity = 14;
         exp = 20;
 
         enemyMoves();
@@ -72,18 +73,18 @@ public class Worm extends Enemy {
 
     @Override
     public void enemyMoves() {
-        attackMove[0] = "Thunder";
+        attackMove[0] = "Dirt Throw";
         attackPower[0] = 10;
         attackAccuracy[0] = 10;
-        attackMove[1] = "Rain";
-        attackPower[1] = 8;
-        attackAccuracy[1] = 12;
-        attackMove[2] = "Wind";
-        attackAccuracy[2] = 8;
-        attackPower[2] = 6;
-        attackMove[3] = "Fog";
-        attackPower[3] = 5;
-        attackAccuracy[3] = 8;
+        attackMove[1] = "Dig";
+        attackPower[1] = 10;
+        attackAccuracy[1] = 8;
+        attackMove[2] = "Body Slam";
+        attackAccuracy[2] = 9;
+        attackPower[2] = 10;
+        attackMove[3] = "Slap";
+        attackPower[3] = 8;
+        attackAccuracy[3] = 12;
 
     }
 
