@@ -74,7 +74,7 @@ public class AssetPlacer {
         int mapNumber = 0;
         gamePanel.getNpc()[mapNumber][3] = new Bunny1(gamePanel);
         gamePanel.getNpc()[mapNumber][3].setWorldX(40 * gamePanel.getSpriteSize());
-        gamePanel.getNpc()[mapNumber][3].setWorldY(2 * gamePanel.getSpriteSize());
+        gamePanel.getNpc()[mapNumber][3].setWorldY(8 * gamePanel.getSpriteSize());
 //        gamePanel.getNpc()[mapNumber][4] = new Bunny2(gamePanel);
 //        gamePanel.getNpc()[mapNumber][4].setWorldX(5 * gamePanel.getSpriteSize());
 //        gamePanel.getNpc()[mapNumber][4].setWorldY(5 * gamePanel.getSpriteSize());

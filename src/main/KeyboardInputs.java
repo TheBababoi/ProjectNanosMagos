@@ -82,7 +82,7 @@ public class KeyboardInputs implements KeyListener {
         if (code == KeyEvent.VK_ENTER) {
 
             if(!(gamePanel.getHero().getHealth() == 1)){
-                gamePanel.getHero().setMaxMana(gamePanel.getHero().getMaxMana() +100);
+                gamePanel.getHero().setMaxMana(gamePanel.getHero().getMaxMana() +30);
                 gamePanel.getHero().setMana(gamePanel.getHero().getMaxMana());
                 gamePanel.getUi().getNikolaidis().setQuizStatus(1);
                 gamePanel.setQuizStatus(1);

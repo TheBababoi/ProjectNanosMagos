@@ -116,7 +116,7 @@ public class Hero extends Creature {
         mana = maxMana+10;
         baseStrength = 10;
         baseDefence = 1;
-        dexterity = 4;
+        dexterity = 10;
         baseMaxMana = 30;
         exp = 0;
         nextLevelExp = 80;
@@ -135,7 +135,7 @@ public class Hero extends Creature {
     public void heroMoves() {
         attackMove[0] = "Punch";
         attackPower[0] = 5;
-        attackAccuracy[0] = 8;
+        attackAccuracy[0] = 10;
         attackSoundIndex[0] = 10;
         attackCost[0] = 0;
         attackMove[1] = "Kick";
@@ -157,22 +157,22 @@ public class Hero extends Creature {
         attackPower[4] = 20;
         attackAccuracy[4] = 10;
         attackSoundIndex[4] = 8;
-        attackCost[4] = 5;
+        attackCost[4] = 10;
         attackMove[5] = "Flamestrike";
         attackPower[5] = 30;
         attackAccuracy[5] = 6;
         attackSoundIndex[5] = 8;
-        attackCost[5] = 10;
+        attackCost[5] = 30;
         attackMove[6] = "IceSpear";
         attackPower[6] = 25;
         attackAccuracy[6] = 7;
         attackSoundIndex[6] = 5;
-        attackCost[6] = 8;
+        attackCost[6] = 20;
         attackMove[7] = "Blizzard";
         attackPower[7] = 40;
         attackAccuracy[7] = 6;
         attackSoundIndex[7] = 5;
-        attackCost[7] = 20;
+        attackCost[7] = 40;
 
 
     }
@@ -524,17 +524,17 @@ public class Hero extends Creature {
     public void checkLevelUp() {
         if (exp >= nextLevelExp){
             level++;
+            exp = 0;
             nextLevelExp *= 2;
             maxHealth += 5;
             health = maxHealth;
             maxMana +=5;
             mana = maxMana;
             baseMaxMana +=5;
-            strength += 2;
-            baseStrength += 2;
-            defence += 2;
-            baseDefence += 2;
-            dexterity += 1;
+            strength += 1;
+            baseStrength += 1;
+            defence += 1;
+            baseDefence += 1;
             gamePanel.playSoundEffect(6);
             gamePanel.setGameState(GamePanel.Gamestate.DIALOGUESTATE);
             gamePanel.getUi().setCurrentDialogue("Level Up! Your Stats Have Been Raised!");

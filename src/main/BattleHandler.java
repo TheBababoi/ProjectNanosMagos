@@ -130,7 +130,7 @@ public class BattleHandler {
     }
 
     public void meditate() {
-        gamePanel.getHero().setMana(gamePanel.getHero().getMana() + gamePanel.getHero().getMaxMana()/3);
+        gamePanel.getHero().setMana(gamePanel.getHero().getMana() +10);
         damage = 0;
         if (gamePanel.getHero().getMaxMana()< gamePanel.getHero().getMana()){
             gamePanel.getHero().setMana(gamePanel.getHero().getMaxMana());

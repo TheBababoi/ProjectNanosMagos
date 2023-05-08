@@ -9,50 +9,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="implementing level 1">
-      <change afterPath="$PROJECT_DIR$/src/sprites/maps/beach_map.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/sprites/maps/map1interior.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/cloud(1).wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/cloud.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/dance.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/eating.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/electric.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/focus.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/headbutt.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/kick.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/lamarina.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/magos_foties.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/meditation.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/punch.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/suplex.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/thunderstorm.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/vrisi.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/battleSoundEffects/worm.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/worldSoundEffects/correct.wav" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/tunes/worldSoundEffects/wrong.wav" afterDir="false" />
+    <list default="true" id="af7fa65d-73f8-4519-9910-d280ad074828" name="Changes" comment="finalizing level 1">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/backroundTile/BackgroundTileManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Bird.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Bird.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Bunny1.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Bunny1.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Enemy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/Hero.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Hero.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Nikolaidis.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Nikolaidis.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/Treedude.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Treedude.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/creature/Sentoni.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/Sentoni.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/enemies/AchatEvil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/AchatEvil.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/CloudGuy.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/enemies/Faucet.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/Faucet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/creature/enemies/ReflectiveSurface.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/ReflectiveSurface.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/creature/enemies/Worm.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/creature/enemies/Worm.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/AssetPlacer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/AssetPlacer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/EventHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/EventHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/BattleHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/BattleHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/KeyboardInputs.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/KeyboardInputs.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/Sound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/Sound.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/UI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/UI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/object/Tampouris.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/object/Tampouris.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/equipment/armor.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/equipment/armor.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sprites/maps/map1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/src/sprites/maps/map1.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tunes/worldSoundEffects/chest.wav" beforeDir="false" afterPath="$PROJECT_DIR$/src/tunes/worldSoundEffects/chest.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/tunes/worldSoundEffects/door.wav" beforeDir="false" afterPath="$PROJECT_DIR$/src/tunes/worldSoundEffects/door.wav" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -84,22 +51,22 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "C:/Users/Bababoi/Desktop/Java Projects/Team11/src/tunes/worldSoundEffects",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "project.structure.last.edited": "SDKs",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Bababoi/Desktop/Java Projects/Team11/src/tunes/worldSoundEffects&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\Bababoi\Desktop\Java Projects\Team11\src\tunes\worldSoundEffects" />
@@ -233,7 +200,8 @@
       <workItem from="1683360355816" duration="22810000" />
       <workItem from="1683447255198" duration="191000" />
       <workItem from="1683448199030" duration="7443000" />
-      <workItem from="1683476181977" duration="7740000" />
+      <workItem from="1683476181977" duration="14135000" />
+      <workItem from="1683536657677" duration="854000" />
     </task>
     <task id="LOCAL-00001" summary="Created Basic Game Panel&#10;Started the thread">
       <created>1677867313784</created>
@@ -508,7 +476,14 @@
       <option name="project" value="LOCAL" />
       <updated>1683391524286</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="finalizing level 1">
+      <created>1683484220006</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1683484220006</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -526,7 +501,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="implemented event handler changed gamestatus to enum - closes #10" />
     <MESSAGE value="implemented event handler changed gamestatus to enum - closes #11" />
     <MESSAGE value="started implementation of battle ui" />
     <MESSAGE value="close #12" />
@@ -551,7 +525,8 @@
     <MESSAGE value="added Quiz Battle" />
     <MESSAGE value="added save/load ability to QUiz" />
     <MESSAGE value="implementing level 1" />
-    <option name="LAST_COMMIT_MESSAGE" value="implementing level 1" />
+    <MESSAGE value="finalizing level 1" />
+    <option name="LAST_COMMIT_MESSAGE" value="finalizing level 1" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

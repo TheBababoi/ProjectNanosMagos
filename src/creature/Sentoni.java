@@ -27,8 +27,8 @@ public class Sentoni extends NPC {
         dialogues[0][1] = "I hate getting wet.";
 
 
-        dialogues[1][0] = "I saw the faucets around here.";
-        dialogues[1][1] = "I wish they won't notice me.";
+        dialogues[1][0] = "I saw Mr Leaky around here.";
+        dialogues[1][1] = "I wish he won't notice me.";
 
 
         dialogues[2][0] = "Don't let my face fool you. ";

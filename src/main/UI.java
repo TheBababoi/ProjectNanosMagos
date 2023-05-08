@@ -98,7 +98,7 @@ public class UI {
         } else if (gamePanel.getGameState() == GamePanel.Gamestate.CREDITS) {
             drawCredits(creditsY);
             creditsY--;
-            if (creditsY < -2500) {
+            if (creditsY < -1000) {
                 resetCreditsY();
                 gamePanel.setGameState(GamePanel.Gamestate.TITLESCREEM);
             }
@@ -298,13 +298,12 @@ public class UI {
     }
 
     private void drawCredits(int y) {
-        String string = "                   Project Nanos magos \n \n \n\n\n            Developed by Team11 Interactive \n\n\n\n Goblin mode copy pasta \n\n\n\n\n\n\n How do I get my husband \n to stop going ‘Goblin Mode’ during sex?\n" +
+        String string = "                   Project Nanos magos \n \n \n\n\n            Developed by Team11 Interactive \n\n\n\n Anthopoulou Aggeliki: Art Designer, Writing Team\n Ezanidis Vaios: Cutscene Guru, Video Editing, Writing Team" +
                 "\n" +
-                "TLDR; My husband says ‘Goblin Mode activated’ \n when we start to have sex, growls and acts like a caveman,\n and then says ‘Goblin Mode off’ when we stop, \n and then pretends not to remember afterward.\n" +
-                "\n" +
-                "I really love my husband and he’s always been great in bed. \n But recently he’s been acting really weird. \n So, a couple of days ago, my son went on a rampage through  \n our house and said he was in ‘Goblin Mode’. \n We didn’t really know what to do with him, \n so we sent him to live with my parents so he can go to a special needs school. \n My husband a really great relationship with our son and loved him more than anything. \n Naturally, he was upset when he had to leave. \n He’s an incredibly tough man, but this was the first time I’ve ever seen him cry. \n I think since then, he’s been a little emotionally unwell. \n I’ve heard him muttering, ‘Goblin’ repeatedly when he didn’t notice me,\n staring blankly into his food, \n and just going alone by himself to do who knows what. \n I feel awful for him, but we both agreed that this was for the best. \n Last night, the day after our son went away, \n we decided to have sex to relieve our stress. \n However, my husband said ‘Goblin Mode activated’, starting growling, \n and went wild having sex with me.  \n Admittedly, it was some of the best and most experimental sex I’ve ever had, \n but I’m worried that something might be going on with my husband. \n Any advice?\n" +
-                "\n" +
-                "Edit: The problem isn’t the ‘Goblin Mode’, it’s that he could be ill";
+                "Kalligatsi Thaleia: Soundtrack Composer \nKamidis Georgios: Project Lead, Programmer, Game Designer\nPapadimitriou Konstantinos: Writing Team \nSahinis Andreas: Writing Team\n" +
+
+                "Tsamouridis Vasileios: Map Design, Sound Design \n Filippou Ioannis: Story Writer \n Foundouli Maria: Pixelart \n";
+
 
         g2.setColor(new Color(0, 0, 0));
         g2.fillRect(0, 0, gamePanel.getScreenWidth(), gamePanel.getScreenHeight());
@@ -1088,7 +1087,7 @@ public class UI {
         }
         else if (subMenu == SubMenu.BUFFMENU) {
                 if (commandIndexX == 0 && commandIndex == 0) {
-                    battleTipsText = "Restores 1/3 of Hero's mana";
+                    battleTipsText = "Restores 10 Mana";
                 }
                 if (commandIndexX == 1 && commandIndex == 0) {
                     if (!gamePanel.getBattleHandler().isUsedFocus()){

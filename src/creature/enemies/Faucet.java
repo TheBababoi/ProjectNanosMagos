@@ -48,10 +48,10 @@ public class Faucet extends Enemy {
     public void setBattleStats() {
         maxHealth = 100;
         health = maxHealth;
-        strength = 15;
+        strength = 20;
         defence = 10;
         dexterity = 11;
-        exp = 20;
+        exp = 200;
 
         enemyMoves();
     }
@@ -84,7 +84,7 @@ public class Faucet extends Enemy {
         attackAccuracy[2] = 20;
         attackPower[2] = 10;
         attackMove[3] = "Boiling Water";
-        attackPower[3] = 30;
+        attackPower[3] = 25;
         attackAccuracy[3] = 9;
 
     }

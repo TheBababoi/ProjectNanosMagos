@@ -47,10 +47,10 @@ public class Worm extends Enemy {
     public void setBattleStats() {
         maxHealth = 30;
         health = maxHealth;
-        strength = 10;
-        defence = 5;
+        strength = 20;
+        defence = 10;
         dexterity = 14;
-        exp = 20;
+        exp = 50;
 
         enemyMoves();
     }
@@ -77,13 +77,13 @@ public class Worm extends Enemy {
         attackPower[0] = 10;
         attackAccuracy[0] = 10;
         attackMove[1] = "Dig";
-        attackPower[1] = 10;
+        attackPower[1] = 12;
         attackAccuracy[1] = 8;
         attackMove[2] = "Body Slam";
         attackAccuracy[2] = 9;
         attackPower[2] = 10;
         attackMove[3] = "Slap";
-        attackPower[3] = 8;
+        attackPower[3] = 7;
         attackAccuracy[3] = 12;
 
     }
