@@ -7,9 +7,9 @@ public class PurpleSword extends Weapon{
     public PurpleSword(GamePanel gamePanel) {
         super(gamePanel);
         name = "sword";
-        description = "(Purple Sword) \n +2 attack";
+        description = "(Purple Sword) \n +4 attack\n \"It's so purple!\"";
         getSprite("src/sprites/equipment/sword.png");
-        attack = 2;
+        attack = 4;
         price = 100;
     }
 
