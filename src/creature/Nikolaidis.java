@@ -30,21 +30,21 @@ public class Nikolaidis extends NPC{
     }
 
     public void setQuiz() {
-        question[0] = "Mama asks: Which of the following measures of\n central tendency is most affected by outliers?";
+        question[0] = "Mama asks: What does the coefficient of variation measure?";
         answer[0][0] = "Range";
         answer[0][1] = "Mode";
         answer[0][2] = "Median";
-        answer[0][3] = "Mean";
+        answer[0][3] = "Relative variability";
         question[1] = "Mama asks: Which of the following is most \n commonly used to represent the spread of a data set?";
         answer[1][0] = "Range";
         answer[1][1] = "Standard Deviation";
         answer[1][2] = "Variance";
         answer[1][3] = "Interquartile range";
-        question[2] = "Mama asks: Which of the following graphs is used \n to display categorical data?";
-        answer[2][0] = "Historygram";
-        answer[2][1] = "Box Plot";
-        answer[2][2] = "Pie Chart";
-        answer[2][3] = "Scatterplot";
+        question[2] = "Mama asks: What is the mean?";
+        answer[2][0] = "The most common value";
+        answer[2][1] = "The middle value";
+        answer[2][2] = "The average of all values";
+        answer[2][3] = "The range of values";
         question[3] = "Which of the following is a characteristic \nof a normal distribution?";
         answer[3][0] = "It is skewed to the left";
         answer[3][1] = "It has a uniform shape";
